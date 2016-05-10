@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">   
+        <title>test</title>
+        <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+        <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+        <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/filldata.css">
+		<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/jquery-ui-1.10.4.custom.css">
+	</head>
+	<body style="padding:30px;background: #fff;">
+		<div>通用组件：</div><br>
+		下拉框：<select id="edu">
+		  <option value="0">初中</option>
+		  <option value="1">高中</option>
+		  <option value="2">中技</option>
+		  <option value="3">中专</option>
+		  <option value="4">大专</option>
+		  <option value="5">本科</option>
+		  <option value="6">硕士</option>
+		  <option value="7">博士</option>
+		  <option value="8">博士后</option>
+		  <option value="9">教授</option>
+		</select><br><br><br>
+        <label>时间：</label><input id="tm" type="text" class="datebox" placeholder="开始时间" title="开始时间" readonly="readonly"/><br><br><br><br>
+		<label>上传图片：</label><br><br>
+		<span class="imgbox">
+			<div class="canclick">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+			</div><div class="plhd"></div>
+			<input type="file" name="adpicfile" class="adpicfile">
+		</span>
+		
+		<br><br><div>表单：</div><br>
+        <form class="registerform" method="post" action="demo/ajax_post.php">
+            <table width="100%">
+                <tr>
+                    <td class="need" style="width:10px;">*</td>
+                    <td style="width:70px;">昵称：</td>
+                    <td style="width:400px;"><input type="text" value="" name="name" class="inputxt" datatype="s6-18" errormsg="昵称至少6个字符,最多18个字符！" /></td>
+                    <td><div class="Validform_checktip"></div></td>
+                </tr>
+                <tr>
+                    <td class="need">*</td>
+                    <td>移动电话：</td>
+                    <td><input type="text" value="" name="tel" class="inputxt" datatype="m" errormsg="请输入您的手机号码！"  /></td>
+                    <td><div class="Validform_checktip"></div></td>
+                </tr>
+                <tr>
+                    <td class="need">*</td>
+                    <td>所在城市：</td>
+                    <td><select name="province" datatype="*" style="width:175px;" nullmsg="请选择所在城市！" errormsg="请选择所在城市！"><option value="">请选择城市</option><option value="1">瑞金市</option></select></td>
+                    <td><div class="Validform_checktip"></div></td>
+                </tr>
+                <tr>
+                    <td class="need">*</td>
+                    <td>性别：</td>
+                    <td><input type="radio" value="1" name="gender" id="male" class="pr1" datatype="*" errormsg="请选择性别！" /><label>男</label> <input type="radio" value="2" name="gender" id="female" class="pr1" /><label>女</label></td>
+                    <td><div class="Validform_checktip"></div></td>
+                </tr>
+                <tr>
+                    <td class="need">*</td>
+                    <td>购物网：</td>
+                    <td>
+                        <input name="shoppingsite2" class="rt2" id="shoppingsite21" type="checkbox"  value="1" datatype="*" errormsg="请选择您常去的购物网站！" /><label>新蛋</label>
+                        <input name="shoppingsite2" class="rt2" id="shoppingsite22" type="checkbox"  value="2" /><label>淘宝</label>
+                        <input name="shoppingsite2" class="rt2" id="shoppingsite23" type="checkbox"  value="3" /><label>京东</label>
+                    </td>
+                    <td><div class="Validform_checktip"></div></td>
+                </tr>
+                <tr>
+                    <td class="need"></td>
+                    <td>备注：</td>
+                    <td colspan="2">
+                        <textarea tip="请在这里输入您的意见。" altercss="gray" class="gray" name="msg" value="" datatype="*" errormsg="请选择您常去的购物网站！">请在这里输入您的意见。</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="need"></td>
+                    <td></td>
+                    <td colspan="2" style="padding:10px 0 18px 0;">
+                        <input type="submit" value="提 交" /> <input type="reset" value="重 置" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+		<script type="text/javascript" src="../../src/js/sea.js"></script>
+		<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+		<script type="text/javascript" src="../../src/js/config.js"></script>		
+		<script>seajs.use("test");</script>		
+	</body>
+</html>

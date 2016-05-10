@@ -1,0 +1,444 @@
+define(function (require, exports, module) {
+	require("json"),
+	$urlpath=require("urlpath"),
+	$public = function () {
+		this.init.apply(this, arguments);
+		String.prototype.Trim = function()  
+		{  
+			return this.replace(/(^\s*)|(\s*$)/g, "");  
+		}  
+		String.prototype.LTrim = function()  
+		{  
+			return this.replace(/(^\s*)/g, "");  
+		}  
+		String.prototype.RTrim = function()  
+		{  
+			return this.replace(/(\s*$)/g, "");  
+		}
+	},
+	fileuploadURL=$urlpath.fileuploadURL,
+	site_path=$urlpath.site_path,
+	c_domain=$urlpath.c_domain,
+	img_domain=$urlpath.img_domain,
+	static_source=$urlpath.static_source;
+	
+
+	$public.prototype = {
+		init:function(){
+			var _self=this;
+			/* 统一主域名 */
+			if(document.domain.indexOf(c_domain)!=-1)
+				document.domain = c_domain;
+			$('input,textarea').on('focus',function(){
+				$(this).css('border','1px solid #ed6c44');
+			}).on('blur',function(){
+				$(this).css('border','1px solid #ddd');
+			});
+				_self.depath();
+		},
+		isLogin :function(data){
+			/* console.log(data); */
+			if(!data instanceof Object)
+				data=JSON.parse(data);
+			if(data.errorCode==22000000)
+				window.location=site_path+'/user/login';
+		},
+		depath :function(){
+			var hh=$(".header").height(),fh=$(".footer").height(),el=$(".eredar-left"),er=$(".eredar-right"),
+				wdh=$(window).height()-hh-fh-102,auto_height=$(document).height()-hh-fh-60,
+				elh=el.height()+120,erh=er.height();
+			if(wdh>elh&&wdh>erh)
+				el.height(elh);
+			else
+				el.height(auto_height);
+		},
+		urlpath:{
+			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
+			merchant:site_path+'/basicInfo/merchant/saveBasic',
+			updatepwd:site_path+'/account/modifyPassword'
+		},
+		timer:null,
+		dialog:{
+			initbox:function(){
+				if(!this.box) {
+					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+					this.box=$('.dialog');
+				}
+			},
+			closebox:function(){
+				this.box.hide();
+			},
+			waiting:function(){
+				var _self=this;
+				if(!_self.box) _self.initbox();
+				if(_self.box.attr('id')=='waiting-box')
+					_self.box.fadeIn();
+				else{
+					$('.bgmeng').off(); 
+					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.attr('id','waiting-box').append('<div class="loading"><img src="'+c_domain+'img/loading.gif"><label>请稍后。。。</label></div>').fadeIn();
+				}
+			},
+			msg:function(value,type){
+				var _self=this;
+				if(!_self.box) _self.initbox();
+				if(_self.box.attr('id')=='msg-box'){
+					$('.msg').text(value);
+					_self.box.fadeIn();
+				}else{
+					$('.bgmeng').on('click',function(){
+						_self.box.hide();
+					});
+					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
+				}
+				clearTimeout(_self.timer);
+				_self.timer=setTimeout(function(){_self.box.hide();},2000);
+				if(type=='success')
+					$('.msg').css('color','green');
+				else if(type=='error')
+					$('.msg').css('color','red');
+			}
+		},
+	    Request:function (model,type) {
+		    var path=domain+model.url,_self=this,
+		    param = model.params ? model.params : model;
+		    //param.timestamp = _self.dateFormat(new Date());
+		    return $.ajax({
+		        url: path,
+		        type: type,
+		        data: JSON.stringify(param),
+		        crossDomain: true,
+		        dataType: 'json',
+		        timeout: 5000,
+		        statusCode: {500: function() {
+		            alert('500 服务器错误');
+		        }},
+		        statusCode: {404: function() {
+		            alert('404 服务器无法找到被请求的页面');
+		        }},
+		        error: function (x, h, r) {
+
+		        },
+		        success: function (data) {
+		        }
+		    });
+		},
+		paramcompare:function(arr){
+			var result={},temp={};
+			for(var i=0;i<arr.length;i++){
+				if(temp[arr[i].name]){
+					var key=arr[i].name,oldvalue=result[key],newvalue=arr[i].value,temp_arr=[];
+					if(oldvalue.constructor == Array){
+						result[key]=oldvalue.concat(newvalue);
+					}else{
+						temp_arr.push(oldvalue);
+						temp_arr.push(newvalue);
+						result[key]= temp_arr;
+					}
+				}else{
+					result[arr[i].name]=arr[i].value;
+					temp[arr[i].name]=true;
+				}
+			}
+			return result;
+		},
+	    actiondata:function (province,city) {
+			//加载联动数据
+	        $.ajax({
+	            url : static_source+'src/js/allcity.js',
+	            dataType : "jsonp",
+	            jsonpCallback : "callback",
+	            success : function(data){
+	                setTimeout(function(){
+	                  $("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
+	                        if($(this).val()==$('.province_h').val()){
+	                            $(this).attr('selected','selected');
+	                        }
+	                    });
+						//渲染下拉框控件 
+						$('#'+province).selectlist({
+								onChange:function(){
+			                        var cur_p=$('input[name="province"]').val();
+		                            for(var c_key in data.city){
+		                                if(c_key==cur_p){
+		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+		                                    .selectlist({width:200,onChange:function(){$public.selectvalid(this.element.id);}});
+		                                }
+		                            }
+		                            $public.selectvalid(this.element.id);
+			                    },
+			                    onSuccess:function(){
+				                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',olis=$('#'+this.element.id).find('li'),_self=this;
+				                    olis.filter(function(){
+				                        if($(this).attr('data-value')==cur_value){
+				                            $(this).trigger('autoclick');
+				                            setTimeout(function(){
+						                        var cur_p=$('input[name="province"]').val();
+					                            for(var c_key in data.city){
+					                                if(c_key==cur_p){
+					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+					                                    .selectlist({width:200,onChange:function(){$public.selectvalid(this.element.id);}});
+					                                }
+					                            }
+					                            $public.selectvalid(_self.element.id);
+				                            },100);
+				                        }
+				                    });
+			                    }
+		                });
+						$('#'+city).selectlist({width: 150});
+	                },100);
+	            }             
+	        });
+		},
+		//验证图片盒子
+		allimgvalid:function($box){
+			var result=true,obj=null;
+			$box.filter(function(){
+				var isAllowNull=$(this).attr('class').indexOf('allownull')!=-1?true:false;
+					obj=$(this).find('input:hidden');
+					$(this).parent().find('.Validform_checktip').remove();
+				if(!isAllowNull){
+					if(obj.val()!=''){
+						$(this).after('<span class="Validform_checktip Validform_right"></span>');
+					}else{
+						$(this).after('<span class="Validform_checktip Validform_wrong">请选择图片！</span>');
+						result=false;
+					}
+				}
+				// else{
+				// 	var errortip=$(this).parent().find('.Validform_wrong').length;
+				// 	if(errortip)
+				// 		result=false;
+				// }
+			});
+			return result;
+		},
+		//验证图片盒子
+		groupimgvalid:function($box,msg){
+			var $files=$box.find(':hidden'),isAllowNull=$box.attr('class').indexOf('allownull')!=-1?true:false;
+				$box.find('.Validform_checktip').remove();
+			if(!isAllowNull){
+				for(var i=0;i<$files.length;i++){
+					if($files[i].value!=''){
+						$box.append('<span class="Validform_checktip Validform_right"></span>');
+						return true;
+					}
+				}
+				$box.append('<span class="Validform_checktip Validform_wrong">'+(msg?msg:'')+'</span>');
+				return false;
+			}else{
+				// var errortip=$box.find('.Validform_wrong').length;
+				// if(errortip)
+				// 	return false;
+				return true;
+			}
+		},
+		//验证下拉框
+		selectvalid:function(id){
+			var result=true,$droplist=null;
+			if(id)
+				$droplist=$('input[name="'+id+'"]');
+			else
+				$droplist=$('.select-wrapper input:hidden');
+            $droplist.filter(function(){
+            	var $droplistprent=$(this).closest('.select-wrapper');
+        		$droplistprent.next('.Validform_checktip').remove();
+            	if($(this).val()!=''){
+            		$droplistprent.find('.select-button').css('background','#fff');
+            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
+            	}else{
+            		$droplistprent.find('.select-button').css('background','#ffe7e7');
+            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
+					result=false;
+            	}
+            });
+			return result;
+		},
+		//判断上传文件格式是否满足条件
+		isPicture:function(file,sz){
+		    var result={content:'文件类型不合法,只能是jpg、png、jpeg类型！'},fileName=file.value,
+		        szcontent={status:true,content:'文件大小不能超过'+sz+'K'},
+		        maxsize = sz*1024,filesize = 0; //M;
+		        if(this.diffBrowser().substring(0,1)!='I') {
+		        	filesize=file.files[0].size;
+				    if(filesize>maxsize){
+				        szcontent.status = false;
+				        return szcontent;
+				    }
+		        }
+			    if(fileName!=null && fileName !=""){
+			      //lastIndexOf如果没有搜索到则返回为-1
+			      if (fileName.lastIndexOf(".")!=-1) {
+			            var fileType = (fileName.substring(fileName.lastIndexOf(".")+1,fileName.length)).toLowerCase();
+			            var suppotFile = new Array();
+			            suppotFile[0] = "jpg";
+			            suppotFile[2] = "png";
+			            suppotFile[3] = "jpeg";
+			            for (var i =0;i<suppotFile.length;i++) {
+			                if (suppotFile[i]==fileType) {
+			                    result.status = true;
+			                    return result;
+			                } else{
+			                    continue;
+			                }
+			            }
+			            result.status = false;
+			        } else{
+			            result.status = false;
+			        }
+			    }else{
+		            result.status = true;
+		        }
+	            return result;
+		},
+		stopBubble:function(ev){
+			var e = ev || window.event || arguments.callee.caller.arguments[0];
+		   //一般用在鼠标或键盘事件上
+		   if(e && e.stopPropagation){
+			   //W3C取消冒泡事件
+			   e.stopPropagation();
+		   }else{
+			   //IE取消冒泡事件
+			   window.event.cancelBubble = true;
+		   }
+		},
+		stopDefault:function(ev){
+			var e = ev || window.event || arguments.callee.caller.arguments[0];
+		    //阻止默认浏览器动作(W3C) 
+		    if ( e && e.preventDefault ) 
+		        e.preventDefault(); 
+		    //IE中阻止函数器默认动作的方式 
+		    else 
+		        window.event.returnValue = false; 
+		    return false; 
+		},
+    	dateFormat: function (date, format) {
+	        format = format || 'yyyy-MM-dd hh:mm:ss';
+	        var o = {
+	            "M+": date.getMonth() + 1,
+	            "d+": date.getDate(),
+	            "h+": date.getHours(),
+	            "m+": date.getMinutes(),
+	            "s+": date.getSeconds(),
+	            "q+": Math.floor((date.getMonth() + 3) / 3),
+	            "S": date.getMilliseconds()
+	        };
+	        if (/(y+)/.test(format)) {
+	            format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+	        }
+	        for (var k in o) {
+	            if (new RegExp("(" + k + ")").test(format)) {
+	                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+	            }
+	        }
+	        return format;
+	    },
+	    setCookie:function(name,value){
+	        var Days = 30;
+	        var exp = new Date();
+	        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+	        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	    },
+	    getCookie:function(name){
+	        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	        if(arr=document.cookie.match(reg))
+	        return unescape(arr[2]);
+	        else
+	        return null;
+
+	        // var name = cname + "=";
+	        // var ca = document.cookie.split(';');
+	        // for(var i=0; i<ca.length; i++) {
+	        //     var c = ca[i];
+	        //     while (c.charAt(0)==' ') c = c.substring(1);
+	        //     if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+	        // }
+	        // return "";
+	    },
+	    delCookie:function(name){
+	        var exp = new Date();
+	        exp.setTime(exp.getTime() - 1);
+	        var cval=getCookie(name);
+	        if(cval!=null)
+	        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+	    },
+		diffBrowser:function(){
+			//使用IE条件注释来判断是否IE6，通过判断userAgent不一定准确
+			//if (document.all) document.write('<!--[if lte IE 6]><script type="text/javascript">window.ie6= true<\/script><![endif]-->');
+		    var userAgent = navigator.userAgent, //取得浏览器的userAgent字符串
+		     isOpera = userAgent.indexOf("Opera") > -1, //判断是否Opera浏览器
+		     ua=navigator.userAgent.toLowerCase(),
+		     rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
+		     isIE=rMsie.exec(ua)!=null, //判断是否IE浏览器
+		     isFF = userAgent.indexOf("Firefox") > -1, //判断是否Firefox浏览器
+		     isSafari = userAgent.indexOf("Safari") > -1, //判断是否Safari浏览器
+		     isChrome = userAgent.indexOf("Chrome") > -1; //判断是否Chrome浏览器
+		    if (isIE) {
+		        var IE5 = IE55 = IE6 = IE7 = IE8 = IE9 = false,
+		        reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+		        reIE.test(userAgent);
+		        var fIEVersion = parseFloat(RegExp["$1"]),
+		        IE55 = fIEVersion == 5.5,
+		        IE6 = fIEVersion == 6.0,
+		        IE7 = fIEVersion == 7.0,
+		        IE8 = fIEVersion == 8.0,
+		        IE9 = fIEVersion == 9.0;
+		        if (IE55) {
+		            return "IE55";
+		        }
+		        else if (IE6) {
+		            return "IE6";
+		        }
+		        else if (IE7) {
+		            return "IE7";
+		        }
+		        else if (IE8) {
+		            return "IE8";
+		        }
+		        else if (IE9) {
+		            return "IE9";
+		        }else{
+		            return "IE";
+		        }
+		    }
+		    else if (isFF) {
+		        return "FF";
+		    }
+		    else if (isOpera) {
+		        return "Opera";
+		    }
+		    else if (isChrome) {
+		        return "Chrome";
+		    }
+		    else if (isSafari) {
+		        return "Safari";
+		    }
+		}, 
+		uploadPic:function(picId,fileId) {
+			  var pic = document.getElementById(picId),file = document.getElementById(fileId);
+			  if(window.FileReader){
+				   oFReader = new FileReader();
+				   oFReader.readAsDataURL(file.files[0]);
+				   oFReader.onload = function (oFREvent) {pic.src = oFREvent.target.result;};  
+			  }
+			  else if (document.all) {
+				   file.select();
+				   var reallocalpath = document.selection.createRange().text;
+				   if (window.ie6) pic.src = reallocalpath;
+				   else {
+					pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src=\"" + reallocalpath + "\")";
+					pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+				   }
+			  }
+			  else if (file.files) {
+				   if (file.files.item(0)) {
+					url = file.files.item(0).getAsDataURL();
+					pic.src = url;
+				   }
+			  }
+	    }	
+	}
+	module.exports = new $public();
+});

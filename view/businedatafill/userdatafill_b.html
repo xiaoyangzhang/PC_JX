@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>填写资料</title>
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/filldata.css">
+</head>
+<body>
+	<input type="hidden" class="subpath" value="/sellerAdmin/merchant/saveUserdataB">
+	<div class="header">
+		<div class="comwidth content clearfix">
+			<a class="fl block"><img src="../../img/logo.jpg"></a>
+			<div class="fr user-block">
+				<a class="user-block-link mr15 not-a">
+					<span class="circle mr10"><img src="../../img/default_1.png"><i></i></span>
+					<span>Hi：</span><span>13655545879</span>
+				</a>
+				<a class="ext">退出</a>
+			</div>
+		</div>
+	</div>
+	<div class="comwidth agreement-box mt30">
+		<div class="tit gray6 f16">达人开通申请</div>
+		<div class="titbox wdfill">
+			<div class="progress clearfix">
+				<div class="step start step-on step-fl">
+					<div class="step1">1</div>
+					<label class="step1">阅读协议</label>
+				</div>
+				<div class="step step-on">
+					<div class="step2">2</div>
+					<label class="step2">填写资料</label>
+				</div>
+				<div class="step step-fr">
+					<div class="step3">3</div>
+					<label class="step3">等待审核</label>
+				</div>
+			</div>
+		</div>
+		<div class="tabs">
+			<form id="forminfo">
+				<div class="panel">
+					<div class="tit gray6 f16 error_tip">负责人信息
+						<div class="error_box">
+							<div>审批未通过原因</div>
+							<ol>
+								<li>负责人身份证过期</li>
+								<li>地址找不到</li>
+							</ol>
+						</div>
+					</div>
+					<div class="fm_md_three fm_md">
+						<table>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>商户负责人姓名：</span></td>
+								<td colspan="3"><input class="inptxt businesname" datatype="*" placeholder="合同签约人的姓名"></td>
+							</tr>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>负责人证件类型：</span></td>
+								<td colspan="3"><input type="hidden" id="card_" value="2"><select id="card" class="selectlist">
+								  <option value="">--请选择--</option>
+								  <option value="0">身份证</option>
+								  <option value="1">驾驶证</option>
+								  <option value="2">护照</option>
+								  <option value="3">导游证</option>
+							</select></td>
+							</tr>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>负责人证件号：</span></td>
+								<td colspan="3"><input class="inptxt" id="cardtxt" datatype="n6-18" maxlength="18" value="D-34535" placeholder="证件号码"></td>
+							</tr>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>负责人手机号：</span></td>
+								<td colspan="3"><input class="inptxt" datatype="m" maxlength="11" placeholder="手机号码"></td>
+							</tr>
+							<!-- <tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>请获取验证码：</span></td>
+								<td colspan="3"><input class="inptxt w250" datatype="n" maxlength="6" placeholder="请获取验证码"><label class="getcode ml15">获取验证码</label></td>
+							</tr> -->
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>负责人邮箱：</span></td>
+								<td colspan="3"><input class="inptxt" datatype="e" maxlength="80" placeholder="请输入商户负责人邮箱"></td>
+							</tr>
+							<tr>
+								<td class="tbvt w280"><label class="bred">*</label><label>负责人身份证正面：</label></td>
+								<td class="w380">
+									<span class="imgbox mr5">
+										<div class="canclick card_a">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden">
+									</span>
+								</td>
+								<td class="tbvt w150"><label class="bred">*</label><label>负责人身份证反面：</label></td>
+								<td>
+									<span class="imgbox mr5">
+										<div class="canclick card_b">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden">
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tit gray6 f16">财务信息</div>
+					<div class="fm_md_four fm_md">
+						<table>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>财务开户银行：</span></td>
+								<td><select id="bank" class="selectlist">
+									  <option value="">--请选择--</option>
+									  <option value="0">中国建设银行</option>
+									  <option value="1">中国农业银行</option>
+									  <option value="2">中国工商银行</option>
+									  <option value="1">中国农业银行</option>
+									  <option value="2">中国工商银行</option>
+									  <option value="1">中国农业银行</option>
+									  <option value="2">中国工商银行</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>财务开户名称：</span></td>
+								<td><input class="inptxt" datatype="*" maxlength="60" placeholder="请输入对公结算账号账户名"></td>
+							</tr>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>财务结算账号：</span></td>
+								<td><input class="inptxt finance" maxlength="25" placeholder="请输入对公结算账户的账号"></td>
+							</tr>
+							<tr>
+								<td class="tbtxt w280"><label class="bred">*</label><span>财务结算开户行：</span></td>
+								<td>
+									<input type="hidden" id="province_" value="430000">
+									<input type="hidden" id="city_" value="430100">
+									<select id="province"><option value="">--请选择--</option></select>
+									<select id="city" class="ml10"><option value="">--请选择--</option></select>
+									<span class="inblock"><input class="inptxt ml10 w280" datatype="*" maxlength="60" placeholder="请填写详细的开户行名称"></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tit gray6 f16">合作合同</div>
+					<div class="fm_md_five fm_md">
+						<div class="column groupimg"><label class="bred">*</label><label>合作合同：</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+						</div>
+					</div>
+					<div class="nextpage"><a href="http://s0.test.jiuxiulvxing.com/PC_JX/view/mandandatafill/userdatafill_a.html " class="prev mr30">上一页</a><a class="allsub ml30">提交审核</a></div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script  type='text/temple' id='province-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<province.length; j++) { #>
+	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
+	    <# } #>
+	</script>
+	<script  type='text/temple' id='city-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<city.length; j++) { #>
+	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
+	    <# } #>
+	</script>
+	<script type="text/javascript" src="../../src/js/sea.js"></script>
+	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+	<script type="text/javascript" src="../../src/js/config.js"></script>		
+	<script>seajs.use("userdatafill");</script>	
+</body>
+</html>

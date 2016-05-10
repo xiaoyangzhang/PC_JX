@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta name="keywords" content="your keywords">
+		<meta name="description" content="your description">
+		<title>用户注册-九休旅游</title>
+		<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+		<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+		<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/account.css">
+	</head>
+	<body class = "bodyWhite">
+		<!-- 头部开始 -->
+		<!-- <div id="ym-header" class="clearfix">
+			<div class="ym-logo"><a href="http://s0.yimayholiday.com/PC_B2C/index.html"><img src="http://s0.yimayholiday.com/PC_B2C/img/top_logo.jpg"/></a></div>
+			<ul class="clearfix">
+				<li><a class="" href="javascript:;">玩法</a></li>
+				<li><a  href="javascript:;">会员</a></li>
+				<li><a href="javascript:;">怡美假日APP</a></li>
+			</ul>
+		</div> -->
+		<!-- 头部开始 -->
+		<div class="clearfix actlg-header">
+			<div class="logo"><a href="http://s0.yimayholiday.com/PC_B2C/index.html"><img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/loginlogo.jpg"/></a></div>
+			<ul class="clearfix">
+				<li><a class="on" href="javascript:;">九休旅行APP</a></li>
+				<li><a  href="javascript:;">九休商务</a></li>
+				<li><a href="javascript:;">商家中心</a></li>
+			</ul>
+			<div class="lgrg">
+				<a  href="javascript:;">登录</a>
+				<a  href="javascript:;">注册</a>
+			</div>
+		</div>
+       <!-- 头部完成 -->
+       <!-- 首页的中心部分开始 -->
+		<div id="ym-login-banner">
+			<div class="login-body register">
+				<h1 class="title">用户注册</h1>
+				<h3>欢迎来到九休旅行，我们将用心去换您一路上的故事和风景！</h3>
+				<form action="../../data/login.json" method="post" id="registerForm">					
+					<p class="btngroup clearfix">
+						<input type="text" class="textinput" name="username" id="loginname" placeholder="您的昵称" datatype="/^[_a-zA-Z0-9\u4E00-\u9FA5]{2,20}$/" nullmsg="请输入您的昵称" errormsg="请输入2~20位字符，支持中文、字母、数字、下划线" autocomplete="off"/>
+						<span class="Validform_checktip"></span>
+					</p>
+					<p class="btngroup clearfix">
+						<input type="text" class="textinput" name="mobile" id="regmobile" placeholder="您的手机号" datatype="m" nullmsg="请输入您的手机号" errormsg="请您输入正确的手机号" autocomplete="off"/>
+						<span class="Validform_checktip"></span>
+					</p>
+					<p class="btngroup clearfix">
+						<input type="password" class="textinput" name="password" id="userpwd" placeholder="请输入6-16位字母、数字密码" datatype="/^(?=.{6,16}$)(?![0-9]+$)(?![a-zA-Z]+$)[0-9a-zA-Z]+$/" nullmsg="请输入您的密码" errormsg="请输入6-16位密码，需同时包含字母及数字！"/>
+						<span class="Validform_checktip"></span>
+					</p>
+					<p class="btngroup clearfix">
+						<input type="password" class="textinput" name="repassword" id="userpwd" placeholder="请重新输入您的密码"datatype="*" recheck="password" nullmsg="请重新输入您的密码" errormsg="两次输入的密码不一致"/>
+						<span class="Validform_checktip"></span>
+					</p>
+					<p class="btngroup clearfix">
+						<input type="text" class="textinput sortinput" name="imgcode" id="imgcode" value="" placeholder="请输入验证码" datatype="/^[0-9A-Za-z]{4,4}$/" nullmsg="请输入验证码" errormsg="请输入4位验证码" autocomplete="off"/>
+						<img src="../../img/yanzheng.png" class="imgcode" width="152" height="48"/>
+						<span class="Validform_checktip"></span>
+					</p>					
+					<p class="btngroup clearfix">
+						<input type="text" class="textinput sortinput" name="mobilecode" id="mobilecode" value="" placeholder="请输入短信验证码" datatype="/^\d{6,6}$/" nullmsg="请输入短信验证码" errormsg="请输入6位数字验证码" autocomplete="off"/>
+						<button class="getcodebtn" name="getcodebtn" id="getcodebtn" sendurl="../../data/submit.json">获取短信验证码</button>
+						<span class="Validform_checktip"></span>
+					</p>					
+					<p class="last">注册表示您已经同意<a target="_blank" href="http://s0.test.jiuxiulvxing.com/PC_JX/view/account/service.html">《服务条款》</a></p>
+					<input type="submit" id="regSubmitBtn" class="winloginbtn" value="注册"/>
+					<p class="last">已有账号 <a href="">立即登录</a></p>
+				</form>			
+			</div>
+		</div>
+       <!-- 首页的中心部分结束 -->
+	   <div id = "footID">
+			<div class="footer">
+				<div class="footer-wrap">
+					<div class="footer-inner">
+						<ul class="footer-about">
+							<li><a target="_blank" href="javascript:;">关于九休</a></li>
+							<li><a target="_blank" href="javascript:;">联系我们</a></li>
+							<li><a target="_blank" href="javascript:;">投诉建议</a></li>
+							<li class="footer-aboutcons">招商咨询</li>
+							<li class="footer-constele">4000-696-888   /  9:00~22:00，周一到周日</li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-wrap-black">
+					<div class="footer-inner2">
+						<p class="foot-copyright">Copyright © 2014-2016 yimayholiday.com 怡美假日 版权所有<br/>
+							<a class="jing-addressID" target="_blank" href="javascript:;">京ICP备15051416号-1</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="http://s0.test.jiuxiulvxing.com/PC_JX/src/js/sea.js"></script><!--seajs 必须引-->
+		<script src="http://s0.test.jiuxiulvxing.com/PC_JX/src/js/seajs-preload.js"></script><!--seajs 预加载 必须引-->
+		<script src="http://s0.test.jiuxiulvxing.com/PC_JX/src/js/config.js"></script><!--seajs seajs配置文件 必须引-->
+		<script>seajs.use("login");</script><!--应用程序模块入口JS-->
+	</body>
+</html>

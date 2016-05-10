@@ -1,0 +1,18 @@
+.service{background-color: #f4f4f4;}
+#servicenter{width: 1190px;margin: 0 auto;background-color: #fff;border:solid 1px #ddd;}
+#servicenter .rule{width:1080px;margin: 0 auto;text-align: center;border-bottom:solid 1px #ddd;font-size: 20px;padding: 20px;}
+#servicenter .serviceAll{width:1040px;margin: 0 auto;}
+#servicenter .serviceAll .fu-title{font-size: 16px;font-weight:bold;margin-top: 26px;}
+#servicenter .serviceAll .first{margin-top: 20px;}
+#servicenter .serviceAll p{font-size: 14px;color: #666;line-height: 25px;margin-top: 15px;}
+#servicenter .serviceAll p.speLab{padding-top: 10px;}
+#servicenter .serviceAll p span{padding-top: 5px;}
+#servicenter .serviceAll table{width: 100%;font-size: 14px;color: #666;}
+#servicenter .serviceAll table tr{border:solid 1px #ddd;}
+#servicenter .serviceAll table tr th{border:solid 1px #ddd;border-left: none;background-color: #f4f4f4; padding: 5px;}
+#servicenter .serviceAll table tr td{border:solid 1px #ddd;border-left: none;border-top: none;padding: 5px;}
+#servicenter .serviceAll table tr th.first,#servicenter .serviceAll table tr td.first{
+	border-left: 1px solid #ddd;
+    line-height: 25px;
+    vertical-align: middle;}
+#servicenter .serviceAll table tr td.topLine{border-top: solid 1px #ddd;}
