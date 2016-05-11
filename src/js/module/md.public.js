@@ -76,7 +76,7 @@ define(function (require, exports, module) {
 				else{
 					$('.bgmeng').off(); 
 					_self.box.children(':not(".bgmeng")').remove();
-					_self.box.attr('id','waiting-box').append('<div class="loading"><img src="'+c_domain+'img/loading.gif"><label>请稍后。。。</label></div>').fadeIn();
+					_self.box.attr('id','waiting-box').append('<div class="loading"><img src="'+static_source+'img/loading.gif"><label>请稍后。。。</label></div>').fadeIn();
 				}
 			},
 			msg:function(value,type){
@@ -100,29 +100,45 @@ define(function (require, exports, module) {
 					$('.msg').css('color','red');
 			}
 		},
-	    Request:function (model,type) {
-		    var path=domain+model.url,_self=this,
-		    param = model.params ? model.params : model;
-		    //param.timestamp = _self.dateFormat(new Date());
-		    return $.ajax({
-		        url: path,
-		        type: type,
-		        data: JSON.stringify(param),
-		        crossDomain: true,
-		        dataType: 'json',
-		        timeout: 5000,
-		        statusCode: {500: function() {
-		            alert('500 服务器错误');
-		        }},
-		        statusCode: {404: function() {
-		            alert('404 服务器无法找到被请求的页面');
-		        }},
-		        error: function (x, h, r) {
-
-		        },
-		        success: function (data) {
-		        }
-		    });
+		ck_device:function(){
+		    var browser = {
+		       versions: function () {
+		           var u = navigator.userAgent, app = navigator.appVersion;
+		           return {         //移动终端浏览器版本信息
+		               trident: u.indexOf('Trident') > -1, //IE内核
+		               presto: u.indexOf('Presto') > -1, //opera内核
+		               webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+		               gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+		               mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+		               ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+		               android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+		               iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+		               iPad: u.indexOf('iPad') > -1, //是否iPad
+		               webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+		           };
+		       }(),
+		       language: (navigator.browserLanguage || navigator.language).toLowerCase()
+		    }
+		    if (browser.versions.mobile) {//判断是否是移动设备打开。browser代码在下面
+		           var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+		           if (ua.match(/MicroMessenger/i) == "micromessenger") {
+		                   //在微信中打开
+		           }
+		           if (ua.match(/WeiBo/i) == "weibo") {
+		                   //在新浪微博客户端打开
+		           }
+		           if (ua.match(/QQ/i) == "qq") {
+		                   //在QQ空间打开
+		           }
+		           if (browser.versions.ios) {
+		                   //是否在IOS浏览器打开
+		           } 
+		           if(browser.versions.android){
+		                   //是否在安卓浏览器打开
+		           }
+		    } else {
+		           //否则就是PC浏览器打开
+		    }
 		},
 		paramcompare:function(arr){
 			var result={},temp={};
@@ -195,45 +211,50 @@ define(function (require, exports, module) {
 		//验证图片盒子
 		allimgvalid:function($box){
 			var result=true,obj=null;
-			$box.filter(function(){
-				var isAllowNull=$(this).attr('class').indexOf('allownull')!=-1?true:false;
-					obj=$(this).find('input:hidden');
-					$(this).parent().find('.Validform_checktip').remove();
-				if(!isAllowNull){
-					if(obj.val()!=''){
-						$(this).after('<span class="Validform_checktip Validform_right"></span>');
-					}else{
-						$(this).after('<span class="Validform_checktip Validform_wrong">请选择图片！</span>');
-						result=false;
+			if($box.length>0){
+				$box.filter(function(){
+					var isAllowNull=$(this).attr('class').indexOf('allownull')!=-1?true:false;
+						obj=$(this).find('input:hidden');
+						$(this).parent().find('.Validform_checktip').remove();
+					if(!isAllowNull){
+						if(obj.val()!=''){
+							$(this).after('<span class="Validform_checktip Validform_right"></span>');
+						}else{
+							$(this).after('<span class="Validform_checktip Validform_wrong">请选择图片！</span>');
+							result=false;
+						}
 					}
-				}
-				// else{
-				// 	var errortip=$(this).parent().find('.Validform_wrong').length;
-				// 	if(errortip)
-				// 		result=false;
-				// }
-			});
+					// else{
+					// 	var errortip=$(this).parent().find('.Validform_wrong').length;
+					// 	if(errortip)
+					// 		result=false;
+					// }
+				});
+			}
 			return result;
 		},
 		//验证图片盒子
 		groupimgvalid:function($box,msg){
-			var $files=$box.find(':hidden'),isAllowNull=$box.attr('class').indexOf('allownull')!=-1?true:false;
-				$box.find('.Validform_checktip').remove();
-			if(!isAllowNull){
-				for(var i=0;i<$files.length;i++){
-					if($files[i].value!=''){
-						$box.append('<span class="Validform_checktip Validform_right"></span>');
-						return true;
+			if($box.length>0){
+				var $files=$box.find(':hidden'),isAllowNull=$box.attr('class').indexOf('allownull')!=-1?true:false;
+					$box.find('.Validform_checktip').remove();
+				if(!isAllowNull){
+					for(var i=0;i<$files.length;i++){
+						if($files[i].value!=''){
+							$box.append('<span class="Validform_checktip Validform_right"></span>');
+							return true;
+						}
 					}
+					$box.append('<span class="Validform_checktip Validform_wrong">'+(msg?msg:'')+'</span>');
+					return false;
+				}else{
+					// var errortip=$box.find('.Validform_wrong').length;
+					// if(errortip)
+					// 	return false;
+					return true;
 				}
-				$box.append('<span class="Validform_checktip Validform_wrong">'+(msg?msg:'')+'</span>');
-				return false;
-			}else{
-				// var errortip=$box.find('.Validform_wrong').length;
-				// if(errortip)
-				// 	return false;
+			}else
 				return true;
-			}
 		},
 		//验证下拉框
 		selectvalid:function(id){
