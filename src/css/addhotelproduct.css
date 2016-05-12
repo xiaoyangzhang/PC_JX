@@ -1,0 +1,39 @@
+#eredar .eredar-right{width: 970px;background-color: #fff;float: right;}
+#eredar .eredar-right .eredar-info{width:892px;margin: 40px 0 15px 40px;border-bottom:solid 1px #e5e5e5;}
+#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;line-height: 20px; color: #999;margin-left: 40px;
+	margin-bottom:-1px;padding: 0 0 15px;cursor: pointer;}
+#eredar .eredar-right .eredar-info ul li.first{margin-left: 0px;}
+#eredar .eredar-right .eredar-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
+#eredar .eredar-right .eredar-list1{padding: 10px 0 0 60px;}
+#eredar .eredar-right .eredar-list1 p{margin-top:15px;}
+#eredar .eredar-right .eredar-list1 em{width: 108px;text-align: right;display: inline-block;color: #666;vertical-align: middle;}
+#eredar .eredar-right .eredar-list1 label.lab{color: #999;vertical-align: bottom;margin-left: 19px;}
+#eredar .eredar-right .eredar-list1 span{margin-left: 20px;}
+#eredar .eredar-right .eredar-list1 p span input[type = "text"]{border:solid 1px :#ccc;height: 34px;width: 200px;padding: 0 5px;}
+#eredar .eredar-right .eredar-list1 span .head-id{width:100px;height: 100px;background-color:#f5f5f5;border:solid 1px #ccc;display: inline-block;position: relative;}
+#eredar .eredar-right .eredar-list1 img{width:64px;height: 70px;margin: 15px 18px;}
+#eredar .eredar-right .eredar-list1 font{color: #fb0000;}
+#eredar .eredar-right .eredar-list1 p span .head-id a{position: absolute;width:100px;height:21px;bottom: 0;right: 0;text-align: center;background-color: #000;z-index:2;color: #dedede;opacity:0.66;*display: inline; *zoom: 1}
+#eredar .eredar-right .eredar-list1 p span .head-id .upload{position: absolute;bottom: 0; opacity: 0;filter: alpha(opacity=0);cursor: pointer;}
+#eredar .eredar-right .eredar-list1 p .spe label:first-child,#eredar .eredar-right .eredar-list1 p .radio input:first-child{margin-left: 0px;}
+#eredar .eredar-right .eredar-list1 p .spe label{margin-left: 30px;cursor: pointer;}
+#eredar .eredar-right .eredar-list1 p .radio input{margin-left: 40px;cursor: pointer;}
+#eredar .eredar-right .eredar-list1 p .spe a,#eredar .eredar-right .eredar-list1 p .radio a{margin-left: 5px;}
+#eredar .eredar-right .eredar-list1 p span .describle{width:500px !important;}
+#eredar .eredar-right .eredar-list1 p span .save{width: 120px;height: 36px;background-color: #ed6c44;color: #fff;border-style: none;margin-left: 114px;}
+#eredar .eredar-right .eredar-list1 p span input[type = "radio"]{background: url("../../img/all.png") no-repeat 25px 25px;width:12px;height:12px;}
+/*右侧商铺信息*/
+#eredar .eredar-right .merchant-list1 p span input[type = "text"]{border:solid 1px #ccc;height: 24px;line-height: 24px;padding:5px 8px;}
+#eredar .eredar-right .merchant-list1 p span textarea{border:solid 1px #ccc;height: 95px;width: 490px;padding:5px 0 0 8px ;}
+#eredar .eredar-right .merchant-list1 img{width:100px;height: 100px;margin:0;}
+#eredar .eredar-right .merchant-list1 p span .head-id a{background-color:transparent;opacity:inherit;position: absolute;width:100px;height:21px;bottom: 10px;right: 0;text-align: center;color: #999999;*display: inline; *zoom: 1;font-weight: normal;}
+#eredar .eredar-right .merchant-list2{/* margin-top: 30px; */padding:30px 0 77px 193px;}
+#eredar .eredar-right .merchant-list2 button{ list-style-type:none;border:1px solid #ed6c44;width:120px; height:36px;background-color:#ed6c44;display: block;font-size:16px;color: #fff;text-align: center;/* line-height: 36px; */font-weight: bold;}
+
+
+
+
+
+
+
+
