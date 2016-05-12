@@ -35,7 +35,8 @@ seajs.config({
 		"eredar":"module/md.eredar.js",
 		"password":"module/md.password.js",
 		"merchant":"module/md.merchant.js",	
-		"passwordSucc":"module/md.passwordsucc.js"	
+		"passwordSucc":"module/md.passwordsucc.js"	,
+		"review":"module/md.review.js"	
 			
 			
     },

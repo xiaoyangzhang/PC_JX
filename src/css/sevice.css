@@ -16,3 +16,37 @@
     line-height: 25px;
     vertical-align: middle;}
 #servicenter .serviceAll table tr td.topLine{border-top: solid 1px #ddd;}
+
+
+/*顶单管理评论*/
+.reW{width:892px;}
+.eredar-right .rewiewMag{background-color: #f5f5f5;margin: 10px 40px;}
+.eredar-right .rewiewMag p.first{padding-top: 20px;}
+.eredar-right .rewiewMag p{margin:0px 0px 20px 35px;}
+.eredar-right .rewiewMag p em{color: #666;}
+.eredar-right .rewiewMag p em.right{margin-left: 18px;}
+.eredar-right .rewiewMag p input{width: 210px;height: 34px;padding-left: 10px;margin-left: 5px;border:solid 1px #ccc;}
+.eredar-right .rewiewMag p input.time{width:120px !important;}
+.eredar-right .rewiewMag p a{display: inline-block;border:solid 1px #ccc;width:60px;height: 34px;text-align: center;line-height: 34px;margin-left: 5px;}
+.eredar-right .rewiewMag p a.searchBtn{margin-left: 12px;}
+.eredar-right .rewiewID{margin: 30px 0 0 40px;}
+.eredar-right .rewiewID p{font-size: 16px;color: #222;border-bottom:solid 1px #ccc;  padding-bottom: 10px;}
+.eredar-right .rewiewInfo{border-bottom: solid 1px #e5e5e5;margin:30px 0 30px 40px;}
+.eredar-right .rewiewInfo dl{float: left;margin-left: 58px;}
+.eredar-right .rewiewInfo .infoleft{margin-left: 0px;}
+.eredar-right .rewiewInfo .infoleft img{width:66px;height: 66px;border-radius: 50%;}
+.eredar-right .rewiewInfo .inforight p{color: #666;padding-top: 6px;}
+.eredar-right .rewiewInfo .inforight p span{display: inline-block;}
+.eredar-right .rewiewInfo .inforight p em.emW{margin-left: 45px;}
+.eredar-right .rewiewInfo .inforight p.infotime{margin-bottom: 30px;color: #999 !important;}
+.eredar-right .rewiewInfo strong.infonick{font-weight: normal;display: inline-block;padding-top: 10px;color: #999 !important;width:70px;overflow: hidden;white-space:nowrap;text-overflow:ellipsis;cursor: pointer;}
+.eredar-right .rewiewInfo .inforight span.infoP{display: inline-block;width:724px;line-height: 24px;padding-top: 14px;}
+.eredar-right .rewiewInfo .inforight .upload{margin-top: 15px;}
+.eredar-right .skip{margin: 30px 0 90px 298px;}
+.eredar-right .skip ul li{float: left;margin-left: 9px;}
+.eredar-right .skip ul li.first{margin-left: 0px;}
+.eredar-right .skip ul li.a{margin-left: 2px;}
+.eredar-right .skip ul li a{width: 30px;height: 30px;text-align: center;border:solid 1px #ccc;display: inline-block;line-height: 30px;vertical-align: middle;}
+.eredar-right .skip ul li input{width:25px;height: 30px;border:solid 1px #ccc;padding-left: 5px;}
+.eredar-right .skip ul li strong{vertical-align: middle;font-weight: normal;line-height: 30px;margin-left: 24px;}
+.eredar-right .skip ul li a:hover{background-color: #ffaf00;border: solid 1px #ffaf00;}
