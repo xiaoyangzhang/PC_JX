@@ -32,10 +32,9 @@ a { text-decoration: none; outline:none; cursor:pointer; blr:expression(this.onF
 .not-a:active{
 	text-decoration:none;
 }
-
 /*清除浮动*/
-.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
 .clearfix { *zoom: 1;}
+.clearfix:after {display:block;overflow:hidden;clear:both;height:0;visibility:hidden;content:".";}
 
 /*颜色*/
 .bred { color:red;}
@@ -334,8 +333,7 @@ a { text-decoration: none; outline:none; cursor:pointer; blr:expression(this.onF
 }
 .m-r{margin-right:20px;}
 /*---------------------------foot------------------------------*/
-#footID{margin-top: -20px;}
-.jiux-footer{width: 100%;margin: 0 auto;padding-top: 20px;}
+.jiux-footer{width: 100%;margin: 0 auto;}
 .jiux-footer .footer-top{
     height: 80px;
     background: #2a2a2a;
