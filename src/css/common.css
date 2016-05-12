@@ -245,7 +245,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 .crumbs{padding: 13px 0;color: #a3a3a3;}
 .crumbs a{text-decoration: none !important;color: #666 !important;}
 /*左侧公共导航*/
-#eredar .eredar-left{width: 200px;height:100%;background-color: #262535;text-align: center;float:left;}
+#eredar .eredar-left{width: 200px;height:100%;background-color: #262535;text-align: center;float:left;margin-bottom:20px;}
 #eredar .eredar-left dl.first{padding: 25px 0 0;}
 #eredar .eredar-left dl{padding: 40px 0 0;}
 #eredar .eredar-left dl dd{color: #fff;font-size: 16px;padding: 0 0 18px 0;}

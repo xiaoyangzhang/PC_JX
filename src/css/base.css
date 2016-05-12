@@ -334,8 +334,7 @@ a { text-decoration: none; outline:none; cursor:pointer; blr:expression(this.onF
 }
 .m-r{margin-right:20px;}
 /*---------------------------foot------------------------------*/
-#footID{margin-top: -20px;}
-.jiux-footer{width: 100%;margin: 0 auto;padding-top: 20px;}
+.jiux-footer{width: 100%;margin: 0 auto;}
 .jiux-footer .footer-top{
     height: 80px;
     background: #2a2a2a;

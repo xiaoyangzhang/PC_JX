@@ -44,7 +44,7 @@ define(function (require, exports, module) {
 				window.location=site_path+'/user/login';
 		},
 		depath :function(){
-			var hh=$(".header").height(),fh=$(".footer").height(),el=$(".eredar-left"),er=$(".eredar-right"),
+			var hh=$("#jiuxColor").height(),fh=$("#footID").height(),el=$(".eredar-left"),er=$(".eredar-right"),
 				wdh=$(window).height()-hh-fh-102,auto_height=$(document).height()-hh-fh-60,
 				elh=el.height()+120,erh=er.height();
 			if(wdh>elh&&wdh>erh)
