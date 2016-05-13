@@ -88,7 +88,7 @@
 						<label class="smtt">地址：</label><label class="address">北京市海淀区中关村东路1号院</label>
 						|<label class="smtt">电话：</label><label class="tel">010-83122549</label>
 					</span>
-					<button>查询酒店</button>
+					<button class="choicehotel">查询酒店</button>
 				</p>
 				<div>
 					<span class="nm"><span class="bred">*</span><label>酒店信息：</label></span>
@@ -282,6 +282,95 @@
 			</div>
 		</div>
 	</div>
+	<div class="searchbox">
+		<table class="tb">
+			<tr>
+				<td class="tb-txt">景区名称：</td>
+				<td><input class="inputxt"></td>
+				<td class="tb-txt">所在城市：</td>
+				<td>
+					<select id="province"><option value="">--请选择--</option></select>
+					<select id="city" class="ml10"><option value="">--请选择--</option></select>
+					<select id="area" class="ml10"><option value="">--请选择--</option></select>
+					<button class="search-btn">搜索</button>
+				</td>
+			</tr>
+		</table>
+		<div class="hotelist">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pagination">
+		        <ul class="pager">
+                    <li class="previous disabled">
+		                <a href="javascript:void(0);" id="prePage">« 上一页</a>
+		            </li>
+                    <li class="active">
+	                    <a href="javascript:void(0);">1</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="2">2</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="3">3</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" data-toggle="pager" data-placement="top">...</a>
+	                </li>
+	                <li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="131">131</a>
+	                </li>
+		            <li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="132">132</a>
+	                </li>
+		            <li class="next">
+		                <a href="javascript:void(0);" class="LinkeToPage" pageno="2" id="nextPage">下一页»</a>
+		            </li>
+	                <li>
+		                <span class="input-group-addon">每页</span>
+		                <select class="form-control pageSize" id="pageSize">
+		                    <option value="10">10</option>
+		                    <option value="20">20</option>
+		                    <option value="50">50</option>
+		                </select>
+		                <span class="input-group-addon">条</span>
+						<span class="input-group-addon">共 1316 条</span>
+			        </li>
+		    	</ul>
+			</div>
+		</div>
+	</div>
+	<script  type='text/temple' id='province-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<province.length; j++) { #>
+	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
+	    <# } #>
+	</script>
+	<script  type='text/temple' id='city-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<city.length; j++) { #>
+	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
+	    <# } #>
+	</script>
 	<script type="text/javascript" src="../../src/js/sea.js"></script>
 	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
 	<script type="text/javascript" src="../../src/js/config.js"></script>		

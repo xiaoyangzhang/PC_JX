@@ -19,10 +19,9 @@ define(function (require, exports, module) {
 	fileuploadURL=$urlpath.fileuploadURL,
 	site_path=$urlpath.site_path,
 	c_domain=$urlpath.c_domain,
-	img_domain=$urlpath.img_domain,
+	img_domain=$('#tfs_path').val()?$('#tfs_path').val():$urlpath.img_domain,
 	static_source=$urlpath.static_source;
 	
-
 	$public.prototype = {
 		init:function(){
 			var _self=this;
@@ -60,13 +59,21 @@ define(function (require, exports, module) {
 		timer:null,
 		dialog:{
 			initbox:function(){
-				if(!this.box) {
+				var _self=this;
+				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
-					this.box=$('.dialog');
+					$('.bgmeng').on('click',function(){
+						_self.box.hide();
+					});
+					_self.box=$('.dialog');
 				}
 			},
 			closebox:function(){
-				this.box.hide();
+				var _self=this;
+				_self.box.hide();
+				$('.bgmeng').off().on('click',function(){
+					_self.box.hide();
+				});
 			},
 			waiting:function(){
 				var _self=this;
@@ -86,9 +93,6 @@ define(function (require, exports, module) {
 					$('.msg').text(value);
 					_self.box.fadeIn();
 				}else{
-					$('.bgmeng').on('click',function(){
-						_self.box.hide();
-					});
 					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
@@ -98,6 +102,27 @@ define(function (require, exports, module) {
 					$('.msg').css('color','green');
 				else if(type=='error')
 					$('.msg').css('color','red');
+			},
+			content:function(n_width,n_height,title,html_content,callback){
+				var _self=this;
+				if(!_self.box) _self.initbox();
+				if(_self.box.attr('id')=='content-box'){
+					_self.box.fadeIn();
+				}else{
+					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.attr('id','content-box').append('<div class="content-box"></div>').fadeIn();
+					$('.content-box')
+					.append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
+					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
+					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2+30)+'px'});
+					$('.container').height(n_height-125).append(html_content);;
+					$('.ok').off().on('click',function(){
+						callback();
+					});
+					$('.cancel,.close-tip').off().on('click',function(){
+						_self.box.hide();
+					});
+				}
 			}
 		},
 		ck_device:function(){
@@ -159,7 +184,7 @@ define(function (require, exports, module) {
 			}
 			return result;
 		},
-	    actiondata:function (province,city) {
+	    actiondata:function (province,city,is_check) {
 			//加载联动数据
 	        $.ajax({
 	            url : static_source+'src/js/allcity.js',
@@ -179,10 +204,10 @@ define(function (require, exports, module) {
 		                            for(var c_key in data.city){
 		                                if(c_key==cur_p){
 		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-		                                    .selectlist({width:200,onChange:function(){$public.selectvalid(this.element.id);}});
+		                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 		                                }
 		                            }
-		                            $public.selectvalid(this.element.id);
+		                            if(!is_check)$public.selectvalid(this.element.id);
 			                    },
 			                    onSuccess:function(){
 				                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',olis=$('#'+this.element.id).find('li'),_self=this;
@@ -194,10 +219,10 @@ define(function (require, exports, module) {
 					                            for(var c_key in data.city){
 					                                if(c_key==cur_p){
 					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-					                                    .selectlist({width:200,onChange:function(){$public.selectvalid(this.element.id);}});
+					                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 					                                }
 					                            }
-					                            $public.selectvalid(_self.element.id);
+					                            if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });

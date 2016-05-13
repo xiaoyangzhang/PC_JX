@@ -37,6 +37,19 @@ input{outline: none;}
 .hotelinfo .info-box .bar-box .img-group{width:590px;}
 .hotelinfo .info-box .bar-box .img-group img{margin-right:15px;}
 
+.searchbox .tb{width:100%;}
+.searchbox .tb td{text-align: left;padding:10px 0;}
+.searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
+.searchbox .inputxt{width:188px;height: 32px;line-height: 32px;border:1px solid #ddd;padding:0 5px;}
+.searchbox .tb-txt{text-align: right;width:75px;}
+
+.pagination .pager{font-size:0;}
+.pagination .disabled a{color:#ccc;}
+.pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
+.pagination li.active a{background: #ffaf00;color:#333;}
+.pagination li a,.pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
+.pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
+.pagination li select{min-width:50px; padding:4px 0;}
 
 
 
