@@ -104,18 +104,23 @@ define(function (require, exports, module) {
 					$('.msg').css('color','red');
 			},
 			content:function(n_width,n_height,title,html_content,callback){
-				var _self=this;
+				var _self=this,total_h=0;
 				if(!_self.box) _self.initbox();
+				if(n_height=='auto')
+					n_height=$(window).height()-200;
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{
 					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','content-box').append('<div class="content-box"></div>').fadeIn();
-					$('.content-box')
-					.append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
+					$('.content-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
-					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2+30)+'px'});
-					$('.container').height(n_height-125).append(html_content);;
+					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
+					$('.container').height(n_height-125).append(html_content);
+					$('.container').children().children(':not(".list")').filter(function(){
+						total_h+=$(this).outerHeight();
+					});alert($('.container').height());alert(total_h)
+					$('.container .list').height($('.container').height()-total_h);
 					$('.ok').off().on('click',function(){
 						callback();
 					});

@@ -61,7 +61,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
   background: #fff url('../../img/date-icon.jpg') no-repeat 102px center;}
 
 /***************************弹出框***********************/
-.dialog{position: fixed;width:100%;height:1000px;z-index: 999;left:0;top:0;}
+.dialog{position: fixed;width:100%;height:1000px;z-index: 999;left:0;top:0;display: none;}
 .dialog .bgmeng{background-color:#000; opacity:.5;filter:alpha(opacity=50);width:100%;height:1000px;position: absolute;z-index: 999;}
 .dialog .msg{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;text-align: center;
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border-radius:6px;}
@@ -69,11 +69,11 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border:2px solid #ccc;}
 .dialog .content-box .close-tip{text-align: right;}
 .dialog .content-box .close-tip i{float: right; display: block;width:30px;height:30px;background:url('../../img/close.png') no-repeat center;cursor: pointer;
-  transition:all 1s;
-  -webkit-transition:all 1s;
-  -moz-transition:all 1s;
-  -o-transition:all 1s;
-  -ms-transition:all 1s;}
+  transition:all .6s;
+  -webkit-transition:all .6s;
+  -moz-transition:all .6s;
+  -o-transition:all .6s;
+  -ms-transition:all .6s;}
 .dialog .content-box .container{padding:10px;}
 .dialog .content-box .close-tip i:hover{transform: rotate(180deg);}
 .dialog .content-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;}

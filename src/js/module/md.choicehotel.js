@@ -28,7 +28,7 @@ define(function (require, exports, module) {
 			});
 
 			$(_self.config.choicehotel).on('click',function(){
-				$public.dialog.content(968,600,'选择景区',$('.searchbox'),function(){alert();});
+				$public.dialog.content(968,'auto','选择景区',$('.searchbox').show(),function(){alert();});
 			});
 
 			$public.actiondata('province','city',true);
