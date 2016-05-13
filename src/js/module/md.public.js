@@ -29,7 +29,7 @@ define(function (require, exports, module) {
 			/* 统一主域名 */
 			if(document.domain.indexOf(c_domain)!=-1)
 				document.domain = c_domain;
-			$('input,textarea').on('focus',function(){
+			$('input[type="text"],textarea').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
