@@ -119,8 +119,8 @@ define(function (require, exports, module) {
 					$('.container').height(n_height-125).append(html_content);
 					$('.container').children().children(':not(".list")').filter(function(){
 						total_h+=$(this).outerHeight();
-					});alert($('.container').height());alert(total_h)
-					$('.container .list').height($('.container').height()-total_h);
+					});
+					$('.container .list').height($('.container').height()-200);
 					$('.ok').off().on('click',function(){
 						callback();
 					});
