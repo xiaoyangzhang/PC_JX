@@ -28,7 +28,7 @@ define(function (require, exports, module) {
 			/* 统一主域名 */
 			if(document.domain.indexOf(c_domain)!=-1)
 				document.domain = c_domain;
-			$('input[type="text"],textarea').on('focus',function(){
+			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
@@ -103,11 +103,11 @@ define(function (require, exports, module) {
 				else if(type=='error')
 					$('.msg').css('color','red');
 			},
-			content:function(n_width,n_height,title,html_content,callback){
+			content:function(n_width,n_height,title,html_content,callback,init_callback){
 				var _self=this,total_h=0;
 				if(!_self.box) _self.initbox();
 				if(n_height=='auto')
-					n_height=$(window).height()-200;
+					n_height=$(window).height()-180;
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{
@@ -117,10 +117,6 @@ define(function (require, exports, module) {
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
 					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
 					$('.container').height(n_height-125).append(html_content);
-					$('.container').children().children(':not(".list")').filter(function(){
-						total_h+=$(this).outerHeight();
-					});
-					$('.container .list').height($('.container').height()-200);
 					$('.ok').off().on('click',function(){
 						callback();
 					});
@@ -128,6 +124,7 @@ define(function (require, exports, module) {
 						_self.box.hide();
 					});
 				}
+				init_callback();
 			}
 		},
 		ck_device:function(){

@@ -5,7 +5,7 @@
 #eredar .eredar-right .eredar-info ul li.first{margin-left: 0px;}
 #eredar .eredar-right .eredar-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
 
-input{outline: none;}
+/**********************************************选择酒店**********************************************/
 .hotelinfo{padding:23px 40px;}
 .hotelinfo p{margin-bottom:16px;}
 .hotelinfo button,.hotelinfo span,.hotelinfo label{display: inline-block;vertical-align: middle;height: 32px;}
@@ -42,7 +42,7 @@ input{outline: none;}
 .searchbox .tb{width:100%;}
 .searchbox .tb td{text-align: left;padding:10px 0;}
 .searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
-.searchbox .inputxt{width:188px;height: 32px;line-height: 32px;border:1px solid #ddd;padding:0 5px;}
+.searchbox .inputxt{width:188px;}
 .searchbox .tb-txt{text-align: right;width:75px;}
 
 .hotelist{height: 354px;margin-top:10px; overflow: auto;}
@@ -60,7 +60,17 @@ input{outline: none;}
 .pagination li select{min-width:50px; padding:4px 0;}
 
 
+/**********************************************基本信息**********************************************/
+.baseinfo .inputxt{width:488px;}
+.baseinfo .coltxt{width:125px;text-align: right;}
+.baseinfo table td{padding:8px 0;padding-left:10px;}
+.baseinfo table td textarea{width:488px;height: 88px;padding:5px;}
+.baseinfo .mark,.baseinfo .mark label{vertical-align: bottom;color:#999;}
+.baseinfo .mark{margin-left:10px;}
+.baseinfo .radio{margin-right:20px;}
+.baseinfo .radio input{margin-right:8px;}
 
+ 
 
 
 

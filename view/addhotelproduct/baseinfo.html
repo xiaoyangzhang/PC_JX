@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>选择酒店</title>
+<title>基本信息</title>
 <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
 <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
 <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/addhotelproduct.css">
@@ -80,6 +80,55 @@
 					<!-- <li>账户信息</li> -->
 				</ul>
 			</div>
+			<div class="baseinfo">
+				<form>
+					<table>
+						<tr>
+							<td class="coltxt">商品类型：</td>
+							<td><label>酒店</label></td>
+						</tr>
+						<tr>
+							<td class="coltxt">酒店名称：</td>
+							<td><label>皇冠假日酒店</label></td>
+						</tr>
+						<tr>
+							<td class="coltxt"><span class="bred">*</span>商品标题：</td>
+							<td><input type="text" class="inputxt" maxlength="38" name=""><span class="mark"><label>1</label>/38字</span></td>
+						</tr>
+						<tr>
+							<td class="coltxt"><span class="bred">*</span>商品代码：</td>
+							<td><input type="text" class="inputxt" maxlength="20" name=""><span class="mark"><label>1</label>/20字</span></td>
+						</tr>
+						<tr>
+							<td class="coltxt"><span class="bred">*</span>付款方式：</td>
+							<td>
+								<label class="radio"><input type="radio" name="pmt">在线支付</label>
+								<label class="radio"><input type="radio" name="pmt">到店支付</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="coltxt"><span class="bred">*</span>退订限制：</td>
+							<td>
+								<label class="radio"><input type="radio" name="tdl">可退</label>
+								<label class="radio"><input type="radio" name="tdl">不可退</label>
+								<label class="radio"><input type="radio" name="tdl">免费退</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="coltxt vt"><span class="bred">*</span>退订规则：</td>
+							<td><textarea></textarea><span class="mark"><label>1</label>/40字</span></td>
+						</tr>
+						<tr>
+							<td class="coltxt vt"><span class="bred">*</span>最晚到店时间：</td>
+							<td><textarea></textarea><span class="mark"><label>1</label>/40字</span></td>
+						</tr>
+						<tr>
+							<td class="coltxt"><span class="bred">*</span>提前预定天数：</td>
+							<td><input type="text" maxlength="10" name=""></td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
 	</div>
 	<div id="footID">
@@ -131,6 +180,6 @@
 	<script type="text/javascript" src="../../src/js/sea.js"></script>
 	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
 	<script type="text/javascript" src="../../src/js/config.js"></script>		
-	<script>seajs.use("merchant");</script>
+	<script>seajs.use("hotelbaseinfo");</script>
 </body>
 </html>
