@@ -12,6 +12,8 @@ define(function (require, exports, module) {
 			barboxdiv:'.bar-box div',
 			radiobarlabel:'.radio-bar label',
 			radiobarimg:'.radio-bar img',
+			eredarli:'.eredar-info li',
+			eredarpanel:'.eredar-right .panel',
 			choicehotel:'.choicehotel'
 		},
 		init:function(){
@@ -35,7 +37,14 @@ define(function (require, exports, module) {
 				});
 			});
 
-			$public.actiondata('province','city',true);
+			$public.procityaredata('province','city','area',true);
+
+			$(_self.config.eredarli).on('click',function(){
+				$(_self.config.eredarli).removeClass('on');
+				$(this).addClass('on');
+				$(_self.config.eredarpanel).hide();
+				$($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
+			});
 		}
 	}
 	module.exports = new $choicehotel();

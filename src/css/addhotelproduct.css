@@ -1,9 +1,11 @@
-#eredar .eredar-right{width: 970px;background-color: #fff;float: right;}
+#eredar .eredar-right{width: 970px;background-color: #fff;float: right;margin-bottom:20px;}
 #eredar .eredar-right .eredar-info{width:892px;margin: 40px 0 15px 40px;border-bottom:solid 1px #e5e5e5;}
-#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;line-height: 20px; color: #999;margin-left: 40px;
+#eredar .eredar-right .eredar-info ul li{float:left;font-size: 18px;line-height: 18px; color: #999;margin-left: 20px;
 	margin-bottom:-1px;padding: 0 0 15px;cursor: pointer;}
 #eredar .eredar-right .eredar-info ul li.first{margin-left: 0px;}
 #eredar .eredar-right .eredar-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
+#eredar .eredar-right .panel{display: none;}
+#eredar .eredar-right div.on{display: block;}
 
 /**********************************************选择酒店**********************************************/
 .hotelinfo{padding:23px 40px;}
@@ -12,7 +14,7 @@
 .hotelinfo i{color:red;}
 .hotelinfo .nm{width:95px;text-align: right;vertical-align: top;}
 .hotelinfo .nm span{line-height: 38px;}
-.hotelinfo .nm label{font-size:14px;color:#666;line-height: 32px;}
+.hotelinfo .nm label{font-size:14px;color:#333;line-height: 32px;}
 .hotelinfo button{width:88px;border:1px solid #ed6c44;background: #fff;color:#ed6c44;line-height: 30px;}
 .hotelinfo .info-bar{width:598px;border:1px solid #ccc;margin:0 10px;}
 .hotelinfo .info-bar label{line-height: 32px;color:#333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
@@ -63,12 +65,18 @@
 /**********************************************基本信息**********************************************/
 .baseinfo .inputxt{width:488px;}
 .baseinfo .coltxt{width:125px;text-align: right;}
-.baseinfo table td{padding:8px 0;padding-left:10px;}
+.baseinfo table{margin-top:30px;}
+.baseinfo table td,.baseinfo table td label,.baseinfo table td span{color:#333;}
+.baseinfo table td{padding:10px 0;padding-left:10px;}
 .baseinfo table td textarea{width:488px;height: 88px;padding:5px;}
 .baseinfo .mark,.baseinfo .mark label{vertical-align: bottom;color:#999;}
 .baseinfo .mark{margin-left:10px;}
-.baseinfo .radio{margin-right:20px;}
-.baseinfo .radio input{margin-right:8px;}
+.baseinfo .radio{margin-right:20px;cursor: pointer;}
+.baseinfo .checkbox{margin-right:20px;display: inline-block;width:125px;margin-bottom:20px;cursor: pointer;}
+.baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
+.savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
+.btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
+.savenext button,.btngroup button{height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 
  
 

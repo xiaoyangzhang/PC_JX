@@ -31,7 +31,6 @@ seajs.config({
 		"public" : "module/md.public",
 		"uploadfiles" : "module/md.uploadfiles",
 		"choicehotel" : "module/md.choicehotel",
-		"hotelbaseinfo" : "module/md.hotelbaseinfo",
 		"urlpath" : "module/md.urlpath.test",
 		"test" : "module/md.test",
 		"userdatafill" : "module/md.userdatafill",
