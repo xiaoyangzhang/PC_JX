@@ -78,6 +78,19 @@
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
 .savenext button,.btngroup button{height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 
+
+/**********************************************价格日历**********************************************/
+.datepicker table {width:658px;height:478px;}
+.datepicker table td {border:1px solid #ddd;padding:10px 10px;}
+.datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
+.datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
+.datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
+.datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:10px;cursor: pointer;}
+.datepicker .tdmonth {padding:0;height: 38px;text-align: center;}
+.datepicker .tdmonth ul{font-size:0;}
+.datepicker .tdmonth li{display:inline-block;*display:inline;*zoom:1;height: 16px;width:35px;text-align:center;cursor: pointer;margin:0 8px;}
+.datepicker .tdmonth li.on{color:#ffaf00;}
+
  
 
 

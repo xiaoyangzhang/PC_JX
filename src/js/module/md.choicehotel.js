@@ -19,6 +19,7 @@ define(function (require, exports, module) {
 		init:function(){
 			var _self=this;
 			$('#area').selectlist({width: 200});
+			$('#years').selectlist({width: 120});
 			$(_self.config.radiobar).on('click',function(){
 				$(_self.config.barbox).css('height','0');
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
