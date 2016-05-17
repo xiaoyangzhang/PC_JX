@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
-	require("datepicker"),//下拉框组件
 	require("dropdownlist"),//下拉框组件
+	$datepicker=require("cus_datepicker"),
 	$public=require("public"),
 	$choicehotel = function () {
 		this.init.apply(this, arguments);
@@ -20,9 +20,9 @@ define(function (require, exports, module) {
 		init:function(){
 			var _self=this;
 			$('#area').selectlist({width: 200});
-			$('#years').selectlist({width: 120,onChange:function(){changeCld();}});
+			$('#years').selectlist({width: 120,onChange:function(){xiong();}});
 			$(_self.config.radiobar).on('click',function(){
-				$(_self.config.barbox).css('height','0');
+				$(_self.config.barbox).css('height','0'); 
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
 				$(this).next().css('height',$(_self.config.barboxul).height()+$(_self.config.barboxdiv).height()+'px');
 				$(this).find('img').attr('src',static_source+'img/droptip_down.jpg');
@@ -48,8 +48,8 @@ define(function (require, exports, module) {
 				$($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
 			});
 
-			$(document).load(function(){
-				initial();changeCld();
+			$(window).load(function(){
+				$datepicker.initial();
 			});
 
 		}

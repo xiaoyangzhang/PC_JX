@@ -259,7 +259,7 @@ define(function (require, exports, module){
 		saveTextEvent : function(_self,_this){
 			var _parent = _this.closest("p");
 			var _value = _parent.find("textarea").val();
-			_value=_value.replace(/\n/gi,'<br>');
+			//_value=_value.replace(/\n/gi,'<br>');
 			_parent.replaceWith('<p class="text"><font style="line-height:12px;">'+_value+'</font></p>');
 			_self.setContentData();
 		},
@@ -329,7 +329,7 @@ define(function (require, exports, module){
 				if($(this).hasClass(_textClassName)){
 					obj.type = 1;
 					
-					obj.value = $(this).find("font").text();
+					obj.value = $(this).find("font").html();
 				}
 				if($(this).hasClass(_picClassName)){
 					obj.type = 2;
