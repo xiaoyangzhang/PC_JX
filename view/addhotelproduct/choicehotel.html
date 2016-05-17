@@ -342,12 +342,12 @@
 				</div>
 			</div>
 			<div class="panel">
-				<div class="clearfix datepicker">
+				<div name="CLD" class="clearfix datepicker">
 					<table class="fl">
 						<tr>
 							<td class="tdyears clearfix" colspan="7">
 								<i class="fl prev"></i>
-								<select id="years"><option>2016</option></select>
+								<select name="SY" id="years"><option>2015</option><option>2016</option></select>
 								<i class="fr next"></i>
 							</td>
 						</tr>
@@ -378,16 +378,16 @@
 							<td>周五</td>
 							<td>周六</td>
 						</tr>
-						<tr>
-							<td></td>
-							<td></td>
+						<tr class="day">
+							<td class="nullgray"></td>
+							<td class="nullgray"></td>
 							<td>1</td>
 							<td>2</td>
 							<td>3</td>
 							<td>4</td>
 							<td>5</td>
 						</tr>
-						<tr>
+						<tr class="day">
 							<td>6</td>
 							<td>7</td>
 							<td>8</td>
@@ -396,7 +396,7 @@
 							<td>11</td>
 							<td>12</td>
 						</tr>
-						<tr>
+						<tr class="day">
 							<td>13</td>
 							<td>14</td>
 							<td>15</td>
@@ -405,7 +405,7 @@
 							<td>18</td>
 							<td>19</td>
 						</tr>
-						<tr>
+						<tr class="day">
 							<td>20</td>
 							<td>21</td>
 							<td>22</td>
@@ -414,18 +414,24 @@
 							<td>25</td>
 							<td>26</td>
 						</tr>
-						<tr>
+						<tr class="day">
 							<td>27</td>
 							<td>28</td>
 							<td>29</td>
 							<td>30</td>
 							<td>31</td>
-							<td></td>
-							<td></td>
+							<td class="nullgray"></td>
+							<td class="nullgray"></td>
 						</tr>
 					</table>
-					<div class="fr">
-						
+					<div class="setvalue fr">
+						<h2>价格设置</h2>
+						<div><label class="bred">*</label><label>价格：</label><input type="text"></div>
+						<div><label class="bred">*</label><label>价格：</label><input type="text"></div>
+						<div class="btn">
+							<button>确定</button>
+							<button>全部清除</button>
+						</div>
 					</div>
 				</div>
 			</div>

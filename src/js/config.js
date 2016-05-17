@@ -29,6 +29,7 @@ seajs.config({
 		"md5":"module/md5.min",
 
 		"public" : "module/md.public",
+		"datepicker" : "module/md.datepicker",
 		"uploadfiles" : "module/md.uploadfiles",
 		"choicehotel" : "module/md.choicehotel",
 		"urlpath" : "module/md.urlpath.test",

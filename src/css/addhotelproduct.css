@@ -80,16 +80,24 @@
 
 
 /**********************************************价格日历**********************************************/
+.datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 60px;}
 .datepicker table {width:658px;height:478px;}
 .datepicker table td {border:1px solid #ddd;padding:10px 10px;}
 .datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
 .datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
 .datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:10px;cursor: pointer;}
-.datepicker .tdmonth {padding:0;height: 38px;text-align: center;}
+.datepicker .tdmonth {padding:0;text-align: center;height: 38px;background: #f9f9f9;}
 .datepicker .tdmonth ul{font-size:0;}
 .datepicker .tdmonth li{display:inline-block;*display:inline;*zoom:1;height: 16px;width:35px;text-align:center;cursor: pointer;margin:0 8px;}
 .datepicker .tdmonth li.on{color:#ffaf00;}
+.datepicker .tdweek td {text-align: center;padding:0;height: 48px;}
+.datepicker .setvalue{width:234px;border-top:3px solid #ffaf00;}
+.datepicker .setvalue h2{height: 40px;border-bottom:1px solid #ddd;background: #fff9ec;color:#ffaf00;font-size:16px;line-height: 40px;padding-left:15px;}
+.datepicker .setvalue div{padding-top:20px;}
+.datepicker .setvalue .btn button{width:98px;height: 28px;line-height: 26px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
+.datepicker .day td {cursor: pointer;}
+.datepicker .nullgray{background: #f9f9f9;cursor: initial !important;}
 
  
 

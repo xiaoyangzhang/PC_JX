@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+	require("datepicker"),//下拉框组件
 	require("dropdownlist"),//下拉框组件
 	$public=require("public"),
 	$choicehotel = function () {
@@ -19,7 +20,7 @@ define(function (require, exports, module) {
 		init:function(){
 			var _self=this;
 			$('#area').selectlist({width: 200});
-			$('#years').selectlist({width: 120});
+			$('#years').selectlist({width: 120,onChange:function(){changeCld();}});
 			$(_self.config.radiobar).on('click',function(){
 				$(_self.config.barbox).css('height','0');
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
@@ -46,6 +47,11 @@ define(function (require, exports, module) {
 				$(_self.config.eredarpanel).hide();
 				$($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
 			});
+
+			$(document).load(function(){
+				initial();changeCld();
+			});
+
 		}
 	}
 	module.exports = new $choicehotel();
