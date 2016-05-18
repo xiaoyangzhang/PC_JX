@@ -322,12 +322,12 @@ define(function (require, exports, module) {
 			          if ((Slfw!=null)&&(Ssfw!=null)){
 			             lObj.innerHTML=Slfw+"/"+Ssfw;
 			          }    
-			          $(sObj).closest('td').css('background','#fff');                 
+			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'});                 
 			       }
 			       else { //非日期
 			          sObj.innerHTML = '';
 			          lObj.innerHTML = '';
-			          $(sObj).closest('td').css('background','#f5f5f5');
+			          $(sObj).closest('td').css({'background':'#f5f5f5','cursor':'initial'});
 			       }
 			    }
 			    if($('.datepicker tr.last td:eq(0) font').text()=='')
@@ -381,7 +381,7 @@ define(function (require, exports, module) {
 					changeCld();
 				});
 				$('.datepicker .day td').on('click',function(){
-					
+
 				});
 				initial();
 			});

@@ -98,7 +98,6 @@ input[type=text]{height: 32px;line-height: 32px;}
 .datepicker .setvalue h2{height: 40px;border-bottom:1px solid #ddd;background: #fff9ec;color:#ffaf00;font-size:16px;line-height: 40px;padding-left:15px;}
 .datepicker .setvalue div{padding-top:20px;}
 .datepicker .setvalue .btn button{width:98px;height: 28px;line-height: 26px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
-.datepicker .day td {cursor: pointer;}
 .datepicker .nullgray{background: #f9f9f9;cursor: initial !important;}
 
  

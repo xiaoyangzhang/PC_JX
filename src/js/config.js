@@ -31,7 +31,7 @@ seajs.config({
 		"public" : "module/md.public",
 		"cus_datepicker" : "module/md.datepicker",
 		"uploadfiles" : "module/md.uploadfiles",
-		"choicehotel" : "module/md.choicehotel",
+		"addhotel" : "module/md.addhotel",
 		"urlpath" : "module/md.urlpath",
 		"test" : "module/md.test",
 		"userdatafill" : "module/md.userdatafill",
