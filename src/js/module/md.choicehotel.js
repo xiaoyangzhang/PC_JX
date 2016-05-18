@@ -108,7 +108,7 @@ define(function (require, exports, module) {
 			  "1224 小年");
 
 			 var SY=$('#SY').get(0);
-			 var SM=$('#SM').get(0);
+			 var SM=$('.tdmonth ul');
 			 //var GZ=$('#GZ').get(0);
 			 var CLD=$('#CLD').get(0);
 			  //返回农历y年的总天数
@@ -271,7 +271,7 @@ define(function (require, exports, module) {
 			       sD = i - cld.firstWeek;
 			       if(sD>-1 && sD<cld.length) { //日期内
 			          sObj.innerHTML = sD+1;
-			          if(cld[sD].isToday){ sObj.style.color = '#9900FF';} //今日颜色
+			          if(cld[sD].isToday){ sObj.style.color = '#ffaf00';} //今日颜色
 			          else{sObj.style.color = '';}
 			          if(cld[sD].lDay==1){ //显示农历月
 			            lObj.innerHTML = '<b>'+(cld[sD].isLeap?'闰':'') + cld[sD].lMonth + '月' + (monthDays(cld[sD].lYear,cld[sD].lMonth)==29?'小':'大')+'</b>';
@@ -321,19 +321,25 @@ define(function (require, exports, module) {
 			          if(s.length>0) {lObj.innerHTML=s;Slfw=s;}    //节气
 			          if ((Slfw!=null)&&(Ssfw!=null)){
 			             lObj.innerHTML=Slfw+"/"+Ssfw;
-			          }                        
+			          }    
+			          $(sObj).closest('td').css('background','#fff');                 
 			       }
 			       else { //非日期
 			          sObj.innerHTML = '';
 			          lObj.innerHTML = '';
+			          $(sObj).closest('td').css('background','#f5f5f5');
 			       }
 			    }
+			    if($('.datepicker tr.last td:eq(0) font').text()=='')
+			    	$('.datepicker tr.last').hide();
+			    else
+			    	$('.datepicker tr.last').show();
 			 }
 			 //在下拉列表中选择年月时,调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function changeCld() {
 			    var y,m;
 			    y=SY.selectedIndex+1900;
-			    m=SM.selectedIndex;
+			    m=SM.find('li.on').index();
 			    drawCld(y,m);
 			 }
 			 //用自定义变量保存当前系统中的年月日
@@ -344,29 +350,38 @@ define(function (require, exports, module) {
 			 //打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function initial() {
 			    SY.selectedIndex=tY-1900;
-			    SM.selectedIndex=tM;
+			    SM.find('li').removeClass('on');
+			    SM.find('li:eq('+tM+')').addClass('on');
 			    drawCld(tY,tM);
 			 }
 
 			$(window).load(function(){
 				var gNum,str='';
 	             for(i=0;i<6;i++) {
-	                str+='<tr class="day">';
+	                str+='<tr class="day '+(i==5?'last':'')+'">';
 	                for(j=0;j<7;j++) {
 	                   gNum = i*7+j;
 	                   str+='<td id="GD' + gNum +'"><font id="SD' + gNum +'"';
 	                   if(j == 0) str+=' style="color:red"';
 	                   if(j == 6) str+=' style="color:#000080"';
-	                   str+='> </font><br><font id="LD' + gNum + '"> </font></td>';
+	                   str+='> </font><br><font id="LD' + gNum + '" style="display:none;"> </font></td>';
 	                }
 	                str+='</tr>';
 	             }
 	             $(CLD).find('table').append(str);
 
 	             for(i=1900;i<2050;i++) $(SY).append('<option>'+i+'</option>');
-	             for(i=1;i<13;i++) $(SM).append('<option>'+i+'</option>');
-				$('#SY,#SM').change(function(){
+	             //for(i=1;i<13;i++) $(SM).append('<option>'+i+'</option>');
+				$('#SY').change(function(){
 					changeCld();
+				});
+				$('.tdmonth li').on('click',function(){
+			    	SM.find('li').removeClass('on');
+			    	$(this).addClass('on');
+					changeCld();
+				});
+				$('.datepicker .day td').on('click',function(){
+					
 				});
 				initial();
 			});

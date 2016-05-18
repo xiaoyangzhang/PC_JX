@@ -82,8 +82,9 @@ input[type=text]{height: 32px;line-height: 32px;}
 
 /**********************************************价格日历**********************************************/
 .datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 60px;}
-.datepicker table {width:658px;height:478px;}
-.datepicker table td {border:1px solid #ddd;padding:10px 10px;text-align: center;}
+.datepicker table {width:658px;}
+.datepicker table td {border:1px solid #ddd;width:92px;height:68px;text-align: center;position:relative;}
+.datepicker table td font{font-weight: bold;display: inline-block;left:10px;top:10px;position: absolute;}
 .datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
 .datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
