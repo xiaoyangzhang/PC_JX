@@ -1,39 +1,106 @@
-#eredar .eredar-right{width: 970px;background-color: #fff;float: right;}
+#eredar .eredar-right{width: 970px;background-color: #fff;float: right;margin-bottom:20px;}
 #eredar .eredar-right .eredar-info{width:892px;margin: 40px 0 15px 40px;border-bottom:solid 1px #e5e5e5;}
-#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;line-height: 20px; color: #999;margin-left: 40px;
+#eredar .eredar-right .eredar-info ul li{float:left;font-size: 18px;line-height: 18px; color: #999;margin-left: 20px;
 	margin-bottom:-1px;padding: 0 0 15px;cursor: pointer;}
 #eredar .eredar-right .eredar-info ul li.first{margin-left: 0px;}
 #eredar .eredar-right .eredar-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
-#eredar .eredar-right .eredar-list1{padding: 10px 0 0 60px;}
-#eredar .eredar-right .eredar-list1 p{margin-top:15px;}
-#eredar .eredar-right .eredar-list1 em{width: 108px;text-align: right;display: inline-block;color: #666;vertical-align: middle;}
-#eredar .eredar-right .eredar-list1 label.lab{color: #999;vertical-align: bottom;margin-left: 19px;}
-#eredar .eredar-right .eredar-list1 span{margin-left: 20px;}
-#eredar .eredar-right .eredar-list1 p span input[type = "text"]{border:solid 1px :#ccc;height: 34px;width: 200px;padding: 0 5px;}
-#eredar .eredar-right .eredar-list1 span .head-id{width:100px;height: 100px;background-color:#f5f5f5;border:solid 1px #ccc;display: inline-block;position: relative;}
-#eredar .eredar-right .eredar-list1 img{width:64px;height: 70px;margin: 15px 18px;}
-#eredar .eredar-right .eredar-list1 font{color: #fb0000;}
-#eredar .eredar-right .eredar-list1 p span .head-id a{position: absolute;width:100px;height:21px;bottom: 0;right: 0;text-align: center;background-color: #000;z-index:2;color: #dedede;opacity:0.66;*display: inline; *zoom: 1}
-#eredar .eredar-right .eredar-list1 p span .head-id .upload{position: absolute;bottom: 0; opacity: 0;filter: alpha(opacity=0);cursor: pointer;}
-#eredar .eredar-right .eredar-list1 p .spe label:first-child,#eredar .eredar-right .eredar-list1 p .radio input:first-child{margin-left: 0px;}
-#eredar .eredar-right .eredar-list1 p .spe label{margin-left: 30px;cursor: pointer;}
-#eredar .eredar-right .eredar-list1 p .radio input{margin-left: 40px;cursor: pointer;}
-#eredar .eredar-right .eredar-list1 p .spe a,#eredar .eredar-right .eredar-list1 p .radio a{margin-left: 5px;}
-#eredar .eredar-right .eredar-list1 p span .describle{width:500px !important;}
-#eredar .eredar-right .eredar-list1 p span .save{width: 120px;height: 36px;background-color: #ed6c44;color: #fff;border-style: none;margin-left: 114px;}
-#eredar .eredar-right .eredar-list1 p span input[type = "radio"]{background: url("../../img/all.png") no-repeat 25px 25px;width:12px;height:12px;}
-/*右侧商铺信息*/
-#eredar .eredar-right .merchant-list1 p span input[type = "text"]{border:solid 1px #ccc;height: 24px;line-height: 24px;padding:5px 8px;}
-#eredar .eredar-right .merchant-list1 p span textarea{border:solid 1px #ccc;height: 95px;width: 490px;padding:5px 0 0 8px ;}
-#eredar .eredar-right .merchant-list1 img{width:100px;height: 100px;margin:0;}
-#eredar .eredar-right .merchant-list1 p span .head-id a{background-color:transparent;opacity:inherit;position: absolute;width:100px;height:21px;bottom: 10px;right: 0;text-align: center;color: #999999;*display: inline; *zoom: 1;font-weight: normal;}
-#eredar .eredar-right .merchant-list2{/* margin-top: 30px; */padding:30px 0 77px 193px;}
-#eredar .eredar-right .merchant-list2 button{ list-style-type:none;border:1px solid #ed6c44;width:120px; height:36px;background-color:#ed6c44;display: block;font-size:16px;color: #fff;text-align: center;/* line-height: 36px; */font-weight: bold;}
+#eredar .eredar-right .panel{display: none;}
+#eredar .eredar-right div.on{display: block;}
+
+/**********************************************选择酒店**********************************************/
+input[type=text]{height: 32px;line-height: 32px;}
+.hotelinfo{padding:23px 40px;}
+.hotelinfo p{margin-bottom:16px;}
+.hotelinfo button,.hotelinfo span,.hotelinfo label{display: inline-block;vertical-align: middle;height: 32px;}
+.hotelinfo i{color:red;}
+.hotelinfo .nm{width:95px;text-align: right;vertical-align: top;}
+.hotelinfo .nm span{line-height: 38px;}
+.hotelinfo .nm label{font-size:14px;color:#333;line-height: 32px;}
+.hotelinfo button{width:88px;border:1px solid #ed6c44;background: #fff;color:#ed6c44;line-height: 30px;}
+.hotelinfo .info-bar{width:598px;border:1px solid #ccc;margin:0 10px;}
+.hotelinfo .info-bar label{line-height: 32px;color:#333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.hotelinfo .info-bar .htn{width:137px;line-height: 32px;border-right:1px solid #ccc;text-align: center;color:#ed6c44;background: #eee;}
+.hotelinfo .info-bar .smtt{width:50px;text-align: center;}
+.hotelinfo .info-bar .address{width:228px;}
+.hotelinfo .info-bar .tel{width:118px;}
+
+.hotelinfo .info-box{width:568px;border:1px solid #ccc;padding:0 15px;margin:0 10px;display: inline-block;height: auto;}
+.hotelinfo .info-box ul{margin-bottom:-1px;}
+.hotelinfo .info-box .radio-bar{height: 47px;border-bottom:1px solid #ccc;padding:0 10px;cursor: pointer;}
+.hotelinfo .info-box .radio-bar label{line-height: 47px;}
+.hotelinfo .info-box .radio-bar img{margin-top:18px;}
+.hotelinfo .info-box .bar-box {
+	height: 0;
+	overflow: hidden;
+	transition: height 1s;
+	-moz-transition: height 1s;
+	-webkit-transition: height 1s;
+	-o-transition: height 1s;}
+.hotelinfo .info-box .bar-box ul{padding-top:10px;}
+.hotelinfo .info-box .bar-box li{float: left;width:148px;padding-left:40px;}
+.hotelinfo .info-box .bar-box .img-group{width:590px;}
+.hotelinfo .info-box .bar-box .img-group img{margin-right:15px;}
+
+.searchbox{display: none;}
+.searchbox .tb{width:100%;}
+.searchbox .tb td{text-align: left;padding:10px 0;}
+.searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
+.searchbox .inputxt{width:188px;}
+.searchbox .tb-txt{text-align: right;width:75px;}
+
+.hotelist{height: 354px;margin-top:10px; overflow: auto;}
+.hotelist table{width:100%;overflow: auto;}
+.hotelist table th{height:34px;background: #f5f5f5;text-align: center;}
+.hotelist table td{height:60px;}
+.hotelist table td a{width:74px;height: 28px;line-height: 28px;display: block;border:1px solid #ed6c44;color:#ed6c44;margin:auto;}
+
+.pagination .pager{font-size:0;margin:20px 0;}
+.pagination .disabled a{color:#ccc;}
+.pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
+.pagination li.active a{background: #ffaf00;color:#333;}
+.pagination li a,.pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
+.pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
+.pagination li select{min-width:50px; padding:4px 0;}
 
 
+/**********************************************基本信息**********************************************/
+.baseinfo .inputxt{width:488px;}
+.baseinfo .coltxt{width:125px;text-align: right;}
+.baseinfo table{margin-top:30px;}
+.baseinfo table td,.baseinfo table td label,.baseinfo table td span{color:#333;}
+.baseinfo table td{padding:10px 0;padding-left:10px;}
+.baseinfo table td textarea{width:488px;height: 88px;padding:5px;}
+.baseinfo .mark,.baseinfo .mark label{vertical-align: bottom;color:#999;}
+.baseinfo .mark{margin-left:10px;}
+.baseinfo .radio{margin-right:20px;cursor: pointer;}
+.baseinfo .checkbox{margin-right:20px;display: inline-block;width:125px;margin-bottom:20px;cursor: pointer;}
+.baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
+.savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
+.btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
+.savenext button,.btngroup button{height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 
 
+/**********************************************价格日历**********************************************/
+.datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 60px;}
+.datepicker table {width:658px;}
+.datepicker table td {border:1px solid #ddd;width:92px;height:68px;text-align: center;position:relative;}
+.datepicker table td font{font-weight: bold;display: inline-block;left:10px;top:10px;position: absolute;}
+.datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
+.datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
+.datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
+.datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:10px;cursor: pointer;}
+.datepicker .tdmonth {padding:0;text-align: center;height: 38px;background: #f9f9f9;}
+.datepicker .tdmonth ul{font-size:0;}
+.datepicker .tdmonth li{display:inline-block;*display:inline;*zoom:1;height: 16px;width:35px;text-align:center;cursor: pointer;margin:0 8px;}
+.datepicker .tdmonth li.on{color:#ffaf00;}
+.datepicker .tdweek td {text-align: center;padding:0;height: 48px;}
+.datepicker .setvalue{width:234px;border-top:3px solid #ffaf00;}
+.datepicker .setvalue h2{height: 40px;border-bottom:1px solid #ddd;background: #fff9ec;color:#ffaf00;font-size:16px;line-height: 40px;padding-left:15px;}
+.datepicker .setvalue div{padding-top:20px;}
+.datepicker .setvalue .btn button{width:98px;height: 28px;line-height: 26px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
+.datepicker .nullgray{background: #f9f9f9;cursor: initial !important;}
 
+ 
 
 
 

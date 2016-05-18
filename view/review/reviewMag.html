@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>订单管理--评论管理</title>
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/jquery-ui-1.10.4.custom.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/eredar.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/sevice.css">
+</head>
+<body>
+	<!-- 头部开始 -->
+<div id = "jiuxColor" class = "jiuw1">
+	<div class="jiux-header wjiuxiu jiuw1 clearfix">
+		<!-- 头部左侧部分 -->
+		<div class="header-l fl clearfix">
+			<a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/indexJX.html" class="fl">
+				<div class="logo">九休旅行</div>
+			</a>
+			<ul class="clearfix fl">
+				<li class="fl active"><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/indexJX.html">首页</a></li>
+				<li class="fl"><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/recruitment.html">九休商务</a></li>
+				<li class="fl"><a href="#">商家中心</a></li>
+				<li class="fl"><a href="#">九休旅行App</a></li>
+			</ul>
+		</div>
+		<!-- 头部右侧部分 -->
+		<div class="header-r fr clearfix">
+			<div class="tel">
+				<ul>
+					<!-- <li class="fl" id="loginBox"><img src="../../img/touxiang.png" alt=""/><span id="userName">登陆</span></li>
+					<li class="fl staticW"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">退出</a></li> -->
+					<li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">登录</a><span class="cuttingline"></span></li>
+					<li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/register">注册</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 头部完成 -->
+	<!-- 面包屑 -->
+	<div class = "comwidth crumbs f12">您所在的位置：订单评论><a class = "f12 gray6">评价管理</a></div>
+	<div class = "comwidth clearfix" id = "eredar">
+		<div class = "eredar-left">
+			<dl class = "first">
+				<dd>商品管理</dd>
+				<dt class = "one">添加商品</dt>
+				<dt>商品列表</dt>
+			</dl>
+			<dl>
+				<dd>订单管理</dd>
+				<dt class = "one">订单列表</dt>
+			</dl>
+			<dl>
+				<dd>店铺管理</dd>
+				<dt class = "one on">基本信息</dt>
+				<dt>账户信息</dt>
+			</dl>
+			<dl>
+				<dd>对账管理</dd>
+				<dt class = "one">月结账单</dt>
+			</dl>
+		</div>
+		<div class = "eredar-right">
+			<div class = "eredar-info clearfix">
+				<ul>
+
+					<li class = " first on">评价管理</li>
+
+					<!-- <li>账户信息</li> -->
+				</ul>
+			</div>
+			<div class = "rewiewMag reW clearfix">
+				<form class ="reviewform">
+					<p class = "first">
+						<em>订单编号：</em><input type="text" name = "ordername" value = ""/>
+						<em class = "right">用户昵称：</em><input type="text" name = "nickName" value = ""/>
+					<p>
+					<p>
+						<em>商品编号：</em><input type="text" name = "shopname" value = ""/>
+						<em class = "right">评论时间：</em><input class = "time"  id = "tm" placeholder="1990-01-01" readonly="readonly" name = "staretime" value = ""/>
+						<strong>至</strong><input class = "time" id = "td" placeholder="1990-01-01" readonly="readonly" name = "endtime" value = ""/>
+						<a class = "searchBtn">查询</a>
+						<a class = "delBtn">清除</a>
+					<p>
+				</form>
+			</div>
+			<div class = "reviewReslut">
+				<div class ="rewiewID reW">
+					<p>查询结果</p>
+				</div>
+				<div class = "rewiewInfo reW clearfix">
+					<dl class = "infoleft"><img src="http://192.168.1.209:7500/v1/tfs/T1VFLTByZT1RXrhCrK_100x100.jpg"></br><strong title = "美少女战士" class = "gray6 infonick">美少女战士</strong></dl>
+					<dl class = "inforight clearfix">
+						<p>
+							<em>订单编号：</em><span class = "black">H2392399858905</span>
+							<em class="emW">商品编号：</em><span class = "black">38593856967</span>
+							<em class="emW">商品名称：</em><span class = "black">香港澳门直飞5天4晚</span>
+						</p>
+						<p>
+							<em>综合评分：</em><span>4.5</span>
+							<em class="emW">评分项：</em><span>13.5</span>
+							<em class="emW">评分项：</em><span>13.5</span>
+							<em class="emW">评分项：</em><span>13.5</span>
+						</p>
+						<span class = "infoP">性价比超高，带着全家6口外加一个人小baby去玩了3天，航班时间非常好，整三天。酒店也是很不错，花同样的钱
+								在香港只能睡重庆大厦了吧。流程都很顺畅，非常推荐！
+						</span>
+						<div class = "upload clearfix">
+							<ul>
+								<li class = "first"><img src = "../../img/review.png"><b></b></li>
+								<li><img src = "../../img/mypic.jpg"><b></b></li>
+								<li><img src = "../../img/girlImg.png"><b></b></li>
+								<li><img src = "../../img/eredar-head.png"><b></b></li>
+								<li><img src = "../../img/bg-500.jpg"><b></b></li>
+							</ul>
+						</div>
+						<div class = "showImg">
+							<img>
+						</div>
+						<p class = "infotime">2016-5-16  12:45:12</p>
+					</dl>
+				</div>
+				<div class = "rewiewInfo reW clearfix">
+					<dl class = "infoleft"><img src="http://192.168.1.209:7500/v1/tfs/T1VFLTByZT1RXrhCrK_100x100.jpg"></br><strong title = "美少女战士" class = "gray6 infonick">美少女战士</strong></dl>
+					<dl class = "inforight clearfix">
+						<p>
+							<em>订单编号：</em><span class = "black">H2392399858905</span>
+							<em class="emW">商品编号：</em><span class = "black">38593856967</span>
+							<em class="emW">商品名称：</em><span class = "black">香港澳门直飞5天4晚</span>
+						</p>
+						<p>
+							<em>综合评分：</em><span>4.5</span>
+							<em class="emW">评分项：</em><span>13.5</span>
+							<em class="emW">评分项：</em><span>13.5</span>
+							<em class="emW">评分项：</em><span>13.5</span>
+						</p>
+						<span class = "infoP">性价比超高，带着全家6口外加一个人小baby去玩了3天，航班时间非常好，整三天。酒店也是很不错，花同样的钱
+								在香港只能睡重庆大厦了吧。流程都很顺畅，非常推荐！
+						</span>
+						<div class = "upload clearfix">
+						</div>
+						<p class = "infotime">2016-5-16  12:45:12</p>
+					</dl>
+				</div>
+				<div class = "skip clearfix">
+					<ul>
+						<li class = "first"><a><img src ="../../img/revLeft.png"></a></li>
+						<li><a>1</a></li>
+						<li><a>2</a></li>
+						<li><a>3</a></li>
+						<li><a>...</a></li>
+						<li><a>10</a></li>
+						<li><a><img src ="../../img/revRight.png"></a></li>
+						<li><strong>跳转到：</strong></li>
+						<li class = "a"><input type = "text"></input></li>
+						<li><a>GO</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 尾部开始 -->
+<div class="jiux-footer jiuw1">
+    <div class="footer-top">
+        <div class="footID jiuw1 clearfix">
+            <ul class="fl">
+                <li><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/about.html">关于九休</a></li>
+                <li><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/contactus.html">联系我们</a></li>
+                <li><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/feedback.html">意见反馈</a></li>
+                <li>招商咨询&nbsp;&nbsp;4000-696-888/9:00~22:00，周一到周日</li>
+            </ul>
+			<div class="fr">
+				<a class="wb"></a>
+				<a class="wx"><i></i></a>
+				<a class="qq"></a>
+			</div>
+        </div>
+    </div>
+    <div class="footer-bom">
+        <div class="footID jiuw1">
+            <img src="../../img/b_logo.png">
+             <p>COPYRIGHT&copy; 2016 JIUXIULVXING.COM 九休旅行版权所有</p>
+            <p><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15051416号-1</a></p>
+        </div>
+    </div>
+</div>
+<!-- 尾部结束 -->
+	<script type="text/javascript" src="../../src/js/sea.js"></script>
+	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+	<script type="text/javascript" src="../../src/js/config.js"></script>		
+	<script>seajs.use("review");</script>	
+</body>
+</html>

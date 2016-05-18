@@ -11,5 +11,4 @@ define(function(require,exports,module){
 		//图片预览域名
 		img_domain : 'http://img.yimayholiday.com/v1/tfs/'
 	};	
-	
 });

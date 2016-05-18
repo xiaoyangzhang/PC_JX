@@ -22,19 +22,42 @@ define(function (require, exports, module) {
 	img_domain=$urlpath.img_domain,
 	static_source=$urlpath.static_source;
 	
-
 	$public.prototype = {
 		init:function(){
 			var _self=this;
 			/* 统一主域名 */
 			if(document.domain.indexOf(c_domain)!=-1)
 				document.domain = c_domain;
-			$('input,textarea').on('focus',function(){
+			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
 				_self.depath();
+		},
+		html_encode : function(str){   
+		  var s = "";   
+		  if (str.length == 0) return "";   
+		  s = str.replace(/&/g, "&gt;");   
+		  s = s.replace(/</g, "&lt;");   
+		  s = s.replace(/>/g, "&gt;");   
+		  s = s.replace(/ /g, "&nbsp;");   
+		  s = s.replace(/\'/g, "&#39;");   
+		  s = s.replace(/\"/g, "&quot;");   
+		  s = s.replace(/\n/g, "<br>");   
+		  return s;   
+		},
+		html_decode : function(str){
+		  var s = "";   
+		  if (str.length == 0) return "";   
+		  s = str.replace(/&gt;/g, "&");   
+		  s = s.replace(/&lt;/g, "<");   
+		  s = s.replace(/&gt;/g, ">");   
+		  s = s.replace(/&nbsp;/g, " ");   
+		  s = s.replace(/&#39;/g, "\'");   
+		  s = s.replace(/&quot;/g, "\"");   
+		  s = s.replace(/<br>/g, "\n");   
+		  return s;  
 		},
 		isLogin :function(data){
 			/* console.log(data); */
@@ -60,13 +83,21 @@ define(function (require, exports, module) {
 		timer:null,
 		dialog:{
 			initbox:function(){
-				if(!this.box) {
+				var _self=this;
+				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
-					this.box=$('.dialog');
+					$('.bgmeng').on('click',function(){
+						_self.box.hide();
+					});
+					_self.box=$('.dialog');
 				}
 			},
 			closebox:function(){
-				this.box.hide();
+				var _self=this;
+				_self.box.hide();
+				$('.bgmeng').off().on('click',function(){
+					_self.box.hide();
+				});
 			},
 			waiting:function(){
 				var _self=this;
@@ -86,9 +117,6 @@ define(function (require, exports, module) {
 					$('.msg').text(value);
 					_self.box.fadeIn();
 				}else{
-					$('.bgmeng').on('click',function(){
-						_self.box.hide();
-					});
 					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
@@ -98,6 +126,29 @@ define(function (require, exports, module) {
 					$('.msg').css('color','green');
 				else if(type=='error')
 					$('.msg').css('color','red');
+			},
+			content:function(n_width,n_height,title,html_content,callback,init_callback){
+				var _self=this,total_h=0;
+				if(!_self.box) _self.initbox();
+				if(n_height=='auto')
+					n_height=$(window).height()-180;
+				if(_self.box.attr('id')=='content-box'){
+					_self.box.fadeIn();
+				}else{
+					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.attr('id','content-box').append('<div class="content-box"></div>').fadeIn();
+					$('.content-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
+					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
+					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
+					$('.container').height(n_height-125).append(html_content);
+					$('.ok').off().on('click',function(){
+						callback();
+					});
+					$('.cancel,.close-tip').off().on('click',function(){
+						_self.box.hide();
+					});
+				}
+				init_callback();
 			}
 		},
 		ck_device:function(){
@@ -159,7 +210,7 @@ define(function (require, exports, module) {
 			}
 			return result;
 		},
-	    actiondata:function (province,city) {
+	    actiondata:function (province,city,is_check) {
 			//加载联动数据
 	        $.ajax({
 	            url : static_source+'src/js/allcity.js',
@@ -179,10 +230,10 @@ define(function (require, exports, module) {
 		                            for(var c_key in data.city){
 		                                if(c_key==cur_p){
 		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-		                                    .selectlist({width:200,onChange:function(){$public.selectvalid(this.element.id);}});
+		                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 		                                }
 		                            }
-		                            $public.selectvalid(this.element.id);
+		                            if(!is_check)$public.selectvalid(this.element.id);
 			                    },
 			                    onSuccess:function(){
 				                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',olis=$('#'+this.element.id).find('li'),_self=this;
@@ -194,10 +245,118 @@ define(function (require, exports, module) {
 					                            for(var c_key in data.city){
 					                                if(c_key==cur_p){
 					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-					                                    .selectlist({width:200,onChange:function(){$public.selectvalid(this.element.id);}});
+					                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 					                                }
 					                            }
-					                            $public.selectvalid(_self.element.id);
+					                            if(!is_check)$public.selectvalid(_self.element.id);
+				                            },100);
+				                        }
+				                    });
+			                    }
+		                });
+						$('#'+city).selectlist({width: 150});
+	                },100);
+	            }             
+	        });
+		},
+	    procityaredata:function (province,city,area,is_check) {
+			//加载联动数据
+	        $.ajax({
+	            url : static_source+'src/js/allcity.js',
+	            dataType : "jsonp",
+	            jsonpCallback : "callback",
+	            success : function(data){
+	                setTimeout(function(){
+	                  $("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
+	                        if($(this).val()==$('.province_h').val()){
+	                            $(this).attr('selected','selected');
+	                        }
+	                    });
+						//渲染下拉框控件 
+						$('#'+province).selectlist({
+								onChange:function(){
+			                        var cur_p=$('input[name="province"]').val();
+		                            for(var c_key in data.city){
+		                                if(c_key==cur_p){
+		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+		                                    .selectlist({
+		                                    	width:150,
+		                                    	onChange:function(){
+							                        var cur_p=$('input[name="city"]').val();
+						                            for(var c_key in data.area){
+						                                if(c_key==cur_p){
+						                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+						                                    .selectlist({
+						                                    	width:200,
+						                                    	onChange:function(){
+						                                    		if(!is_check)$public.selectvalid(this.element.id);
+							                                    }
+							                                });
+						                                }
+						                            }
+		                                    		if(!is_check)$public.selectvalid(this.element.id);
+			                                    }
+			                                });
+		                                }
+		                            }
+		                            if(!is_check)$public.selectvalid(this.element.id);
+			                    },
+			                    onSuccess:function(){
+				                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',
+				                    olis=$('#'+this.element.id).find('li'),_self=this;
+				                    olis.filter(function(){
+				                        if($(this).attr('data-value')==cur_value){
+				                            $(this).trigger('autoclick');
+				                            setTimeout(function(){
+						                        var cur_p=$('input[name="province"]').val();
+					                            for(var c_key in data.city){
+					                                if(c_key==cur_p){
+					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+					                                    .selectlist({
+					                                    	width:150,
+					                                    	onChange:function(){
+										                        var cur_p=$('input[name="city"]').val();
+									                            for(var c_key in data.area){
+									                                if(c_key==cur_p){
+									                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+									                                    .selectlist({
+									                                    	width:200,
+									                                    	onChange:function(){
+									                                    		if(!is_check)$public.selectvalid(this.element.id);
+										                                    }
+										                                });
+									                                }
+									                            }
+					                                    		if(!is_check)$public.selectvalid(this.element.id);
+						                                    },
+										                    onSuccess:function(){
+											                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',
+											                    olis=$('#'+this.element.id).find('li'),_self=this;
+											                    olis.filter(function(){
+											                        if($(this).attr('data-value')==cur_value){
+											                            $(this).trigger('autoclick');
+											                            setTimeout(function(){
+													                        var cur_p=$('input[name="city"]').val();
+												                            for(var c_key in data.area){
+												                                if(c_key==cur_p){
+												                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+												                                    .selectlist({
+												                                    	width:200,
+												                                    	onChange:function(){
+												                                    		if(!is_check)$public.selectvalid(this.element.id);
+													                                    }
+													                                });
+												                                }
+												                            }
+												                            if(!is_check)$public.selectvalid(_self.element.id);
+											                            },100);
+											                        }
+											                    });
+										                    }
+						                                });
+					                                }
+					                            }
+					                            if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });

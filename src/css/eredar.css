@@ -59,11 +59,10 @@
 .succesPass p.succID{margin-bottom: 300px}
 
 #editer{width:724px;border:1px solid #ddd;padding:10px 20px;background:#fff;border-radius:5px;position: relative;}
-#editer .hd{margin-bottom:35px;}
+#editer .hd{margin-bottom:10px;margin-top:20px;}
 #editer .hd ul{float:right;}
 #editer .hd ul li{float:left;height:24px;line-height:24px;border-radius:5px;padding:0 10px;border:1px solid #ddd;background:#fcfcfc;margin-left:10px;}
-#editer .bd{min-height:460px;}
-#editer .bd p{line-height:2;margin-bottom:30px;position:relative;}
+#editer .bd p{line-height:12px;position:relative;}
 #editer .bd p.imgwrap{border:1px solid #ddd;text-align:left;margin:0 auto 20px;}
 #editer .bd p.imgwrap span.tbd{min-height:240px;position:relative;display:block;background:#fbfbfb;}
 #editer .bd p.imgwrap span.tbd img.nopic{position:absolute;left:50%;margin-left:-36px;top:50%;margin-top:-36px;}
@@ -73,7 +72,7 @@
 #editer .bd p.imgwrap span.tft label.groupbtn input{padding:0 10px;}
 
 #editer .bd p.txtinput{border:1px solid #ddd;}
-#editer .bd p.text{padding:10px;border:1px solid #fff;cursor:pointer;word-break: break-all;width: 707px;}
+#editer .bd p.text{padding:10px;border:1px solid #fff;cursor:pointer;word-break: break-all;width: 707px;margin-top:26px;}
 #editer .bd p.text:hover,
 #editer .bd p.pic:hover{border:1px dashed #FFC926;}
 #editer .bd p ul.menu{position:absolute;height:30px;line-height:30px;right:0;top:-30px;}
@@ -84,15 +83,15 @@
 #editer .bd p ul.menu em.icon-del{background-position:-388px -370px;}
 
 #editer .bd p.on{border:1px dashed #FFC926;}
-#editer .bd p.pic{width:100%; position: relative;border:1px solid #fff;}
+#editer .bd p.pic{width:100%; position: relative;border:1px solid #fff;margin-top:26px;}
 #editer .bd p.pic > img{max-width:100%;}
 #editer .bd p.pic:hover .removePic{display: block;}
 #editer .bd p.pic.on{border:1px dashed #FFC926;}
-#editer .bd textarea{width:100%;height:200px;line-height:2;vertical-align:top;border:none;font-size:14px;font-family:"微软雅黑";resize:none;}
+#editer .bd textarea{width:100%;height:200px;vertical-align:top;border:none;font-size:14px;font-family:"微软雅黑";resize:none;}
 #editer .bd p span.tbd{display:block;padding:10px;}
 #editer .bd p span.tft{display:block;background:#f2f2f2;padding:10px;border-top:1px solid #ddd;}
 #editer .bd p span.tft em{float:left;color:#ff3c3c;}
-#editer .bd p a{float:right;display:inline-block;padding:0 20px;border:1px solid #ddd;background:#fdfdfd;margin-left:10px;border-radius:3px;}
+#editer .bd p a{float:right;display:inline-block;padding:4px 20px;border:1px solid #ddd;background:#fdfdfd;margin-left:10px;border-radius:3px;}
 
 table tr th{
 	vertical-align: middle;

@@ -68,3 +68,10 @@ iframe{display: none;}
 .error_tip .error_box div{width:118px;color:#fff;margin:auto;font-size:14px;border-bottom:1px solid #fff;height: 24px;line-height: 24px;text-align: center;}
 .error_tip .error_box ol{list-style:decimal inside;}
 .error_tip .error_box ol li{color:#fff;line-height: 20px;margin-left:15px;margin-right: 15px;margin-top:4px;font-size:12px;}
+
+.tipboxl{position: relative;z-index: 999;}
+.tipboxr{position: relative;z-index: 9;}
+.tipbox{position: absolute;left:-218px;top:8px;text-align: center;padding:6px 0px 6px 6px;background: #eee;}
+.tipbox img{width:76px;height: 76px;}
+.tipbox label{display: block;font-size:12px;line-height: 12px;}
+.tipbox p{width:400px;text-align: left;font-size:14px;line-height: 22px;margin-left:10px;color:#999;}
