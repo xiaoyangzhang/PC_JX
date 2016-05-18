@@ -2,7 +2,7 @@
 /*右侧达人信息*/
 #eredar .eredar-right{width: 970px;background-color: #fff;float: right;}
 #eredar .eredar-right .eredar-info{width:892px;margin: 40px 0 15px 40px;border-bottom:solid 1px #e5e5e5;}
-#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;line-height: 20px;color: #999;margin-left: 40px;padding: 0 0 15px;margin-bottom:-1px;}
+#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;color: #999;margin-left: 40px;padding: 0 0 15px;}
 #eredar .eredar-right .eredar-info ul li.first{margin-left: 0px;}
 #eredar .eredar-right .eredar-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
 #eredar .eredar-right .eredar-list1{padding: 10px 0 0 60px;}
@@ -109,11 +109,57 @@ table tr td div.t-img{
 	float:left;
 	margin: 1px 8px 1px 0px;
 }
-table tr td div.t-name{
-	margin: 1px 8px;
-}
+
 table tr td button{
 	margin: 3px;
 }
+
+
+.hd_wh{width:100px;height:100px;}
+.table div {font-size: 12px;}
+table tr td div.t-name{font-size: 13px;color:#000;padding-bottom: 10px;}
+.t-userType,.t-date,.t-userType{color:#acacac;font-size: 12px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
