@@ -1,8 +1,8 @@
 define(function (require, exports, module){
 	require("json");
 	require("ajaxform");
-	//require("upload");
-	$ddd = ("eredar");
+	$public=require("public");
+	//$ddd = ("eredar");
 	var editer = function () {
 		this.init.apply(this, arguments);
 	};
@@ -13,6 +13,12 @@ define(function (require, exports, module){
 			$self.config = $.extend($self.config,options);
 			$self.bindDomEvent();
 			$self.setContentData();
+			// setTimeout(function(){
+			// $('.bd p font').filter(function(){
+			// 		var s=$(this).html();
+			// 		$(this).html(s);
+			// 	});
+			// },1000);
 		},
 		config : {
 			addTextBtn : ".addtext",
@@ -145,7 +151,6 @@ define(function (require, exports, module){
 			$(_self.id).find(".bd").find("textarea").focus();
 			_self.scrollBottom(".txtinput");
 		},
-
 		addImageEvent : function(_self,_this){
 			if(_self.isUploadState()) return false;
 			var html = _self.getImgUploadHtml();
@@ -259,8 +264,7 @@ define(function (require, exports, module){
 		saveTextEvent : function(_self,_this){
 			var _parent = _this.closest("p");
 			var _value = _parent.find("textarea").val();
-			//_value=_value.replace(/\n/gi,'<br>');
-			_parent.replaceWith('<p class="text"><font style="line-height:12px;">'+_value+'</font></p>');
+			_parent.replaceWith('<p class="text"><font style="line-height:12px;">'+$public.html_encode(_value.Trim())+'</font></p>');
 			_self.setContentData();
 		},
 		moveUpEvent : function(_self,_this){
@@ -328,8 +332,7 @@ define(function (require, exports, module){
 				var obj = {};
 				if($(this).hasClass(_textClassName)){
 					obj.type = 1;
-					
-					obj.value = $(this).find("font").html();
+					obj.value = $public.html_decode($(this).find("font").html());
 				}
 				if($(this).hasClass(_picClassName)){
 					obj.type = 2;

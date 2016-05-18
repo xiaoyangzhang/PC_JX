@@ -8,6 +8,7 @@
 #eredar .eredar-right div.on{display: block;}
 
 /**********************************************选择酒店**********************************************/
+input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo{padding:23px 40px;}
 .hotelinfo p{margin-bottom:16px;}
 .hotelinfo button,.hotelinfo span,.hotelinfo label{display: inline-block;vertical-align: middle;height: 32px;}
@@ -82,7 +83,7 @@
 /**********************************************价格日历**********************************************/
 .datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 60px;}
 .datepicker table {width:658px;height:478px;}
-.datepicker table td {border:1px solid #ddd;padding:10px 10px;}
+.datepicker table td {border:1px solid #ddd;padding:10px 10px;text-align: center;}
 .datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
 .datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}

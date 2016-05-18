@@ -60,16 +60,23 @@ define(function (require, exports, module) {
 		},
 		init:function(){
 			var _self=this;
-			var Today = new Date(),
-			_self.tY=Today.getFullYear(),
-			_self.tM=Today.getMonth(),
+			_self.xiongzhaoling='xiongzhaoling';
+			_self.Today = new Date();
+
+			_self.SY=$('#SY').get(0);
+			_self.SM=$('#SM').get(0);
+			_self.CLD=$('#CLD').get(0);
+			_self.tY=_self.Today.getFullYear(),
+			_self.tM=_self.Today.getMonth(),
+			_self.tD=_self.Today.getDate(),
 			_self.mat=9,
 			_self.fat=9,
-			_self.cld=null,
-			_self.tD=Today.getDate();
+			_self.cld=null;
 		},
+		test:function(){alert(this.SY.length);},
 		//返回农历y年的总天数
 		lYearDays:function(y){
+			this.test()
 			var _self=this;
 		    var i, sum = 348;
 		    for(i=0x8000; i>0x8; i>>=1)sum+=(_self.config.lunarInfo[y-1900]&i)?1:0;
@@ -78,7 +85,7 @@ define(function (require, exports, module) {
 		//返回农历y年闰月的天数
 		leapDays:function(y){
 			var _self=this;
-		     if(leapMonth(y))  return((_self.config.lunarInfo[y-1900] & 0x10000)? 30: 29);
+		     if(_self.leapMonth(y))  return((_self.config.lunarInfo[y-1900] & 0x10000)? 30: 29);
 		     else return(0);
 		},
 		//判断y年的农历中那个月是闰月,不是闰月返回0
@@ -110,13 +117,13 @@ define(function (require, exports, module) {
 		     }
 		     this.year = i;
 		     this.yearCyl=i-1864;
-		    leap = leapMonth(i); //闰哪个月
+		    leap = _self.leapMonth(i); //闰哪个月
 		    this.isLeap = false;
 		    for(i=1; i<13 && offset>0; i++) {
 		       if(leap>0 && i==(leap+1) && this.isLeap==false){    //闰月
 		           --i; this.isLeap = true; temp = leapDays(this.year);}
 		       else{
-		          temp = monthDays(this.year, i);}
+		          temp = _self.monthDays(this.year, i);}
 		       if(this.isLeap==true && i==(leap+1)) this.isLeap = false;    //解除闰月
 		       offset -= temp;
 		       if(this.isLeap == false) this.monCyl++;
@@ -162,18 +169,18 @@ define(function (require, exports, module) {
 		},
 		//保存y年m+1月的相关信息
 		calendar:function(y,m){
-			var _self=this;
+			var _self=$datepicker.prototype;
 		    fat=mat=0;
 		    var lDPOS = new Array(3);
 		    var sDObj,lDObj,lY,lM,lD=1,lL,lX=0,tmp1,tmp2;
 		    var n = 0;
 		    var firstLM = 0;
 		    sDObj = new Date(y,m,1);    //当月第一天的日期
-		    this.length = solarDays(y,m);    //公历当月天数
-		    this.firstWeek = sDObj.getDay();    //公历当月1日星期几
+		    _self.length = _self.solarDays(y,m);    //公历当月天数
+		    _self.firstWeek = sDObj.getDay();    //公历当月1日星期几
 		    if ((m+1)==5){fat=sDObj.getDay()}
 		    if ((m+1)==6){mat=sDObj.getDay()}
-		    for(var i=0;i<this.length;i++) {
+		    for(var i=0;i<_self.length;i++) {
 		       if(lD>lX) {
 		          sDObj = new Date(y,m,i+1);    //当月第一天的日期
 		          lDObj = new Dianaday(sDObj);     //农历
@@ -181,24 +188,24 @@ define(function (require, exports, module) {
 		          lM = lDObj.month;          //农历月
 		          lD = lDObj.day;            //农历日
 		          lL = lDObj.isLeap;         //农历是否闰月
-		          lX = lL? leapDays(lY): monthDays(lY,lM); //农历当月最後一天
+		          lX = lL? leapDays(lY): _self.monthDays(lY,lM); //农历当月最後一天
 		          if (lM==12){eve=lX}
 		          if(n==0) firstLM = lM;
 		          lDPOS[n++] = i-lD+1;
 		       }
-		       this[i] = new calElement(y,m+1,i+1,_self.config.nStr1[(i+this.firstWeek)%7],lY,lM,lD++,lL);
-		       if((i+this.firstWeek)%7==0){
-		          this[i].color = 'red';  //周日颜色
+		       _self[i] = new calElement(y,m+1,i+1,_self.config.nStr1[(i+_self.firstWeek)%7],lY,lM,lD++,lL);
+		       if((i+_self.firstWeek)%7==0){
+		          _self[i].color = 'red';  //周日颜色
 		       }
 		    }
 		    //节气
 		    tmp1=sTerm(y,m*2)-1;
 		    tmp2=sTerm(y,m*2+1)-1;
-		    this[tmp1].solarTerms = _self.config.solarTerm[m*2];
-		    this[tmp2].solarTerms = _self.config.solarTerm[m*2+1];
-		    if((this.firstWeek+12)%7==5)    //黑色星期五
-		       this[12].solarFestival += '黑色星期五';
-		    if(y==tY && m==tM) this[tD-1].isToday = true;    //今日
+		    _self[tmp1].solarTerms = _self.config.solarTerm[m*2];
+		    _self[tmp2].solarTerms = _self.config.solarTerm[m*2+1];
+		    if((_self.firstWeek+12)%7==5)    //黑色星期五
+		       _self[12].solarFestival += '黑色星期五';
+		    if(y==tY && m==tM) _self[tD-1].isToday = true;    //今日
 		},
 		//用中文显示农历的日期
 		cDay:function(d){
@@ -225,7 +232,7 @@ define(function (require, exports, module) {
 		    var TF=true;
 		    var p1=p2="";
 		    var i,sD,s,size;
-		    cld = new calendar(SY,SM);
+		    cld = new _self.calendar(SY,SM);
 		    GZ.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【'+_self.config.Animals[(SY-4)%12]+'】';    //生肖
 		    for(i=0;i<42;i++) {
 		       sObj=eval('SD'+ i);
@@ -237,7 +244,7 @@ define(function (require, exports, module) {
 		          if(cld[sD].isToday){ sObj.style.color = '#9900FF';} //今日颜色
 		          else{sObj.style.color = '';}
 		          if(cld[sD].lDay==1){ //显示农历月
-		            lObj.innerHTML = '<b>'+(cld[sD].isLeap?'闰':'') + cld[sD].lMonth + '月' + (monthDays(cld[sD].lYear,cld[sD].lMonth)==29?'小':'大')+'</b>';
+		            lObj.innerHTML = '<b>'+(cld[sD].isLeap?'闰':'') + cld[sD].lMonth + '月' + (_self.monthDays(cld[sD].lYear,cld[sD].lMonth)==29?'小':'大')+'</b>';
 		          }
 		          else{lObj.innerHTML = cDay(cld[sD].lDay);}    //显示农历日
 		         var Slfw=Ssfw=null;
@@ -296,16 +303,16 @@ define(function (require, exports, module) {
 		changeCld:function(){
 			var _self=this;
 		    var y,m;
-		    y=CLD.SY.selectedIndex+1900;
-		    m=CLD.SM.selectedIndex;
+		    y=SY.selectedIndex+1900;
+		    m=SM.selectedIndex;
 		    _self.drawCld(y,m);
 		},
 		//打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
 		initial:function(){
 			var _self=this;
-		    CLD.SY.selectedIndex=tY-1900;
-		    CLD.SM.selectedIndex=tM;
-		    _self.drawCld(tY,tM);
+		    SY.selectedIndex=_self.tY-1900;
+		    SM.selectedIndex=_self.tM;
+		    _self.drawCld(_self.tY,_self.tM);
 		}
 	}
 	module.exports = new $datepicker();

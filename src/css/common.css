@@ -3,7 +3,7 @@ body{background: #f4f4f4;}
 .bodyWhite{background-color: #fff !important;}
 .comwidth{width:1190px;margin-left:auto;margin-right:auto;}
 select{padding:5px 0; border:1px solid #ddd;min-width:90px;}
-input[type=text]{height: 32px;line-height: 32px;border:1px solid #ddd;padding:0 5px;outline: none;}
+input[type=text]{border:1px solid #ddd;padding:0 5px;outline: none;}
 textarea{border:1px solid #ddd;}
 
 /***************************圆图像（兼容IE6、IE7、IE8）***********************/
