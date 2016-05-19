@@ -32,7 +32,7 @@ seajs.config({
 		"cus_datepicker" : "module/md.datepicker",
 		"uploadfiles" : "module/md.uploadfiles",
 		"addhotel" : "module/md.addhotel",
-		"urlpath" : "module/md.urlpath",
+		"urlpath" : "module/md.urlpath.test",
 		"test" : "module/md.test",
 		"userdatafill" : "module/md.userdatafill",
 		"eredar":"module/md.eredar.js",
