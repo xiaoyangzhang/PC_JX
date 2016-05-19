@@ -71,7 +71,9 @@ iframe{display: none;}
 
 .tipboxl{position: relative;z-index: 999;}
 .tipboxr{position: relative;z-index: 9;}
-.tipbox{position: absolute;left:-218px;top:8px;text-align: center;padding:6px 0px 6px 6px;background: #eee;}
+.tipbox{width:463px; text-align: center;padding:6px 0px 6px 6px;background: #eee;float: left;}
 .tipbox img{width:76px;height: 76px;}
-.tipbox label{display: block;font-size:12px;line-height: 12px;}
-.tipbox p{width:400px;text-align: left;font-size:14px;line-height: 22px;margin-left:10px;color:#999;}
+.tipbox label{display: block;font-size:12px;line-height: 12px;margin:3px 0;}
+.tipbox p{width:369px;text-align: left;font-size:14px;line-height: 22px;margin-left:10px;color:#999;}
+.othimb .inblock{margin-top:8px;}
+.othimb .Validform_checktip{margin-top:40px;}
