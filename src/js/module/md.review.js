@@ -37,7 +37,15 @@ define(function (require, exports, module) {
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
-
+				$.ajax({
+					type:'POST',
+					url:""+$("#subpath").val(),
+					data:{},
+					success:function(data){
+						$public.isLogin(data);
+						
+					}
+				});
 			});
 			/* 清除 */
 			$(".delBtn").on("click",function(){
