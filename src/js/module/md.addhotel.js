@@ -338,7 +338,7 @@ define(function (require, exports, module) {
 			 //在下拉列表中选择年月时,调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function changeCld() {
 			    var y,m;
-			    y=SY.selectedIndex+1900;
+			    y=$(SY).text();
 			    m=SM.find('li.on').index();
 			    drawCld(y,m);
 			 }
@@ -349,7 +349,7 @@ define(function (require, exports, module) {
 			 var tD = Today.getDate();
 			 //打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function initial() {
-			    SY.selectedIndex=tY-1900;
+			    $(SY).text(tY);
 			    SM.find('li').removeClass('on');
 			    SM.find('li:eq('+tM+')').addClass('on');
 			    drawCld(tY,tM);
@@ -370,9 +370,19 @@ define(function (require, exports, module) {
 	             }
 	             $(CLD).find('table').append(str);
 
-	             for(i=1900;i<2050;i++) $(SY).append('<option>'+i+'</option>');
+	             //for(i=1900;i<2050;i++) $(SY).append('<option>'+i+'</option>');
 	             //for(i=1;i<13;i++) $(SM).append('<option>'+i+'</option>');
-				$('#SY').change(function(){
+				// $('#SY').change(function(){
+				// 	changeCld();
+				// });
+				$('.tdyears .prev').on('click',function(){
+					var cur_years=parseInt($(SY).text());
+					$(SY).text(cur_years-1);
+					changeCld();
+				});
+				$('.tdyears .next').on('click',function(){
+					var cur_years=parseInt($(SY).text());
+					$(SY).text(cur_years+1);
 					changeCld();
 				});
 				$('.tdmonth li').on('click',function(){
