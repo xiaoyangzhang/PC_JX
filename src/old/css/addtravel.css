@@ -1,0 +1,38 @@
+/*------单图片上传-------*/
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.clearfix { *zoom: 1;}
+.uploadbox{padding:20px;border:1px solid #ddd;/*width:752px;*/}
+.uploadbox .imgbox{width:124px;height:162px;float:left;margin-right:15px;overflow:hidden;padding:5px;}
+.uploadbox .imgbox .dimg{width:118px;height:120px;overflow:hidden;margin-bottom:10px;border:1px solid #eee;}
+.uploadbox .imgbox img{width:118px;height:120px;margin-bottom:10px;border:none;}
+.uploadbox .upimgbtn{width:120px;height:30px;position:relative;}
+.uploadbox .upimgbtn .upl{position:absolute;top: -3px; display:block; width:120px;height:30px;line-height: 30px;cursor: pointer;
+	text-align: center;font-size:14px; z-index:999;background:#1E92EB;color:#fff;border:none;outline:none;text-decoration: none;}
+.uploadbox .upimgbtn .del{position:absolute;top: -3px; display:block;font-size:14px; width:120px;height:30px;background:#E26C26;color:#fff;border:none;outline:none;}
+.uploadbox .picfile{position:absolute; right:0; top:0; font-size:100px; opacity:0; filter:alpha(opacity=0);cursor: pointer;}
+.uploadbox .upl-tips{clear: both;padding: 15px 0 0 10px;}
+table tr td button{margin: 0;}
+/*------添加跟团游-------*/
+.red{color: red;}
+.tab-inputgroup td{border-bottom: none;}
+.tab-inputgroup>tbody>tr>td:first-child{width: 130px; padding: 8px 0 !important; text-align: right;}
+.word-num{margin-right: 20px;}
+.word-tip{color: red;font-style: italic;}
+/*------添加商品表格-------*/
+.tab-productdetail td{border-bottom: none;}
+.tab-productdetail>tbody>tr>td:first-child{width: 130px; padding: 8px 0 !important;}
+
+/*------同城活动价格设置--------*/
+/*table.tab-samecity thead tr th{text-align: center;}
+table.tab-samecity tbody tr td{vertical-align: middle; padding:8px !important; text-align: center;}
+table.tab-samecity tbody tr td:nth-child(2){text-align: left;}
+.w500{width: 500px;}*/
+.tab-setlist td{padding: 8px !important;}
+.tab-setlist tr td:first-child{width: 150px;text-align: right;}
+.tab-setlist tr td .form-control{display: inline-block;}
+.tab-setlist tr td.checkbox-con span{display: inline-block; padding: 0 8px;}
+.tab-sku{border: 1px solid #ddd;}
+.tab-sku tr th,.tab-sku tr td{text-align: center;vertical-align: middle;}
+
+/*------保存按钮居中--------*/
+.clubBotBtn{text-align: center;}
