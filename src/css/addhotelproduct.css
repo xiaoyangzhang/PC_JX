@@ -88,7 +88,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
 .datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
-.datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:10px;cursor: pointer;}
+.datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:3px;cursor: pointer;}
 .datepicker .tdmonth {padding:0;text-align: center;height: 38px;background: #f9f9f9;}
 .datepicker .tdmonth ul{font-size:0;}
 .datepicker .tdmonth li{display:inline-block;*display:inline;*zoom:1;height: 16px;width:35px;text-align:center;cursor: pointer;margin:0 8px;}
