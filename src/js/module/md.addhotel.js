@@ -111,6 +111,8 @@ define(function (require, exports, module) {
 			 var SM=$('.tdmonth ul');
 			 //var GZ=$('#GZ').get(0);
 			 var CLD=$('#CLD').get(0);
+			 var color_temp='';
+
 			  //返回农历y年的总天数
 			  function lYearDays(y) {
 			     var i, sum = 348;
@@ -272,7 +274,7 @@ define(function (require, exports, module) {
 			       if(sD>-1 && sD<cld.length) { //日期内
 			          sObj.innerHTML = sD+1;
 			          if(cld[sD].isToday){ sObj.style.color = '#ffaf00';} //今日颜色
-			          else{sObj.style.color = '';}
+			          else{sObj.style.color = '#666';}
 			          if(cld[sD].lDay==1){ //显示农历月
 			            lObj.innerHTML = '<b>'+(cld[sD].isLeap?'闰':'') + cld[sD].lMonth + '月' + (monthDays(cld[sD].lYear,cld[sD].lMonth)==29?'小':'大')+'</b>';
 			          }
@@ -322,12 +324,20 @@ define(function (require, exports, module) {
 			          if ((Slfw!=null)&&(Ssfw!=null)){
 			             lObj.innerHTML=Slfw+"/"+Ssfw;
 			          }    
-			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'});                 
+			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass()
+			          .on('click',function(){
+							if($(this).attr('class')){
+								$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
+							}else{
+								this.color_temp=$(this).find('font')[0].style.color;
+								$(this).css('background','#ed6c44').attr('class','1').find('font').css('color','#fff');
+							}
+					   });                
 			       }
 			       else { //非日期
 			          sObj.innerHTML = '';
 			          lObj.innerHTML = '';
-			          $(sObj).closest('td').css({'background':'#f5f5f5','cursor':'initial'});
+			          $(sObj).closest('td').css({'background':'#f5f5f5','cursor':'initial'}).off();
 			       }
 			    }
 			    if($('.datepicker tr.last td:eq(0) font').text()=='')
@@ -389,9 +399,6 @@ define(function (require, exports, module) {
 			    	SM.find('li').removeClass('on');
 			    	$(this).addClass('on');
 					changeCld();
-				});
-				$('.datepicker .day td').on('click',function(){
-
 				});
 				initial();
 			});
