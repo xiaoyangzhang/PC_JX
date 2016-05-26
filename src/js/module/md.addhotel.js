@@ -14,7 +14,8 @@ define(function (require, exports, module) {
 			radiobarimg:'.radio-bar img',
 			eredarli:'.eredar-info li',
 			eredarpanel:'.eredar-right .panel',
-			choicehotel:'.choicehotel'
+			searchotel:'.choicehotel',
+			searchbox:'.searchbox'
 		},
 		init:function(){
 			var _self=this;
@@ -30,11 +31,29 @@ define(function (require, exports, module) {
 				$public.stopBubble(ev);
 			});
 
-			$(_self.config.choicehotel).on('click',function(ev){
-				$public.dialog.content(968,'auto','选择景区',$('.searchbox').show(),function(){
-					alert();
-				},function(){
-					$('.container .list').height($('.container').height()-120);
+			$(_self.config.searchotel).on('click',function(ev){
+					var $scbx=$(_self.config.searchbox);
+					$scbx.children('div').remove();
+					$scbx.append('').show();
+					$public.dialog.content(968,'auto','选择景区',$scbx,function(){
+						alert();
+					},function(){
+						$('.container .list').height($('.container').height()-120);
+					});
+				$.get($public.urlpath.searchotel,{
+					name:'',
+					locationProvinceId:'',
+					locationCityId:'',
+					locationTownId:''
+				},function(data){
+					var $scbx=$(_self.config.searchbox);
+					$scbx.children('div').remove();
+					$scbx.append(data).show();
+					$public.dialog.content(968,'auto','选择景区',$scbx,function(){
+						alert();
+					},function(){
+						$('.container .list').height($('.container').height()-120);
+					});
 				});
 				$public.stopBubble(ev);
 			});
@@ -54,10 +73,15 @@ define(function (require, exports, module) {
 
 
 
+
+
+
+
 			 
 			var solarMonth=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 			var nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
+			var empty_ckbox={};
 			var SY=$('#SY').get(0);
 			var SM=$('.tdmonth ul');
 			//var GZ=$('#GZ').get(0);
@@ -96,7 +120,7 @@ define(function (require, exports, module) {
 		        "sku_flag":$(".sku_flag").val(),
 		        "biz_list":[{
 		            "sku_id":10012,
-		            "state":"add/update/del",
+		            "state":"update",
 		            "stock_num":10,
 		            "price":"8.8",
 		            "vTxt":"1464364800000"
@@ -106,31 +130,33 @@ define(function (require, exports, module) {
 		            "stock_num":228,
 		            "price":"12",
 		            "vTxt":"1464105600000"
-		        },{
-		            "sku_id":10015,
-		            "state":"update",
-		            "stock_num":125,
-		            "price":"88.9",
-		            "vTxt":"1464624000000"
-		        },{
-		            "sku_id":"fdfd",
-		            "state":"update",
-		            "stock_num":366,
-		            "price":"12.33",
-		            "vTxt":"1467907200000"
-		        },{
-		            "sku_id":10016,
-		            "state":"update",
-		            "stock_num":58,
-		            "price":"100",
-		            "vTxt":"1464796800000"
-		        },{
-		            "sku_id":10018,
-		            "state":"update",
-		            "stock_num":98,
-		            "price":"66",
-		            "vTxt":"1466524800000"
-		        }]
+		        }
+		        // ,{
+		        //     "sku_id":10015,
+		        //     "state":"update",
+		        //     "stock_num":125,
+		        //     "price":"88.9",
+		        //     "vTxt":"1464624000000"
+		        // },{
+		        //     "sku_id":"fdfd",
+		        //     "state":"update",
+		        //     "stock_num":366,
+		        //     "price":"12.33",
+		        //     "vTxt":"1467907200000"
+		        // },{
+		        //     "sku_id":10016,
+		        //     "state":"update",
+		        //     "stock_num":58,
+		        //     "price":"100",
+		        //     "vTxt":"1464796800000"
+		        // },{
+		        //     "sku_id":10018,
+		        //     "state":"update",
+		        //     "stock_num":98,
+		        //     "price":"66",
+		        //     "vTxt":"1466524800000"
+		        // }
+		        ]
 		   
 		    };
 			  //返回农历y年的总天数
@@ -217,12 +243,15 @@ define(function (require, exports, module) {
 							if($(_self).attr('class')){
 								$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
 								$(_self).find('label').css('color','#666');
+								recordck($(_self),'del');
 							}else{
 								_self.color_temp=$(_self).find('font')[0].style.color;
 								$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
 								$('.price').val($(_self).find('.price_').text());
 								$('.stock').val($(_self).find('.stock_').text());
+								recordck($(_self),'add');
 							}
+							if(isCtrl) $('.price,.stock').val('');
 							$public.stopBubble(ev);
 					   });                
 			       }
@@ -241,15 +270,27 @@ define(function (require, exports, module) {
 
 			 }
 
+			//记录选中点
+			function recordck(obj,type){
+				var cur_smp=new Date($('#SY').text(),$('.tdmonth li.on').index(),obj.find('font').html()).valueOf();
+				if(!isCtrl) empty_ckbox={};
+				if(type=='add'&&!empty_ckbox[cur_smp]){
+					empty_ckbox[cur_smp]=true;
+				}else if(type=='del'&&empty_ckbox[cur_smp]){
+					delete empty_ckbox[cur_smp];
+				}
+				//console.log(JSON.stringify(empty_ckbox)+'----');
+			}
+
 			//渲染已设置的日期
 			function dateRender(supplier_calendar){
 				var ls=supplier_calendar.biz_list,days=$('.dtbx font');
 				$('.tipvl').remove();
 				for(var i=0;i<ls.length;i++){
 					days.filter(function(){
-						if(this.id.indexOf('SD')!=-1&&this.innerHTML!=''){
+						if(this.innerHTML!=''){
 							var cur_smp=new Date($('#SY').text(),$('.tdmonth li.on').index(),this.innerHTML).valueOf();
-							if(cur_smp==ls[i].vTxt){
+							if(cur_smp==ls[i].vTxt&&ls[i].state!='del'){
 								var cur_td=$(this).closest('td')[0];
 								cur_td.color_temp=$(cur_td).find('font')[0].style.color;
 								$(cur_td).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
@@ -263,19 +304,41 @@ define(function (require, exports, module) {
 
 			//价格和库存写入缓存
 			function set_chahevalue(stock,price,day){
-				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',ls=supplier_calendar.biz_list;
+				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
+				ls=supplier_calendar.biz_list;
 				for(var i=0;i<ls.length;i++){
-					if(cur_time==ls[i].vTxt)
+					if(cur_time==ls[i].vTxt&&ls[i].state!='del'){
+						if(ls[i].sku_id!=0) ls[i].state='update';
+						ls[i].stock_num=stock;
+						ls[i].price=price;
+		        		console.log(JSON.stringify(supplier_calendar.biz_list)+'   ---------set_chahevalue--update------');
 						return;
+					}
 				}
 	          	ls.push({
 			            "sku_id":0,
-			            "state":type,
+			            "state":'add',
 			            "stock_num":stock,
 			            "price":price,
 			            "vTxt":cur_time
 						});
-		        console.log(JSON.stringify(supplier_calendar.biz_list)+'   -----------------');
+		        console.log(JSON.stringify(supplier_calendar.biz_list)+'   --------set_chahevalue--add------');
+			}
+
+			//从缓存删除价格和库存
+			function del_chahevalue(day){
+				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
+				ls=supplier_calendar.biz_list;
+				for(var i=0;i<ls.length;i++){
+					if(cur_time==ls[i].vTxt){
+						if(ls[i].state=='update'||ls[i].state==''){
+							ls[i].state='del';
+						}else if(ls[i].state=='add'){
+	          				ls.remove(i);
+						}
+					}
+				}
+		        console.log(JSON.stringify(supplier_calendar.biz_list)+'   -------del_chahevalue----------');
 			}
 
 			//设置日期的价格和库存
@@ -355,6 +418,7 @@ define(function (require, exports, module) {
 				if($dtbx.length>0){
 					$dtbx.filter(function(){
 						$(this).trigger('click').find('.tipvl').remove();
+						del_chahevalue($(this).parent().find('font').html());
 					});
 				}else
 					$public.dialog.msg('请选择要清除的日期','error');
@@ -396,6 +460,7 @@ define(function (require, exports, module) {
 						$(this).find('label').css('color','#666');
 					}
       			});
+      			if(!isCtrl) empty_ckbox={};
 			}
 			window.document.onkeydown = function (evt){
 				evt = evt || window.event || arguments.callee.caller.arguments[0];
