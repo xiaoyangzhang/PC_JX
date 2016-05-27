@@ -149,7 +149,6 @@ define(function (require, exports, module) {
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
 
-				alert(n_height/2);
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{

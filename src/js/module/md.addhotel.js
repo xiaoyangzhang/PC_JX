@@ -15,7 +15,8 @@ define(function (require, exports, module) {
 			eredarli:'.eredar-info li',
 			eredarpanel:'.eredar-right .panel',
 			searchotel:'.choicehotel',
-			searchbox:'.searchbox'
+			searchbox:'.searchbox',
+			hotelist:'.hotelist'
 		},
 		init:function(){
 			var _self=this;
@@ -27,33 +28,31 @@ define(function (require, exports, module) {
 				$(this).find('img').attr('src',static_source+'img/droptip_down.jpg');
 				$public.stopBubble(ev);
 			});
+
 			$(_self.config.radiobarlabel).on('click',function(ev){
 				$public.stopBubble(ev);
 			});
 
 			$(_self.config.searchotel).on('click',function(ev){
-					var $scbx=$(_self.config.searchbox);
-					$scbx.children('div').remove();
-					$scbx.append('').show();
-					$public.dialog.content(968,'auto','选择景区',$scbx,function(){
-						alert();
-					},function(){
-						$('.container .list').height($('.container').height()-120);
-					});
+				var $searchbox=$(_self.config.searchbox),
+				$htlst=$searchbox.find(_self.config.hotelist);
+				$htlst.empty();
+				$public.dialog.content(968,'auto','选择景区',$searchbox.show(),function(){
+					alert();
+				},function(){
+					$htlst.height($('.container').height()-120);
+					$('.load_list').show();
+				});
+				console.log($('.container').html());
 				$.get($public.urlpath.searchotel,{
 					name:'',
 					locationProvinceId:'',
 					locationCityId:'',
 					locationTownId:''
 				},function(data){
-					var $scbx=$(_self.config.searchbox);
-					$scbx.children('div').remove();
-					$scbx.append(data).show();
-					$public.dialog.content(968,'auto','选择景区',$scbx,function(){
-						alert();
-					},function(){
-						$('.container .list').height($('.container').height()-120);
-					});
+					$htlst.append(data);
+					$('.load_list').show();
+					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
 				});
 				$public.stopBubble(ev);
 			});

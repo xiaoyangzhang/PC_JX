@@ -76,7 +76,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
   -moz-transition:all .6s;
   -o-transition:all .6s;
   -ms-transition:all .6s;}
-.dialog .content-box .container{padding:10px;}
+.dialog .content-box .container{padding:10px;position: relative;}
 .dialog .content-box .close-tip i:hover{transform: rotate(180deg);}
 .dialog .content-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;}
 .dialog .content-box .close-tip h2{margin-bottom:-1px;width:82px;text-align:center;color:#ffaf00;font-size:20px;
