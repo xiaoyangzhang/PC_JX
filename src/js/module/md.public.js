@@ -2,7 +2,19 @@ define(function (require, exports, module) {
 	require("json"),
 	$urlpath=require("urlpath"),
 	$public = function () {
-		this.init.apply(this, arguments);
+		Array.prototype.remove=function(dx) 
+		{ 
+		    if(isNaN(dx)||dx>this.length){return false;} 
+		    for(var i=0,n=0;i<this.length;i++) 
+		    { 
+		        if(this[i]!=this[dx]) 
+		        { 
+		            this[n++]=this[i] 
+		        } 
+		    } 
+		    this.length-=1;
+		    return this;
+		} 
 		String.prototype.Trim = function()  
 		{  
 			return this.replace(/(^\s*)|(\s*$)/g, "");  
@@ -15,6 +27,7 @@ define(function (require, exports, module) {
 		{  
 			return this.replace(/(\s*$)/g, "");  
 		}
+		this.init.apply(this, arguments);
 	},
 	fileuploadURL=$urlpath.fileuploadURL,
 	site_path=$urlpath.site_path,
@@ -78,7 +91,8 @@ define(function (require, exports, module) {
 		urlpath:{
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
-			updatepwd:site_path+'/account/modifyPassword'
+			updatepwd:site_path+'/account/modifyPassword',
+			searchotel:site_path+'/hotel/queryHotelManageList'
 		},
 		timer:null,
 		dialog:{
@@ -86,8 +100,9 @@ define(function (require, exports, module) {
 				var _self=this;
 				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
-					$('.bgmeng').on('click',function(){
+					$('.bgmeng').on('click',function(ev){
 						_self.box.hide();
+						$public.stopBubble(ev);
 					});
 					_self.box=$('.dialog');
 				}
@@ -95,8 +110,9 @@ define(function (require, exports, module) {
 			closebox:function(){
 				var _self=this;
 				_self.box.hide();
-				$('.bgmeng').off().on('click',function(){
+				$('.bgmeng').off().on('click',function(ev){
 					_self.box.hide();
+					$public.stopBubble(ev);
 				});
 			},
 			waiting:function(){
@@ -132,6 +148,8 @@ define(function (require, exports, module) {
 				if(!_self.box) _self.initbox();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
+
+				alert(n_height/2);
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{
@@ -141,11 +159,13 @@ define(function (require, exports, module) {
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
 					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
 					$('.container').height(n_height-125).append(html_content);
-					$('.ok').off().on('click',function(){
+					$('.ok').off().on('click',function(ev){
 						callback();
+						$public.stopBubble(ev);
 					});
-					$('.cancel,.close-tip').off().on('click',function(){
+					$('.cancel,.close-tip').off().on('click',function(ev){
 						_self.box.hide();
+						$public.stopBubble(ev);
 					});
 				}
 				init_callback();

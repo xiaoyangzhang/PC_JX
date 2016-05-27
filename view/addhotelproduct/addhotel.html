@@ -90,7 +90,7 @@
 							<label class="smtt">地址：</label><label class="address">北京市海淀区中关村东路1号院</label>
 							|<label class="smtt">电话：</label><label class="tel">010-83122549</label>
 						</span>
-						<button class="choicehotel">查询酒店</button>
+						<a class="choicehotel">查询酒店</a>
 					</p>
 					<div>
 						<span class="nm"><span class="bred">*</span><label>酒店信息：</label></span>
@@ -256,7 +256,7 @@
 						</span>
 					</div>
 					<div class="savenext">
-						<button>保存并下一步</button>
+						<a>保存并下一步</a>
 					</div>
 				</div>
 			</div>
@@ -336,8 +336,8 @@
 						</table>
 					</form>
 					<div class="btngroup">
-						<button>返回上一页</button>
-						<button>保存并下一步</button>
+						<a>返回上一页</a>
+						<a>保存并下一步</a>
 					</div>
 				</div>
 			</div>
@@ -348,8 +348,8 @@
 							<td class="tdyears clearfix" colspan="7">
 								<i class="fl prev"></i>
 								<!-- <select id="SY"></select> -->
-								<label id="SY"></label>
 								<i class="fr next"></i>
+								<label id="SY"></label>
 							</td>
 						</tr>
 						<tr>
@@ -382,13 +382,18 @@
 					</table>
 					<div class="setvalue fr">
 						<h2>价格设置</h2>
-						<div><label class="bred">*</label><label>价格：</label><input type="text"></div>
-						<div><label class="bred">*</label><label>价格：</label><input type="text"></div>
+						<div><label class="bred">*</label><label>价格：</label><input type="text" class="price" maxlength="9"></div>
+						<div><label class="bred">*</label><label>库存：</label><input type="text" class="stock" maxlength="9"></div>
 						<div class="btn">
-							<button>确定</button>
-							<button>全部清除</button>
+							<a class="setvl">确定</a>
+							<a class="clearvl">全部清除</a>
 						</div>
 					</div>
+				</div>
+				<label class="bred ml30">*</label><label class="gray9">按住Ctrl键，可实现多选日期。</label>
+				<div class="allsave">
+					<a>返回上一页</a>
+					<a>全部提交</a>
 				</div>
 			</div>
 		</div>
