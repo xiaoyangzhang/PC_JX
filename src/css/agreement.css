@@ -1,0 +1,25 @@
+/***************************入驻审核流程***************************/
+.ag-content{padding-left:72px;padding-right:72px;padding-bottom:27px;border-bottom:1px solid #ddd;margin-left:auto;margin-right:auto;width:996px;}
+.agreement-box{border:1px solid #ddd;background: #fff;overflow: hidden;margin-bottom:30px;min-height:600px;}
+.agreement-box .tit{height:44px;line-height: 40px;padding-left:30px;background: #f7f7f7;border-top:1px solid #ddd;color:#222;}
+.agreement-box .titbox{width:1140px;margin:auto;padding-bottom:45px;}
+.agreement-box h2{margin:auto;text-align: center;font-size:20px;color:#333;padding:23px;}
+.agreement-box h3{font-size:14px;color:#333;padding-top:30px;line-height: 24px;}
+.agreement-box p{font-size:14px;color:#666;line-height: 24px;}
+.agreement-box .progress{width:845px;margin:45px auto;}
+.agreement-box .progress .step{float:left;height:8px;width:169px;background: #dfdfdf;position: relative;}
+.agreement-box .progress .step div{position:absolute;left: 63px;top:-15px; line-height: 36px;font-size:20px; text-align: center;color:#fff;
+	width:37px;height:37px;background: url('../../img/spripte.png') no-repeat 0 0;}
+.agreement-box .progress .step label{display: block;text-align: center;margin-top:28px;color: #999999;}
+.agreement-box .progress .step-on{background: #ed6c44;}
+.agreement-box .progress .step-on div{background: url('../../img/spripte.png') no-repeat -37px 0;}
+.agreement-box .progress .step-on label{display: block;color:#ed6c44;}
+.agreement-box .progress .step-fl{border-top-left-radius: 6px;border-bottom-left-radius: 6px;}
+.agreement-box .progress .ya{border-top-right-radius: 6px;border-bottom-right-radius: 6px;}
+
+/***************************入驻签署协议***************************/
+.line-bottom{width:1140px;height:1px;border-top:1px solid #dddddd;margin:38px auto 0;}
+.settled{margin:30px 0 30px;}
+.settled a{width:200px;height:36px;background:#ed6c44;text-align: center;line-height: 36px;margin:0 auto;display: block;font-size:16px;color:#fff;}
+
+

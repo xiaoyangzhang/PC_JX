@@ -24,7 +24,7 @@ define(function (require, exports, module) {
 			}
 			else{
 				$editer.distanceFun();
-			}
+			},
 		 	
 			var validoptions={
 					tiptype:3,

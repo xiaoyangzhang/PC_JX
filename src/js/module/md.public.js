@@ -2,7 +2,19 @@ define(function (require, exports, module) {
 	require("json"),
 	$urlpath=require("urlpath"),
 	$public = function () {
-		this.init.apply(this, arguments);
+		Array.prototype.remove=function(dx) 
+		{ 
+		    if(isNaN(dx)||dx>this.length){return false;} 
+		    for(var i=0,n=0;i<this.length;i++) 
+		    { 
+		        if(this[i]!=this[dx]) 
+		        { 
+		            this[n++]=this[i] 
+		        } 
+		    } 
+		    this.length-=1;
+		    return this;
+		} 
 		String.prototype.Trim = function()  
 		{  
 			return this.replace(/(^\s*)|(\s*$)/g, "");  
@@ -15,6 +27,7 @@ define(function (require, exports, module) {
 		{  
 			return this.replace(/(\s*$)/g, "");  
 		}
+		this.init.apply(this, arguments);
 	},
 	fileuploadURL=$urlpath.fileuploadURL,
 	site_path=$urlpath.site_path,
@@ -78,7 +91,8 @@ define(function (require, exports, module) {
 		urlpath:{
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
-			updatepwd:site_path+'/account/modifyPassword'
+			updatepwd:site_path+'/account/modifyPassword',
+			searchotel:site_path+'/hotel/queryHotelManageList'
 		},
 		timer:null,
 		dialog:{
@@ -134,6 +148,7 @@ define(function (require, exports, module) {
 				if(!_self.box) _self.initbox();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
+
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{
