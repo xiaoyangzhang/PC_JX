@@ -36,13 +36,11 @@ define(function (require, exports, module) {
 				},rule=[
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
-			$(".searchBtn").on("click",function(){
-
-			});
+//			$(".searchBtn").on("click",function(){});
 			/* 清除 */
-			$(".delBtn").on("click",function(){
-				$(".reviewform").resetForm();
-			});
+//			$(".delBtn").on("click",function(){
+//				$(".reviewform").resetForm();
+//			});
 			
 			/* 图片点击查看大图 */
 			$self.showImgFun();
