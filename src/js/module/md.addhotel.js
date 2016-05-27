@@ -16,7 +16,9 @@ define(function (require, exports, module) {
 			eredarpanel:'.eredar-right .panel',
 			searchotel:'.choicehotel',
 			searchbox:'.searchbox',
-			hotelist:'.hotelist'
+			hotelist:'.hotelist',
+			loadlist:'.load_list',
+			searchbtn:'.search-btn'
 		},
 		init:function(){
 			var _self=this;
@@ -36,24 +38,23 @@ define(function (require, exports, module) {
 			$(_self.config.searchotel).on('click',function(ev){
 				var $searchbox=$(_self.config.searchbox),
 				$htlst=$searchbox.find(_self.config.hotelist);
-				$htlst.empty();
 				$public.dialog.content(968,'auto','选择景区',$searchbox.show(),function(){
-					alert();
+					var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
+					htname=ckid.closest('td').next().text();
+					if(htlid){
+						$('input[name="hotelId"]').val(htlid);
+						$('input[name="name"]').val(htname);
+						$('#lbhotelname').text(htname);
+						$public.dialog.closebox();
+					}else{
+						alert('请选择酒店！');
+					}
+					return false;
 				},function(){
 					$htlst.height($('.container').height()-120);
-					$('.load_list').show();
+					$(_self.config.loadlist).show();
 				});
-				console.log($('.container').html());
-				$.get($public.urlpath.searchotel,{
-					name:'',
-					locationProvinceId:'',
-					locationCityId:'',
-					locationTownId:''
-				},function(data){
-					$htlst.append(data);
-					$('.load_list').show();
-					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
-				});
+				gethotelist();
 				$public.stopBubble(ev);
 			});
 
@@ -66,6 +67,33 @@ define(function (require, exports, module) {
 				$($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
 				$public.stopBubble(ev);
 			});
+
+			$(_self.config.searchbtn).on('click',function(){
+				$(_self.config.loadlist).show();
+				gethotelist();
+			});
+
+			$('.allsub').on('click',function(ev){
+				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
+				if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
+				console.log(JSON.stringify(prarm));
+			});
+
+			function gethotelist(){
+				var $searchbox=$(_self.config.searchbox),
+				$htlst=$searchbox.find(_self.config.hotelist);
+				$htlst.empty();
+				$.get($public.urlpath.searchotel,{
+					name:$('#hotelname').val(),
+					locationProvinceId:$('input[name="province"]').val(),
+					locationCityId:$('input[name="city"]').val(),
+					locationTownId:$('input[name="area"]').val()
+				},function(data){ 
+					$htlst.append(data);
+					$(_self.config.loadlist).hide();
+					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
+				});
+			}
 
 
 
@@ -113,7 +141,8 @@ define(function (require, exports, module) {
 			0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,
 			0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0);
 
-		    var supplier_calendar={
+
+		    var supplierCalendar={
 		        "seller_id":"2088102122524333",
 		        "hotel_id":'',
 		        "sku_flag":$(".sku_flag").val(),
@@ -265,7 +294,7 @@ define(function (require, exports, module) {
 			    	$('.datepicker tr.last').show();
 
 			    //渲染已设置的日期
-		    	dateRender(supplier_calendar);
+		    	dateRender(supplierCalendar);
 
 			 }
 
@@ -282,8 +311,8 @@ define(function (require, exports, module) {
 			}
 
 			//渲染已设置的日期
-			function dateRender(supplier_calendar){
-				var ls=supplier_calendar.biz_list,days=$('.dtbx font');
+			function dateRender(supplierCalendar){
+				var ls=supplierCalendar.biz_list,days=$('.dtbx font');
 				$('.tipvl').remove();
 				for(var i=0;i<ls.length;i++){
 					days.filter(function(){
@@ -304,13 +333,13 @@ define(function (require, exports, module) {
 			//价格和库存写入缓存
 			function set_chahevalue(stock,price,day){
 				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
-				ls=supplier_calendar.biz_list;
+				ls=supplierCalendar.biz_list;
 				for(var i=0;i<ls.length;i++){
 					if(cur_time==ls[i].vTxt&&ls[i].state!='del'){
 						if(ls[i].sku_id!=0) ls[i].state='update';
 						ls[i].stock_num=stock;
 						ls[i].price=price;
-		        		console.log(JSON.stringify(supplier_calendar.biz_list)+'   ---------set_chahevalue--update------');
+		        		console.log(JSON.stringify(supplierCalendar.biz_list)+'   ---------set_chahevalue--update------');
 						return;
 					}
 				}
@@ -321,13 +350,13 @@ define(function (require, exports, module) {
 			            "price":price,
 			            "vTxt":cur_time
 						});
-		        console.log(JSON.stringify(supplier_calendar.biz_list)+'   --------set_chahevalue--add------');
+		        console.log(JSON.stringify(supplierCalendar.biz_list)+'   --------set_chahevalue--add------');
 			}
 
 			//从缓存删除价格和库存
 			function del_chahevalue(day){
 				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
-				ls=supplier_calendar.biz_list;
+				ls=supplierCalendar.biz_list;
 				for(var i=0;i<ls.length;i++){
 					if(cur_time==ls[i].vTxt){
 						if(ls[i].state=='update'||ls[i].state==''){
@@ -337,7 +366,7 @@ define(function (require, exports, module) {
 						}
 					}
 				}
-		        console.log(JSON.stringify(supplier_calendar.biz_list)+'   -------del_chahevalue----------');
+		        console.log(JSON.stringify(supplierCalendar.biz_list)+'   -------del_chahevalue----------');
 			}
 
 			//设置日期的价格和库存
@@ -381,6 +410,9 @@ define(function (require, exports, module) {
 			    SM.find('li:eq('+tM+')').addClass('on');
 			    drawCld(tY,tM);
 
+
+				$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
+
 			 }
 
 			 // var curt=new Date(2016,5,22);
@@ -407,6 +439,7 @@ define(function (require, exports, module) {
 						set_tdvalue($(this),price,stock);
 						set_chahevalue(stock,price,$(this).parent().find('font').html());
 					});
+					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 				}else
 					$public.dialog.msg('请选择要设置的日期','error');
 			});
@@ -416,9 +449,11 @@ define(function (require, exports, module) {
 				var temp='',$dtbx=$('.day .choiced .dtbx');
 				if($dtbx.length>0){
 					$dtbx.filter(function(){
-						$(this).trigger('click').find('.tipvl').remove();
+						$(this).find('.tipvl').remove();
 						del_chahevalue($(this).parent().find('font').html());
 					});
+					$(document).trigger('click');
+					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 				}else
 					$public.dialog.msg('请选择要清除的日期','error');
 			});

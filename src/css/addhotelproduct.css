@@ -47,6 +47,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
 .searchbox .inputxt{width:188px;}
 .searchbox .tb-txt{text-align: right;width:75px;}
+.searchbox .load_list{margin:50px 0;}
 
 .hotelist{height: 354px;margin-top:10px; overflow: auto;}
 .hotelist table{width:100%;overflow: auto;}
