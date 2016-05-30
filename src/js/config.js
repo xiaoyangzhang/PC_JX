@@ -39,9 +39,9 @@ seajs.config({
 		"password":"module/md.password.js",
 		"merchant":"module/md.merchant.js",	
 		"passwordSucc":"module/md.passwordsucc.js"	,
-		"review":"module/md.review.js"	
-			
-			
+		"review":"module/md.review.js",	
+		"businessenter":"module/md.businessenter.js",	
+		"merchantinfor":"module/md.merchantinfor.js"	
     },
     preload: ["jquery","underscore"],/*配置提取预加载模块，全局模块，所以页面都需要使用的模块*/
     debug: true // 调试模式

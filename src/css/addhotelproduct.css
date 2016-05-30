@@ -11,12 +11,12 @@
 input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo{padding:23px 40px;}
 .hotelinfo p{margin-bottom:16px;}
-.hotelinfo button,.hotelinfo span,.hotelinfo label{display: inline-block;vertical-align: middle;height: 32px;}
+.hotelinfo a,.hotelinfo span,.hotelinfo label{display: inline-block;vertical-align: middle;height: 32px;}
 .hotelinfo i{color:red;}
 .hotelinfo .nm{width:95px;text-align: right;vertical-align: top;}
 .hotelinfo .nm span{line-height: 38px;}
 .hotelinfo .nm label{font-size:14px;color:#333;line-height: 32px;}
-.hotelinfo button{width:88px;border:1px solid #ed6c44;background: #fff;color:#ed6c44;line-height: 30px;}
+.hotelinfo a{width:88px;border:1px solid #ed6c44;background: #fff;color:#ed6c44;line-height: 30px;text-align: center;}
 .hotelinfo .info-bar{width:598px;border:1px solid #ccc;margin:0 10px;}
 .hotelinfo .info-bar label{line-height: 32px;color:#333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 .hotelinfo .info-bar .htn{width:137px;line-height: 32px;border-right:1px solid #ccc;text-align: center;color:#ed6c44;background: #eee;}
@@ -47,6 +47,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
 .searchbox .inputxt{width:188px;}
 .searchbox .tb-txt{text-align: right;width:75px;}
+.searchbox .load_list{margin:50px 0;}
 
 .hotelist{height: 354px;margin-top:10px; overflow: auto;}
 .hotelist table{width:100%;overflow: auto;}
@@ -54,6 +55,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelist table td{height:60px;}
 .hotelist table td a{width:74px;height: 28px;line-height: 28px;display: block;border:1px solid #ed6c44;color:#ed6c44;margin:auto;}
 
+.pagination {position: absolute;bottom:0;}
 .pagination .pager{font-size:0;margin:20px 0;}
 .pagination .disabled a{color:#ccc;}
 .pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
@@ -77,27 +79,31 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
 .savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
-.savenext button,.btngroup button{height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
+.allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
+.savenext a,.btngroup a,.allsave a{display:inline-block;text-align: center; height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 
 
 /**********************************************价格日历**********************************************/
-.datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 60px;}
+.datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 5px;}
 .datepicker table {width:658px;}
-.datepicker table td {border:1px solid #ddd;width:92px;height:68px;text-align: center;position:relative;}
-.datepicker table td font{font-weight: bold;display: inline-block;left:10px;top:10px;position: absolute;}
-.datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;}
+.datepicker table td {border:1px solid #ddd;width:92px;height:68px;}
+.datepicker table td div.dtbx {width:92px;height:68px;text-align: center;position:relative;}
+.datepicker table td div.dtbx font{font-weight: bold;display: inline-block;left:10px;top:10px;position: absolute;}
+.datepicker table td div.dtbx .tipvl{text-align: right;padding-top:25px;padding-right:4px;}
+.datepicker table td div.dtbx .tipvl label{font-size:12px;line-height: 16px;}
+.datepicker .tdyears {text-align: center;padding:0;height:40px;border-top:3px solid #ffaf00;padding:0 20px;width:648px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
 .datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
-.datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:10px;cursor: pointer;}
+.datepicker .tdyears .prev,.datepicker .tdyears .next{display:block;width:13px;height:13px;margin-top:3px;cursor: pointer;}
 .datepicker .tdmonth {padding:0;text-align: center;height: 38px;background: #f9f9f9;}
-.datepicker .tdmonth ul{font-size:0;}
+.datepicker .tdmonth ul{font-size:0;width:656px;}
 .datepicker .tdmonth li{display:inline-block;*display:inline;*zoom:1;height: 16px;width:35px;text-align:center;cursor: pointer;margin:0 8px;}
 .datepicker .tdmonth li.on{color:#ffaf00;}
 .datepicker .tdweek td {text-align: center;padding:0;height: 48px;}
-.datepicker .setvalue{width:234px;border-top:3px solid #ffaf00;}
+.datepicker .setvalue{width:234px;border-top:3px solid #ffaf00;padding-bottom:30px;}
 .datepicker .setvalue h2{height: 40px;border-bottom:1px solid #ddd;background: #fff9ec;color:#ffaf00;font-size:16px;line-height: 40px;padding-left:15px;}
 .datepicker .setvalue div{padding-top:20px;}
-.datepicker .setvalue .btn button{width:98px;height: 28px;line-height: 26px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
+.datepicker .setvalue .btn a{display: inline-block;text-align: center; width:98px;height: 28px; line-height: 28px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
 .datepicker .nullgray{background: #f9f9f9;cursor: initial !important;}
 
  
