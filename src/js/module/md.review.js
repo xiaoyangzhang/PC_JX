@@ -58,8 +58,9 @@ define(function (require, exports, module) {
 		},
 		showImgFun : function(){
 			var index = $(this).index();
-			var listli = $(".upload ul").find("li");
+			var listli = $(".upload" + index).find("li");
 			listli.click(function(){
+				alert("an");
 				listli.css("borderColor","#f2f2f2");
 				$(".upload").find("b").css("opacity","0");
 				if(!this.is_select){
