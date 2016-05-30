@@ -36,7 +36,6 @@ define(function (require, exports, module) {
 				},rule=[
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
-<<<<<<< HEAD
 			$(".searchBtn").on("click",function(){
 				$.ajax({
 					type:'POST',
@@ -48,9 +47,7 @@ define(function (require, exports, module) {
 					}
 				});
 			});
-=======
 //			$(".searchBtn").on("click",function(){});
->>>>>>> 57432ee92d452250669dc3ce87bc889da32beffd
 			/* 清除 */
 //			$(".delBtn").on("click",function(){
 //				$(".reviewform").resetForm();
