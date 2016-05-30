@@ -59,39 +59,22 @@ define(function (require, exports, module) {
 		showImgFun : function(){
 			 var listli = $(".upload ul").find("li");
 			listli.click(function(){
-					listli.css("borderColor","#f2f2f2");
-					$(".upload").find("b").css("opacity","0");
-					if(!this.is_select){
-						$(this).css("borderColor","#ed6c44");
-						$(this).closest(".inforight").find(".showImg img").attr("src",$(this).find('img').get(0).src);
-						$(this).find("b").css("opacity","1");
-						$(this).closest(".inforight").find(".showImg").show();
-						listli.filter(function(){this.is_select=false;});
-						this.is_select=true;
-					}else{
-						$(this).css("borderColor","#f2f2f2");
-						$(this).find("b").css("opacity","0");
-						$(this).closest(".inforight").find(".showImg").hide();
-						this.is_select=false;
-					}
-				});
-			/* .click(function(){
 				listli.css("borderColor","#f2f2f2");
 				$(".upload").find("b").css("opacity","0");
 				if(!this.is_select){
 					$(this).css("borderColor","#ed6c44");
-					$(".showImg img").attr("src",$(this).find('img').get(0).src);
+					$(this).closest(".inforight").find(".showImg img").attr("src",$(this).find('img').get(0).src);
 					$(this).find("b").css("opacity","1");
-					$(".showImg").show();
+					$(this).closest(".inforight").find(".showImg").show();
 					listli.filter(function(){this.is_select=false;});
 					this.is_select=true;
 				}else{
 					$(this).css("borderColor","#f2f2f2");
 					$(this).find("b").css("opacity","0");
-					$(".showImg").hide();
+					$(this).closest(".inforight").find(".showImg").hide();
 					this.is_select=false;
 				}
-			}); */
+			});
 		}
 	}
 	module.exports = new $test();
