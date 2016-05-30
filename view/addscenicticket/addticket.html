@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>添加景区</title>
-<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
-<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
-<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/addhotelproduct.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Dev/PC_JX/src/css/base.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Dev/PC_JX/src/css/common.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Dev/PC_JX/src/css/addhotelproduct.css">
 </head>
 <body>
 	<div id="jiuxColor" class="jiuw2">
@@ -81,22 +81,58 @@
 				</ul>
 			</div>
 			<div class="panel on">
-				<div class="hotelinfo">
+				<div class="hotelinfo ticketinfo">
 					<p>
-						<span class="nm"><span class="bred">*</span><label>酒店信息：</label></span>
+						<span class="nm"><span class="bred">*</span><label>景区信息：</label></span>
 						<span class="info-bar">
 							<label class="htn">如家酒店望京店</label>
 							<label class="smtt">地址：</label><label class="address">北京市海淀区中关村东路1号院</label>
 							|<label class="smtt">电话：</label><label class="tel">010-83122549</label>
 						</span>
-						<a class="choicehotel">查询酒店</a>
+						<a class="choicehotel">查询景区</a>
 					</p>
-					<div>
-					</div>
-					<div class="savenext">
-						<a>保存并下一步</a>
-					</div>
 				</div>
+				<div class="baseinfo ticketbaseinfo">
+					<form>
+						<table>
+							<tr>
+								<td class="coltxt">商品名称：</td>
+								<td><label>景区门票</label></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>门票类型：</td>
+								<td>
+									<label class="radio"><input type="radio" name="tickettype">大门票</label>
+									<label class="radio"><input type="radio" name="tickettype">联票</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>商品标题：</td>
+								<td><input type="text" class="inputxt" maxlength="38" name=""><span class="mark"><label>1</label>/38字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>价格：</td>
+								<td><input type="text" class="inputxt" name=""></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>门市价：</td>
+								<td><input type="text" class="inputxt" name=""></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>提前预定天数：</td>
+								<td><input type="text" class="inputxt" maxlength="10" name=""></td>
+							</tr>
+							<tr>
+								<td class="coltxt">票型说明：</td>
+								<td><input type="text" class="inputxt" name=""></td>
+							</tr>
+							
+						</table>
+					</form>
+				</div>
+				<div class="savenext">
+					<a>保存并下一步</a>
+				</div>				
 			</div>
 			<div class="panel">
 				<div id="CLD" class="clearfix datepicker">

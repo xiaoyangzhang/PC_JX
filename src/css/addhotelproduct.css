@@ -82,6 +82,9 @@ input[type=text]{height: 32px;line-height: 32px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
 .savenext a,.btngroup a,.allsave a{display:inline-block;text-align: center; height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 
+/**********************************************门票基本信息**********************************************/
+.ticketinfo{padding-bottom: 0;}
+.ticketbaseinfo table{margin-top: 0;}
 
 /**********************************************价格日历**********************************************/
 .datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 5px;}
