@@ -47,10 +47,13 @@ define(function (require, exports, module) {
 					}
 				});
 			});
-//			$(".searchBtn").on("click",function(){});
-			/* 清除 */
-			$(".delBtn").on("click",function(){
-				$(".reviewform").resetForm();
+			//清空
+			$(".delBtn").click(function() {
+			   $("input[name='orderNO']").val("");
+			   $("input[name='nickName']").val("");
+			   $("input[name='itemNo']").val("");
+			   $("input[name='beginDate']").val("");
+			   $("input[name='endDate']").val("");
 			});
 			
 			/* 图片点击查看大图 */
