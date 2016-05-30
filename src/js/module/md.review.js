@@ -26,7 +26,7 @@ define(function (require, exports, module) {
 				$editer.distanceFun();
 			};
 		 	
-			/* var validoptions={
+			var validoptions={
 					tiptype:3,
 					label:".label",
 					showAllError:true,
@@ -34,7 +34,7 @@ define(function (require, exports, module) {
 					},
 					ajaxPost:true
 				},rule=[
-				],validfm=$(".reviewform").Validform(validoptions).addRule(rule); */
+				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
 				$.ajax({
@@ -50,14 +50,16 @@ define(function (require, exports, module) {
 //			$(".searchBtn").on("click",function(){});
 			/* 清除 */
 			$(".delBtn").on("click",function(){
-				/* $(".reviewform").resetForm(); */
+				$(".reviewform").resetForm();
 			});
 			
 			/* 图片点击查看大图 */
 			$self.showImgFun();
 		},
 		showImgFun : function(){
-			var listli = $(".upload ul").find("li");
+			var index = $(this).index();
+			/* var listli = $(".upload ul").find("li"); */
+			var listli = $(".upload" + index+1).children("ul").find("li");
 			listli.click(function(){
 				listli.css("borderColor","#f2f2f2");
 				$(".upload").find("b").css("opacity","0");
