@@ -59,14 +59,14 @@ define(function (require, exports, module) {
 		showImgFun : function(){
 			 var listli = $(".upload ul").find("li");
 			listli.click(function(){
-					$(this).css("borderColor","#f2f2f2");
-					$(this).find("b").css("opacity","0");
+					listli.css("borderColor","#f2f2f2");
+					$(".upload").find("b").css("opacity","0");
 					if(!this.is_select){
 						$(this).css("borderColor","#ed6c44");
 						$(this).closest(".inforight").find(".showImg img").attr("src",$(this).find('img').get(0).src);
 						$(this).find("b").css("opacity","1");
 						$(this).closest(".inforight").find(".showImg").show();
-						$(this).filter(function(){this.is_select=false;});
+						listli.filter(function(){this.is_select=false;});
 						this.is_select=true;
 					}else{
 						$(this).css("borderColor","#f2f2f2");
