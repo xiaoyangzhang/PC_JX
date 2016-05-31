@@ -18,8 +18,7 @@ define(function (require, exports, module) {
 		      changeMonth: true,
 		      changeYear: true
 		    });
-			$self.distanceFun();
-		 	
+		 	$(".eredar-right").height($(".eredar-left").height());
 			var validoptions={
 					tiptype:3,
 					label:".label",
@@ -31,7 +30,6 @@ define(function (require, exports, module) {
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
-				$self.distanceFun();
 				$.ajax({
 					type:'POST',
 					url:""+$("#subpath").val(),
@@ -71,15 +69,6 @@ define(function (require, exports, module) {
 					this.is_select=false;
 				}
 			});
-		},
-		distanceFun :function(){
-			/* 根据页面高度判断 */
-			if($(".eredar-right").height() > $(".eredar-left").height()){
-				$public.depath();
-			}
-			else{
-				$(".eredar-right").height($(".eredar-left").height());
-			};
 		}
 	}
 	module.exports = new $test();
