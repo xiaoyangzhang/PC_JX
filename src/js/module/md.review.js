@@ -18,7 +18,8 @@ define(function (require, exports, module) {
 		      changeMonth: true,
 		      changeYear: true
 		    });
-		 	$(".eredar-right").height($(".eredar-left").height());
+			$self.distanceFun();
+		 	
 			var validoptions={
 					tiptype:3,
 					label:".label",
@@ -69,6 +70,15 @@ define(function (require, exports, module) {
 					this.is_select=false;
 				}
 			});
+		},
+		distanceFun :function(){
+			/* 根据页面高度判断 */
+			if($(".eredar-right").height() > $(".eredar-left").height()){
+				$public.depath();
+			}
+			else{
+				$editer.distanceFun();
+			};
 		}
 	}
 	module.exports = new $test();
