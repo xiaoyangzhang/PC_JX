@@ -74,11 +74,11 @@ define(function (require, exports, module) {
 		},
 		distanceFun :function(){
 			/* 根据页面高度判断 */
-			if($(".eredar-right").height() < $(".eredar-left").height()){
+			if($(".eredar-right").height() > $(".eredar-left").height()){
 				$public.depath();
 			}
 			else{
-				$editer.distanceFun();
+				$(".eredar-right").height($(".eredar-left").height());
 			};
 		}
 	}
