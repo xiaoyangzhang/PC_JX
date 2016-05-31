@@ -73,7 +73,6 @@ define(function (require, exports, module) {
 		  return s;  
 		},
 		isLogin :function(data){
-			/* console.log(data); */
 			if(!data instanceof Object)
 				data=JSON.parse(data);
 			if(data.errorCode==22000000)
