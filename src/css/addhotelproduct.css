@@ -86,7 +86,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .mark,.baseinfo .mark label{vertical-align: bottom;color:#999;}
 .baseinfo .mark{margin-left:10px;}
 .baseinfo .radio{margin-right:20px;cursor: pointer;}
-.baseinfo .checkbox{margin-right:20px;display: inline-block;width:125px;margin-bottom:20px;cursor: pointer;}
+.baseinfo .checkbox{margin-right:10px;display: inline-block;*display: inline;*zoom:1;width:145px;margin-bottom:20px;cursor: pointer;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
 .savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
