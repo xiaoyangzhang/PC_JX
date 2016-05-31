@@ -18,7 +18,10 @@ define(function (require, exports, module) {
 			searchbox:'.searchbox',
 			hotelist:'.hotelist',
 			loadlist:'.load_list',
-			searchbtn:'.search-btn'
+			searchbtn:'.search-btn',
+			btnOk:'.ok',
+			infoBar:'.info-bar',
+			infoBox:'.info-box'
 		},
 		init:function(){
 			var _self=this;
@@ -46,6 +49,7 @@ define(function (require, exports, module) {
 						$('input[name="name"]').val(htname);
 						$('#lbhotelname').text(htname);
 						$public.dialog.closebox();
+						selecthotel();
 					}else{
 						alert('请选择酒店！');
 					}
@@ -79,6 +83,18 @@ define(function (require, exports, module) {
 				console.log(JSON.stringify(prarm));
 			});
 
+			function selecthotel(){
+				var $tr = $('input[type="radio"]:checked').closest('tr');
+				var $infoBoxHtml = $(_self.config.infoBox);
+				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
+				$(_self.config.infoBar).find('.address').text($tr.find('.hotel-address').text());
+				$(_self.config.infoBar).find('.tel').text($tr.find('.hotel-tel').text());
+				$.get(site_path+'/hotel/queryRoomTypeListByData',{hotelId:$('input[type="radio"]:checked').val()},function (data) {
+					$infoBoxHtml.empty();
+					$infoBoxHtml.append(data);
+				});
+			};
+
 			function gethotelist(){
 				var $searchbox=$(_self.config.searchbox),
 				$htlst=$searchbox.find(_self.config.hotelist);
@@ -93,9 +109,9 @@ define(function (require, exports, module) {
 					$(_self.config.loadlist).hide();
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
 				});
-			}
+			};
 
-
+			
 
 
 

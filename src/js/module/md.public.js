@@ -93,6 +93,7 @@ define(function (require, exports, module) {
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
 			updatepwd:site_path+'/account/modifyPassword',
 			searchotel:site_path+'/hotel/queryHotelManageList'
+			//searchotelroom:site_path+'/hotel/queryRoomTypeListByData'
 		},
 		timer:null,
 		dialog:{

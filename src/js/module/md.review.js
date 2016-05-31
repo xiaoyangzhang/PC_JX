@@ -47,7 +47,6 @@ define(function (require, exports, module) {
 					}
 				});
 			});
-			//清空
 			$(".delBtn").click(function() {
 			   $("input[name='orderNO']").val("");
 			   $("input[name='nickName']").val("");
@@ -55,7 +54,6 @@ define(function (require, exports, module) {
 			   $("input[name='beginDate']").val("");
 			   $("input[name='endDate']").val("");
 			});
-			
 			/* 图片点击查看大图 */
 			$self.showImgFun();
 		},
