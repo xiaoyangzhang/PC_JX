@@ -83,6 +83,26 @@ define(function (require, exports, module) {
 				$(_self.config.loadlist).show();
 				gethotelist();
 			});
+			
+			
+			//返回上一页
+			$('.backprev').on('click',function(){
+				$('.eredar-info li.on').prev().trigger('click');
+				$public.stopBubble(ev);
+			});
+
+			//“选择酒店”保存并下一步
+			$('.save-to-baseinfo').on('click',function(){
+				$('.eredar-info li:eq(1)').trigger('click');
+				$public.stopBubble(ev);
+			});
+
+			//“基本信息”保存并下一步
+			$('.save-to-picker').on('click',function(){
+				$('.eredar-info li:eq(2)').trigger('click');
+				$public.stopBubble(ev);
+			});
+
 
 			$('.allsub').on('click',function(ev){
 				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
