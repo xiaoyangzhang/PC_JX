@@ -37,7 +37,7 @@ a { text-decoration: none; outline:none; cursor:pointer; blr:expression(this.onF
 .clearfix:after {display:block;overflow:hidden;clear:both;height:0;visibility:hidden;content:".";}
 
 /*颜色*/
-.bred { color:red;}
+.bred { color:red !important;}
 .red { color:#CE0000;}
 .blue { color:#2162B6;}
 .black { color:#000;}

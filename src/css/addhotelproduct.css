@@ -24,9 +24,10 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo .info-bar .address{width:228px;}
 .hotelinfo .info-bar .tel{width:118px;}
 
-.hotelinfo .info-box{width:568px;border:1px solid #ccc;padding:0 15px;margin:0 10px;display: inline-block;height: auto;}
-.hotelinfo .info-box ul{margin-bottom:-1px;}
-.hotelinfo .info-box .radio-bar{height: 47px;border-bottom:1px solid #ccc;padding:0 10px;cursor: pointer;}
+.hotelinfo .hotelcol{display: none;}
+.hotelinfo .info-box{width:568px;border:1px solid #ccc;padding:0 15px;padding-top:0;margin:0 10px;display: inline-block;height: auto;}
+.hotelinfo .info-box ul{margin-top:-1px;}
+.hotelinfo .info-box .radio-bar{height: 47px;border-top:1px solid #ccc;padding:0 10px;cursor: pointer;}
 .hotelinfo .info-box .radio-bar label{line-height: 47px;}
 .hotelinfo .info-box .radio-bar img{margin-top:18px;}
 .hotelinfo .info-box .bar-box {
@@ -36,7 +37,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 	-moz-transition: height 1s;
 	-webkit-transition: height 1s;
 	-o-transition: height 1s;}
-.hotelinfo .info-box .bar-box ul{padding-top:10px;}
+.hotelinfo .info-box .bar-box ul{padding:10px 0;}
 .hotelinfo .info-box .bar-box li{float: left;width:148px;padding-left:40px;}
 .hotelinfo .info-box .bar-box .img-group{width:590px;}
 .hotelinfo .info-box .bar-box .img-group img{margin-right:15px;}
@@ -47,6 +48,9 @@ input[type=text]{height: 32px;line-height: 32px;}
 .searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
 .searchbox .inputxt{width:188px;}
 .searchbox .tb-txt{text-align: right;width:75px;}
+.searchbox .load_list{margin:50px 0;width:24px;height:24px;}
+.load_room { display: none; text-align: center;}
+.load_room img{width:24px;height:24px;}
 
 .hotelist{height: 354px;margin-top:10px; overflow: auto;}
 .hotelist table{width:100%;overflow: auto;}
@@ -54,6 +58,15 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelist table td{height:60px;}
 .hotelist table td a{width:74px;height: 28px;line-height: 28px;display: block;border:1px solid #ed6c44;color:#ed6c44;margin:auto;}
 
+/**********************************************选择景区列表**********************************************/
+.sceniclist{height: 354px;margin-top:10px; overflow: auto;}
+.sceniclist table{width:100%;overflow: auto;}
+.sceniclist table th{height:34px;background: #f5f5f5;text-align: center;}
+.sceniclist table td{height:60px;}
+.sceniclist table td a{width:74px;height: 28px;line-height: 28px;display: block;border:1px solid #ed6c44;color:#ed6c44;margin:auto;}
+
+
+.pagination {position: absolute;bottom:0;}
 .pagination .pager{font-size:0;margin:20px 0;}
 .pagination .disabled a{color:#ccc;}
 .pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
@@ -80,6 +93,9 @@ input[type=text]{height: 32px;line-height: 32px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
 .savenext a,.btngroup a,.allsave a{display:inline-block;text-align: center; height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 
+/**********************************************门票基本信息**********************************************/
+.ticketinfo{padding-bottom: 0;}
+.ticketbaseinfo table{margin-top: 0;}
 
 /**********************************************价格日历**********************************************/
 .datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 5px;}

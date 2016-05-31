@@ -1,6 +1,5 @@
 define(function (require, exports, module) {
 	require("dropdownlist"),//下拉框组件
-	require("validform"),//验证组件
 	$public=require("public"),
 	$choicehotel = function () {
 		this.init.apply(this, arguments);
@@ -23,44 +22,22 @@ define(function (require, exports, module) {
 			btnOk:'.ok',
 			infoBar:'.info-bar',
 			infoBox:'.info-box',
-			inputGp:'input[name="gp"]'
+			inputGp:'input[name="gp"]',
+			searchscenic:'.choicescenic',
+			sceniclist:'.sceniclist'
 		},
 		init:function(){
 			var _self=this;
-
-
-	        var validoptions={
-					tiptype:3,
-					label:".label",
-					showAllError:true,
-					datatype:{
-						"*2-10" : /^[\w\W]{2,10}$/,
-						"n10-25" : /^\d{10,25}$/
-					},
-					ajaxPost:true
-				},rule=[{
-					ele:"input[type='text'],textarea",
-					datatype:"*",
-					nullmsg:"请填信息！"
-				},{
-					ele:"rt",
-					datatype:"*2-10",
-					nullmsg:"请填写姓名",
-					errormsg:"请填写2-10字以内的姓名"
-				}],validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
-
-			$('.inputxt,textarea').keyup(function(){
-				$(this).next('.mark').find('label').text($(this).val().length);
-			}).filter(function(){
-				$(this).next('.mark').find('label').text($(this).val().length);
-			});
-
 			$('#area').selectlist({width: 200});
 			$(document).on('click',_self.config.radiobar,function(ev){
 				$(_self.config.barbox).css('height','0'); 
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
-				$(this).next().css('height',($(_self.config.barboxul).outerHeight()+$(_self.config.barboxdiv).outerHeight()+15)+'px');
+				$(this).next().css('height',$(_self.config.barboxul).height()+$(_self.config.barboxdiv).height()+'px');
 				$(this).find('img').attr('src',static_source+'img/droptip_down.jpg');
+				$public.stopBubble(ev);
+			});
+
+			$(_self.config.radiobarlabel).on('click',function(ev){
 				$public.stopBubble(ev);
 			});
 
@@ -75,7 +52,7 @@ define(function (require, exports, module) {
 						$('input[name="name"]').val(htname);
 						$('#lbhotelname').text(htname);
 						$public.dialog.closebox();
-						gitroominfo();
+						selectHotel();
 					}else{
 						alert('请选择酒店！');
 					}
@@ -95,12 +72,6 @@ define(function (require, exports, module) {
 			$public.procityaredata('province','city','area',true);
 
 			$(_self.config.eredarli).on('click',function(ev){
-				// var cur_index=$('.eredar-info li.on').index();
-				// if(cur_index==0){
-
-				// }else if(cur_index==1){
-
-				// }
 				$(_self.config.eredarli).removeClass('on');
 				$(this).addClass('on');
 				$(_self.config.eredarpanel).hide();
@@ -115,35 +86,28 @@ define(function (require, exports, module) {
 			
 			
 			//返回上一页
-			$('.backprev').on('click',function(ev){
+			$('.backprev').on('click',function(){
 				$('.eredar-info li.on').prev().trigger('click');
 				$public.stopBubble(ev);
 			});
 
 			//“选择酒店”保存并下一步
-			$('.save-to-baseinfo').on('click',function(ev){
-				if(!allvalidation())
-					return;
+			$('.save-to-baseinfo').on('click',function(){
 				$('.eredar-info li:eq(1)').trigger('click');
 				$public.stopBubble(ev);
 			});
 
 			//“基本信息”保存并下一步
-			$('.save-to-picker').on('click',function(ev){
-				if(!allvalidation())
-					return;
+			$('.save-to-picker').on('click',function(){
 				$('.eredar-info li:eq(2)').trigger('click');
 				$public.stopBubble(ev);
 			});
 
 
 			$('.allsub').on('click',function(ev){
-				if(!allvalidation())
-					return;
 				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
-				console.log(JSON.stringify(prarm));
-				console.log(typeof prarm.storeLastTime);
-				if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
+				if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
+				//console.log(JSON.stringify(prarm));
 				var hotelMessageVO1 = {
 					hotelId : $('input[name="hotelId"]').val(),
 					name : $('input[name="name"]').val(),
@@ -151,36 +115,20 @@ define(function (require, exports, module) {
 					supplierCalendar : $('input[name="supplierCalendar"]').val()					
 				};
 				var hotelMessageVO = $.extend(hotelMessageVO1,prarm);
-				$.post($public.urlpath.addhotel,hotelMessageVO,function (data) {
-					console.log(typeof data);
-					console.log(JSON.stringify(data) +' ----------------------------------');
-					$public.dialog.msg('保存成功','success');
+				console.log(hotelMessageVO);
+				$.post(site_path+'/hotel/addHotelMessageVOByData',hotelMessageVO,function (data) {
+					//console.log(data);
+					alert("保存成功");
 				});
 				
 			});
-					
-			function allvalidation(){
-				if($('input[name="hotelId"]').val()==0){
-					$('.eredar-info li:eq(0)').trigger('click');
-					$public.dialog.msg('请选择酒店！','error');
-					$(document).scrollTop(0);
-					return false;
-				}else if($('input[name="roomId"]').val()==0){
-					$('.eredar-info li:eq(0)').trigger('click');
-					$public.dialog.msg('请选择房间！','error');
-					$(document).scrollTop(0);
-					return false;
-				}
-				return true;
-			}
 
-			//获取酒店列表
 			function gethotelist(){
 				var $searchbox=$(_self.config.searchbox),
 				$htlst=$searchbox.find(_self.config.hotelist);
 				$htlst.empty();
-				$.get($public.urlpath.gethotelist,{
-					name:$('#hotelname').val(),
+				$.get($public.urlpath.searchotel,{
+					name:$('#hotelname').val() ? $('#hotelname').val() : 0,
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
 					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
@@ -191,24 +139,64 @@ define(function (require, exports, module) {
 				});
 			};
 			
-			//获取酒店详细信息
-			function gitroominfo(){
+			function selectHotel(){
 				var $tr = $('input[name="hotelGroup"]:checked').closest('tr');
 				var $infoBox = $(_self.config.infoBox);
-				$('.load_room').show();
-				$('.hotelcol').hide();
 				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
 				$(_self.config.infoBar).find('.address').text($tr.find('.hotel-address').text());
 				$(_self.config.infoBar).find('.tel').text($tr.find('.hotel-tel').text());
-				$.get($public.urlpath.getroominfo,{hotelId:$('input[name="hotelGroup"]:checked').val()},function (data) {
-					$('.load_room').hide();
-					$('.hotelcol').show();
-					$infoBox.empty().append(data);
-					var rdlth=$('.radio-bar').length-1;
-					$('.radio-bar:eq('+rdlth+')').css('border-bottom','none');
+				$.get(site_path+'/hotel/queryRoomTypeListByData',{hotelId:$('input[name="hotelGroup"]:checked').val()},function (data) {
+					$infoBox.empty();
+					$infoBox.append(data);
 				});
 			};
 			
+			//查询景区scenic------------------------------------------------------
+			$(_self.config.searchscenic).on('click',function(ev){
+				var $searchbox=$(_self.config.searchbox),
+				$sceniclist=$searchbox.find(_self.config.sceniclist);
+				$public.dialog.content(968,'auto','选择景区',$searchbox.show(),function(){
+					var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
+					scenicName=ckid.closest('td').next().text();
+					if(scenicId){
+						$('input[name="scenicId"]').val(scenicId);
+						$('input[name="scenicName"]').val(scenicName);
+						//$('#lbscenicname').text(scenicName);
+						$public.dialog.closebox();
+						selectScenic();
+					}else{
+						alert('请选择景区！');
+					}
+					return false;
+				},function(){
+					$sceniclist.height($('.container').height()-120);
+					$(_self.config.loadlist).show();
+				});
+				getScenicList();
+				$public.stopBubble(ev);
+			});//----------------------------------------------
+			
+			function getScenicList(){
+				var $searchbox=$(_self.config.searchbox),
+				$sceniclist=$searchbox.find(_self.config.sceniclist);
+				$sceniclist.empty();
+				$.get(site_path+'/scenic/queryScenicManageVOListByData',{
+					name:$('#scenicName').val() ? $('#scenicName').val() : 0,
+					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
+					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
+					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
+				},function(data){ 
+					$sceniclist.append(data);
+					$(_self.config.loadlist).hide();
+					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
+				});
+			};
+			
+			function selectScenic(){
+				var $tr = $('input[name="scenicGroup"]:checked').closest('tr');
+				$(_self.config.infoBar).find('.htn').text($tr.find('.scenic-name').text());
+				$(_self.config.infoBar).find('.address').text($tr.find('.scenic-locationText').text());
+			};
 			
 
 

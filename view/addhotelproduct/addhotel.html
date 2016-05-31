@@ -92,7 +92,8 @@
 						</span>
 						<a class="choicehotel">查询酒店</a>
 					</p>
-					<div>
+					<div class='load_room'><img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/loading.gif"></div>
+					<div class="hotelcol">
 						<span class="nm"><span class="bred">*</span><label>酒店信息：</label></span>
 						<span class="info-box clearfix">
 							<ul class="clearfix">
@@ -256,7 +257,7 @@
 						</span>
 					</div>
 					<div class="savenext">
-						<a>保存并下一步</a>
+						<a class="save-to-baseinfo">保存并下一步</a>
 					</div>
 				</div>
 			</div>
@@ -297,7 +298,7 @@
 							</tr>
 							<tr>
 								<td class="coltxt vt"><span class="bred">*</span>退订规则：</td>
-								<td><textarea></textarea><span class="mark"><label>1</label>/40字</span></td>
+								<td><textarea maxlength="40"></textarea><span class="mark"><label>1</label>/40字</span></td>
 							</tr>
 							<tr>
 								<td class="coltxt vt"><span class="bred">*</span>最晚到店时间：</td>
@@ -336,8 +337,8 @@
 						</table>
 					</form>
 					<div class="btngroup">
-						<a>返回上一页</a>
-						<a>保存并下一步</a>
+						<a class="backprev">返回上一页</a>
+						<a class="save-to-picker">保存并下一步</a>
 					</div>
 				</div>
 			</div>
@@ -392,8 +393,8 @@
 				</div>
 				<label class="bred ml30">*</label><label class="gray9">按住Ctrl键，可实现多选日期。</label>
 				<div class="allsave">
-					<a>返回上一页</a>
-					<a>全部提交</a>
+					<a class="backprev">返回上一页</a>
+					<a class="allsub">全部提交</a>
 				</div>
 			</div>
 		</div>
@@ -438,6 +439,7 @@
 				</td>
 			</tr>
 		</table>
+		<img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/loading.gif" class='load_list'>
 		<div class="hotelist list">
 			<table>
 				<thead>
@@ -452,109 +454,53 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
+						<td><input type="radio" name="htlid" value="1022"></td>
+						<td class="hotel-name">324233243</td>
 						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
+						<td class="hotel-address">32432</td>
+						<td class="hotel-tel">32432</td>
 						<td><a>查看详情</a></td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="pagination">
-	        <ul class="pager">
-                <li class="previous disabled">
-	                <a href="javascript:void(0);" id="prePage">« 上一页</a>
-	            </li>
-                <li class="active">
-                    <a href="javascript:void(0);">1</a>
-                </li>
-            	<li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="2">2</a>
-                </li>
-            	<li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="3">3</a>
-                </li>
-            	<li>
-                    <a href="javascript:void(0);" data-toggle="pager" data-placement="top">...</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="131">131</a>
-                </li>
-	            <li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="132">132</a>
-                </li>
-	            <li class="next">
-	                <a href="javascript:void(0);" class="LinkeToPage" pageno="2" id="nextPage">下一页»</a>
-	            </li>
-                <li>
-	                <span class="input-group-addon">每页</span>
-	                <select class="form-control pageSize" id="pageSize">
-	                    <option value="10">10</option>
-	                    <option value="20">20</option>
-	                    <option value="50">50</option>
-	                </select>
-	                <span class="input-group-addon">条</span>
-					<span class="input-group-addon">共 1316 条</span>
-		        </li>
-	    	</ul>
+			<div class="pagination">
+		        <ul class="pager">
+	                <li class="previous disabled">
+		                <a href="javascript:void(0);" id="prePage">« 上一页</a>
+		            </li>
+	                <li class="active">
+	                    <a href="javascript:void(0);">1</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="2">2</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="3">3</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" data-toggle="pager" data-placement="top">...</a>
+	                </li>
+	                <li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="131">131</a>
+	                </li>
+		            <li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="132">132</a>
+	                </li>
+		            <li class="next">
+		                <a href="javascript:void(0);" class="LinkeToPage" pageno="2" id="nextPage">下一页»</a>
+		            </li>
+	                <li>
+		                <span class="input-group-addon">每页</span>
+		                <select class="form-control pageSize" id="pageSize">
+		                    <option value="10">10</option>
+		                    <option value="20">20</option>
+		                    <option value="50">50</option>
+		                </select>
+		                <span class="input-group-addon">条</span>
+						<span class="input-group-addon">共 1316 条</span>
+			        </li>
+		    	</ul>
+			</div>
 		</div>
 	</div>
 	<script  type='text/temple' id='province-tpl'>

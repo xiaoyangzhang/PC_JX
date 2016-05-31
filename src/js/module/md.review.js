@@ -24,7 +24,7 @@ define(function (require, exports, module) {
 			}
 			else{
 				$editer.distanceFun();
-			},
+			};
 		 	
 			var validoptions={
 					tiptype:3,
@@ -37,12 +37,21 @@ define(function (require, exports, module) {
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
-
+				$.ajax({
+					type:'POST',
+					url:""+$("#subpath").val(),
+					data:{},
+					success:function(data){
+						$public.isLogin(data);
+						
+					}
+				});
 			});
+//			$(".searchBtn").on("click",function(){});
 			/* 清除 */
-			$(".delBtn").on("click",function(){
-				$(".reviewform").resetForm();
-			});
+//			$(".delBtn").on("click",function(){
+//				$(".reviewform").resetForm();
+//			});
 			
 			/* 图片点击查看大图 */
 			$self.showImgFun();

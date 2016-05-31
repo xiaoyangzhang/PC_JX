@@ -92,7 +92,9 @@ define(function (require, exports, module) {
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
 			updatepwd:site_path+'/account/modifyPassword',
-			searchotel:site_path+'/hotel/queryHotelManageList'
+			gethotelist:site_path+'/hotel/queryHotelManageList',
+			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
+			addhotel:site_path+'/hotel/addHotelMessageVOByData'
 		},
 		timer:null,
 		dialog:{
@@ -149,7 +151,6 @@ define(function (require, exports, module) {
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
 
-				alert(n_height/2);
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{
