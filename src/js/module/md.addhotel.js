@@ -21,12 +21,15 @@ define(function (require, exports, module) {
 			searchbtn:'.search-btn',
 			btnOk:'.ok',
 			infoBar:'.info-bar',
-			infoBox:'.info-box'
+			infoBox:'.info-box',
+			inputGp:'input[name="gp"]',
+			searchscenic:'.choicescenic',
+			sceniclist:'.sceniclist'
 		},
 		init:function(){
 			var _self=this;
 			$('#area').selectlist({width: 200});
-			$(_self.config.radiobar).on('click',function(ev){
+			$(document).on('click',_self.config.radiobar,function(ev){
 				$(_self.config.barbox).css('height','0'); 
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
 				$(this).next().css('height',$(_self.config.barboxul).height()+$(_self.config.barboxdiv).height()+'px');
@@ -41,7 +44,7 @@ define(function (require, exports, module) {
 			$(_self.config.searchotel).on('click',function(ev){
 				var $searchbox=$(_self.config.searchbox),
 				$htlst=$searchbox.find(_self.config.hotelist);
-				$public.dialog.content(968,'auto','选择景区',$searchbox.show(),function(){
+				$public.dialog.content(968,'auto','选择酒店',$searchbox.show(),function(){
 					var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
 					htname=ckid.closest('td').next().text();
 					if(htlid){
@@ -49,7 +52,7 @@ define(function (require, exports, module) {
 						$('input[name="name"]').val(htname);
 						$('#lbhotelname').text(htname);
 						$public.dialog.closebox();
-						selecthotel();
+						selectHotel();
 					}else{
 						alert('请选择酒店！');
 					}
@@ -61,7 +64,11 @@ define(function (require, exports, module) {
 				gethotelist();
 				$public.stopBubble(ev);
 			});
-
+			
+			$(document).on('click',_self.config.inputGp,function () {
+				$('input[name="roomId"]').val($(this).val());
+			});
+			
 			$public.procityaredata('province','city','area',true);
 
 			$(_self.config.eredarli).on('click',function(ev){
@@ -76,41 +83,120 @@ define(function (require, exports, module) {
 				$(_self.config.loadlist).show();
 				gethotelist();
 			});
+			
+			
+			//返回上一页
+			$('.backprev').on('click',function(){
+				$('.eredar-info li.on').prev().trigger('click');
+				$public.stopBubble(ev);
+			});
+
+			//“选择酒店”保存并下一步
+			$('.save-to-baseinfo').on('click',function(){
+				$('.eredar-info li:eq(1)').trigger('click');
+				$public.stopBubble(ev);
+			});
+
+			//“基本信息”保存并下一步
+			$('.save-to-picker').on('click',function(){
+				$('.eredar-info li:eq(2)').trigger('click');
+				$public.stopBubble(ev);
+			});
+
 
 			$('.allsub').on('click',function(ev){
 				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
 				if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
-				console.log(JSON.stringify(prarm));
-			});
-
-			function selecthotel(){
-				var $tr = $('input[type="radio"]:checked').closest('tr');
-				var $infoBoxHtml = $(_self.config.infoBox);
-				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
-				$(_self.config.infoBar).find('.address').text($tr.find('.hotel-address').text());
-				$(_self.config.infoBar).find('.tel').text($tr.find('.hotel-tel').text());
-				$.get(site_path+'/hotel/queryRoomTypeListByData',{hotelId:$('input[type="radio"]:checked').val()},function (data) {
-					$infoBoxHtml.empty();
-					$infoBoxHtml.append(data);
+				//console.log(JSON.stringify(prarm));
+				var hotelMessageVO1 = {
+					hotelId : $('input[name="hotelId"]').val(),
+					name : $('input[name="name"]').val(),
+					roomId : $('input[name="roomId"]').val(),					
+					supplierCalendar : $('input[name="supplierCalendar"]').val()					
+				};
+				var hotelMessageVO = $.extend(hotelMessageVO1,prarm);
+				console.log(hotelMessageVO);
+				$.post(site_path+'/hotel/addHotelMessageVOByData',hotelMessageVO,function (data) {
+					//console.log(data);
+					alert("保存成功");
 				});
-			};
+				
+			});
 
 			function gethotelist(){
 				var $searchbox=$(_self.config.searchbox),
 				$htlst=$searchbox.find(_self.config.hotelist);
 				$htlst.empty();
 				$.get($public.urlpath.searchotel,{
-					name:$('#hotelname').val(),
-					locationProvinceId:$('input[name="province"]').val(),
-					locationCityId:$('input[name="city"]').val(),
-					locationTownId:$('input[name="area"]').val()
+					name:$('#hotelname').val() ? $('#hotelname').val() : 0,
+					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
+					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
+					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
 				},function(data){ 
 					$htlst.append(data);
 					$(_self.config.loadlist).hide();
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
 				});
 			};
-
+			
+			function selectHotel(){
+				var $tr = $('input[name="hotelGroup"]:checked').closest('tr');
+				var $infoBox = $(_self.config.infoBox);
+				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
+				$(_self.config.infoBar).find('.address').text($tr.find('.hotel-address').text());
+				$(_self.config.infoBar).find('.tel').text($tr.find('.hotel-tel').text());
+				$.get(site_path+'/hotel/queryRoomTypeListByData',{hotelId:$('input[name="hotelGroup"]:checked').val()},function (data) {
+					$infoBox.empty();
+					$infoBox.append(data);
+				});
+			};
+			
+			//查询景区scenic------------------------------------------------------
+			$(_self.config.searchscenic).on('click',function(ev){
+				var $searchbox=$(_self.config.searchbox),
+				$sceniclist=$searchbox.find(_self.config.sceniclist);
+				$public.dialog.content(968,'auto','选择景区',$searchbox.show(),function(){
+					var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
+					scenicName=ckid.closest('td').next().text();
+					if(scenicId){
+						$('input[name="scenicId"]').val(scenicId);
+						$('input[name="scenicName"]').val(scenicName);
+						//$('#lbscenicname').text(scenicName);
+						$public.dialog.closebox();
+						selectScenic();
+					}else{
+						alert('请选择景区！');
+					}
+					return false;
+				},function(){
+					$sceniclist.height($('.container').height()-120);
+					$(_self.config.loadlist).show();
+				});
+				getScenicList();
+				$public.stopBubble(ev);
+			});//----------------------------------------------
+			
+			function getScenicList(){
+				var $searchbox=$(_self.config.searchbox),
+				$sceniclist=$searchbox.find(_self.config.sceniclist);
+				$sceniclist.empty();
+				$.get(site_path+'/scenic/queryScenicManageVOListByData',{
+					name:$('#scenicName').val() ? $('#scenicName').val() : 0,
+					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
+					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
+					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
+				},function(data){ 
+					$sceniclist.append(data);
+					$(_self.config.loadlist).hide();
+					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
+				});
+			};
+			
+			function selectScenic(){
+				var $tr = $('input[name="scenicGroup"]:checked').closest('tr');
+				$(_self.config.infoBar).find('.htn').text($tr.find('.scenic-name').text());
+				$(_self.config.infoBar).find('.address').text($tr.find('.scenic-locationText').text());
+			};
 			
 
 
@@ -160,45 +246,45 @@ define(function (require, exports, module) {
 
 		    var supplierCalendar={
 		        "seller_id":"2088102122524333",
-		        "hotel_id":'',
+		        "hotel_id":$('input[name="hotelId"]').val(),
 		        "sku_flag":$(".sku_flag").val(),
-		        "biz_list":[{
+		        "bizSkuInfo":[{
 		            "sku_id":10012,
 		            "state":"update",
 		            "stock_num":10,
 		            "price":"8.8",
-		            "vTxt":"1464364800000"
+		            "vTxt":1464364800000
 		        },{
 		            "sku_id":10014,
 		            "state":"update",
 		            "stock_num":228,
 		            "price":"12",
-		            "vTxt":"1464105600000"
+		            "vTxt":1464105600000
 		        }
 		        // ,{
 		        //     "sku_id":10015,
 		        //     "state":"update",
 		        //     "stock_num":125,
 		        //     "price":"88.9",
-		        //     "vTxt":"1464624000000"
+		        //     "vTxt":1464624000000
 		        // },{
 		        //     "sku_id":"fdfd",
 		        //     "state":"update",
 		        //     "stock_num":366,
 		        //     "price":"12.33",
-		        //     "vTxt":"1467907200000"
+		        //     "vTxt":1467907200000
 		        // },{
 		        //     "sku_id":10016,
 		        //     "state":"update",
 		        //     "stock_num":58,
 		        //     "price":"100",
-		        //     "vTxt":"1464796800000"
+		        //     "vTxt":1464796800000
 		        // },{
 		        //     "sku_id":10018,
 		        //     "state":"update",
 		        //     "stock_num":98,
 		        //     "price":"66",
-		        //     "vTxt":"1466524800000"
+		        //     "vTxt":1466524800000
 		        // }
 		        ]
 		   
@@ -328,7 +414,7 @@ define(function (require, exports, module) {
 
 			//渲染已设置的日期
 			function dateRender(supplierCalendar){
-				var ls=supplierCalendar.biz_list,days=$('.dtbx font');
+				var ls=supplierCalendar.bizSkuInfo,days=$('.dtbx font');
 				$('.tipvl').remove();
 				for(var i=0;i<ls.length;i++){
 					days.filter(function(){
@@ -349,13 +435,13 @@ define(function (require, exports, module) {
 			//价格和库存写入缓存
 			function set_chahevalue(stock,price,day){
 				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
-				ls=supplierCalendar.biz_list;
+				ls=supplierCalendar.bizSkuInfo;
 				for(var i=0;i<ls.length;i++){
 					if(cur_time==ls[i].vTxt&&ls[i].state!='del'){
 						if(ls[i].sku_id!=0) ls[i].state='update';
 						ls[i].stock_num=stock;
 						ls[i].price=price;
-		        		console.log(JSON.stringify(supplierCalendar.biz_list)+'   ---------set_chahevalue--update------');
+		        		console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   ---------set_chahevalue--update------');
 						return;
 					}
 				}
@@ -366,13 +452,13 @@ define(function (require, exports, module) {
 			            "price":price,
 			            "vTxt":cur_time
 						});
-		        console.log(JSON.stringify(supplierCalendar.biz_list)+'   --------set_chahevalue--add------');
+		        console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   --------set_chahevalue--add------');
 			}
 
 			//从缓存删除价格和库存
 			function del_chahevalue(day){
 				var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
-				ls=supplierCalendar.biz_list;
+				ls=supplierCalendar.bizSkuInfo;
 				for(var i=0;i<ls.length;i++){
 					if(cur_time==ls[i].vTxt){
 						if(ls[i].state=='update'||ls[i].state==''){
@@ -382,7 +468,7 @@ define(function (require, exports, module) {
 						}
 					}
 				}
-		        console.log(JSON.stringify(supplierCalendar.biz_list)+'   -------del_chahevalue----------');
+		        console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   -------del_chahevalue----------');
 			}
 
 			//设置日期的价格和库存
