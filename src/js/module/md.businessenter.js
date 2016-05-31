@@ -16,6 +16,14 @@ define(function(require, exports, module) {
         	});
 
             $self.bindDomEvent();
+            $(".mode-tab-nav li").on('click',function(){
+                if($(this).attr("id")=="shazi"){
+                    $("#Settled").attr("href","http://s0.test.jiuxiulvxing.com/PC_JX/view/apply/talent/agreement");
+                }else{
+                    $("#Settled").attr("href","http://s0.test.jiuxiulvxing.com/PC_JX/view/businessenter/merchantinfor.html");
+                }
+ 
+            });
         },
         config: {
             main_nav: '.jiux_main>.main-nav>ul>li',
