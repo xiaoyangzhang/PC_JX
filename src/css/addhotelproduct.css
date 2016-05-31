@@ -24,6 +24,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo .info-bar .address{width:228px;}
 .hotelinfo .info-bar .tel{width:118px;}
 
+.hotelinfo .hotelcol{display: none;}
 .hotelinfo .info-box{width:568px;border:1px solid #ccc;padding:0 15px;margin:0 10px;display: inline-block;height: auto;}
 .hotelinfo .info-box ul{margin-bottom:-1px;}
 .hotelinfo .info-box .radio-bar{height: 47px;border-bottom:1px solid #ccc;padding:0 10px;cursor: pointer;}
