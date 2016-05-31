@@ -93,7 +93,9 @@ define(function (require, exports, module) {
 			updatepwd:site_path+'/account/modifyPassword',
 			gethotelist:site_path+'/hotel/queryHotelManageList',
 			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
-			addhotel:site_path+'/hotel/addHotelMessageVOByData'
+			addhotel:site_path+'/hotel/addHotelMessageVOByData',
+			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
+			addScenic:site_path+'/scenic/addScenicManageVOByDdata'
 		},
 		timer:null,
 		dialog:{

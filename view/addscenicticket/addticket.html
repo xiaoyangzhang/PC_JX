@@ -8,7 +8,8 @@
 <title>添加景区</title>
 <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
 <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
-<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/addhotelproduct.css">
+<!--<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/addhotelproduct.css">-->
+<link rel="stylesheet" href="../../src/css/addhotelproduct.css">
 </head>
 <body>
 	<div id="jiuxColor" class="jiuw2">
@@ -81,55 +82,94 @@
 				</ul>
 			</div>
 			<div class="panel on">
-				<div class="hotelinfo ticketinfo">
-					<p>
-						<span class="nm"><span class="bred">*</span><label>景区信息：</label></span>
-						<span class="info-bar">
-							<label class="htn">如家酒店望京店</label>
-							<label class="smtt">地址：</label><label class="address">北京市海淀区中关村东路1号院</label>
-							|<label class="smtt">电话：</label><label class="tel">010-83122549</label>
-						</span>
-						<a class="choicehotel">查询景区</a>
-					</p>
-				</div>
-				<div class="baseinfo ticketbaseinfo">
-					<form>
+				<form class="scenicForm">
+					<div class="hotelinfo ticketinfo">
+						<p>
+							<span class="nm"><span class="bred">*</span><label>景区信息：</label></span>
+							<span class="info-bar">
+								<label class="htn">青蜂侠</label>
+								<label class="smtt">地址：</label><label class="address">北京市海淀区中关村东路1号院</label>
+							</span>
+							<a class="choicehotel">查询景区</a>
+							<input type="hidden" name="scenicId" value="">
+							<input type="hidden" name="scenicName" value="">
+						</p>
+					</div>
+					<div class="baseinfo ticketbaseinfo">						
 						<table>
 							<tr>
 								<td class="coltxt">商品名称：</td>
-								<td><label id="lbscenicname">景区门票</label></td>
+								<td>
+									<label class="scenicTicket">景区门票</label>
+									<input type="hidden" name="scenicTicket" value="景区门票" />
+								</td>
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>门票类型：</td>
 								<td>
-									<label class="radio"><input type="radio" name="tickettype">大门票</label>
-									<label class="radio"><input type="radio" name="tickettype">联票</label>
+									<label class="radio"><input type="radio" name="ticketId" value="1">大门票</label>
+									<label class="radio"><input type="radio" name="ticketId" value="2">联票</label>
 								</td>
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>商品标题：</td>
-								<td><input type="text" class="inputxt" maxlength="38" name=""><span class="mark"><label>1</label>/38字</span></td>
+								<td><input type="text" class="inputxt" maxlength="38" name="title"><span class="mark"><label>1</label>/38字</span></td>
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>价格：</td>
-								<td><input type="text" class="inputxt" name=""></td>
+								<td><input type="text" class="inputxt" name="price"></td>
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>门市价：</td>
-								<td><input type="text" class="inputxt" name=""></td>
+								<td><input type="text" class="inputxt" name="originalPrice"></td>
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>提前预定天数：</td>
-								<td><input type="text" class="inputxt" maxlength="10" name=""></td>
+								<td><input type="text" class="inputxt" name="startBookTimeLimit"></td>
 							</tr>
-							<tr>
+							<!--<tr>
 								<td class="coltxt">票型说明：</td>
 								<td><input type="text" class="inputxt" name=""></td>
+							</tr>-->
+							<tr>
+								<td class="coltxt">预定时间</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/40字</span></td>
 							</tr>
-							
+							<tr>
+								<td class="coltxt">有效期</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/40字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt">入园限制</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/40字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt">入院方式</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/40字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>费用包含：</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/200字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>退票说明：</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/200字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>改期规则：</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/200字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt">优惠政策：</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/200字</span></td>
+							</tr>
+							<tr>
+								<td class="coltxt">商家提示：</td>
+								<td><input type="text" class="inputxt" name=""><span class="mark"><label>1</label>/200字</span></td>
+							</tr>
 						</table>
-					</form>
-				</div>
+					</div>
+				</form>
 				<div class="savenext">
 					<a>保存并下一步</a>
 				</div>				
@@ -186,7 +226,7 @@
 				<label class="bred ml30">*</label><label class="gray9">按住Ctrl键，可实现多选日期。</label>
 				<div class="allsave">
 					<a>返回上一页</a>
-					<a>全部提交</a>
+					<a class="allsub">全部提交</a>
 				</div>
 			</div>
 		</div>
@@ -221,7 +261,7 @@
 		<table class="tb">
 			<tr>
 				<td class="tb-txt">景区名称：</td>
-				<td><input type="text" class="inputxt"></td>
+				<td><input type="text" id="scenicName" class="inputxt"></td>
 				<td class="tb-txt">所在城市：</td>
 				<td>
 					<select id="province"><option value="">--请选择--</option></select>
