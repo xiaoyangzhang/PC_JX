@@ -1,10 +1,11 @@
 define(function (require, exports, module) {
-	require("dropdownlist"),//下拉框组件
+	require('dropdownlist'),//下拉框组件
+	require('validform'),//验证
 	$public=require("public"),
-	$choicehotel = function () {
+	$choiceScenic = function () {
 		this.init.apply(this, arguments);
 	};
-	$choicehotel.prototype = {
+	$choiceScenic.prototype = {
 		config:{
 			radiobar:'.radio-bar',
 			barbox:'.bar-box',
@@ -23,51 +24,12 @@ define(function (require, exports, module) {
 			infoBar:'.info-bar',
 			infoBox:'.info-box',
 			inputGp:'input[name="gp"]',
-			searchscenic:'.choicescenic',
-			sceniclist:'.sceniclist'
+			searchScenic:'.searchScenic',
+			scenicList:'.sceniclist'
 		},
 		init:function(){
 			var _self=this;
 			$('#area').selectlist({width: 200});
-			$(document).on('click',_self.config.radiobar,function(ev){
-				$(_self.config.barbox).css('height','0'); 
-				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
-				$(this).next().css('height',$(_self.config.barboxul).height()+$(_self.config.barboxdiv).height()+'px');
-				$(this).find('img').attr('src',static_source+'img/droptip_down.jpg');
-				$public.stopBubble(ev);
-			});
-
-			$(_self.config.radiobarlabel).on('click',function(ev){
-				$public.stopBubble(ev);
-			});
-
-			$(_self.config.searchotel).on('click',function(ev){
-				var $searchbox=$(_self.config.searchbox),
-				$htlst=$searchbox.find(_self.config.hotelist);
-				$public.dialog.content(968,'auto','选择酒店',$searchbox.show(),function(){
-					var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
-					htname=ckid.closest('td').next().text();
-					if(htlid){
-						$('input[name="hotelId"]').val(htlid);
-						$('input[name="name"]').val(htname);
-						$('#lbhotelname').text(htname);
-						$public.dialog.closebox();
-						selectHotel();
-					}else{
-						alert('请选择酒店！');
-					}
-					return false;
-				},function(){
-					$htlst.height($('.container').height()-120);
-					$(_self.config.loadlist).show();
-				});
-				gethotelist();
-				$public.stopBubble(ev);
-			});
-			
-			$(document).on('click',_self.config.inputGp,function () {
-				$('input[name="roomId"]').val($(this).val());
-			});
 			
 			$public.procityaredata('province','city','area',true);
 
@@ -81,7 +43,7 @@ define(function (require, exports, module) {
 
 			$(_self.config.searchbtn).on('click',function(){
 				$(_self.config.loadlist).show();
-				gethotelist();
+				getScenicList();
 			});
 			
 			
@@ -105,63 +67,51 @@ define(function (require, exports, module) {
 
 
 			$('.allsub').on('click',function(ev){
-				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
-				if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
-				//console.log(JSON.stringify(prarm));
-				var hotelMessageVO1 = {
-					hotelId : $('input[name="hotelId"]').val(),
-					name : $('input[name="name"]').val(),
-					roomId : $('input[name="roomId"]').val(),					
+				//var prarm=$public.paramcompare($('.scenicForm').serializeArray());
+				//if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
+				//console.log(JSON.stringify(prarm));				
+				var dynamicArr = [];
+				$('.dynamicTr').each(function () {
+					var dynamicTr ={
+						pId : $(this).attr('pId'),
+						pText : $(this).attr('pText'),
+						PType : $(this).attr('pType'),
+						vTxt : $(this).find('input').val(),
+						categoryId : $('input[name="categoryId"]').val(),
+						flag : false
+					};	
+					dynamicArr.push(dynamicTr);
+				});
+				
+				var scenicMessageVO = {
+					scenicId : $('input[name="scenicId"]').val(),
+					name : $('input[name="scenicName"]').val(),
+					//scenicTicket : $('input[name="scenicTicket"]').val(),
+					ticketId :  $('input[name="ticketId"]:checked').val(),
+					title : $('input[name="title"]').val(),
+					price : $('input[name="price"]').val(),
+					originalPrice : $('input[name="originalPrice"]').val(),
+					startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
+					dynamicEntry : dynamicArr,
 					supplierCalendar : $('input[name="supplierCalendar"]').val()					
 				};
-				var hotelMessageVO = $.extend(hotelMessageVO1,prarm);
-				console.log(hotelMessageVO);
-				$.post(site_path+'/hotel/addHotelMessageVOByData',hotelMessageVO,function (data) {
+				console.log(scenicMessageVO);
+				$.post($public.urlpath.addScenic,scenicMessageVO,function (data) {
 					//console.log(data);
 					alert("保存成功");
 				});
 				
 			});
-
-			function gethotelist(){
+			$(_self.config.searchScenic).on('click',function(ev){
 				var $searchbox=$(_self.config.searchbox),
-				$htlst=$searchbox.find(_self.config.hotelist);
-				$htlst.empty();
-				$.get($public.urlpath.searchotel,{
-					name:$('#hotelname').val() ? $('#hotelname').val() : 0,
-					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
-					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
-					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
-				},function(data){ 
-					$htlst.append(data);
-					$(_self.config.loadlist).hide();
-					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
-				});
-			};
-			
-			function selectHotel(){
-				var $tr = $('input[name="hotelGroup"]:checked').closest('tr');
-				var $infoBox = $(_self.config.infoBox);
-				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
-				$(_self.config.infoBar).find('.address').text($tr.find('.hotel-address').text());
-				$(_self.config.infoBar).find('.tel').text($tr.find('.hotel-tel').text());
-				$.get(site_path+'/hotel/queryRoomTypeListByData',{hotelId:$('input[name="hotelGroup"]:checked').val()},function (data) {
-					$infoBox.empty();
-					$infoBox.append(data);
-				});
-			};
-			
-			//查询景区scenic------------------------------------------------------
-			$(_self.config.searchscenic).on('click',function(ev){
-				var $searchbox=$(_self.config.searchbox),
-				$sceniclist=$searchbox.find(_self.config.sceniclist);
+				$sceniclist=$searchbox.find(_self.config.scenicList);
 				$public.dialog.content(968,'auto','选择景区',$searchbox.show(),function(){
 					var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
 					scenicName=ckid.closest('td').next().text();
 					if(scenicId){
 						$('input[name="scenicId"]').val(scenicId);
 						$('input[name="scenicName"]').val(scenicName);
-						//$('#lbscenicname').text(scenicName);
+						$('#lbscenicname').text(scenicName);
 						$public.dialog.closebox();
 						selectScenic();
 					}else{
@@ -178,9 +128,9 @@ define(function (require, exports, module) {
 			
 			function getScenicList(){
 				var $searchbox=$(_self.config.searchbox),
-				$sceniclist=$searchbox.find(_self.config.sceniclist);
+				$sceniclist=$searchbox.find(_self.config.scenicList);
 				$sceniclist.empty();
-				$.get(site_path+'/scenic/queryScenicManageVOListByData',{
+				$.get($public.urlpath.getScenicList,{
 					name:$('#scenicName').val() ? $('#scenicName').val() : 0,
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
@@ -441,7 +391,7 @@ define(function (require, exports, module) {
 						if(ls[i].sku_id!=0) ls[i].state='update';
 						ls[i].stock_num=stock;
 						ls[i].price=price;
-		        		console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   ---------set_chahevalue--update------');
+		        		//console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   ---------set_chahevalue--update------');
 						return;
 					}
 				}
@@ -452,7 +402,7 @@ define(function (require, exports, module) {
 			            "price":price,
 			            "vTxt":cur_time
 						});
-		        console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   --------set_chahevalue--add------');
+		       // console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   --------set_chahevalue--add------');
 			}
 
 			//从缓存删除价格和库存
@@ -468,7 +418,7 @@ define(function (require, exports, module) {
 						}
 					}
 				}
-		        console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   -------del_chahevalue----------');
+		        //console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   -------del_chahevalue----------');
 			}
 
 			//设置日期的价格和库存
@@ -612,5 +562,5 @@ define(function (require, exports, module) {
 
 		}
 	}
-	module.exports = new $choicehotel();
+	module.exports = new $choiceScenic();
 });

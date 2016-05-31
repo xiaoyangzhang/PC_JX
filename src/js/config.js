@@ -32,6 +32,7 @@ seajs.config({
 		"cus_datepicker" : "module/md.datepicker",
 		"uploadfiles" : "module/md.uploadfiles",
 		"addhotel" : "module/md.addhotel",
+		"addscenic" : "module/md.addscenic",
 		"urlpath" : "module/md.urlpath.test",
 		"test" : "module/md.test",
 		"userdatafill" : "module/md.userdatafill",
