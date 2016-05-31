@@ -29,6 +29,29 @@ define(function (require, exports, module) {
 		},
 		init:function(){
 			var _self=this;
+			
+	        var validoptions={
+					tiptype:3,
+					label:".label",
+					showAllError:true,
+					datatype:{
+						"*2-10" : /^[\w\W]{2,10}$/,
+						"n10-25" : /^\d{10,25}$/
+					},
+					ajaxPost:true
+				},
+				rule=[{
+					ele:"input[type='text'],textarea",
+					datatype:"*",
+					nullmsg:"请填信息！"
+				},{
+					ele:"rt",
+					datatype:"*2-10",
+					nullmsg:"请填写姓名",
+					errormsg:"请填写2-10字以内的姓名"
+				}],
+				validfm=$("form").Validform(validoptions).addRule(rule);
+			
 			$('#area').selectlist({width: 200});
 			
 			$public.procityaredata('province','city','area',true);
@@ -53,15 +76,9 @@ define(function (require, exports, module) {
 				$public.stopBubble(ev);
 			});
 
-			//“选择酒店”保存并下一步
-			$('.save-to-baseinfo').on('click',function(){
-				$('.eredar-info li:eq(1)').trigger('click');
-				$public.stopBubble(ev);
-			});
-
 			//“基本信息”保存并下一步
 			$('.save-to-picker').on('click',function(){
-				$('.eredar-info li:eq(2)').trigger('click');
+				$('.eredar-info li.on').next().trigger('click');
 				$public.stopBubble(ev);
 			});
 
