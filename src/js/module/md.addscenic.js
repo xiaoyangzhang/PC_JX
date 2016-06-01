@@ -32,25 +32,34 @@ define(function (require, exports, module) {
 			
 	        var validoptions={
 					tiptype:3,
-					label:".label",
+					label:'.label',
 					showAllError:true,
 					datatype:{
-						"*2-10" : /^[\w\W]{2,10}$/,
-						"n10-25" : /^\d{10,25}$/
+						'*2-10' : /^[\w\W]{2,10}$/,
+						'n10-25' : /^\d{10,25}$/,
+						'pri' : /^[1-9]\d{0,9}(\.\d{1,2})?$/,
+						'priint' : /^[1-9]\d{0,9}$/
 					},
 					ajaxPost:true
 				},
 				rule=[{
-					ele:"input[type='text'],textarea",
-					datatype:"*",
-					nullmsg:"请填信息！"
+					ele:'tr.notNull input[type="text"]',
+					datatype:'*',
+					nullmsg:'请填信息！'
 				},{
-					ele:"rt",
-					datatype:"*2-10",
-					nullmsg:"请填写姓名",
-					errormsg:"请填写2-10字以内的姓名"
+					ele:'input[name="ticketId"]:last',
+					datatype:'*',
+					nullmsg:'请选择门票类型'
+				},{
+					ele:'input[name="price"],input[name="originalPrice"]',
+					datatype:'pri|priint',
+					errormsg:'请检查价格格式'
+				},{
+					ele:'input[name="startBookTimeLimit"]',
+					datatype:'n',
+					errormsg:'请填写数字'
 				}],
-				validfm=$("form").Validform(validoptions).addRule(rule);
+				validForm=$('.scenicForm').Validform(validoptions).addRule(rule);
 			
 			$('#area').selectlist({width: 200});
 			
@@ -78,45 +87,60 @@ define(function (require, exports, module) {
 
 			//“基本信息”保存并下一步
 			$('.save-to-picker').on('click',function(){
-				$('.eredar-info li.on').next().trigger('click');
-				$public.stopBubble(ev);
-			});
-
-
-			$('.allsub').on('click',function(ev){
-				//var prarm=$public.paramcompare($('.scenicForm').serializeArray());
-				//if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
-				//console.log(JSON.stringify(prarm));				
-				var dynamicArr = [];
-				$('.dynamicTr').each(function () {
-					var dynamicTr ={
-						pId : $(this).attr('pId'),
-						pText : $(this).attr('pText'),
-						PType : $(this).attr('pType'),
-						vTxt : $(this).find('input').val(),
-						categoryId : $('input[name="categoryId"]').val(),
-						flag : false
-					};	
-					dynamicArr.push(dynamicTr);
-				});
-				
-				var scenicMessageVO = {
-					scenicId : $('input[name="scenicId"]').val(),
-					name : $('input[name="scenicName"]').val(),
-					//scenicTicket : $('input[name="scenicTicket"]').val(),
-					ticketId :  $('input[name="ticketId"]:checked').val(),
-					title : $('input[name="title"]').val(),
-					price : $('input[name="price"]').val(),
-					originalPrice : $('input[name="originalPrice"]').val(),
-					startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
-					dynamicEntry : dynamicArr,
-					supplierCalendar : $('input[name="supplierCalendar"]').val()					
+				if (!$('input[name="scenicName"]').val()) {
+					$public.dialog.msg('请选择景区','error');
+					return false;
+				}
+				if (validResult()) {
+					$('.eredar-info li.on').next().trigger('click');					
 				};
-				console.log(scenicMessageVO);
-				$.post($public.urlpath.addScenic,scenicMessageVO,function (data) {
-					//console.log(data);
-					alert("保存成功");
-				});
+				$public.stopBubble();
+			});
+			
+			function validResult () {
+				if (!validForm.check()) {
+					return false;
+				}else{
+					return true;
+				}
+			};
+			//全部保存
+			$('.allsub').on('click',function(ev){				
+				if (validResult()) {				
+					//var prarm=$public.paramcompare($('.scenicForm').serializeArray());
+					//if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
+					//console.log(JSON.stringify(prarm));				
+					var dynamicArr = [];
+					$('.dynamicTr').each(function () {
+						var dynamicTr ={
+							pId : $(this).attr('pId'),
+							pText : $(this).attr('pText'),
+							pType : $(this).attr('pType'),
+							vTxt : $(this).find('input').val(),
+							categoryId : parseInt($('input[name="categoryId"]').val()),
+							flag : false
+						};	
+						dynamicArr.push(dynamicTr);
+					});
+	
+					var scenicManageVO = {
+						scenicId : $('input[name="scenicId"]').val(),
+						name : $('input[name="scenicName"]').val(),
+						//scenicTicket : $('input[name="scenicTicket"]').val(),
+						ticketId :  $('input[name="ticketId"]:checked').val(),
+						title : $('input[name="title"]').val(),
+						price : $('input[name="price"]').val(),
+						originalPrice : $('input[name="originalPrice"]').val(),
+						startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
+						dynamicEntry : JSON.stringify(dynamicArr),
+						supplierCalendar : $('input[name="supplierCalendar"]').val()					
+					};
+					//console.log(JSON.stringify(scenicManageVO) );
+					$.post($public.urlpath.addScenic,scenicManageVO,function (data) {
+						//console.log(data);
+						alert("保存成功");
+					});
+				};
 				
 			});
 			$(_self.config.searchScenic).on('click',function(ev){

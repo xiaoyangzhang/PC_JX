@@ -84,6 +84,21 @@ iframe{display: none;}
 .w217{width:217px !important;}
 .w345{width:345px !important;}
 .last-step{margin-left: 10px;}
+.ag-content{padding-left:72px;padding-right:72px;padding-bottom:27px;border-bottom:1px solid #ddd;margin-left:auto;margin-right:auto;width:996px;}
+
+
+
+
+
+.agreement-box .progress{width:845px;margin:45px auto;}
+.agreement-box .progress .step{float:left;height:8px;width:169px;background: #dfdfdf;position: relative;}
+.agreement-box .progress .step div{position:absolute;left: 63px;top:-15px; line-height: 36px;font-size:20px; text-align: center;color:#fff;
+	width:37px;height:37px;background: url('../../img/spripte.png') no-repeat 0 0;}
+.agreement-box .progress .step label{display: block;text-align: center;margin-top:28px;color: #999999;}
+.agreement-box .progress .step-on{background: #ed6c44;}
+.agreement-box .progress .step-on div{background: url('../../img/spripte.png') no-repeat -37px 0;}
+.agreement-box .progress .step-on label{display: block;color:#ed6c44;}
+.agreement-box .progress .ya{border-top-right-radius: 6px;border-bottom-right-radius: 6px;}
 
 
 
