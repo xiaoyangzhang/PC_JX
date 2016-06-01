@@ -185,7 +185,7 @@ define(function (require, exports, module) {
 					return false;
 				}else if($('input[name="roomId"]').val()==0){
 					$('.eredar-info li:eq(0)').trigger('click');
-					$public.dialog.msg('请选择房间！','error');
+					$public.dialog.msg('请选择房型！','error');
 					$(document).scrollTop(0);
 					return false;
 				}
@@ -249,7 +249,7 @@ define(function (require, exports, module) {
 				$htlst.empty();
 				$.get($public.urlpath.gethotelist,{
 					page:page,
-					pagesize:pagesize,
+					pageSize:pagesize,
 					name:$('#hotelname').val(),
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
@@ -258,6 +258,7 @@ define(function (require, exports, module) {
 					$htlst.append(data);
 					$(_self.config.loadlist).hide();
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
+					$('.tb-box').height($('.hotelist').height());
 				});
 			};
 			
@@ -276,7 +277,7 @@ define(function (require, exports, module) {
 					$infoBox.empty().append(data);
 					var rdlth=$('.radio-bar').length-1;
 					$('.radio-bar:eq('+rdlth+')').css('border-bottom','none');
-					$('.radio-bar:eq(0)').trigger('click');
+					setTimeout(function(){$('.radio-bar:eq(0)').trigger('click');},500);
 				});
 			};
 			
