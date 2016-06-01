@@ -78,7 +78,7 @@ define(function (require, exports, module) {
 			if(data.errorCode==22000000)
 				window.location=site_path+'/user/login';
 		},
-		depath :function(){
+		/* depath :function(){
 			var hh=$("#jiuxColor").height(),fh=$("#footID").height(),el=$(".eredar-left"),er=$(".eredar-right"),
 				wdh=$(window).height()-hh-fh-102,auto_height=$(document).height()-hh-fh-60,
 				elh=el.height()+120,erh=er.height();
@@ -86,7 +86,7 @@ define(function (require, exports, module) {
 				el.height(elh);
 			else
 				el.height(auto_height);
-		},
+		}, */
 		urlpath:{
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
