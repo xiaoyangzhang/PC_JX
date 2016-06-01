@@ -18,9 +18,9 @@ define(function(require, exports, module) {
             $self.bindDomEvent();
             $(".mode-tab-nav li").on('click',function(){
                 if($(this).attr("id")=="shazi"){
-                    $("#Settled").attr("href","$!root_path/apply/talent/agreement");
+                    $("#Settled").attr("href",$("#root_path").val()+"/apply/talent/agreement");
                 }else{
-                    $("#Settled").attr("href","$!root_path/apply/seller/toDetailPage");
+                    $("#Settled").attr("href",$("#root_path").val()+"/apply/seller/toDetailPage");
                 }
  
             });
