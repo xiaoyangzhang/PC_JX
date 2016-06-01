@@ -97,7 +97,8 @@ define(function (require, exports, module) {
 			updatehotel:site_path+'/hotel/editScenicManageVOByDdata',
 			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
 			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
-			addScenic:site_path+'/scenic/addScenicManageVOByDdata'
+			addScenic:site_path+'/scenic/addScenicManageVOByDdata',
+			updateScenic:site_path+'/scenic/editScenicManageVOByDdata'
 		},
 		timer:null,
 		dialog:{

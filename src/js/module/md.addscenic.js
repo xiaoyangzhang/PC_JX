@@ -114,7 +114,7 @@ define(function (require, exports, module) {
 					$('.dynamicTr').each(function () {
 						var dynamicTr ={
 							pId : $(this).attr('pId'),
-							pTxt : $(this).attr('pText'),
+							pTxt : $(this).attr('pTxt'),
 							pType : $(this).attr('pType'),
 							vTxt : $(this).find('input').val(),
 							categoryId : parseInt($('input[name="categoryId"]').val()),
@@ -137,18 +137,34 @@ define(function (require, exports, module) {
 						supplierCalendar : $('input[name="supplierCalendar"]').val()					
 					};
 					//console.log(JSON.stringify(scenicManageVO) );
-					$.post($public.urlpath.addScenic,scenicManageVO,function (data) {
-						//console.log(data);
-						$public.isLogin(data);
-						if (data.success) {
-							$public.dialog.msg('保存成功','success');
-							setTimeout(function () {
-								window.location = data.value;
-							},1000);
-						}else{
-							$public.dialog.msg(data.resultMsg,'error');
-						};
-					});
+					var subFlag = $('input[name="operation"]').attr('operationFlag');
+					if (subFlag == 'update') {
+						$.post($public.urlpath.updateScenic,scenicManageVO,function (data) {
+							//console.log(data);
+							$public.isLogin(data);
+							if (data.success) {
+								$public.dialog.msg('保存成功','success');
+								setTimeout(function () {
+									window.location = data.value;
+								},1000);
+							}else{
+								$public.dialog.msg(data.resultMsg,'error');
+							};
+						});							
+					} else{
+						$.post($public.urlpath.addScenic,scenicManageVO,function (data) {
+							//console.log(data);
+							$public.isLogin(data);
+							if (data.success) {
+								$public.dialog.msg('保存成功','success');
+								setTimeout(function () {
+									window.location = data.value;
+								},1000);
+							}else{
+								$public.dialog.msg(data.resultMsg,'error');
+							};
+						});						
+					};
 				};
 				
 			});
