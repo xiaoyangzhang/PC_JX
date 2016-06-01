@@ -114,7 +114,7 @@ define(function (require, exports, module) {
 					$('.dynamicTr').each(function () {
 						var dynamicTr ={
 							pId : $(this).attr('pId'),
-							pText : $(this).attr('pText'),
+							pTxt : $(this).attr('pText'),
 							pType : $(this).attr('pType'),
 							vTxt : $(this).find('input').val(),
 							categoryId : parseInt($('input[name="categoryId"]').val()),
