@@ -89,6 +89,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .radio{margin-right:20px;cursor: pointer;}
 .baseinfo .checkbox{margin-right:10px;display: inline-block;*display: inline;*zoom:1;width:145px;margin-bottom:20px;cursor: pointer;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
+.baseinfo .dtlrule{padding-right: 40px;line-height: 22px;}
 .savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
