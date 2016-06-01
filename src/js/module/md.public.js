@@ -101,6 +101,7 @@ define(function (require, exports, module) {
 		dialog:{
 			initbox:function(){
 				var _self=this;
+				clearTimeout(_self.timer);
 				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
 					$('.bgmeng').on('click',function(ev){
@@ -120,7 +121,7 @@ define(function (require, exports, module) {
 			},
 			waiting:function(){
 				var _self=this;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(_self.box.attr('id')=='waiting-box')
 					_self.box.fadeIn();
 				else{
@@ -131,7 +132,7 @@ define(function (require, exports, module) {
 			},
 			msg:function(value,type){
 				var _self=this;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(_self.box.attr('id')=='msg-box'){
 					$('.msg').text(value);
 					_self.box.fadeIn();
@@ -148,12 +149,13 @@ define(function (require, exports, module) {
 			},
 			content:function(n_width,n_height,title,html_content,callback,init_callback){
 				var _self=this,total_h=0;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
 
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
+					$('.container').append(html_content);
 				}else{
 					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','content-box').append('<div class="content-box"></div>').fadeIn();
