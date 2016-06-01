@@ -63,11 +63,13 @@ define(function (require, exports, module) {
 					$(this).closest(".inforight").find(".showImg").show();
 					listli.filter(function(){this.is_select=false;});
 					this.is_select=true;
+					$editer.distanceFun();
 				}else{
 					$(this).css("borderColor","#f2f2f2");
 					$(this).find("b").css("opacity","0");
 					$(this).closest(".inforight").find(".showImg").hide();
 					this.is_select=false;
+					$editer.distanceFun();
 				}
 			});
 		},
