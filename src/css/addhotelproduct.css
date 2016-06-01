@@ -42,17 +42,18 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo .info-box .bar-box .img-group{width:590px;}
 .hotelinfo .info-box .bar-box .img-group img{margin-right:15px;}
 
-.searchbox{display: none;}
+.searchbox{display: none;overflow: hidden;}
 .searchbox .tb{width:100%;}
 .searchbox .tb td{text-align: left;padding:10px 0;}
 .searchbox .tb td button{width:88px;height: 32px;line-height: 30px;background: #ececec;outline: none;border:1px solid #ddd;margin-left:5px;}
 .searchbox .inputxt{width:188px;}
 .searchbox .tb-txt{text-align: right;width:75px;}
-.searchbox .load_list{margin:50px 0;width:24px;height:24px;}
+.searchbox .load_list{margin:20px 0;width:24px;height:24px;}
 .load_room { display: none; text-align: center;}
 .load_room img{width:24px;height:24px;}
 
-.hotelist{height: 354px;margin-top:10px; overflow: auto;}
+.hotelist{height: 354px;margin-top:10px;}
+.hotelist .tb-box{height: 354px;margin-top:10px; overflow: auto;}
 .hotelist table{width:100%;overflow: auto;}
 .hotelist table th{height:34px;background: #f5f5f5;text-align: center;}
 .hotelist table td{height:60px;}
@@ -81,13 +82,14 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .coltxt{width:125px;text-align: right;}
 .baseinfo table{margin-top:30px;}
 .baseinfo table td,.baseinfo table td label,.baseinfo table td span{color:#333;}
-.baseinfo table td{padding:10px 0;padding-left:10px;}
+.baseinfo table td{padding:10px;}
 .baseinfo table td textarea{width:488px;height: 88px;padding:5px;}
 .baseinfo .mark,.baseinfo .mark label{vertical-align: bottom;color:#999;}
 .baseinfo .mark{margin-left:10px;}
 .baseinfo .radio{margin-right:20px;cursor: pointer;}
 .baseinfo .checkbox{margin-right:10px;display: inline-block;*display: inline;*zoom:1;width:145px;margin-bottom:20px;cursor: pointer;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
+.baseinfo .dtlrule{padding-right: 40px;line-height: 22px;}
 .savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}

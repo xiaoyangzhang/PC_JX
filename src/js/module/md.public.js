@@ -95,32 +95,35 @@ define(function (require, exports, module) {
 			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
 			addhotel:site_path+'/hotel/addHotelMessageVOByData',
 			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
+			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
 			addScenic:site_path+'/scenic/addScenicManageVOByDdata'
 		},
 		timer:null,
 		dialog:{
 			initbox:function(){
 				var _self=this;
+				clearTimeout(_self.timer);
 				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
 					$('.bgmeng').on('click',function(ev){
-						_self.box.hide();
+						_self.closebox();
 						$public.stopBubble(ev);
 					});
-					_self.box=$('.dialog');
+					_self.box=$('.dialog').height($(window).height());
 				}
 			},
 			closebox:function(){
 				var _self=this;
 				_self.box.hide();
+				$('.container').children('div').hide().appendTo('body');
 				$('.bgmeng').off().on('click',function(ev){
-					_self.box.hide();
+					_self.closebox();
 					$public.stopBubble(ev);
 				});
 			},
 			waiting:function(){
 				var _self=this;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(_self.box.attr('id')=='waiting-box')
 					_self.box.fadeIn();
 				else{
@@ -131,7 +134,7 @@ define(function (require, exports, module) {
 			},
 			msg:function(value,type){
 				var _self=this;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(_self.box.attr('id')=='msg-box'){
 					$('.msg').text(value);
 					_self.box.fadeIn();
@@ -140,7 +143,7 @@ define(function (require, exports, module) {
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				clearTimeout(_self.timer);
-				_self.timer=setTimeout(function(){_self.box.hide();},2000);
+				_self.timer=setTimeout(function(){_self.closebox();},2000);
 				if(type=='success')
 					$('.msg').css('color','green');
 				else if(type=='error')
@@ -148,10 +151,9 @@ define(function (require, exports, module) {
 			},
 			content:function(n_width,n_height,title,html_content,callback,init_callback){
 				var _self=this,total_h=0;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
-
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
 				}else{
@@ -160,16 +162,17 @@ define(function (require, exports, module) {
 					$('.content-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
 					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
-					$('.container').height(n_height-125).append(html_content);
+					$('.container').height(n_height-125);
 					$('.ok').off().on('click',function(ev){
 						callback();
 						$public.stopBubble(ev);
 					});
 					$('.cancel,.close-tip').off().on('click',function(ev){
-						_self.box.hide();
+						_self.closebox();
 						$public.stopBubble(ev);
 					});
 				}
+				html_content.appendTo($('.container'));
 				init_callback();
 			}
 		},

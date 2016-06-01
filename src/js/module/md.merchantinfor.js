@@ -10,8 +10,10 @@ define(function (require, exports, module) {
 	$test = function () {
 		this.init.apply(this, arguments);
 	};
+	var isLock=true;
 	$test.prototype = {
 		init:function(){
+			var _self=this;
 			$("#forminfo").Validform();
 			$public.actiondata('province','city');
 			//渲染时间控件
@@ -67,6 +69,18 @@ define(function (require, exports, module) {
    				 else //当被选中的不是第2个时，div隐藏
         			 $(".company").hide();
         });*/
+		},
+		changevalid : function(isTrue){
+			var cardvalue=$('#card :hidden').val();
+			if(isTrue)isLock=false;
+			if(cardvalue==0)
+				$('#cardtxt').attr('datatype','card');
+			else if(cardvalue==1)
+				$('#cardtxt').attr('datatype','dlic');
+			else if(cardvalue==2)
+				$('#cardtxt').attr('datatype','psport');
+			else if(cardvalue==3)
+				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
 

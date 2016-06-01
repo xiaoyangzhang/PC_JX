@@ -77,7 +77,7 @@ define(function (require, exports, module) {
 			});
 
 			$(_self.config.searchotel).on('click',function(ev){
-				var $searchbox=$(_self.config.searchbox),
+				var $searchbox=$('.searchbox'),
 				$htlst=$searchbox.find(_self.config.hotelist);
 				$public.dialog.content(968,'auto','选择酒店',$searchbox.show(),function(){
 					var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
@@ -185,7 +185,7 @@ define(function (require, exports, module) {
 					return false;
 				}else if($('input[name="roomId"]').val()==0){
 					$('.eredar-info li:eq(0)').trigger('click');
-					$public.dialog.msg('请选择房间！','error');
+					$public.dialog.msg('请选择房型！','error');
 					$(document).scrollTop(0);
 					return false;
 				}
@@ -244,20 +244,21 @@ define(function (require, exports, module) {
 
 			//获取酒店列表
 			function gethotelist(page,pagesize){
-				var $searchbox=$(_self.config.searchbox),page=page?page:1,pagesize=pagesize?pagesize:10,
-				$htlst=$searchbox.find(_self.config.hotelist);
+				var page=page?page:1,pagesize=pagesize?pagesize:10,
+				$htlst=$(_self.config.searchbox).find(_self.config.hotelist);
 				$htlst.empty();
 				$.get($public.urlpath.gethotelist,{
 					page:page,
-					pagesize:pagesize,
+					pageSize:pagesize,
 					name:$('#hotelname').val(),
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
 					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
-				},function(data){ 
+				},function(data){
 					$htlst.append(data);
 					$(_self.config.loadlist).hide();
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
+					$('.tb-box').height($('.hotelist').height());
 				});
 			};
 			
@@ -276,7 +277,7 @@ define(function (require, exports, module) {
 					$infoBox.empty().append(data);
 					var rdlth=$('.radio-bar').length-1;
 					$('.radio-bar:eq('+rdlth+')').css('border-bottom','none');
-					$('.radio-bar:eq(0)').trigger('click');
+					setTimeout(function(){$('.radio-bar:eq(0)').trigger('click');},500);
 				});
 			};
 			
@@ -294,10 +295,6 @@ define(function (require, exports, module) {
 			var nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
 			var empty_ckbox={};
-			var SY=$('#SY').get(0);
-			var SM=$('.tdmonth ul');
-			//var GZ=$('#GZ').get(0);
-			var CLD=$('#CLD').get(0);
 			var color_temp='';
 			//保存y年m+1月的相关信息
 			var fat=mat=9;
@@ -328,9 +325,9 @@ define(function (require, exports, module) {
 
 
 		    var supplierCalendar={
-		        "seller_id":"2088102122524333",
+		        "seller_id":$('input[name="sellerId"]').val(),
 		        "hotel_id":$('input[name="hotelId"]').val(),
-		        "sku_flag":$(".sku_flag").val(),
+		        "sku_flag":'',
 		        "bizSkuInfo":[
 		        // {
 		        //     "sku_id":10012,
@@ -457,13 +454,13 @@ define(function (require, exports, module) {
 							if($(_self).attr('class')){
 								$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
 								$(_self).find('label').css('color','#666');
-								recordck($(_self),'del');
+								//recordck($(_self),'del');
 							}else{
 								_self.color_temp=$(_self).find('font')[0].style.color;
 								$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
 								$('.price').val($(_self).find('.price_').text());
 								$('.stock').val($(_self).find('.stock_').text());
-								recordck($(_self),'add');
+								//recordck($(_self),'add');
 							}
 							if(isCtrl) $('.price,.stock').val('');
 							$public.stopBubble(ev);
@@ -568,15 +565,14 @@ define(function (require, exports, module) {
 			 //在下拉列表中选择年月时,调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function changeCld() {
 			    var y,m;
-			    y=$(SY).text();
-			    m=SM.find('li.on').index();
+			    y=$('#SY').text();
+			    m=$('.tdmonth li.on').index();
 			    drawCld(y,m);
 			 }
 
 			 //打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function initial() {
-
-				var gNum,str='';
+				var gNum,str='',slcvalue=$('input[name="supplierCalendar"]').val();
              	for(i=0;i<6;i++) {
 	                str+='<tr class="day '+(i==5?'last':'')+'">';
 	                for(j=0;j<7;j++) {
@@ -588,16 +584,23 @@ define(function (require, exports, module) {
 	                }
 	                str+='</tr>';
          		}
-             	$(CLD).find('table').append(str);
+             	$('.datepicker table').append(str);
 
-			    $(SY).text(tY);
-			    SM.find('li').removeClass('on');
-			    SM.find('li:eq('+tM+')').addClass('on');
+			    $('#SY').text(tY);
+			    $('.tdmonth li').removeClass('on');
+			    $('.tdmonth').find('li:eq('+tM+')').addClass('on');
 			    drawCld(tY,tM);
 
+			    if(slcvalue)
+			    	supplierCalendar=JSON.parse(slcvalue);
+			    else
+					$('input[name="supplierCalendar"]').val(supplierCalendar);
 
-				$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
-
+// console.log('------------------------------------');
+// console.log(typeof slcvalue);
+// console.log(slcvalue);
+// console.log(JSON.parse(slcvalue).seller_id);
+// console.log('------------------------------------'); 
 			 }
 
 			 // var curt=new Date(2016,5,22);
@@ -648,25 +651,25 @@ define(function (require, exports, module) {
 			});
 
 			$('.tdyears .prev').on('click',function(ev){
-				var cur_years=parseInt($(SY).text());
-				$(SY).text(cur_years-1);
+				var cur_years=parseInt($('#SY').text());
+				$('#SY').text(cur_years-1);
 				changeCld();
 				$public.stopBubble(ev);
 			});
 			$('.tdyears .next').on('click',function(ev){
-				var cur_years=parseInt($(SY).text());
-				$(SY).text(cur_years+1);
+				var cur_years=parseInt($('#SY').text());
+				$('#SY').text(cur_years+1);
 				changeCld();
 				$public.stopBubble(ev);
 			});
 			$('.tdmonth li').on('click',function(ev){
-		    	SM.find('li').removeClass('on');
+		    	$('.tdmonth li').removeClass('on');
 		    	$(this).addClass('on');
 				changeCld();
 				$public.stopBubble(ev);
 			});
 			$('.tdmonth li').on('click',function(ev){
-		    	SM.find('li').removeClass('on');
+		    	$('.tdmonth li').removeClass('on');
 		    	$(this).addClass('on');
 				changeCld();
 				$public.stopBubble(ev);
