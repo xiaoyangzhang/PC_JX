@@ -58,9 +58,9 @@ define(function (require, exports, module) {
 				}],validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
 			$('.inputxt,textarea').keyup(function(){
-				$(this).next('.mark').find('label').text($(this).val().length);
+				$(this).next('.mark').find('label.cv').text($(this).val().length);
 			}).filter(function(){
-				$(this).next('.mark').find('label').text($(this).val().length);
+				$(this).next('.mark').find('label.cv').text($(this).val().length);
 			});
 
 			$('#area').selectlist({width: 200});
