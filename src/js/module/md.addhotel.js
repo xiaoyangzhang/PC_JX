@@ -43,10 +43,18 @@ define(function (require, exports, module) {
 					datatype:"*",
 					nullmsg:"请填信息！"
 				},{
-					ele:"rt",
-					datatype:"*2-10",
-					nullmsg:"请填写姓名",
-					errormsg:"请填写2-10字以内的姓名"
+					ele:"input[name='payType']:last",
+					datatype:"*",
+					nullmsg:"请选择付款方式！"
+				},{
+					ele:"input[name='cancelLimit']:last",
+					datatype:"*",
+					nullmsg:"请选择退订限制！"
+				},{
+					ele:"input[name='startBookTimeLimit']",
+					datatype:"n",
+					nullmsg:"请填写提前预定天数！",
+					errormsg:"请输入纯数字！"
 				}],validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
 			$('.inputxt,textarea').keyup(function(){
@@ -56,6 +64,10 @@ define(function (require, exports, module) {
 			});
 
 			$('#area').selectlist({width: 200});
+			$('.baseinfo .checkbox:last').css('width','300px');
+			$('.checkbox input').on('change',function(){
+				check_storeLastTime();
+			});
 			$(document).on('click',_self.config.radiobar,function(ev){
 				$(_self.config.barbox).css('height','0'); 
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
@@ -95,12 +107,6 @@ define(function (require, exports, module) {
 			$public.procityaredata('province','city','area',true);
 
 			$(_self.config.eredarli).on('click',function(ev){
-				// var cur_index=$('.eredar-info li.on').index();
-				// if(cur_index==0){
-
-				// }else if(cur_index==1){
-
-				// }
 				$(_self.config.eredarli).removeClass('on');
 				$(this).addClass('on');
 				$(_self.config.eredarpanel).hide();
@@ -122,7 +128,7 @@ define(function (require, exports, module) {
 
 			//“选择酒店”保存并下一步
 			$('.save-to-baseinfo').on('click',function(ev){
-				if(!allvalidation())
+				if(!valid_step_one())
 					return;
 				$('.eredar-info li:eq(1)').trigger('click');
 				$public.stopBubble(ev);
@@ -130,36 +136,48 @@ define(function (require, exports, module) {
 
 			//“基本信息”保存并下一步
 			$('.save-to-picker').on('click',function(ev){
-				if(!allvalidation())
-					return;
+				var validresult=true;
+				if(!valid_step_two())
+					validresult=false;
+				if(!check_storeLastTime())
+					validresult=false;
+				if(!validresult) return;
 				$('.eredar-info li:eq(2)').trigger('click');
 				$public.stopBubble(ev);
 			});
 
 
 			$('.allsub').on('click',function(ev){
-				if(!allvalidation())
+				if(!valid_step_one()||!valid_step_two())
 					return;
+				if(!check_storeLastTime())
+					return;
+				var ls=supplierCalendar.bizSkuInfo,isHave=false;
+				for(var i=0;i<ls.length;i++){
+					if(ls[i].state!='del')
+						isHave=true;
+				}
+				if(!isHave){
+					$public.dialog.msg('请设置价格日历！','error');
+					return;
+				}
 				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
-				console.log(JSON.stringify(prarm));
-				console.log(typeof prarm.storeLastTime);
 				if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
-				var hotelMessageVO1 = {
-					hotelId : $('input[name="hotelId"]').val(),
-					name : $('input[name="name"]').val(),
-					roomId : $('input[name="roomId"]').val(),					
-					supplierCalendar : $('input[name="supplierCalendar"]').val()					
-				};
-				var hotelMessageVO = $.extend(hotelMessageVO1,prarm);
-				$.post($public.urlpath.addhotel,hotelMessageVO,function (data) {
-					console.log(typeof data);
-					console.log(JSON.stringify(data) +' ----------------------------------');
-					$public.dialog.msg('保存成功','success');
+				$.post($public.urlpath.addhotel,prarm,function (data) {
+					$public.isLogin(data);
+					if(data.success){
+						$public.dialog.msg('保存成功','success');
+						setTimeout(function(){
+							window.location=data.value;
+						},1000);
+					}else{
+						$public.dialog.msg(data.resultMsg,'error');
+					}
 				});
 				
 			});
 					
-			function allvalidation(){
+			function valid_step_one(){
 				if($('input[name="hotelId"]').val()==0){
 					$('.eredar-info li:eq(0)').trigger('click');
 					$public.dialog.msg('请选择酒店！','error');
@@ -173,13 +191,65 @@ define(function (require, exports, module) {
 				}
 				return true;
 			}
+					
+			function valid_step_two(){
+				if(!validfm.check()){
+					$('.eredar-info li:eq(1)').trigger('click');
+					return false;
+				}
+				return true;
+			}
+
+			function check_storeLastTime(){
+				var $cked=$('.checkbox input:checked'),$cklast=$('.baseinfo .checkbox:last');
+				$cklast.find('.Validform_checktip').remove();
+				if($cked.length>3){
+					$cklast.append('<span class="Validform_checktip Validform_wrong">最多只能选三个！</span>');
+					return false;
+				}else if($cked.length==0){
+					$cklast.append('<span class="Validform_checktip Validform_wrong"></span>');
+					return false;
+				}else{
+					$cklast.append('<span class="Validform_checktip Validform_right"></span>');
+					return true;
+				}
+			}
+
+			//上一页
+			$(document).on('click','li.previous:not(".disabled") a',function(){
+				var cur_page=parseInt($('.pagination li.active a').text());
+				$(_self.config.loadlist).show();
+				gethotelist(cur_page>0?(cur_page-1):cur_page);
+			});
+
+			//下一页
+			$(document).on('click','li.next:not(".disabled") a',function(){
+				var cur_page=parseInt($('.pagination li.active a').text());
+				$(_self.config.loadlist).show();
+				gethotelist(cur_page+1);
+			});
+
+			//选择页
+			$(document).on('click','li:not(".active,.previous,.next") a',function(){
+				var cur_page=parseInt($(this).text());
+				$(_self.config.loadlist).show();
+				gethotelist(cur_page);
+			});
+
+			//选择页大小
+			$(document).on('change','li #pageSize',function(){
+				$(_self.config.loadlist).show();
+				gethotelist(1,$(this).val());
+			});
 
 			//获取酒店列表
-			function gethotelist(){
-				var $searchbox=$(_self.config.searchbox),
+			function gethotelist(page,pagesize){
+				var $searchbox=$(_self.config.searchbox),page=page?page:1,pagesize=pagesize?pagesize:10,
 				$htlst=$searchbox.find(_self.config.hotelist);
 				$htlst.empty();
 				$.get($public.urlpath.gethotelist,{
+					page:page,
+					pagesize:pagesize,
 					name:$('#hotelname').val(),
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
@@ -206,6 +276,7 @@ define(function (require, exports, module) {
 					$infoBox.empty().append(data);
 					var rdlth=$('.radio-bar').length-1;
 					$('.radio-bar:eq('+rdlth+')').css('border-bottom','none');
+					$('.radio-bar:eq(0)').trigger('click');
 				});
 			};
 			
@@ -260,19 +331,20 @@ define(function (require, exports, module) {
 		        "seller_id":"2088102122524333",
 		        "hotel_id":$('input[name="hotelId"]').val(),
 		        "sku_flag":$(".sku_flag").val(),
-		        "bizSkuInfo":[{
-		            "sku_id":10012,
-		            "state":"update",
-		            "stock_num":10,
-		            "price":"8.8",
-		            "vTxt":1464364800000
-		        },{
-		            "sku_id":10014,
-		            "state":"update",
-		            "stock_num":228,
-		            "price":"12",
-		            "vTxt":1464105600000
-		        }
+		        "bizSkuInfo":[
+		        // {
+		        //     "sku_id":10012,
+		        //     "state":"update",
+		        //     "stock_num":10,
+		        //     "price":"8.8",
+		        //     "vTxt":1464364800000
+		        // },{
+		        //     "sku_id":10014,
+		        //     "state":"update",
+		        //     "stock_num":228,
+		        //     "price":"12",
+		        //     "vTxt":1464105600000
+		        // }
 		        // ,{
 		        //     "sku_id":10015,
 		        //     "state":"update",
@@ -421,7 +493,6 @@ define(function (require, exports, module) {
 				}else if(type=='del'&&empty_ckbox[cur_smp]){
 					delete empty_ckbox[cur_smp];
 				}
-				//console.log(JSON.stringify(empty_ckbox)+'----');
 			}
 
 			//渲染已设置的日期

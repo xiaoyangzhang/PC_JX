@@ -18,13 +18,7 @@ define(function (require, exports, module) {
 		      changeMonth: true,
 		      changeYear: true
 		    });
-			/* 根据页面高度判断 */
-			if($(".eredar-right").height() > $(".eredar-left").height()){
-				$public.depath();
-			}
-			else{
-				$editer.distanceFun();
-			};
+			$self.distanceFun();
 		 	
 			var validoptions={
 					tiptype:3,
@@ -47,34 +41,44 @@ define(function (require, exports, module) {
 					}
 				});
 			});
-//			$(".searchBtn").on("click",function(){});
-			/* 清除 */
-//			$(".delBtn").on("click",function(){
-//				$(".reviewform").resetForm();
-//			});
-			
+			$(".delBtn").click(function() {
+			   $("input[name='orderNO']").val("");
+			   $("input[name='nickName']").val("");
+			   $("input[name='itemNo']").val("");
+			   $("input[name='beginDate']").val("");
+			   $("input[name='endDate']").val("");
+			});
 			/* 图片点击查看大图 */
 			$self.showImgFun();
 		},
 		showImgFun : function(){
-			var listli = $(".upload ul").find("li");
+			 var listli = $(".upload ul").find("li");
 			listli.click(function(){
 				listli.css("borderColor","#f2f2f2");
 				$(".upload").find("b").css("opacity","0");
 				if(!this.is_select){
 					$(this).css("borderColor","#ed6c44");
-					$(".showImg img").attr("src",$(this).find('img').get(0).src);
+					$(this).closest(".inforight").find(".showImg img").attr("src",$(this).find('img').get(0).src);
 					$(this).find("b").css("opacity","1");
-					$(".showImg").show();
+					$(this).closest(".inforight").find(".showImg").show();
 					listli.filter(function(){this.is_select=false;});
 					this.is_select=true;
 				}else{
 					$(this).css("borderColor","#f2f2f2");
 					$(this).find("b").css("opacity","0");
-					$(".showImg").hide();
+					$(this).closest(".inforight").find(".showImg").hide();
 					this.is_select=false;
 				}
 			});
+		},
+		distanceFun :function(){
+			/* 根据页面高度判断 */
+			if($(".eredar-right").height() < $(".eredar-left").height()){
+				$public.depath();
+			}
+			else{
+				$editer.distanceFun();
+			};
 		}
 	}
 	module.exports = new $test();
