@@ -46,7 +46,7 @@ define(function (require, exports, module) {
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
-				_self.depath();
+				/* _self.depath(); */
 		},
 		html_encode : function(str){   
 		  var s = "";   
