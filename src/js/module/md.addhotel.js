@@ -591,16 +591,16 @@ define(function (require, exports, module) {
 			    $('.tdmonth').find('li:eq('+tM+')').addClass('on');
 			    drawCld(tY,tM);
 
-			  //   if(slcvalue)
-			  //   	supplierCalendar=JSON.parse(slcvalue);
-			  //   else
-					// $('input[name="supplierCalendar"]').val(supplierCalendar);
+			    if(slcvalue)
+			    	supplierCalendar=JSON.parse(slcvalue);
+			    else
+					$('input[name="supplierCalendar"]').val(supplierCalendar);
 
-console.log('------------------------------------');
-console.log(typeof slcvalue);
-console.log(slcvalue);
-console.log(JSON.parse(slcvalue).seller_id);
-console.log('------------------------------------'); 
+// console.log('------------------------------------');
+// console.log(typeof slcvalue);
+// console.log(slcvalue);
+// console.log(JSON.parse(slcvalue).seller_id);
+// console.log('------------------------------------'); 
 			 }
 
 			 // var curt=new Date(2016,5,22);
