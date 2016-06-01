@@ -31,6 +31,7 @@ define(function (require, exports, module) {
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
+				$(".eredar-right").height($(".eredar-left").height());
 				$.ajax({
 					type:'POST',
 					url:""+$("#subpath").val(),
