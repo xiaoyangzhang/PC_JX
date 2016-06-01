@@ -106,7 +106,7 @@ define(function (require, exports, module) {
 				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
 					$('.bgmeng').on('click',function(ev){
-						_self.box.hide();
+						_self.closebox();
 						$public.stopBubble(ev);
 					});
 					_self.box=$('.dialog').height($(window).height());
@@ -115,8 +115,9 @@ define(function (require, exports, module) {
 			closebox:function(){
 				var _self=this;
 				_self.box.hide();
+				$('.container').children('div').hide().appendTo('body');
 				$('.bgmeng').off().on('click',function(ev){
-					_self.box.hide();
+					_self.closebox();
 					$public.stopBubble(ev);
 				});
 			},
@@ -142,7 +143,7 @@ define(function (require, exports, module) {
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				clearTimeout(_self.timer);
-				_self.timer=setTimeout(function(){_self.box.hide();},2000);
+				_self.timer=setTimeout(function(){_self.closebox();},2000);
 				if(type=='success')
 					$('.msg').css('color','green');
 				else if(type=='error')
@@ -153,26 +154,25 @@ define(function (require, exports, module) {
 				_self.initbox();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
-
 				if(_self.box.attr('id')=='content-box'){
 					_self.box.fadeIn();
-					$('.container').append(html_content);
 				}else{
 					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','content-box').append('<div class="content-box"></div>').fadeIn();
 					$('.content-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
 					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
-					$('.container').height(n_height-125).append(html_content);
+					$('.container').height(n_height-125);
 					$('.ok').off().on('click',function(ev){
 						callback();
 						$public.stopBubble(ev);
 					});
 					$('.cancel,.close-tip').off().on('click',function(ev){
-						_self.box.hide();
+						_self.closebox();
 						$public.stopBubble(ev);
 					});
 				}
+				html_content.appendTo($('.container'));
 				init_callback();
 			}
 		},

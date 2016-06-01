@@ -77,7 +77,7 @@ define(function (require, exports, module) {
 			});
 
 			$(_self.config.searchotel).on('click',function(ev){
-				var $searchbox=$(_self.config.searchbox),
+				var $searchbox=$('.searchbox'),
 				$htlst=$searchbox.find(_self.config.hotelist);
 				$public.dialog.content(968,'auto','选择酒店',$searchbox.show(),function(){
 					var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
@@ -244,8 +244,8 @@ define(function (require, exports, module) {
 
 			//获取酒店列表
 			function gethotelist(page,pagesize){
-				var $searchbox=$(_self.config.searchbox),page=page?page:1,pagesize=pagesize?pagesize:10,
-				$htlst=$searchbox.find(_self.config.hotelist);
+				var page=page?page:1,pagesize=pagesize?pagesize:10,
+				$htlst=$(_self.config.searchbox).find(_self.config.hotelist);
 				$htlst.empty();
 				$.get($public.urlpath.gethotelist,{
 					page:page,
@@ -254,7 +254,7 @@ define(function (require, exports, module) {
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
 					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
-				},function(data){ 
+				},function(data){
 					$htlst.append(data);
 					$(_self.config.loadlist).hide();
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
@@ -572,7 +572,6 @@ define(function (require, exports, module) {
 
 			 //打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function initial() {
-
 				var gNum,str='',slcvalue=$('input[name="supplierCalendar"]').val();
              	for(i=0;i<6;i++) {
 	                str+='<tr class="day '+(i==5?'last':'')+'">';
@@ -592,18 +591,16 @@ define(function (require, exports, module) {
 			    $('.tdmonth').find('li:eq('+tM+')').addClass('on');
 			    drawCld(tY,tM);
 
+			  //   if(slcvalue)
+			  //   	supplierCalendar=JSON.parse(slcvalue);
+			  //   else
+					// $('input[name="supplierCalendar"]').val(supplierCalendar);
+
 console.log('------------------------------------');
 console.log(typeof slcvalue);
 console.log(slcvalue);
 console.log(JSON.parse(slcvalue).seller_id);
 console.log('------------------------------------'); 
-alert($('input[name="supplierCalendar"]').length);
-			  //   if(slcvalue)
-			  //   	supplierCalendar=JSON.parse(slcvalue);
-			  //   else
-					// $('input[name="supplierCalendar"]').val('{"id":1001,"name":"xiongzhaoling"}');
-					$('input[name="supplierCalendar"]').val('{"id":1001,"name":"xiongzhaoling"}');
-
 			 }
 
 			 // var curt=new Date(2016,5,22);
