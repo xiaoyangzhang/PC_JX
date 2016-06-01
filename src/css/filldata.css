@@ -40,6 +40,7 @@
 .w250{width:250px !important;}
 .w150{width:150px !important;}
 
+
 .fm_md_two table td.tbtxt,.fm_md_three table td.tbvt{text-align: right;vertical-align: top;}
 .fm_md_two table td.tbtxt label,.fm_md_three table td.tbvt label{display: inline-block;margin-top:34px;}
 
@@ -77,3 +78,12 @@ iframe{display: none;}
 .tipbox p{width:369px;text-align: left;font-size:14px;line-height: 22px;margin-left:10px;color:#999;}
 .othimb .inblock{margin-top:8px;}
 .othimb .Validform_checktip{margin-top:40px;}
+
+
+
+.w217{width:217px !important;}
+.w345{width:345px !important;}
+.last-step{margin-left: 10px;}
+
+
+

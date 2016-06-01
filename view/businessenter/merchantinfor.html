@@ -66,48 +66,49 @@
 					</div>
 				
 		  <!-- 商家信息板块 -->
-       <form method="" class="">
+       <form class="registerform" method="post" action="demo/ajax_post.php" autocomplete="off" id="forminfo">
                	<div class="infor-title">请选择您的身份</div>
-               	                    <div class="company">
-							               <label><input type="radio" value="" name="company" id="" class=""/><label>国内社总社</label></label>
-						                   <label class="bomb-con"><input type="radio" value="" name="company" id="" class=""/><label>国内社分社</label></label>
-							               <label class="bomb-con"><input type="radio" value="" name="company" id="" class=""/><label>出境社总社</label></label>
-							               <label class="bomb-con"><input type="radio" value="" name="company" id="" class=""/><label>出境社分社</label></label>
-						            </div>
                	<div class="one">
                	    	   <table>
                	    	   			<tr>
-               	    	   				<td class="rigtxt"><label>旅游企业：</label></td>
-               	    	   				<td class="rigcontent">
-               	    	   					<input type="radio" value="" name="company" id="travel" class="flm"/><label >旅行社</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">旅游商务服务公司</label>
+               	    	   				<td class="rigtxt ts"><label>旅游企业：</label></td>
+               	    	   				<td class="rigcontent listli">
+               	    	   					<input type="radio" value="" name="type" id="travel" checked="checked" class="flm"/><label >旅行社</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">旅游商务服务公司</label>
+               	    	   					<div class="company">
+								               <label class="bomb-con"><input type="radio" value="" name="country" id="" class="" checked="checked"/><label>国内社总社</label></label>
+							                   <label class="bomb-con"><input type="radio" value="" name="country" id="" class=""/><label>国内社分社</label></label>
+								               <label class="bomb-con"><input type="radio" value="" name="country" id="" class=""/><label>出境社总社</label></label>
+								               <label class="bomb-con"><input type="radio" value="" name="country" id="" class=""/><label>出境社分社</label></label>
+						                    </div>
                	    	   				</td>
+
                	    	   			</tr>
                	    	   			<tr>
                	    	   				<td class="rigtxt"><label>酒店：</label></td>
                	    	   				<td class="rigcontent">
-               	    	   					<input type="radio" value="" name="company" id="" class="flm"/><label>集团酒店/连锁酒店</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">单体酒店</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">酒店代理商</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="flm"/><label>集团酒店/连锁酒店</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">单体酒店</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">酒店代理商</label>
                	    	   				</td>
                	    	   			</tr>
                	    	   			<tr>
                	    	   				<td class="rigtxt"><label>票务：</label></td>
                	    	   				<td class="rigcontent">
-               	    	   					<input type="radio" value="" name="company" id="" class="flm"/><label>景区</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">游乐园</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">门票代理商</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">景区集团</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">旅游局推广商家</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="flm"/><label>景区</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">游乐园</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">门票代理商</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">景区集团</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">旅游局推广商家</label>
                	    	   				</td>
                	    	   			</tr>
                	    	   			<tr>
                	    	   				<td class="rigtxt"><label>同城活动企业：</label></td>
                	    	   				<td class="rigcontent">
-               	    	   					<input type="radio" value="" name="company" id="" class="flm"/><label>公司</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">个体工商户</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">合伙企业</label>
-               	    	   					<input type="radio" value="" name="company" id="" class="lm"/><label class="">其他组织团体</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="flm"/><label>公司</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">个体工商户</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">合伙企业</label>
+               	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">其他组织团体</label>
                	    	   				</td>
                	    	   			</tr>
                	    	   </table>
@@ -121,12 +122,12 @@
 							   	       		<ol>
 								   	       		<li><input type="checkbox" value="" name="" id="" class="k1"/><label>度假路线</label></li>
 								   	       		<div class="bomb">
-											    <div class="aaa bomb-txt01">
-													<label><input type="checkbox" value="" name="" id="" class=""/><label>国内游</label></label>
-													<label class="bomb-con"><input type="checkbox" value="" name="" id="" class=""/><label>出境游</label></label>
-													<label class="bomb-con"><input type="checkbox" value="" name="" id="" class=""/><label>其他(交通卡券、送关、租车、旅游服务等)</label></label>
+												    <div class="aaa bomb-txt01">
+														<label><input type="checkbox" value="" name="" id="" class=""/><label>国内游</label></label>
+														<label class="bomb-con"><input type="checkbox" value="" name="" id="" class=""/><label>出境游</label></label>
+														<label class="bomb-con"><input type="checkbox" value="" name="" id="" class=""/><label>其他(交通卡券、送关、租车、旅游服务等)</label></label>
+													</div>
 												</div>
-				</div>
 								   	       		<li><input type="checkbox" value="" name="" id="" class=""/><label>酒店</label></li>
 								   	       		<li><input type="checkbox" value="" name="" id="" class=""/><label>门票</label></li>
 								   	       		<li><input type="checkbox" value="" name="" id="" class=""/><label>特产商品</label></li>
@@ -143,7 +144,7 @@
 						   	       <tr>
 							   	       	<td class="rigtxt"><label>店铺性质：</label></td>
 							   	       	<td class="rigcontent">
-							   	       		<input type="radio" value="" name="nature" id="" class="flm"/><label>直营店</label>
+							   	       		<input type="radio" value="" name="nature" id="" class="flm" checked="checked"/><label>直营店</label>
 							   	       		<input type="radio" value="" name="nature" id="" class="lm"/><label>专营店</label>
 							   	       	</td>
 						   	       </tr>
@@ -155,53 +156,66 @@
                	    	   <table>
                	    	   			<tr>
                	    	   				<td class="rigtxt"><span>*</span><label>商户负责人姓名：</label></td>
-               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="合同签约人的姓名"/></td>
+               	    	   				<td class="rigcontent"><input  datatype="s" maxlength="60" type="text" value="" name="dggggggg" id="" class="txt01" placeholder="合同签约人的姓名"/></td>
                	    	   			</tr>
                	    	   			<tr>
-               	    	   				<td class="rigtxt"><span>*</span><label>负责人证件类型：</label></td>
-               	    	   				<td class="rigcontent"><select name="" class="txt05"><option value="">请选择</option><option value="1">身份证</option><option value="1">护照</option><option value="1">驾照</option></select></td>
-               	    	   			</tr>
-               	    	   			<tr>
-               	    	   				<td class="rigtxt"><span>*</span><label>负责人证件号：</label></td>
-               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="证件号码"/></td>
-               	    	   			</tr>
+										<td class="rigtxt"><span class="">*</span><label>负责人证件类型：</label></td>
+										<td class="rigcontent" colspan="3"><input type="hidden" id="card_" value="2"><select id="card" class="selectlist">
+										  <option value="">--请选择--</option>
+										  <option value="0">身份证</option>
+										  <option value="1">驾驶证</option>
+										  <option value="2">护照</option>
+										  <option value="3">导游证</option>
+									</select></td>
+									</tr>
+									<tr>
+										  <td class="rigtxt"><span>*</span><label>负责人证件号：</label></td>
+										  <td class="rigcontent"><input class="txt01" id="cardtxt" datatype="psport" maxlength="18" value="D-34535" placeholder="证件号码"></td>
+							        </tr>
                	    	   			<tr>
                	    	   				<td class="rigtxt"><span>*</span><label>负责人手机号：</label></td>
-               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="负责人手机号"/></td>
+               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" datatype="m" maxlength="11" placeholder="负责人手机号"/></td>
                	    	   			</tr>
                	    	   			<tr>
                	    	   				<td class="rigtxt"><span>*</span><label>负责人邮箱：</label></td>
-               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="请输入商户负责人邮箱"/></td>
+               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" datatype="e" maxlength="80" placeholder="请输入商户负责人邮箱"/></td>
                	    	   			</tr>
                	    	   			<tr>
 										<td class="rigtxt vertop"><span class="">*</span><label>法人身份证正面：</label></td>
-										<td class="rigcontent imgwidth">
+											<td class="rigcontent imgwidth">
 											<span class="imgbox">
-			                                	<div class="canclick">
-				                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-			                                    </div><div class="plhd"></div>
-		                                    	<input type="file" name="adpicfile" class="adpicfile">
-		                                    </span>
+											        <div class="canclick">
+												         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+											        </div>
+											        <div class="plhd"></div><div class="del">删除图片</div>
+											        <a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+													<input type="hidden" name="ssssss">
+									        </span>
 										</td>
-										<td class="rigtxt widthrig vertop"><span class="">*</span><label>法人身份证背面：</label></td>
+
+										<td class="rigtxt widthrig vertop"><span>*</span><label>法人身份证背面：</label></td>
 										<td class="rigcontent imgwidth">
 											<span class="imgbox">
-			                                	<div class="canclick">
-				                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-			                                    </div><div class="plhd"></div>
-		                                    	<input type="file" name="adpicfile" class="adpicfile">
-		                                    </span>
+											        <div class="canclick">
+												         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+											        </div>
+											        <div class="plhd"></div><div class="del">删除图片</div>
+											        <a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+													<input type="hidden" name="ssssss">
+									        </span>
 										</td>
 							       </tr>
 							       <tr>
-							       	<td class="rigtxt vertop"><sapn class="">*</span><label>手持身份证照片：</label></td>
-										<td class="rigcontent imgwidth"colspan="3">
+							       	<td class="rigtxt vertop"><span>*</span><label>手持身份证照片：</label></td>
+										<td class="rigcontent "colspan="3">
 											<span class="imgbox">
-			                                	<div class="canclick">
-				                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-			                                    </div><div class="plhd"></div>
-		                                    	<input type="file" name="adpicfile" class="adpicfile">
-		                                    </span>
+											        <div class="canclick">
+												         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+											        </div>
+											        <div class="plhd"></div><div class="del">删除图片</div>
+											        <a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+													<input type="hidden" name="ssssss">
+									        </span>
 		                                    <span class="leftimg"><img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/Sample.jpg"/></span>
 										</td>
 									    
@@ -213,31 +227,31 @@
                				<table>
 	               						<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>商户名称：</label></td>
-	               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="公司主体名称、营业执照上名称"/></td>
+	               	    	   				<td class="rigcontent"><input type="text" datatype="s" maxlength="60" value="" name="" id="" class="txt01" placeholder="公司主体名称、营业执照上名称"/></td>
 	               	    	   			</tr>
 	               	    	   			<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>法定代表人名称：</label></td>
-	               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="营业执照上的法人名称"/></td>
+	               	    	   				<td class="rigcontent"><input type="text" datatype="s" maxlength="60" value="" name="" id="" class="txt01" placeholder="营业执照上的法人名称"/></td>
 	               	    	   			</tr>
 	               	    	   			<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>法定代表人身法证：</label></td>
-	               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01"/></td>
+	               	    	   				<td class="rigcontent"><input type="text" datatype="card" maxlength="60" value="" name="" id="" class="txt01"/></td>
 	               	    	   			</tr>
 	               	    	   			<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>营业执照号码：</label></td>
-	               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01"/></td>
+	               	    	   				<td class="rigcontent"><input type="text" datatype="n" maxlength="60" value="" name="" id="" class="txt01"/></td>
 	               	    	   			</tr>
 	               	    	   			<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>税务登记号：</label></td>
-	               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01"/></td>
+	               	    	   				<td class="rigcontent"><input type="text" maxlength="60" value="" name="" id="" class="txt01 taxL"/></td>
 	               	    	   			</tr>
 	               	    	   			<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>营业地址：</label></td>
-	               	    	   				<td class="rigcontent"><input type="text" value="" name="" id="" class="txt01" placeholder="营业执照上的营业地址"/></td>
+	               	    	   				<td class="rigcontent"><input type="text" datatype="s" maxlength="60" value="" name="" id="" class="txt01" placeholder="营业执照上的营业地址"/></td>
 	               	    	   			</tr>
 	               	    	   			<tr>
 	               	    	   				<td class="rigtxt"><span>*</span><label>营业范围：</label></td>
-	               	    	   				<td class="rigcontent"><textarea tip=""  class="txt02" name="" value="" id="" placeholder="营业执照上的经营范围"></textarea></td>
+	               	    	   				<td class="rigcontent"><textarea tip="" datatype="s" maxlength="60"  class="txt02" name="" value="" id="" placeholder="营业执照上的经营范围"></textarea></td>
 	               	    	   			</tr>
                				</table>
                	</div>
@@ -246,7 +260,7 @@
 						<table>
 							<tr>
 								<td class="rigtxt"><span>*</span><label class="">财务开户银行：</label></td>
-								<td class="rigcontent"><select id="bank" class="txt05">
+								<td class="rigcontent"><select id="bank" class="selectlist">
 									  <option value="">--请选择--</option>
 									  <option value="0">中国建设银行</option>
 									  <option value="1">中国农业银行</option>
@@ -260,29 +274,31 @@
 							</tr>
 							<tr>
 								<td class="rigtxt"><span>*</span><label class="">开户名称：</label></td>
-								<td class="rigcontent"><input type="text" class="txt01"  placeholder="请输入开户行名称"></td>
+								<td class="rigcontent"><input type="text" datatype="*" maxlength="60" class="txt01"  placeholder="请输入开户行名称"></td>
 							</tr>
 							<tr>
 								<td class="rigtxt"><span>*</span><label class="">结算账号：</label></td>
-								<td class="rigcontent"><input type="text" class="txt01"  placeholder="请输入结算账号"></td>
+								<td class="rigcontent"><input type="text"datatype="n10-25" maxlength="25" class="txt01"  placeholder="请输入结算账号"></td>
 							</tr>
 							<tr>
-								<td class="rigtxt"><span class="">*</span><label>结算开户行：</label></td>
+								<td class="rigtxt"><span>*<span/><label>财务结算开户行：</label></td>
 								<td class="rigcontent">
-									<select id="" class="txt03"><option value="">--请选择--</option></select>
-									<select id="" class="txt03"><option value="">--请选择--</option></select>
-									<span class=""><input type="text" class="txt06"  placeholder="请填写详细的开户行名称"></span>
+									 <input type="hidden" id="province_" value="430000">
+									<input type="hidden" id="city_" value="430100">
+									<select id="province"><option value="">--请选择--</option></select>
+									<select id="city" class="ml10"><option value="">--请选择--</option></select>
+									<span class="inblock"><input class="txt06" datatype="*" maxlength="60" placeholder="请填写详细的开户行名称"></span>
 								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="infor-title">店铺命名</div>
 					<div class="seven">
-					     <div class="rigtxt shopname"><span>*</span><label>店铺名称：</label><input type="text" name="" value="" id="" class="rigcontent nameinput txt04"  placeholder="请输入对公结算账号开户行名称"></div>
+					     <div class="shopname"><span>*</span><label>店铺名称：</label><input type="text" datatype="s" maxlength="60" name="" value="" id="" class="rigcontent nameinput txt04"  placeholder="请输入对公结算账号开户行名称"></div>
 					     <div class="notes namelm"><span>*</span><label>店铺名称要符合店铺命名规范</label></div>
 					 </div>  
 					 <div class="identity">
-					  <div class="nextpage"><a href="javascript:;">上一页</a><a href="javascript:;">下一页</a></div>
+					  <div class="nextpage"><a href="javascript:history.go(-1);">上一页</a><a href="javascript:;">下一页</a></div>
 					  </div>
         </form> 
 </div>
@@ -291,7 +307,7 @@
 	<div id="footID">
 		<div class="jiux-footer jiuw2">
 			<div class="footer-top ">
-				<div class="footID clearfix jiuw2">
+				<div class="footID clearfix jiuw2"> 
 					<ul class="fl">
 						<li><a href="http://www.test.jiuxiulvxing.com/about/aboutus.html">关于九休</a></li>
 						<li><a href="http://www.test.jiuxiulvxing.com/about/contactus.html">联系我们</a></li>

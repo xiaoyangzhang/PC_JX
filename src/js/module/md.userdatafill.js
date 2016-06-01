@@ -3,7 +3,7 @@ define(function (require, exports, module) {
 	require("widget"),
 	require("datepicker"),//引用时间组件
 	require("uploadfiles"),//上传文件组件
-	require("validform"),//上传文件组件
+	require("validform"),//验证组件
 	require("dropdownlist"),//下拉框组件
 	require("upload"),
 	$public=require("public"),

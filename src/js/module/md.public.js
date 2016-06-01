@@ -73,7 +73,6 @@ define(function (require, exports, module) {
 		  return s;  
 		},
 		isLogin :function(data){
-			/* console.log(data); */
 			if(!data instanceof Object)
 				data=JSON.parse(data);
 			if(data.errorCode==22000000)
@@ -92,8 +91,11 @@ define(function (require, exports, module) {
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
 			updatepwd:site_path+'/account/modifyPassword',
-			searchotel:site_path+'/hotel/queryHotelManageList'
-			//searchotelroom:site_path+'/hotel/queryRoomTypeListByData'
+			gethotelist:site_path+'/hotel/queryHotelManageList',
+			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
+			addhotel:site_path+'/hotel/addHotelMessageVOByData',
+			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
+			addScenic:site_path+'/scenic/addScenicManageVOByDdata'
 		},
 		timer:null,
 		dialog:{
