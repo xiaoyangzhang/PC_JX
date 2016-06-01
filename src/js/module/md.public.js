@@ -46,7 +46,7 @@ define(function (require, exports, module) {
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
-				/* _self.depath(); */
+				 _self.depath(); 
 		},
 		html_encode : function(str){   
 		  var s = "";   
@@ -78,22 +78,22 @@ define(function (require, exports, module) {
 			if(data.errorCode==22000000)
 				window.location=site_path+'/user/login';
 		},
-		/* depath :function(){
-			var hh=$("#jiuxColor").height(),fh=$("#footID").height(),el=$(".eredar-left"),er=$(".eredar-right"),
+		 depath :function(){
+			var hh=$("#jiuxColor").height(),fh=$("#footID,.jiux-footer").height(),el=$(".eredar-left"),er=$(".eredar-right"),
 				wdh=$(window).height()-hh-fh-102,auto_height=$(document).height()-hh-fh-60,
 				elh=el.height()+120,erh=er.height();
 			if(wdh>elh&&wdh>erh)
 				el.height(elh);
 			else
 				el.height(auto_height);
-		}, */
+		}, 
 		urlpath:{
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
 			updatepwd:site_path+'/account/modifyPassword',
 			gethotelist:site_path+'/hotel/queryHotelManageList',
 			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
-			addhotel:site_path+'/hotel/addHotelMessageVOByData',,
+			addhotel:site_path+'/hotel/addHotelMessageVOByData',
 			updatehotel:site_path+'/hotel/editScenicManageVOByDdata',
 			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
 			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
