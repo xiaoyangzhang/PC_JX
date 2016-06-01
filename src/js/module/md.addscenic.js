@@ -47,7 +47,7 @@ define(function (require, exports, module) {
 					datatype:'*',
 					nullmsg:'请填信息！'
 				},{
-					ele:'input[name="ticketId"]:last',
+					ele:'td input[name="ticketId"]:last',
 					datatype:'*',
 					nullmsg:'请选择门票类型'
 				},{
@@ -128,6 +128,7 @@ define(function (require, exports, module) {
 						name : $('input[name="scenicName"]').val(),
 						//scenicTicket : $('input[name="scenicTicket"]').val(),
 						ticketId :  $('input[name="ticketId"]:checked').val(),
+						ticketTitle : $('input[name="ticketId"]:checked').attr('tTitle'),
 						title : $('input[name="title"]').val(),
 						price : $('input[name="price"]').val(),
 						originalPrice : $('input[name="originalPrice"]').val(),
@@ -138,7 +139,15 @@ define(function (require, exports, module) {
 					//console.log(JSON.stringify(scenicManageVO) );
 					$.post($public.urlpath.addScenic,scenicManageVO,function (data) {
 						//console.log(data);
-						alert("保存成功");
+						$public.isLogin(data);
+						if (data.success) {
+							$public.dialog.msg('保存成功','success');
+							setTimeout(function () {
+								window.location = data.value;
+							},1000);
+						}else{
+							$public.dialog.msg(data.resultMsg,'error');
+						};
 					});
 				};
 				
@@ -187,6 +196,21 @@ define(function (require, exports, module) {
 				var $tr = $('input[name="scenicGroup"]:checked').closest('tr');
 				$(_self.config.infoBar).find('.htn').text($tr.find('.scenic-name').text());
 				$(_self.config.infoBar).find('.address').text($tr.find('.scenic-locationText').text());
+				$.post($public.urlpath.getScenicTicketType,{scenicId : $('input[name="scenicId"]').val()},function (data) {
+					//console.log(JSON.stringify(data));
+					if (data.success) {
+						var tikArr = JSON.parse(data.value);
+						var tdHtml = [];
+						for (var i=0;i<tikArr.length;i++) {
+							var lab = '<label class="radio"><input type="radio" name="ticketId" value='+ tikArr[i].id +' tTitle='+ tikArr[i].title +'>'+ tikArr[i].title +'</label>';
+							tdHtml.push(lab);
+						};
+						$('td.ticketType').empty().append(tdHtml.join('\n'));
+						validForm=$('.scenicForm').Validform(validoptions).addRule(rule);
+					} else{
+						$public.dialog.msg('请求失败','error');
+					}
+				});
 			};
 			
 
