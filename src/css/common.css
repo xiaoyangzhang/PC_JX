@@ -425,7 +425,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     height: 172px;
     top:-168px;
     left:-58px;
-    background: url('../../img/downapp_new/qr_code_tip.png') no-repeat center center;
+    background: url('../../img/qr_code_tip.png') no-repeat center center;
 }
 .jiux-footer .footer-top li{
     float: left;
