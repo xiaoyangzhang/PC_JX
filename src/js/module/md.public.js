@@ -95,6 +95,7 @@ define(function (require, exports, module) {
 			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
 			addhotel:site_path+'/hotel/addHotelMessageVOByData',
 			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
+			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
 			addScenic:site_path+'/scenic/addScenicManageVOByDdata'
 		},
 		timer:null,
