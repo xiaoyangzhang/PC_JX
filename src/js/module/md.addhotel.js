@@ -161,9 +161,10 @@ define(function (require, exports, module) {
 					$public.dialog.msg('请设置价格日历！','error');
 					return;
 				}
-				var prarm=$public.paramcompare($('#hotelfm').serializeArray());
+				var prarm=$public.paramcompare($('#hotelfm').serializeArray()),
+				url=$('input[name="operationFlag"]').val()=='operationFlag'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
 				if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
-				$.post($public.urlpath.addhotel,prarm,function (data) {
+				$.post(url,prarm,function (data) {
 					$public.isLogin(data);
 					if(data.success){
 						$public.dialog.msg('保存成功','success');
@@ -280,8 +281,9 @@ define(function (require, exports, module) {
 					setTimeout(function(){$('.radio-bar:eq(0)').trigger('click');},500);
 				});
 			};
-			
-			
+	
+
+
 
 
 
@@ -594,7 +596,7 @@ define(function (require, exports, module) {
 			    if(slcvalue)
 			    	supplierCalendar=JSON.parse(slcvalue);
 			    else
-					$('input[name="supplierCalendar"]').val(supplierCalendar);
+					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 
 // console.log('------------------------------------');
 // console.log(typeof slcvalue);
