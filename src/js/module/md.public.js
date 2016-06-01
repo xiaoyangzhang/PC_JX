@@ -107,7 +107,7 @@ define(function (require, exports, module) {
 						_self.box.hide();
 						$public.stopBubble(ev);
 					});
-					_self.box=$('.dialog');
+					_self.box=$('.dialog').height($(window).height());
 				}
 			},
 			closebox:function(){
