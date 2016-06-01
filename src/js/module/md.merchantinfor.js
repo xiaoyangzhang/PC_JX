@@ -53,6 +53,9 @@ define(function (require, exports, module) {
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
+				$('.subt').on('click',function(){
+					console.log(JSON.stringify($public.paramcompare($('.registerform').serializeArray())));
+				});
 
    /* $(".k1").click(function(){     
         if($(this).is(':checked')){
