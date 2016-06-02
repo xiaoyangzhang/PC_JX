@@ -84,16 +84,14 @@ define(function (require, exports, module) {
 					   url: $public.urlpath.getBsScope,
 					   data: {merchantCategoryId:$(this).val()},
 					   success: function(data){
-					   			  var list = JSON.parse(data.value);    
-									  $('input[type="checkbox"]').each(function(){ 
+					   			  var list = JSON.parse(data.value);
+					   			  $('input[type="checkbox"]').prop("checked","").prop("disabled","disabled");    
+									  $('input[type="checkbox"]:disabled').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
-									  		if($(this).val() != list[i].businessScopeId ) {
-									  			$(this).prop("disabled","disabled");
-									  		}else{
+									  		if($(this).val() == list[i].businessScopeId ) {
 									  			$(this).prop("disabled","");
 									  		}
-									  	};
-									  
+									  	}; 
 									  });   
 					   	   	}
 					   
@@ -134,9 +132,13 @@ define(function (require, exports, module) {
 					if($(this).is(':checked')){
 					/*	alert("niscdns");*/
 						$('.company input:radio[name="city"]').eq(0).attr("checked","checked");
-					  }else{
-					  	$('.company input:radio[name="city"]').attr("checked",false);
-					  }
+					  };
+				});
+				$(".ddd").change(function(){
+					if($(this).is(':checked')){
+					/*	alert("niscdns");*/
+						$('.company input:radio[name="city"]').attr("checked",false);
+					  };
 				});
 
 				/*$("选择身份按钮").on("click",function(){
