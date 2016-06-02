@@ -88,9 +88,9 @@ define(function (require, exports, module) {
 									  $('input[type="checkbox"]').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() != list[i].businessScopeId ) {
-									  			$(this).attr("disabled","disabled");
+									  			$(this).prop("disabled","disabled");
 									  		}else{
-									  			$(this).attr("disabled","");
+									  			$(this).prop("disabled","       ");
 									  		}
 									  	};
 									  
@@ -130,16 +130,13 @@ define(function (require, exports, module) {
 				return false;
 				});
 
-				$(".aaa").on('click',function(){
-
-					alert("dsfsdf");
+				$(".ccc").change(function(){
 					if($(this).is(':checked')){
-						$('.company input:radio[name="city"]').attr("checked","checked");
+					/*	alert("niscdns");*/
+						$('.company input:radio[name="city"]').eq(0).attr("checked","checked");
+					  }else{
+					  	$('.company input:radio[name="city"]').attr("checked",false);
 					  }
-					 else{ 
-					 	$('.company input:radio[name="city"]').attr("checked",false);
-					 	 } 
-					
 				});
 
 				/*$("选择身份按钮").on("click",function(){
