@@ -98,7 +98,7 @@ define(function (require, exports, module) {
 			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
 			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
 			addScenic:site_path+'/scenic/addScenicManageVOByDdata',
-			updateScenic:site_path+'/scenic/editScenicManageVOByDdata',
+			updateScenic:site_path+'/scenic/editScenicManageVOByData',
 			getBsScope:site_path+'/apply/getBusinessScope'
 		},
 		timer:null,

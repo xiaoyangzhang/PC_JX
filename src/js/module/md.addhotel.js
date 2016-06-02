@@ -178,17 +178,18 @@ define(function (require, exports, module) {
 				var prarm=$public.paramcompare($('#hotelfm').serializeArray()),operationFlag=$('input[name="operationFlag"]').val(),
 				url=operationFlag=='update'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
 				if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
-				$.post(url,prarm,function (data) {
-					$public.isLogin(data);
-					if(data.success){
-						$public.dialog.msg('保存成功','success');
-						setTimeout(function(){
-							window.location=data.value;
-						},1000);
-					}else{
-						$public.dialog.msg(data.resultMsg,'error');
-					}
-				});
+				alert(url);
+				// $.post(url,prarm,function (data) {
+				// 	$public.isLogin(data);
+				// 	if(data.success){
+				// 		$public.dialog.msg('保存成功','success');
+				// 		setTimeout(function(){
+				// 			window.location=data.value;
+				// 		},1000);
+				// 	}else{
+				// 		$public.dialog.msg(data.resultMsg,'error');
+				// 	}
+				// });
 				
 			});
 					
