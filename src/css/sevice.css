@@ -62,3 +62,35 @@ strong{font-weight: normal;}
 .eredar-right .skip ul li input{width:25px;height: 30px;border:solid 1px #ccc;padding-left: 5px;}
 .eredar-right .skip ul li strong{vertical-align: middle;font-weight: normal;line-height: 30px;margin-left: 24px;}
 .eredar-right .skip ul li a:hover{background-color: #ffaf00;border: solid 1px #ffaf00;}
+
+
+/*草稿箱*/
+.eredar-right .draft{padding:0 0 0 40px;}
+.eredar-right .draft p{background-color:#f5f5f5;width: 892px;padding: 20px 0;}
+.eredar-right .draft p em{margin-left: 34px;}
+.eredar-right .draft p select{width: 220px;border:solid 1px #ccc;padding-left: 10px;}
+.eredar-right .draft p select option{height:30px;}
+.eredar-right .draft p .searchBtn{background-color: #ececec;border:solid 1px #ccc;width: 60px;height: 34px;margin-left: 18px;}
+.eredar-right .draft table{margin-top: 30px;}
+.eredar-right .draft table tr th{background-color:#f5f5f5;height:40px;}
+.eredar-right .draft table tr th.name{width:262px;}
+.eredar-right .draft table tr th.style{width:238px;}
+.eredar-right .draft table tr th.time{width: 210px;}
+.eredar-right .draft table tr th.handle{}
+.eredar-right .draft table tr{border-bottom: solid 1px #eee;}
+.eredar-right .draft table tr td{text-align: center;height: 65px;}
+.eredar-right .draft table tr td a{color: #ed6c44;}
+.eredar-right .draft table tr td a.del{margin-left: 20px;}
+.draftPop{width:258px;height: 140px;border:solid 1px #dcdcdc;position: fixed;z-index: 9999;left:50%;top:50%;margin: -70px 0 0 -129px;background-color: #fff;display: none;}
+.draftPop p{text-align: center;color: #222;margin-top: 34px;}
+.draftPop p.p{margin-top: 26px;}
+.draftPop p button{width: 80px;height: 34px;border:solid 1px #ed6c44;background-color: #fff;color: #ed6c44;}
+.draftPop p button.cancel{color:#666;border-color: #dcdcdc;margin-left: 12px;}
+
+
+/*保存弹窗*/
+#svaeDraft{position: relative;height: 139px;width: 387px;background-color: #fff;position: fixed;top:50%;left: 50%;margin: -69.5px 0 0 -193.5px;display: none;}
+#svaeDraft .namedDra{border:solid 1px #eee;}
+#svaeDraft .namedDra p{margin-top: 32px;text-align: center;}
+#svaeDraft .namedDra p input{width:210px;height: 34px;}
+#svaeDraft .namedDra button{width:80px;height:34px;line-height: 34px;color: #ed6c44;border: solid 1px #ed6c44;background-color: #fff;margin: 10px 138px;}
