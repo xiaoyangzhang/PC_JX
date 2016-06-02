@@ -90,7 +90,7 @@ define(function (require, exports, module) {
 									  		if($(this).val() != list[i].businessScopeId ) {
 									  			$(this).prop("disabled","disabled");
 									  		}else{
-									  			$(this).prop("disabled","       ");
+									  			$(this).prop("disabled","");
 									  		}
 									  	};
 									  
