@@ -58,8 +58,8 @@ define(function (require, exports, module) {
 
 					$.ajax({
 					   type: "get",
-					   url: "",
-					   data: {value:$(this).val()},
+					   url: $public.urlpath.getBsScope,
+					   data: {merchantCategoryId:$(this).val()},
 					   success: function(data){
 					   		if(typeof data=='string')
 					   	   		console.log(data);
