@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>订单管理--评论管理</title>
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/jquery-ui-1.10.4.custom.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/eredar.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/sevice.css">
+</head>
+<body>
+	<!-- 头部开始 -->
+<div id = "jiuxColor" class = "jiuw1">
+	<div class="jiux-header wjiuxiu jiuw1 clearfix">
+		<!-- 头部左侧部分 -->
+		<div class="header-l fl clearfix">
+			<a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/indexJX.html" class="fl">
+				<div class="logo">九休旅行</div>
+			</a>
+			<ul class="clearfix fl">
+				<li class="fl active"><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/indexJX.html">首页</a></li>
+				<li class="fl"><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/recruitment.html">九休商务</a></li>
+				<li class="fl"><a href="#">商家中心</a></li>
+				<li class="fl"><a href="#">九休旅行App</a></li>
+			</ul>
+		</div>
+		<!-- 头部右侧部分 -->
+		<div class="header-r fr clearfix">
+			<div class="tel">
+				<ul>
+					<!-- <li class="fl" id="loginBox"><img src="../../img/touxiang.png" alt=""/><span id="userName">登陆</span></li>
+					<li class="fl staticW"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">退出</a></li> -->
+					<li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">登录</a><span class="cuttingline"></span></li>
+					<li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/register">注册</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 头部完成 -->
+	<!-- 面包屑 -->
+	<div class = "comwidth crumbs f12">您所在的位置：订单评论><a class = "f12 gray6">评价管理</a></div>
+	<div class = "comwidth clearfix" id = "eredar">
+		<div class = "eredar-left">
+			<dl class = "first">
+				<dd>商品管理</dd>
+				<dt class = "one">添加商品</dt>
+				<dt>商品列表</dt>
+			</dl>
+			<dl>
+				<dd>订单管理</dd>
+				<dt class = "one">订单列表</dt>
+			</dl>
+			<dl>
+				<dd>店铺管理</dd>
+				<dt class = "one on">基本信息</dt>
+				<dt>账户信息</dt>
+			</dl>
+			<dl>
+				<dd>对账管理</dd>
+				<dt class = "one">月结账单</dt>
+			</dl>
+		</div>
+		<div class = "eredar-right">
+			<div class = "eredar-info clearfix">
+				<ul>
+					<li class = " first on">商品草稿箱</li>
+					<!-- <li>账户信息</li> -->
+				</ul>
+			</div>
+			<div class = "draft">
+				<p>
+					<em class ="gray6">商品类型：</em>
+					<select id="edu">
+						<option value="">全部</option>
+					</select>
+					<button type="submit" class = "searchBtn">查询</button>
+				</p>
+				<table width= "892px">
+					<tr>
+						<th class = "name">草稿名称</th>
+						<th class = "style">类型</th>
+						<th class = "time">发布时间</th>
+						<th class = "handle">操作</th>
+					</tr>
+					<tr>
+						<td class = "name">昆明大理丽江8天7晚自驾游</td>
+						<td class = "style">国内跟团游</td>
+						<td class = "time">2016-05-30   15:23:06</td>
+						<td class = "handle"><a>编辑</a><a class ="del">删除</a></td>
+					</tr>
+					<tr>
+						<td class = "name">昆明大理丽江8天7晚自驾游</td>
+						<td class = "style">国内跟团游</td>
+						<td class = "time">2016-05-30   15:23:06</td>
+						<td class = "handle"><a>编辑</a><a class ="del">删除</a></td>
+					</tr>
+					<tr>
+						<td class = "name">昆明大理丽江8天7晚自驾游</td>
+						<td class = "style">国内跟团游</td>
+						<td class = "time">2016-05-30   15:23:06</td>
+						<td class = "handle"><a>编辑</a><a class ="del">删除</a></td>
+					</tr>
+					<tr>
+						<td class = "name">昆明大理丽江8天7晚自驾游</td>
+						<td class = "style">国内跟团游</td>
+						<td class = "time">2016-05-30   15:23:06</td>
+						<td class = "handle"><a>编辑</a><a class ="del">删除</a></td>
+					</tr>
+				</table>
+			</div>
+			<div class = "skip clearfix">
+				<ul>
+					<li class = "first"><a><img src ="../../img/revLeft.png"></a></li>
+					<li><a>1</a></li>
+					<li><a>2</a></li>
+					<li><a>3</a></li>
+					<li><a>...</a></li>
+					<li><a>10</a></li>
+					<li><a><img src ="../../img/revRight.png"></a></li>
+					<li><strong>跳转到：</strong></li>
+					<li class = "a"><input type = "text"></input></li>
+					<li><a>GO</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 删除弹窗 -->
+	<div class = "draftPop">
+		<p>确定删除该草稿？</p>
+		<p class = "p">
+			<button class = "del-list">删除</button>
+			<button class ="cancel">取消</button>
+		</p>
+	</div>
+	<!-- 保存草稿弹窗 -->
+	<div id = "svaeDraft" class = "svaeDraft">
+		<div class = "namedDra">
+			<p>为当前草稿命名：<input type = "text"  datatype="*" maxlength="30"></p>
+			<button type = "submit">确定</button>
+		</div>
+	</div>
+	<!-- 尾部开始 -->
+<div class="jiux-footer jiuw1" id = "footID">
+    <div class="footer-top">
+        <div class="footID jiuw1 clearfix">
+            <ul class="fl">
+                <li><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/about.html">关于九休</a></li>
+                <li><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/contactus.html">联系我们</a></li>
+                <li><a href="http://s0.test.jiuxiulvxing.com/guanwang/view/officialweb/feedback.html">意见反馈</a></li>
+                <li>招商咨询&nbsp;&nbsp;4000-696-888/9:00~22:00，周一到周日</li>
+            </ul>
+			<div class="fr">
+				<a class="wb"></a>
+				<a class="wx"><i></i></a>
+				<a class="qq"></a>
+			</div>
+        </div>
+    </div>
+    <div class="footer-bom">
+        <div class="footID jiuw1">
+            <img src="../../img/b_logo.png">
+             <p>COPYRIGHT&copy; 2016 JIUXIULVXING.COM 九休旅行版权所有</p>
+            <p><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15051416号-1</a></p>
+        </div>
+    </div>
+</div>
+<script  type='text/temple' id='province-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<province.length; j++) { #>
+	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
+	    <# } #>
+	</script>
+<!-- 尾部结束 -->
+	<script type="text/javascript" src="../../src/js/sea.js"></script>
+	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+	<script type="text/javascript" src="../../src/js/config.js"></script>		
+	<script>seajs.use("draft");</script>	
+</body>
+</html>
