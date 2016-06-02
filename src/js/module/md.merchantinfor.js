@@ -128,17 +128,15 @@ define(function (require, exports, module) {
 				return false;
 				});
 
-				$(".ccc").change(function(){
-					if($(this).is(':checked')){
-					/*	alert("niscdns");*/
-						$('.company input:radio[name="city"]').eq(0).attr("checked","checked");
-					  };
+				$(".ccc").on('click',function(){
+					$(".company input[type='radio']").eq(0).prop("checked","checked");
 				});
-				$(".ddd").change(function(){
-					if($(this).is(':checked')){
-					/*	alert("niscdns");*/
-						$('.company input:radio[name="city"]').attr("checked",false);
-					  };
+				$(".ddd").on('click',function(){
+					$(".ccc").prop("checked",false);
+
+				});
+				$(".company input[type='radio']").on('click',function(){
+					$(".ccc").prop("checked","checked");
 				});
 
 				/*$("选择身份按钮").on("click",function(){
