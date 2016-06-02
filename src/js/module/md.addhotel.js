@@ -176,7 +176,7 @@ define(function (require, exports, module) {
 					return;
 				}
 				var prarm=$public.paramcompare($('#hotelfm').serializeArray()),operationFlag=$('input[name="operationFlag"]').val(),
-				url=operationFlag=='operationFlag'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
+				url=operationFlag=='update'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
 				if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
 				$.post(url,prarm,function (data) {
 					$public.isLogin(data);
