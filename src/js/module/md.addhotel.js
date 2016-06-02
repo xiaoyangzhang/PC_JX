@@ -175,8 +175,8 @@ define(function (require, exports, module) {
 					$public.dialog.msg('请设置价格日历！','error');
 					return;
 				}
-				var prarm=$public.paramcompare($('#hotelfm').serializeArray()),
-				url=$('input[name="operationFlag"]').val()=='operationFlag'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
+				var prarm=$public.paramcompare($('#hotelfm').serializeArray()),operationFlag=$('input[name="operationFlag"]').val(),
+				url=operationFlag=='update'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
 				if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
 				$.post(url,prarm,function (data) {
 					$public.isLogin(data);
