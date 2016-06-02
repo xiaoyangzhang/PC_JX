@@ -79,7 +79,6 @@ define(function (require, exports, module) {
 					   	   	console.log(ddd[0]);*/
 
 				$(".comtype input[type='radio']").on('click' ,function(){
-						alert("nisdcjs");
 					$.ajax({
 					   type: "post",
 					   url: $public.urlpath.getBsScope,
