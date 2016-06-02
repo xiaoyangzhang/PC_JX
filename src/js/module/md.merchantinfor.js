@@ -85,7 +85,7 @@ define(function (require, exports, module) {
 					   data: {merchantCategoryId:$(this).val()},
 					   success: function(data){
 					   			  var list = JSON.parse(data.value);    
-									  $('input[type="checkbox"]').each(function(){ console.log("======================");  
+									  $('input[type="checkbox"]').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() != list[i].businessScopeId ) {
 									  			$(this).attr("disabled","disabled");
