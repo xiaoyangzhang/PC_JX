@@ -46,7 +46,7 @@ input{margin:0;padding:0 }
 span{color:red;}
 .agreement-box .three .lmnotes{padding-top:25px;}
 .agreement-box .seven .namelm{padding-top:38px;}
-.agreement-box .txt01{width:248px;height:34px;}
+.agreement-box .txt01{width:248px;height:34px;border: 1px solid #ddd;}
 .agreement-box .txt02{width: 513px;height: 93px;padding-left: 5px;padding-top: 5px;}
 .agreement-box .txt03{width:160px;height:34px;}
 .agreement-box .txt04{width:620px;height:34px;}
