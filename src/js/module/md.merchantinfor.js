@@ -88,9 +88,9 @@ define(function (require, exports, module) {
 									  $('input[type="checkbox"]').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() != list[i].businessScopeId ) {
-									  			$(this).attr("disabled","disabled");
+									  			$(this).prop("disabled","disabled");
 									  		}else{
-									  			$(this).attr("disabled","");
+									  			$(this).prop("disabled","       ");
 									  		}
 									  	};
 									  
@@ -102,12 +102,19 @@ define(function (require, exports, module) {
 				});
 
 				$('.subt').on('click',function(){
+
 					var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
+					/*console.log(JSON.stringify(params));*/
 					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
 						$public.dialog.waiting();
-						$.post(subpath,params,function(data){
+					var idStr="";
+					$("input[type='checkbox']:checked").each(function(){
+						idStr+=$(this).val()+",";
+					})
+					params.scopeIds=idStr.substring(0,idStr.length-1);
+					$.post(subpath,params,function(data){
 							$public.isLogin(data);
 							$public.dialog.closebox();
 							if(data.success){
@@ -122,6 +129,16 @@ define(function (require, exports, module) {
 					}
 				return false;
 				});
+
+				$(".ccc").change(function(){
+					if($(this).is(':checked')){
+					/*	alert("niscdns");*/
+						$('.company input:radio[name="city"]').eq(0).attr("checked","checked");
+					  }else{
+					  	$('.company input:radio[name="city"]').attr("checked",false);
+					  }
+				});
+
 				/*$("选择身份按钮").on("click",function(){
                 $.ajax({
                     type: "POST",
