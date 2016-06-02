@@ -54,7 +54,7 @@ define(function (require, exports, module) {
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
-/*
+
 					   	var data={
 					   		"success":true,
 					   		"errorMsg":null,
@@ -64,19 +64,19 @@ define(function (require, exports, module) {
 					   		{'businessScopeId':6,'domainId':0,'id':36,'merchantCategoryId':7,'status':0},
 						   	{'businessScopeId':2,'domainId':0,'id':37,'merchantCategoryId':7,'status':0},
 						   	{'businessScopeId':4,'domainId':0,'id':38,'merchantCategoryId':7,'status':0}]
-					   	}*/
-					   		// if(typeof data=='string')
-					   	 //   		console.log(data);
-					   	 //   	else
-					   	 //   		console.log(JSON.stringify(data));
+					   	}
+					   		/*if(typeof data=='string')
+					   	   		console.log(data);
+					   	   	else
+					   	   		console.log(JSON.stringify(data));
 
-					   	   /*	alert(typeof data);
-					   	   	alert(d.success);*/
+					   	   alert(typeof data);*/
+					   	   /*	alert(d.success);*/
 
-					   	   	/*var ddd=data.value;
+					   	   	var ddd=data.value;
 					   	   	console.log(typeof ddd);
 					   	   	console.log(JSON.stringify(ddd));
-					   	   	console.log(ddd[0]);*/
+					   	   	console.log(ddd[0]);
 
 				$(".comtype input[type='radio']").on('click' ,function(){
 					$.ajax({
@@ -84,24 +84,18 @@ define(function (require, exports, module) {
 					   url: $public.urlpath.getBsScope,
 					   data: {merchantCategoryId:$(this).val()},
 					   success: function(data){
-					   		if(typeof data=='string')
-					   	   		console.log(data);
-					   	   	else
-					   	   		console.log(JSON.stringify(data));/*转换字符串*/
-					   	   /*	var d=JSO(data);*/
-					   			  var list = data.value;
-					   			  console.log(list[0]);   
-									  $('input[type="checkbox"]').each(function(){    
+					   			  var list = JSON.parse(data.value);    
+									  $('input[type="checkbox"]').each(function(){ console.log("======================");  
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() != list[i].businessScopeId ) {
 									  			$(this).attr("disabled","disabled");
+									  		}else{
+									  			$(this).attr("disabled","");
 									  		}
 									  	};
 									  
 									  });   
-
 					   	   	}
-
 					   
 					});
 
@@ -142,7 +136,7 @@ define(function (require, exports, module) {
                         $('#txt').html("<ul style='margin-left: 100px;'><li>$.ajax<>" + html + "</ul>");  //最后展示在页面
                     }
                 });
-            });*/
+            });
    /* $(".k1").click(function(){     
         if($(this).is(':checked')){
             $(".aaa").show();
