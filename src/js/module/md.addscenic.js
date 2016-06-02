@@ -168,6 +168,7 @@ define(function (require, exports, module) {
 				};
 				
 			});
+			//查询景区弹出层
 			$(_self.config.searchScenic).on('click',function(ev){
 				var $searchbox=$(_self.config.searchbox),
 				$sceniclist=$searchbox.find(_self.config.scenicList);
@@ -190,8 +191,9 @@ define(function (require, exports, module) {
 				});
 				getScenicList();
 				$public.stopBubble(ev);
-			});//----------------------------------------------
+			});
 			
+			//景区列表			
 			function getScenicList(){
 				var $searchbox=$(_self.config.searchbox),
 				$sceniclist=$searchbox.find(_self.config.scenicList);
@@ -207,6 +209,10 @@ define(function (require, exports, module) {
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
 				});
 			};
+			//列表感应行点击
+			$(document).on('click','.sceniclist tr',function(){
+				$(this).find('input[type="radio"]').prop('checked','checked');
+			});
 			
 			function selectScenic(){
 				var $tr = $('input[name="scenicGroup"]:checked').closest('tr');
@@ -238,14 +244,12 @@ define(function (require, exports, module) {
 
 
 			 
+			/****************************************************价格日历********************************************/
+
 			var solarMonth=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 			var nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
 			var empty_ckbox={};
-			var SY=$('#SY').get(0);
-			var SM=$('.tdmonth ul');
-			//var GZ=$('#GZ').get(0);
-			var CLD=$('#CLD').get(0);
 			var color_temp='';
 			//保存y年m+1月的相关信息
 			var fat=mat=9;
@@ -276,22 +280,23 @@ define(function (require, exports, module) {
 
 
 		    var supplierCalendar={
-		        "seller_id":"2088102122524333",
+		        "seller_id":$('input[name="sellerId"]').val(),
 		        "hotel_id":$('input[name="hotelId"]').val(),
-		        "sku_flag":$(".sku_flag").val(),
-		        "bizSkuInfo":[{
-		            "sku_id":10012,
-		            "state":"update",
-		            "stock_num":10,
-		            "price":"8.8",
-		            "vTxt":1464364800000
-		        },{
-		            "sku_id":10014,
-		            "state":"update",
-		            "stock_num":228,
-		            "price":"12",
-		            "vTxt":1464105600000
-		        }
+		        "sku_flag":'',
+		        "bizSkuInfo":[
+		        // {
+		        //     "sku_id":10012,
+		        //     "state":"update",
+		        //     "stock_num":10,
+		        //     "price":"8.8",
+		        //     "vTxt":1464364800000
+		        // },{
+		        //     "sku_id":10014,
+		        //     "state":"update",
+		        //     "stock_num":228,
+		        //     "price":"12",
+		        //     "vTxt":1464105600000
+		        // }
 		        // ,{
 		        //     "sku_id":10015,
 		        //     "state":"update",
@@ -404,13 +409,13 @@ define(function (require, exports, module) {
 							if($(_self).attr('class')){
 								$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
 								$(_self).find('label').css('color','#666');
-								recordck($(_self),'del');
+								//recordck($(_self),'del');
 							}else{
 								_self.color_temp=$(_self).find('font')[0].style.color;
 								$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
 								$('.price').val($(_self).find('.price_').text());
 								$('.stock').val($(_self).find('.stock_').text());
-								recordck($(_self),'add');
+								//recordck($(_self),'add');
 							}
 							if(isCtrl) $('.price,.stock').val('');
 							$public.stopBubble(ev);
@@ -440,7 +445,6 @@ define(function (require, exports, module) {
 				}else if(type=='del'&&empty_ckbox[cur_smp]){
 					delete empty_ckbox[cur_smp];
 				}
-				//console.log(JSON.stringify(empty_ckbox)+'----');
 			}
 
 			//渲染已设置的日期
@@ -472,7 +476,7 @@ define(function (require, exports, module) {
 						if(ls[i].sku_id!=0) ls[i].state='update';
 						ls[i].stock_num=stock;
 						ls[i].price=price;
-		        		//console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   ---------set_chahevalue--update------');
+		        		console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   ---------set_chahevalue--update------');
 						return;
 					}
 				}
@@ -483,7 +487,7 @@ define(function (require, exports, module) {
 			            "price":price,
 			            "vTxt":cur_time
 						});
-		       // console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   --------set_chahevalue--add------');
+		        console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   --------set_chahevalue--add------');
 			}
 
 			//从缓存删除价格和库存
@@ -499,7 +503,7 @@ define(function (require, exports, module) {
 						}
 					}
 				}
-		        //console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   -------del_chahevalue----------');
+		        console.log(JSON.stringify(supplierCalendar.bizSkuInfo)+'   -------del_chahevalue----------');
 			}
 
 			//设置日期的价格和库存
@@ -516,15 +520,14 @@ define(function (require, exports, module) {
 			 //在下拉列表中选择年月时,调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function changeCld() {
 			    var y,m;
-			    y=$(SY).text();
-			    m=SM.find('li.on').index();
+			    y=$('#SY').text();
+			    m=$('.tdmonth li.on').index();
 			    drawCld(y,m);
 			 }
 
 			 //打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
 			 function initial() {
-
-				var gNum,str='';
+				var gNum,str='',slcvalue=$('input[name="supplierCalendar"]').val();
              	for(i=0;i<6;i++) {
 	                str+='<tr class="day '+(i==5?'last':'')+'">';
 	                for(j=0;j<7;j++) {
@@ -536,15 +539,18 @@ define(function (require, exports, module) {
 	                }
 	                str+='</tr>';
          		}
-             	$(CLD).find('table').append(str);
+             	$('.datepicker table').append(str);
 
-			    $(SY).text(tY);
-			    SM.find('li').removeClass('on');
-			    SM.find('li:eq('+tM+')').addClass('on');
+			    $('#SY').text(tY);
+			    $('.tdmonth li').removeClass('on');
+			    $('.tdmonth').find('li:eq('+tM+')').addClass('on');
+
+			    if(slcvalue)
+			    	supplierCalendar=JSON.parse(slcvalue);
+			    else
+					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
+
 			    drawCld(tY,tM);
-
-
-				$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 
 			 }
 
@@ -596,25 +602,25 @@ define(function (require, exports, module) {
 			});
 
 			$('.tdyears .prev').on('click',function(ev){
-				var cur_years=parseInt($(SY).text());
-				$(SY).text(cur_years-1);
+				var cur_years=parseInt($('#SY').text());
+				$('#SY').text(cur_years-1);
 				changeCld();
 				$public.stopBubble(ev);
 			});
 			$('.tdyears .next').on('click',function(ev){
-				var cur_years=parseInt($(SY).text());
-				$(SY).text(cur_years+1);
+				var cur_years=parseInt($('#SY').text());
+				$('#SY').text(cur_years+1);
 				changeCld();
 				$public.stopBubble(ev);
 			});
 			$('.tdmonth li').on('click',function(ev){
-		    	SM.find('li').removeClass('on');
+		    	$('.tdmonth li').removeClass('on');
 		    	$(this).addClass('on');
 				changeCld();
 				$public.stopBubble(ev);
 			});
 			$('.tdmonth li').on('click',function(ev){
-		    	SM.find('li').removeClass('on');
+		    	$('.tdmonth li').removeClass('on');
 		    	$(this).addClass('on');
 				changeCld();
 				$public.stopBubble(ev);
@@ -639,7 +645,6 @@ define(function (require, exports, module) {
 			}
 
 			initial();
-			
 
 		}
 	}
