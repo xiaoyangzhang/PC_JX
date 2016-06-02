@@ -57,7 +57,7 @@ define(function (require, exports, module) {
 				$(".comtype input[type='radio']").on('click' ,function(){
 
 					$.ajax({
-					   type: "get",
+					   type: "post",
 					   url: $public.urlpath.getBsScope,
 					   data: {merchantCategoryId:$(this).val()},
 					   success: function(data){
