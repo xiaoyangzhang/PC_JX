@@ -54,8 +54,42 @@ define(function (require, exports, module) {
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
+				$(".comtype input[type='radio']").on('click' ,function(){
+
+					$.ajax({
+					   type: "get",
+					   url: "",
+					   data: {value:$(this).val()},
+					   success: function(data){
+					   		if(typeof data=='string')
+					   	   		console.log(data);
+					   	   	else
+					   	   		console.log(JSON.stringify(data));
+					   }
+					});
+
+				});
+
 				$('.subt').on('click',function(){
-					console.log(JSON.stringify($public.paramcompare($('.registerform').serializeArray())));
+					var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
+					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
+					params=$public.paramcompare($('#forminfo').serializeArray());
+					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
+						$public.dialog.waiting();
+						$.post(subpath,params,function(data){
+							$public.isLogin(data);
+							$public.dialog.closebox();
+							if(data.success){
+								$public.dialog.msg('保存成功！','success');
+								setTimeout(function(){
+									window.location=data.value;
+								},1500); 
+							}else{
+								$public.dialog.msg(data.resultMsg,'error');
+							}
+						});
+					}
+				return false;
 				});
 				/*$("选择身份按钮").on("click",function(){
                 $.ajax({

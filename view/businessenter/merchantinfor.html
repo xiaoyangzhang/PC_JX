@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/merchantinfor.css">
 </head>
 <body>
+<input type="hidden" class="subpath" value="/sellerAdmin/merchant/saveUserdataB">
 	<div id="jiuxColor" class="jiuw2">
 		<div class="jiux-header wjiuxiu jiuw2 clearfix">
 			<!-- 头部左侧部分 -->
@@ -67,6 +68,7 @@
 				
 		  <!-- 商家信息板块 -->
        <form class="registerform" method="post" action="demo/ajax_post.php" autocomplete="off" id="forminfo">
+       <div class="panel">
                	<div class="infor-title">请选择您的身份</div>
                	<div class="one">
                	    	   <table class="comtype">
@@ -131,9 +133,6 @@
 								   	       		<li><input type="checkbox" value="" name="wefe" id="" class=""/><label>酒店</label></li>
 								   	       		<li><input type="checkbox" value="" name="qwew" id="" class=""/><label>门票</label></li>
 								   	       		<li><input type="checkbox" value="" name="bdb" id="" class="" datatype="*"/><label>特产商品</label></li>
-								   	       		<li><input type="checkbox" value="" name="ewrew" id="" class=""/><label>酒店</label></li>
-								   	       		<li><input type="checkbox" value="" name="eeer" id="" class=""/><label>门票</label></li>
-								   	       		<li><input type="checkbox" value="" name="eree" id="" class=""/><label>特产商品</label></li>
 								   	       	</ol>
 							   	       	</td>
 						   	       </tr>
@@ -300,6 +299,7 @@
 					     <div class="shopname"><span>*</span><label>店铺名称：</label><input type="text" datatype="s" maxlength="60" name="sfsd" value="" id="" class="rigcontent nameinput txt04"  placeholder="请输入对公结算账号开户行名称"></div>
 					     <div class="notes namelm"><span>*</span><label>店铺名称要符合店铺命名规范</label></div>
 					 </div>  
+			</div>
         </form> 
 					 <div class="identity">
 					  <div class="nextpage"><a href="javascript:history.go(-1);">上一页</a><a href="javascript:;" class="subt">下一页</a></div>
