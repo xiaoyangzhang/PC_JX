@@ -26,8 +26,8 @@ define(function (require, exports, module) {
 			inputGp:'input[name="gp"]'
 		},
 		init:function(){
-			var _self=this;
 
+			var _self=this;
 
 	        var validoptions={
 					tiptype:3,
@@ -55,19 +55,27 @@ define(function (require, exports, module) {
 					datatype:"n",
 					nullmsg:"请填写提前预定天数！",
 					errormsg:"请输入纯数字！"
-				}],validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
+				}],
+				validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
+			$('#area').selectlist({width: 200});
+			
+			$('.baseinfo .checkbox:last').css('width','300px');
+
+			$('.checkbox input').on('change',function(){
+				check_storeLastTime();
+			});
+			
+			$public.procityaredata('province','city','area',true);
+
+			//计算输入字数
 			$('.inputxt,textarea').keyup(function(){
 				$(this).next('.mark').find('label.cv').text($(this).val().length);
 			}).filter(function(){
 				$(this).next('.mark').find('label.cv').text($(this).val().length);
 			});
 
-			$('#area').selectlist({width: 200});
-			$('.baseinfo .checkbox:last').css('width','300px');
-			$('.checkbox input').on('change',function(){
-				check_storeLastTime();
-			});
+			//切换房型开关门
 			$(document).on('click',_self.config.radiobar,function(ev){
 				$(_self.config.barbox).css('height','0'); 
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
@@ -76,6 +84,7 @@ define(function (require, exports, module) {
 				$public.stopBubble(ev);
 			});
 
+			//弹出框查询酒店
 			$(_self.config.searchotel).on('click',function(ev){
 				var $searchbox=$('.searchbox'),
 				$htlst=$searchbox.find(_self.config.hotelist);
@@ -100,12 +109,12 @@ define(function (require, exports, module) {
 				$public.stopBubble(ev);
 			});
 			
+			//监听房型值
 			$(document).on('click',_self.config.inputGp,function () {
 				$('input[name="roomId"]').val($(this).val());
 			});
-			
-			$public.procityaredata('province','city','area',true);
 
+			//切换panel卡片
 			$(_self.config.eredarli).on('click',function(ev){
 				$(_self.config.eredarli).removeClass('on');
 				$(this).addClass('on');
@@ -114,11 +123,16 @@ define(function (require, exports, module) {
 				$public.stopBubble(ev);
 			});
 
+			//查询酒店
 			$(_self.config.searchbtn).on('click',function(){
 				$(_self.config.loadlist).show();
 				gethotelist();
 			});
-			
+
+			//感应行点击
+			$(document).on('click','.hotelist tr',function(){
+				$(this).find('input[type="radio"]').prop('checked','checked');
+			});
 			
 			//返回上一页
 			$('.backprev').on('click',function(ev){
@@ -146,7 +160,7 @@ define(function (require, exports, module) {
 				$public.stopBubble(ev);
 			});
 
-
+			//提交表单
 			$('.allsub').on('click',function(ev){
 				if(!valid_step_one()||!valid_step_two())
 					return;
@@ -292,7 +306,8 @@ define(function (require, exports, module) {
 
 
 
-			 
+			/****************************************************价格日历********************************************/
+
 			var solarMonth=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 			var nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
@@ -596,7 +611,7 @@ define(function (require, exports, module) {
 			    	supplierCalendar=JSON.parse(slcvalue);
 			    else
 					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
-				
+
 			    drawCld(tY,tM);
 
 			 }
@@ -693,7 +708,6 @@ define(function (require, exports, module) {
 
 			initial();
 			
-
 		}
 	}
 	module.exports = new $choicehotel();
