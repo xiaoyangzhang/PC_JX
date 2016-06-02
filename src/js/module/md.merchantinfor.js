@@ -55,7 +55,7 @@ define(function (require, exports, module) {
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
 
-					   	var data={
+					/*   	var data={
 					   		"success":true,
 					   		"errorMsg":null,
 					   		"errorCode":0,
@@ -64,7 +64,7 @@ define(function (require, exports, module) {
 					   		{'businessScopeId':6,'domainId':0,'id':36,'merchantCategoryId':7,'status':0},
 						   	{'businessScopeId':2,'domainId':0,'id':37,'merchantCategoryId':7,'status':0},
 						   	{'businessScopeId':4,'domainId':0,'id':38,'merchantCategoryId':7,'status':0}]
-					   	}
+					   	}*/
 					   		/*if(typeof data=='string')
 					   	   		console.log(data);
 					   	   	else
@@ -73,10 +73,10 @@ define(function (require, exports, module) {
 					   	   alert(typeof data);*/
 					   	   /*	alert(d.success);*/
 
-					   	   	var ddd=data.value;
+					   	   /*	var ddd=data.value;
 					   	   	console.log(typeof ddd);
 					   	   	console.log(JSON.stringify(ddd));
-					   	   	console.log(ddd[0]);
+					   	   	console.log(ddd[0]);*/
 
 				$(".comtype input[type='radio']").on('click' ,function(){
 					$.ajax({
