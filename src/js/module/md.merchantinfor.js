@@ -54,16 +54,9 @@ define(function (require, exports, module) {
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
-				$(".comtype input[type='radio']").change(function(){
-					if($(".comtype input[type='radio']:checked")){
-						alert(111);
-						$(".company input[type='radio']").attr("checked",false);
-					}else{
-						alert(222);
-						$(".company input[type='radio']").attr("checked","checked");
+				$('.subt').on('click',function(){
+					console.log(JSON.stringify($public.paramcompare($('.registerform').serializeArray())));
 				});
-
-				function sendradio(codevalue){}
 				/*$("选择身份按钮").on("click",function(){
                 $.ajax({
                     type: "POST",

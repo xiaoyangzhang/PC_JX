@@ -31,6 +31,7 @@ define(function (require, exports, module) {
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
+				$self.distanceFun();
 				$.ajax({
 					type:'POST',
 					url:""+$("#subpath").val(),
@@ -63,18 +64,20 @@ define(function (require, exports, module) {
 					$(this).closest(".inforight").find(".showImg").show();
 					listli.filter(function(){this.is_select=false;});
 					this.is_select=true;
+					$editer.distanceFun();
 				}else{
 					$(this).css("borderColor","#f2f2f2");
 					$(this).find("b").css("opacity","0");
 					$(this).closest(".inforight").find(".showImg").hide();
 					this.is_select=false;
+					$editer.distanceFun();
 				}
 			});
 		},
 		distanceFun :function(){
 			/* 根据页面高度判断 */
 			if($(".eredar-right").height() < $(".eredar-left").height()){
-				$public.depath();
+				$(".eredar-right").height($(".eredar-left").height());
 			}
 			else{
 				$editer.distanceFun();
