@@ -81,11 +81,6 @@ iframe{display: none;}
 
 
 
-.w217{width:217px !important;}
-.w345{width:345px !important;}
-.last-step{margin-left: 10px;}
-.ag-content{padding-left:72px;padding-right:72px;padding-bottom:27px;border-bottom:1px solid #ddd;margin-left:auto;margin-right:auto;width:996px;}
-
 
 
 
@@ -101,5 +96,7 @@ iframe{display: none;}
 .agreement-box .fill-c  .progress .step-fr{border-top-right-radius: 0px !important;border-bottom-right-radius: 0px !important;}
 .agreement-box .fill-c  .progress .ya{border-top-right-radius: 6px !important;border-bottom-right-radius: 6px !important;}
 
-
+.zh_scl{margin-bottom: 20px;}
+.zh_sc .zfd{float: left;width:380px;height:110px;padding-left: 150px;margin-bottom: 30px;}
+.zh_sc-txt{width:205px;margin-left: 179px;padding-top: 5px;}
 
