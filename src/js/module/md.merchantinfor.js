@@ -29,6 +29,7 @@ define(function (require, exports, module) {
 					_self.changevalid(true);
 				}
 			});
+			_self.changevalid();
 			//渲染下拉框控件
 			$('select').selectlist({
 				zIndex: 10,
@@ -53,7 +54,31 @@ define(function (require, exports, module) {
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
+				$(".comtype input[type='radio']").change(function(){
+					if($(".comtype input[type='radio']:checked")){
+						alert(111);
+						$(".company input[type='radio']").attr("checked",false);
+					}else{
+						alert(222);
+						$(".company input[type='radio']").attr("checked","checked");
+				});
 
+				function sendradio(codevalue){}
+				/*$("选择身份按钮").on("click",function(){
+                $.ajax({
+                    type: "POST",
+                    url: "后台数据接口链接地址",
+                    data: "wxf=2&yu=3",   //可选参数
+                    dataType: "json",
+                    success: function (data) {   //如果访问后台数据接口链接地址 返回数据成功
+                        var html='';
+                        for(i=0;i<data.data.length;i++){  //循环不同的范围html
+                            html+='<li><span>'+data.data[i].name+'</span></li>'
+                        }
+                        $('#txt').html("<ul style='margin-left: 100px;'><li>$.ajax<>" + html + "</ul>");  //最后展示在页面
+                    }
+                });
+            });*/
    /* $(".k1").click(function(){     
         if($(this).is(':checked')){
             $(".aaa").show();
@@ -85,4 +110,4 @@ define(function (require, exports, module) {
 	}
 
 	module.exports = new $test();
-});
+});   

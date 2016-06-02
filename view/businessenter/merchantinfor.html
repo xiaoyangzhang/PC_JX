@@ -69,17 +69,17 @@
        <form class="registerform" method="post" action="demo/ajax_post.php" autocomplete="off" id="forminfo">
                	<div class="infor-title">请选择您的身份</div>
                	<div class="one">
-               	    	   <table>
+               	    	   <table class="comtype">
                	    	   			<tr>
                	    	   				<td class="rigtxt ts"><label>旅游企业：</label></td>
                	    	   				<td class="rigcontent listli">
-               	    	   					<input type="radio" value="" name="type" id="travel" checked="checked" class="flm"/><label >旅行社</label>
+               	    	   					<input type="radio" value="" name="type" id="travel"  class="flm aaa" /><label >旅行社</label>
                	    	   					<input type="radio" value="" name="type" id="" class="lm"/><label class="">旅游商务服务公司</label>
                	    	   					<div class="company">
-								               <label class="bomb-con"><input type="radio" value="" name="country" id="" class="" checked="checked"/><label>国内社总社</label></label>
-							                   <label class="bomb-con"><input type="radio" value="" name="country" id="" class=""/><label>国内社分社</label></label>
-								               <label class="bomb-con"><input type="radio" value="" name="country" id="" class=""/><label>出境社总社</label></label>
-								               <label class="bomb-con"><input type="radio" value="" name="country" id="" class=""/><label>出境社分社</label></label>
+								               <label class="bomb-con"><input type="radio" value="" name="city" id="" class=""/><label>国内社总社</label></label>
+							                   <label class="bomb-con"><input type="radio" value="" name="city" id="" class=""/><label>国内社分社</label></label>
+								               <label class="bomb-con"><input type="radio" value="" name="city" id="" class=""/><label>出境社总社</label></label>
+								               <label class="bomb-con"><input type="radio" value="" name="city" id="" class=""/><label>出境社分社</label></label>
 						                    </div>
                	    	   				</td>
 
@@ -130,7 +130,7 @@
 												</div>
 								   	       		<li><input type="checkbox" value="" name="" id="" class=""/><label>酒店</label></li>
 								   	       		<li><input type="checkbox" value="" name="" id="" class=""/><label>门票</label></li>
-								   	       		<li><input type="checkbox" value="" name="" id="" class=""/><label>特产商品</label></li>
+								   	       		<li><input type="checkbox" value="" name="" id="" class="" datatype="*"/><label>特产商品</label></li>
 								   	       	</ol>
 							   	       	</td>
 						   	       </tr>
@@ -145,7 +145,7 @@
 							   	       	<td class="rigtxt"><label>店铺性质：</label></td>
 							   	       	<td class="rigcontent">
 							   	       		<input type="radio" value="" name="nature" id="" class="flm" checked="checked"/><label>直营店</label>
-							   	       		<input type="radio" value="" name="nature" id="" class="lm"/><label>专营店</label>
+							   	       		<input type="radio" value="" name="nature" id="" class="lm" /><label>专营店</label>
 							   	       	</td>
 						   	       </tr>
 						   </table>

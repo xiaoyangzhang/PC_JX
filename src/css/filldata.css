@@ -90,15 +90,16 @@ iframe{display: none;}
 
 
 
-.agreement-box .progress{width:845px;margin:45px auto;}
-.agreement-box .progress .step{float:left;height:8px;width:169px;background: #dfdfdf;position: relative;}
-.agreement-box .progress .step div{position:absolute;left: 63px;top:-15px; line-height: 36px;font-size:20px; text-align: center;color:#fff;
+.agreement-box .fill-c .progress{width:845px;margin:45px auto;}
+.agreement-box .fill-c  .progress .step{float:left;height:8px;width:169px;background: #dfdfdf;position: relative;}
+.agreement-box .fill-c  .progress .step div{position:absolute;left: 63px;top:-15px; line-height: 36px;font-size:20px; text-align: center;color:#fff;
 	width:37px;height:37px;background: url('../../img/spripte.png') no-repeat 0 0;}
-.agreement-box .progress .step label{display: block;text-align: center;margin-top:28px;color: #999999;}
-.agreement-box .progress .step-on{background: #ed6c44;}
-.agreement-box .progress .step-on div{background: url('../../img/spripte.png') no-repeat -37px 0;}
-.agreement-box .progress .step-on label{display: block;color:#ed6c44;}
-.agreement-box .progress .ya{border-top-right-radius: 6px;border-bottom-right-radius: 6px;}
+.agreement-box .fill-c  .progress .step label{display: block;text-align: center;margin-top:28px;color: #999999;}
+.agreement-box .fill-c  .progress .step-on{background: #ed6c44;}
+.agreement-box .fill-c  .progress .step-on div{background: url('../../img/spripte.png') no-repeat -37px 0;}
+.agreement-box .fill-c  .progress .step-on label{display: block;color:#ed6c44;}
+.agreement-box .fill-c  .progress .step-fr{border-top-right-radius: 0px !important;border-bottom-right-radius: 0px !important;}
+.agreement-box .fill-c  .progress .ya{border-top-right-radius: 6px !important;border-bottom-right-radius: 6px !important;}
 
 
 
