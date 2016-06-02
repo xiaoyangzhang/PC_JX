@@ -58,7 +58,7 @@ define(function (require, exports, module) {
 				}],
 				validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
-			$('#area').selectlist({width: 200});
+			$('#area,#breakfast').selectlist({width: 200});
 			
 			$('.baseinfo .checkbox:last').css('width','300px');
 
@@ -191,44 +191,6 @@ define(function (require, exports, module) {
 				});
 				
 			});
-					
-			function valid_step_one(){
-				if($('input[name="hotelId"]').val()==0){
-					$('.eredar-info li:eq(0)').trigger('click');
-					$public.dialog.msg('请选择酒店！','error');
-					$(document).scrollTop(0);
-					return false;
-				}else if($('input[name="roomId"]').val()==0){
-					$('.eredar-info li:eq(0)').trigger('click');
-					$public.dialog.msg('请选择房型！','error');
-					$(document).scrollTop(0);
-					return false;
-				}
-				return true;
-			}
-					
-			function valid_step_two(){
-				if(!validfm.check()){
-					$('.eredar-info li:eq(1)').trigger('click');
-					return false;
-				}
-				return true;
-			}
-
-			function check_storeLastTime(){
-				var $cked=$('.checkbox input:checked'),$cklast=$('.baseinfo .checkbox:last');
-				$cklast.find('.Validform_checktip').remove();
-				if($cked.length>3){
-					$cklast.append('<span class="Validform_checktip Validform_wrong">最多只能选三个！</span>');
-					return false;
-				}else if($cked.length==0){
-					$cklast.append('<span class="Validform_checktip Validform_wrong"></span>');
-					return false;
-				}else{
-					$cklast.append('<span class="Validform_checktip Validform_right"></span>');
-					return true;
-				}
-			}
 
 			//上一页
 			$(document).on('click','li.previous:not(".disabled") a',function(){
@@ -295,7 +257,44 @@ define(function (require, exports, module) {
 					setTimeout(function(){$('.radio-bar:eq(0)').trigger('click');},500);
 				});
 			};
-	
+		
+			function valid_step_one(){
+				if($('input[name="hotelId"]').val()==0){
+					$('.eredar-info li:eq(0)').trigger('click');
+					$public.dialog.msg('请选择酒店！','error');
+					$(document).scrollTop(0);
+					return false;
+				}else if($('input[name="roomId"]').val()==0){
+					$('.eredar-info li:eq(0)').trigger('click');
+					$public.dialog.msg('请选择房型！','error');
+					$(document).scrollTop(0);
+					return false;
+				}
+				return true;
+			}
+					
+			function valid_step_two(){
+				if(!validfm.check()){
+					$('.eredar-info li:eq(1)').trigger('click');
+					return false;
+				}
+				return true;
+			}
+
+			function check_storeLastTime(){
+				var $cked=$('.checkbox input:checked'),$cklast=$('.baseinfo .checkbox:last');
+				$cklast.find('.Validform_checktip').remove();
+				if($cked.length>3){
+					$cklast.append('<span class="Validform_checktip Validform_wrong">最多只能选三个！</span>');
+					return false;
+				}else if($cked.length==0){
+					$cklast.append('<span class="Validform_checktip Validform_wrong"></span>');
+					return false;
+				}else{
+					$cklast.append('<span class="Validform_checktip Validform_right"></span>');
+					return true;
+				}
+			}
 
 
 
@@ -616,6 +615,26 @@ define(function (require, exports, module) {
 
 			 }
 
+			 //监测日期是否在规定范围内
+			 //"v" 要检测的日期
+			 //"frontRangeDay" 向前延伸的天数
+			 //"behindRangeDay" 向后延伸的天数
+			 function checkRange(v,frontRangeDay,behindRangeDay){
+			 	var cur_time=Date.parse(new Date()),behindRangeDay=behindRangeDay?behindRangeDay:0,
+			 	frontRangeDay=frontRangeDay?frontRangeDay:0,
+			 	v=Date.parse(v),days=(v-cur_time)/1000/60/60/24;
+			 		console.log(cur_time);
+			 		console.log(v);
+			 		console.log(new Date(parseInt(cur_time)).toLocaleString());
+			 		console.log(new Date(parseInt(v)).toLocaleString());
+			 		console.log('days:'+Math.floor(days));
+			 	if(-behindRangeDay<=days&&days<=frontRangeDay)
+			 		return true;
+			 	else
+			 		return false;
+			 }
+			 console.log(checkRange(new Date(2016,4,1),2,33));
+
 			 // var curt=new Date(2016,5,22);
 			 // var cc=(curt).valueOf();
 			 // console.log(cc);
@@ -626,12 +645,12 @@ define(function (require, exports, module) {
 			$('.setvl').on('click',function(){
 				var temp='',$dtbx=$('.day .choiced .dtbx'),price=$('.price').val(),stock=$('.stock').val();
 				if($dtbx.length>0){
-					if(!/^\d{1,6}(\.\d{1,2})?$|^\d{1,9}$/.test($('.price').val())){
-						$public.dialog.msg('“价格”为数字，能带两位小数','error');
+					if(!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($('.price').val())){
+						$public.dialog.msg('“价格”为数字,最大整数6位,能带两位小数','error');
 						$('.price').focus();
 						return;
 					}
-					if(!/^\d{1,9}$/.test($('.stock').val())){
+					if(!/^[1-9]\d{0,8}$/.test($('.stock').val())){
 						$public.dialog.msg('“库存”为纯数字','error');
 						$('.stock').focus();
 						return;
