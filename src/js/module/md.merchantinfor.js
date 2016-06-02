@@ -54,8 +54,32 @@ define(function (require, exports, module) {
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
-				$(".comtype input[type='radio']").on('click' ,function(){
+/*
+					   	var data={
+					   		"success":true,
+					   		"errorMsg":null,
+					   		"errorCode":0,
+					   		"returnCode":null,
+					   		"value":[
+					   		{'businessScopeId':6,'domainId':0,'id':36,'merchantCategoryId':7,'status':0},
+						   	{'businessScopeId':2,'domainId':0,'id':37,'merchantCategoryId':7,'status':0},
+						   	{'businessScopeId':4,'domainId':0,'id':38,'merchantCategoryId':7,'status':0}]
+					   	}*/
+					   		// if(typeof data=='string')
+					   	 //   		console.log(data);
+					   	 //   	else
+					   	 //   		console.log(JSON.stringify(data));
 
+					   	   /*	alert(typeof data);
+					   	   	alert(d.success);*/
+
+					   	   	/*var ddd=data.value;
+					   	   	console.log(typeof ddd);
+					   	   	console.log(JSON.stringify(ddd));
+					   	   	console.log(ddd[0]);*/
+
+				$(".comtype input[type='radio']").on('click' ,function(){
+						alert("nisdcjs");
 					$.ajax({
 					   type: "post",
 					   url: $public.urlpath.getBsScope,
@@ -64,8 +88,22 @@ define(function (require, exports, module) {
 					   		if(typeof data=='string')
 					   	   		console.log(data);
 					   	   	else
-					   	   		console.log(JSON.stringify(data));
-					   }
+					   	   		console.log(JSON.stringify(data));/*转换字符串*/
+					   	   /*	var d=JSO(data);*/
+					   			  var list = data.value;
+					   			  console.log(list[0]);   
+									  $('input[type="checkbox"]').each(function(){    
+									  	for (var i = 0; i < list.length; i++) {
+									  		if($(this).val() != list[i].businessScopeId ) {
+									  			$(this).attr("disabled","disabled");
+									  		}
+									  	};
+									  
+									  });   
+
+					   	   	}
+
+					   
 					});
 
 				});
