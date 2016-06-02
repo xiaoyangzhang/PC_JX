@@ -94,11 +94,11 @@ define(function (require, exports, module) {
 			gethotelist:site_path+'/hotel/queryHotelManageList',
 			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
 			addhotel:site_path+'/hotel/addHotelMessageVOByData',
-			updatehotel:site_path+'/hotel/editScenicManageVOByDdata',
+			updatehotel:site_path+'/hotel/editHotelMessageVOByData',
 			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
 			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
 			addScenic:site_path+'/scenic/addScenicManageVOByDdata',
-			updateScenic:site_path+'/scenic/editScenicManageVOByData',
+			updateScenic:site_path+'/scenic/editScenicManageVOByDdata',
 			getBsScope:site_path+'/apply/getBusinessScope'
 		},
 		timer:null,
