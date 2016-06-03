@@ -166,7 +166,7 @@ define(function (require, exports, module) {
 			$('.allsub').on('click',function(ev){
 				if(!valid_step_one()||!valid_step_two())
 					return;
-				if(!check_storeLastTime()||!$public.selectvalid())
+				if(!check_storeLastTime()||!$public.selectvalid('breakfast'))
 					return;
 				var ls=supplierCalendar.bizSkuInfo,isHave=false;
 				for(var i=0;i<ls.length;i++){
@@ -241,7 +241,7 @@ define(function (require, exports, module) {
 				});
 			};
 			
-			//获取酒店详细信息
+			//获取房型详细信息
 			function gitroominfo(){
 				var $tr = $('input[name="hotelGroup"]:checked').closest('tr');
 				var $infoBox = $(_self.config.infoBox);
