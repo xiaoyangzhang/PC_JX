@@ -137,34 +137,20 @@ define(function (require, exports, module) {
 						supplierCalendar : $('input[name="supplierCalendar"]').val()					
 					};
 					//console.log(JSON.stringify(scenicManageVO) );
-					var subFlag = $('input[name="operation"]').attr('operationFlag');
-					if (subFlag == 'update') {
-						$.post($public.urlpath.updateScenic,scenicManageVO,function (data) {
-							//console.log(data);
-							$public.isLogin(data);
-							if (data.success) {
-								$public.dialog.msg('保存成功','success');
-								setTimeout(function () {
-									window.location = data.value;
-								},1000);
-							}else{
-								$public.dialog.msg(data.resultMsg,'error');
-							};
-						});							
-					} else{
-						$.post($public.urlpath.addScenic,scenicManageVO,function (data) {
-							//console.log(data);
-							$public.isLogin(data);
-							if (data.success) {
-								$public.dialog.msg('保存成功','success');
-								setTimeout(function () {
-									window.location = data.value;
-								},1000);
-							}else{
-								$public.dialog.msg(data.resultMsg,'error');
-							};
-						});						
-					};
+					var subFlag = $('input[name="operationFlag"]').val(),
+					url=subFlag=='update'?$public.urlpath.updateScenic:$public.urlpath.addScenic;
+					$.post(url,scenicManageVO,function (data) {
+						//console.log(data);
+						$public.isLogin(data);
+						if (data.success) {
+							$public.dialog.msg('保存成功','success');
+							setTimeout(function () {
+								window.location = data.value;
+							},1000);
+						}else{
+							$public.dialog.msg(data.resultMsg,'error');
+						};
+					});	
 				};
 				
 			});
@@ -209,6 +195,7 @@ define(function (require, exports, module) {
 					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
 				});
 			};
+
 			//列表感应行点击
 			$(document).on('click','.sceniclist tr',function(){
 				$(this).find('input[type="radio"]').prop('checked','checked');

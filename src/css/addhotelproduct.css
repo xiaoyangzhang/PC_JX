@@ -99,7 +99,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 
 /**********************************************门票基本信息**********************************************/
 .ticketinfo{padding-bottom: 0;}
-.ticketbaseinfo table{margin-top: 0;}
+.ticketbaseinfo table{margin-top: 0;width:858px;}
 
 /**********************************************价格日历**********************************************/
 .datepicker {padding-left: 30px;padding-right: 30px;padding-bottom: 5px;}
