@@ -82,7 +82,7 @@ define(function (require, exports, module) {
 			
 			
 			//返回上一页
-			$('.backprev').on('click',function(){
+			$('.backprev').on('click',function(ev){
 				$('.eredar-info li.on').prev().trigger('click');
 				$public.stopBubble(ev);
 			});
@@ -146,7 +146,8 @@ define(function (require, exports, module) {
 							$public.dialog.msg(data.resultMsg,'error');
 						};
 					});	
-				};
+				}else
+					$('.eredar-info li:eq(0)').trigger('click');
 				
 			});
 			//查询景区弹出层
