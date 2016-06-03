@@ -70,6 +70,8 @@ define(function (require, exports, module) {
 				$(this).addClass('on');
 				$(_self.config.eredarpanel).hide();
 				$($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
+			    //渲染已设置的日期
+		    	dateRender(supplierCalendar);
 				$public.stopBubble(ev);
 			});
 
@@ -80,36 +82,24 @@ define(function (require, exports, module) {
 			
 			
 			//返回上一页
-			$('.backprev').on('click',function(){
+			$('.backprev').on('click',function(ev){
 				$('.eredar-info li.on').prev().trigger('click');
 				$public.stopBubble(ev);
 			});
 
 			//“基本信息”保存并下一步
 			$('.save-to-picker').on('click',function(){
-				if (!$('input[name="scenicName"]').val()) {
+				if ($('input[name="scenicId"]').val()==0) {
 					$public.dialog.msg('请选择景区','error');
 					return false;
 				}
-				if (validResult()) {
-					$('.eredar-info li.on').next().trigger('click');					
-				};
+				if (!validForm.check()) $('.eredar-info li:eq(0)').trigger('click');
 				$public.stopBubble();
 			});
 			
-			function validResult () {
-				if (!validForm.check()) {
-					return false;
-				}else{
-					return true;
-				}
-			};
 			//全部保存
 			$('.allsub').on('click',function(ev){				
-				if (validResult()) {				
-					//var prarm=$public.paramcompare($('.scenicForm').serializeArray());
-					//if(prarm.storeLastTime)prarm.storeLastTime=prarm.storeLastTime.join(',');
-					//console.log(JSON.stringify(prarm));				
+				if (validForm.check()) {		
 					var dynamicArr = [];
 					$('.dynamicTr').each(function () {
 						var dynamicTr ={
@@ -123,23 +113,28 @@ define(function (require, exports, module) {
 						dynamicArr.push(dynamicTr);
 					});
 	
-					var scenicManageVO = {
-						scenicId : $('input[name="scenicId"]').val(),
-						name : $('input[name="scenicName"]').val(),
-						//scenicTicket : $('input[name="scenicTicket"]').val(),
-						ticketId :  $('input[name="ticketId"]:checked').val(),
-						ticketTitle : $('input[name="ticketId"]:checked').attr('tTitle'),
-						title : $('input[name="title"]').val(),
-						price : $('input[name="price"]').val(),
-						originalPrice : $('input[name="originalPrice"]').val(),
-						startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
-						dynamicEntry : JSON.stringify(dynamicArr),
-						supplierCalendar : $('input[name="supplierCalendar"]').val()					
-					};
-					//console.log(JSON.stringify(scenicManageVO) );
+					// var scenicManageVO = {
+					// 	scenicId : $('input[name="scenicId"]').val(),
+					// 	name : $('input[name="scenicName"]').val(),
+					// 	//scenicTicket : $('input[name="scenicTicket"]').val(),
+					// 	ticketId :  $('input[name="ticketId"]:checked').val(),
+					// 	ticketTitle : $('input[name="ticketId"]:checked').attr('tTitle'),
+					// 	title : $('input[name="title"]').val(),
+					// 	price : $('input[name="price"]').val(),
+					// 	originalPrice : $('input[name="originalPrice"]').val(),
+					// 	startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
+					// 	dynamicEntry : JSON.stringify(dynamicArr),
+					// 	supplierCalendar : $('input[name="supplierCalendar"]').val()					
+					// };
+
+					var prarm=$public.paramcompare($('.scenicForm').serializeArray());
+					prarm.ticketTitle=$('input[name="ticketId"]:checked').attr('tTitle');
+					prarm.dynamicEntry=JSON.stringify(dynamicArr);
+
 					var subFlag = $('input[name="operationFlag"]').val(),
 					url=subFlag=='update'?$public.urlpath.updateScenic:$public.urlpath.addScenic;
-					$.post(url,scenicManageVO,function (data) {
+
+					$.post(url,prarm,function (data) {
 						//console.log(data);
 						$public.isLogin(data);
 						if (data.success) {
@@ -151,7 +146,8 @@ define(function (require, exports, module) {
 							$public.dialog.msg(data.resultMsg,'error');
 						};
 					});	
-				};
+				}else
+					$('.eredar-info li:eq(0)').trigger('click');
 				
 			});
 			//查询景区弹出层

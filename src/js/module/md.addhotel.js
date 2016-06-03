@@ -120,6 +120,8 @@ define(function (require, exports, module) {
 				$(this).addClass('on');
 				$(_self.config.eredarpanel).hide();
 				$($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
+			    //渲染已设置的日期
+		    	dateRender(supplierCalendar);
 				$public.stopBubble(ev);
 			});
 
@@ -260,13 +262,12 @@ define(function (require, exports, module) {
 			};
 		
 			function valid_step_one(){
+				$('.eredar-info li:eq(0)').trigger('click');
 				if($('input[name="hotelId"]').val()==0){
-					$('.eredar-info li:eq(0)').trigger('click');
 					$public.dialog.msg('请选择酒店！','error');
 					$(document).scrollTop(0);
 					return false;
 				}else if($('input[name="roomId"]').val()==0){
-					$('.eredar-info li:eq(0)').trigger('click');
 					$public.dialog.msg('请选择房型！','error');
 					$(document).scrollTop(0);
 					return false;
