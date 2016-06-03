@@ -99,14 +99,15 @@ define(function (require, exports, module) {
 
 				});
 
+
 				$('.subt').on('click',function(){
 
 					var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
 					/*console.log(JSON.stringify(params));*/
-					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
-						$public.dialog.waiting();
+					//if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
+					//	$public.dialog.waiting();
 					var idStr="";
 					$("input[type='checkbox']:checked").each(function(){
 						idStr+=$(this).val()+",";
@@ -124,7 +125,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg(data.resultMsg,'error');
 							}
 						});
-					}
+		//			}
 				return false;
 				});
 
@@ -138,7 +139,13 @@ define(function (require, exports, module) {
 				$(".company input[type='radio']").on('click',function(){
 					$(".ccc").prop("checked","checked");
 				});
-
+					$(".comtype input[type='radio']").on('click',function(){
+						if($(this).attr("class","daible")){
+							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
+						}else{
+							$(".dised").prop("disabled","");
+						}
+					});
 				/*$("选择身份按钮").on("click",function(){
                 $.ajax({
                     type: "POST",
