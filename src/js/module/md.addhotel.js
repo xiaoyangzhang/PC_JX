@@ -39,7 +39,7 @@ define(function (require, exports, module) {
 					},
 					ajaxPost:true
 				},rule=[{
-					ele:"input[type='text'],textarea",
+					ele:"input[type='text']:not('.allownull'),textarea",
 					datatype:"*",
 					nullmsg:"请填信息！"
 				},{
@@ -155,6 +155,8 @@ define(function (require, exports, module) {
 					validresult=false;
 				if(!check_storeLastTime())
 					validresult=false;
+				if(!$public.selectvalid('breakfast'))
+					validresult=false;
 				if(!validresult) return;
 				$('.eredar-info li:eq(2)').trigger('click');
 				$public.stopBubble(ev);
@@ -164,7 +166,7 @@ define(function (require, exports, module) {
 			$('.allsub').on('click',function(ev){
 				if(!valid_step_one()||!valid_step_two())
 					return;
-				if(!check_storeLastTime())
+				if(!check_storeLastTime()||!$public.selectvalid('breakfast'))
 					return;
 				var ls=supplierCalendar.bizSkuInfo,isHave=false;
 				for(var i=0;i<ls.length;i++){
@@ -239,7 +241,7 @@ define(function (require, exports, module) {
 				});
 			};
 			
-			//获取酒店详细信息
+			//获取房型详细信息
 			function gitroominfo(){
 				var $tr = $('input[name="hotelGroup"]:checked').closest('tr');
 				var $infoBox = $(_self.config.infoBox);
@@ -456,31 +458,34 @@ define(function (require, exports, module) {
 			          if(cld[sD].isToday){ sObj.style.color = '#ffaf00';} //今日颜色
 			          else{sObj.style.color = '#666';}
 
-			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass()
-			          .on('click',function(ev){
-			          		var _self=this;
-			          		if(!isCtrl){
-			          			$('.day td').filter(function(){
-			          				if($(this).attr('class')){
-										$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
-										$(this).find('label').css('color','#666');
-									}
-			          			});
-			          		}
-							if($(_self).attr('class')){
-								$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
-								$(_self).find('label').css('color','#666');
-								//recordck($(_self),'del');
-							}else{
-								_self.color_temp=$(_self).find('font')[0].style.color;
-								$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
-								$('.price').val($(_self).find('.price_').text());
-								$('.stock').val($(_self).find('.stock_').text());
-								//recordck($(_self),'add');
-							}
-							if(isCtrl) $('.price,.stock').val('');
-							$public.stopBubble(ev);
-					   });                
+			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass();
+
+			          if(checkRangeDay(new Date(SY,SM,sD+1),120)){
+				          $(sObj).closest('td').on('click',function(ev){
+				          		var _self=this;
+				          		if(!isCtrl){
+				          			$('.day td').filter(function(){
+				          				if($(this).attr('class')){
+											$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
+											$(this).find('label').css('color','#666');
+										}
+				          			});
+				          		}
+								if($(_self).attr('class')){
+									$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
+									$(_self).find('label').css('color','#666');
+									//recordck($(_self),'del');
+								}else{
+									_self.color_temp=$(_self).find('font')[0].style.color;
+									$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
+									$('.price').val($(_self).find('.price_').text());
+									$('.stock').val($(_self).find('.stock_').text());
+									//recordck($(_self),'add');
+								}
+								if(isCtrl) $('.price,.stock').val('');
+								$public.stopBubble(ev);
+						   });
+					   }               
 			       }
 			       else { //非日期
 			          sObj.innerHTML = '';
@@ -619,27 +624,14 @@ define(function (require, exports, module) {
 			 //"v" 要检测的日期
 			 //"frontRangeDay" 向前延伸的天数
 			 //"behindRangeDay" 向后延伸的天数
-			 function checkRange(v,frontRangeDay,behindRangeDay){
-			 	var cur_time=Date.parse(new Date()),behindRangeDay=behindRangeDay?behindRangeDay:0,
-			 	frontRangeDay=frontRangeDay?frontRangeDay:0,
-			 	v=Date.parse(v),days=(v-cur_time)/1000/60/60/24;
-			 		console.log(cur_time);
-			 		console.log(v);
-			 		console.log(new Date(parseInt(cur_time)).toLocaleString());
-			 		console.log(new Date(parseInt(v)).toLocaleString());
-			 		console.log('days:'+Math.floor(days));
-			 	if(-behindRangeDay<=days&&days<=frontRangeDay)
+			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
+			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
+			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
+			 	if((-behindRangeDay<=days&&days<=frontRangeDay))
 			 		return true;
 			 	else
 			 		return false;
 			 }
-			 console.log(checkRange(new Date(2016,4,1),2,33));
-
-			 // var curt=new Date(2016,5,22);
-			 // var cc=(curt).valueOf();
-			 // console.log(cc);
-			 // alert($public.dateFormat(curt,'yyyy-MM-dd hh:mm:ss'));
-			 // alert($public.dateFormat(new Date(1467907200000),'yyyy-MM-dd hh:mm:ss'));
 
 			//设置价和库存
 			$('.setvl').on('click',function(){
