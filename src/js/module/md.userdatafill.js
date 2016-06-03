@@ -123,9 +123,10 @@ define(function (require, exports, module) {
 			
 			$public.actiondata('province','city');
 			$(function(){
-				
+
 				$.ajax({
 					   type: "get",
+					   datatype:"html",
 					   url: $public.urlpath.pageilB,
 					   success: function(data){
 					   			$(".fm_md").html(data);	  									
