@@ -97,10 +97,10 @@ iframe{display: none;}
 .agreement-box .fill-c  .progress .ya{border-top-right-radius: 6px !important;border-bottom-right-radius: 6px !important;}
 
 .zh_scl{margin-bottom: 20px;}
-.zh_sc .zfd{float: left;width:380px;height:110px;padding-left: 150px;margin-bottom: 30px;text-align: right; }
+.zh_sc .zfd{float: left;width:380px;height:110px;padding-left: 88px;margin-bottom: 30px;text-align: right; }
 .zh_sc-txt{width:205px;margin-left: 179px;padding-top: 5px;}
 .last-step{margin-left: 20px;}
-.fm_md .updateli{width: 900px;display: block;float: left;}
+.fm_md .updateli{width: 790px;display: block;float: left;text-align: left;margin-left: }
 .fm_md .listli{float: left; display: block;}
 
 
