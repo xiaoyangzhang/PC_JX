@@ -129,7 +129,7 @@ define(function (require, exports, module) {
 					   datatype:"html",
 					   url: $public.urlpath.pageilB,
 					   success: function(data){
-					   			$(".fm_md").html(data);	  									
+					   			$(".fm_md").append(data);	  									
 					   	   	}
 					   
 					});
