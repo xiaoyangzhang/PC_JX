@@ -396,8 +396,8 @@ define(function (require, exports, module) {
 			          else{sObj.style.color = '#666';}
 
 			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass();
-				       
-			          if(checkRangeDay(new Date(SY,SM,sD+1),90)){
+			          console.log(checkRangeDay(new Date(SY,SM,sD+1),120));
+			          if(checkRangeDay(new Date(SY,SM,sD+1),120)){
 				          $(sObj).closest('td').on('click',function(ev){
 				          		var _self=this;
 				          		if(!isCtrl){
@@ -562,25 +562,14 @@ define(function (require, exports, module) {
 			 //"frontRangeDay" 向前延伸的天数
 			 //"behindRangeDay" 向后延伸的天数
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
-			 	var cur_time=Date.parse(new Date()),behindRangeDay=behindRangeDay?behindRangeDay:0,
-			 	frontRangeDay=frontRangeDay?frontRangeDay:0,
-			 	v=Date.parse(v),days=(v-cur_time)/1000/60/60/24;
-			 		console.log(cur_time);
-			 		console.log(v);
-			 		console.log(new Date(parseInt(cur_time)).toLocaleString());
-			 		console.log(new Date(parseInt(v)).toLocaleString());
-			 		console.log('days:'+Math.floor(days));
-			 	if(-behindRangeDay<=days&&days<=frontRangeDay)
+			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
+			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
+			 		console.log('days:'+days);
+			 	if((-behindRangeDay<=days&&days<=frontRangeDay))
 			 		return true;
 			 	else
 			 		return false;
 			 }
-
-			 // var curt=new Date(2016,5,22);
-			 // var cc=(curt).valueOf();
-			 // console.log(cc);
-			 // alert($public.dateFormat(curt,'yyyy-MM-dd hh:mm:ss'));
-			 // alert($public.dateFormat(new Date(1467907200000),'yyyy-MM-dd hh:mm:ss'));
 
 			//设置价和库存
 			$('.setvl').on('click',function(){

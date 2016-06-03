@@ -457,7 +457,7 @@ define(function (require, exports, module) {
 			          else{sObj.style.color = '#666';}
 
 			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass();
-
+			          console.log(checkRangeDay(new Date(SY,SM,sD+1),120));
 			          if(checkRangeDay(new Date(SY,SM,sD+1),120)){
 				          $(sObj).closest('td').on('click',function(ev){
 				          		var _self=this;
@@ -624,29 +624,13 @@ define(function (require, exports, module) {
 			 //"behindRangeDay" 向后延伸的天数
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
-			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=(v-cur_time)/1000/60/60/24;
-			 		console.log('days:'+Math.ceil(days));
-			 	if(-behindRangeDay<=days&&days<=frontRangeDay)
+			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
+			 		console.log('days:'+days);
+			 	if((-behindRangeDay<=days&&days<=frontRangeDay))
 			 		return true;
 			 	else
 			 		return false;
 			 }
-
-			// var timestart='2010/05/04';
-			// var timeend='2015/09/05';
-			// var time1=(timestart+' 12:00:00');
-			// var time2=(timeend+' 23:59:59').toString();
-			// console.log('当前毫秒：'+Date.now());
-
-			// timestart=new Date();
-			// console.log('当前毫秒：'+timestart.getTime());
-			// console.log('当前毫秒：'+timestart.valueOf());
-			// console.log('当前毫秒：'+Date.parse(timestart));
-			// timeend=new Date(time2);
-			// console.log($public.dateFormat(timestart,'yyyy-MM-dd hh:mm:ss'));
-			// console.log($public.dateFormat(timeend,'yyyy-MM-dd hh:mm:ss'));
-			// console.log(Date.parse('2014/12/25 12:00:00'));
-
 
 			//设置价和库存
 			$('.setvl').on('click',function(){
