@@ -122,7 +122,9 @@ define(function (require, exports, module) {
 			});
 			
 			$public.actiondata('province','city');
-			
+
+
+		},
 			$(function(){
 
 				$.ajax({
@@ -135,8 +137,6 @@ define(function (require, exports, module) {
 					   
 					});
 			});
-
-		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
 			if(isTrue)isLock=false;
