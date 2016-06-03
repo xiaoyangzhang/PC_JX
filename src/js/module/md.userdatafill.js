@@ -122,6 +122,7 @@ define(function (require, exports, module) {
 			});
 			
 			$public.actiondata('province','city');
+			
 			$(function(){
 
 				$.ajax({
@@ -129,7 +130,7 @@ define(function (require, exports, module) {
 					   datatype:"html",
 					   url: $public.urlpath.pageilB,
 					   success: function(data){
-					   			$(".fm_md").append(data);	  									
+					   			$(".fm_md").empty().append(data);	  									
 					   	   	}
 					   
 					});
