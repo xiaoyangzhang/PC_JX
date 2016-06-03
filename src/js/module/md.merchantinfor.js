@@ -84,16 +84,14 @@ define(function (require, exports, module) {
 					   url: $public.urlpath.getBsScope,
 					   data: {merchantCategoryId:$(this).val()},
 					   success: function(data){
-					   			  var list = JSON.parse(data.value);    
-									  $('input[type="checkbox"]').each(function(){ 
+					   			  var list = JSON.parse(data.value);
+					   			  $('input[type="checkbox"]').prop("checked","").prop("disabled","disabled");    
+									  $('input[type="checkbox"]:disabled').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
-									  		if($(this).val() != list[i].businessScopeId ) {
-									  			$(this).prop("disabled","disabled");
-									  		}else{
+									  		if($(this).val() == list[i].businessScopeId ) {
 									  			$(this).prop("disabled","");
 									  		}
-									  	};
-									  
+									  	}; 
 									  });   
 					   	   	}
 					   
@@ -101,14 +99,15 @@ define(function (require, exports, module) {
 
 				});
 
+
 				$('.subt').on('click',function(){
 
 					var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
 					/*console.log(JSON.stringify(params));*/
-					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
-						$public.dialog.waiting();
+					//if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
+					//	$public.dialog.waiting();
 					var idStr="";
 					$("input[type='checkbox']:checked").each(function(){
 						idStr+=$(this).val()+",";
@@ -126,19 +125,27 @@ define(function (require, exports, module) {
 								$public.dialog.msg(data.resultMsg,'error');
 							}
 						});
-					}
+		//			}
 				return false;
 				});
 
-				$(".ccc").change(function(){
-					if($(this).is(':checked')){
-					/*	alert("niscdns");*/
-						$('.company input:radio[name="city"]').eq(0).attr("checked","checked");
-					  }else{
-					  	$('.company input:radio[name="city"]').attr("checked",false);
-					  }
+				$(".ccc").on('click',function(){
+					$(".company input[type='radio']").eq(0).prop("checked","checked");
 				});
+				$(".ddd").on('click',function(){
+					$(".ccc").prop("checked",false);
 
+				});
+				$(".company input[type='radio']").on('click',function(){
+					$(".ccc").prop("checked","checked");
+				});
+					$(".comtype input[type='radio']").on('click',function(){
+						if($(this).attr("class","daible")){
+							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
+						}else{
+							$(".dised").prop("disabled","");
+						}
+					});
 				/*$("选择身份按钮").on("click",function(){
                 $.ajax({
                     type: "POST",

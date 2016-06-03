@@ -38,12 +38,12 @@ strong{font-weight: normal;}
 .eredar-right .rewiewInfo .infoleft{margin-left: 0px;}
 .eredar-right .rewiewInfo .infoleft img{width:66px;height: 66px;border-radius: 50%;}
 .eredar-right .rewiewInfo .inforight p{color: #666;padding-top: 6px;}
-.eredar-right .rewiewInfo .inforight p span{display: inline-block;}
+.eredar-right .rewiewInfo .inforight p span{display: inline-block;color: #666;}
 .eredar-right .rewiewInfo .inforight p em.emW{margin-left: 45px;}
 
 .eredar-right .rewiewInfo .inforight p.infotime{margin-bottom: 30px;color: #999 !important;margin-top: 16px !important;}
 .eredar-right .rewiewInfo strong.infonick{font-weight: normal;display: inline-block;padding-top: 10px;color: #999 !important;width:70px;overflow: hidden;white-space:nowrap;text-overflow:ellipsis;cursor: pointer;}
-.eredar-right .rewiewInfo .inforight span.infoP{display: inline-block;width:724px;line-height: 24px;padding-top: 14px;}
+.eredar-right .rewiewInfo .inforight span.infoP{display: inline-block;width:724px;line-height: 24px;padding-top: 14px;color: #222;}
 .eredar-right .rewiewInfo .inforight .upload{margin-top: 15px;}
 .eredar-right .rewiewInfo .inforight .upload ul li{float:left;margin-left: 10px;position: relative;border: 2px solid #f2f2f2;vertical-align: middle;text-align:center;line-height: 85px;height:88px;width:88px;}
 .onspe{border:2px solid #ed6c44 !important;}
