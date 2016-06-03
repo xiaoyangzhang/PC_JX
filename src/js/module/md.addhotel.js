@@ -155,6 +155,8 @@ define(function (require, exports, module) {
 					validresult=false;
 				if(!check_storeLastTime())
 					validresult=false;
+				if(!$public.selectvalid('breakfast'))
+					validresult=false;
 				if(!validresult) return;
 				$('.eredar-info li:eq(2)').trigger('click');
 				$public.stopBubble(ev);
