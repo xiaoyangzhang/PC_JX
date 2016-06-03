@@ -43,14 +43,14 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-						"tax" : /\d{15}$/
+						"tax" :/^[\w\W]{0,25}$/
 					},
 					ajaxPost:true
 				},rule=[{
 					ele:".taxL",
 					datatype:"tax",
 					nullmsg:"请填写信息",
-					errormsg:"税务登记号最多15个字符！"
+					errormsg:"税务登记号最多25个字符！"
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
@@ -106,8 +106,8 @@ define(function (require, exports, module) {
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
 					/*console.log(JSON.stringify(params));*/
-					//if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
-					//	$public.dialog.waiting();
+					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
+						$public.dialog.waiting();
 					var idStr="";
 					$("input[type='checkbox']:checked").each(function(){
 						idStr+=$(this).val()+",";
@@ -125,7 +125,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg(data.resultMsg,'error');
 							}
 						});
-		//			}
+				}
 				return false;
 				});
 
@@ -140,7 +140,7 @@ define(function (require, exports, module) {
 					$(".ccc").prop("checked","checked");
 				});
 					$(".comtype input[type='radio']").on('click',function(){
-						if($(this).attr("class","daible")){
+						if($(".daible").is(':checked')){
 							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
 						}else{
 							$(".dised").prop("disabled","");

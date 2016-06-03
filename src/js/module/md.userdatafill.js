@@ -122,7 +122,18 @@ define(function (require, exports, module) {
 			});
 			
 			$public.actiondata('province','city');
-			
+			$(function(){
+				
+				$.ajax({
+					   type: "get",
+					   url: $public.urlpath.pageilB,
+					   success: function(data){
+					   			$(".fm_md").html(data);	  									
+					   	   	}
+					   
+					});
+			});
+
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
