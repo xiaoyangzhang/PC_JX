@@ -3,7 +3,7 @@ define(function (require, exports, module) {
 	require("widget"),
 	require("datepicker"),//引用时间组件
 	require("uploadfiles"),//上传文件组件
-	require("validform"),//上传文件组件
+	/*require("validform")*/,//上传文件组件
 	require("dropdownlist"),//下拉框组件
 	require("upload"),
 	$public=require("public"),
@@ -99,6 +99,7 @@ define(function (require, exports, module) {
 
 				});
 
+
 				$('.subt').on('click',function(){
 
 					var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
@@ -138,7 +139,13 @@ define(function (require, exports, module) {
 				$(".company input[type='radio']").on('click',function(){
 					$(".ccc").prop("checked","checked");
 				});
-
+					$(".comtype input[type='radio']").on('click',function(){
+						if($(this).attr("class","daible")){
+							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
+						}else{
+							$(".dised").prop("disabled","");
+						}
+					});
 				/*$("选择身份按钮").on("click",function(){
                 $.ajax({
                     type: "POST",
