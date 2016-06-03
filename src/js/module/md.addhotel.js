@@ -244,7 +244,6 @@ define(function (require, exports, module) {
 			//获取房型详细信息
 			function gitroominfo(){
 				var $tr = $('input[name="hotelGroup"]:checked').closest('tr');
-				var $infoBox = $(_self.config.infoBox);
 				$('.load_room').show();
 				$('.hotelcol').hide();
 				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
@@ -253,7 +252,7 @@ define(function (require, exports, module) {
 				$.get($public.urlpath.getroominfo,{hotelId:$('input[name="hotelGroup"]:checked').val()},function (data) {
 					$('.load_room').hide();
 					$('.hotelcol').show();
-					$infoBox.empty().append(data);
+					$(_self.config.infoBox).empty().append(data);
 					var rdlth=$('.radio-bar').length-1;
 					$('.radio-bar:eq('+rdlth+')').css('border-bottom','none');
 					setTimeout(function(){$('.radio-bar:eq(0)').trigger('click');},500);
@@ -353,37 +352,6 @@ define(function (require, exports, module) {
 		        //     "stock_num":10,
 		        //     "price":"8.8",
 		        //     "vTxt":1464364800000
-		        // },{
-		        //     "sku_id":10014,
-		        //     "state":"update",
-		        //     "stock_num":228,
-		        //     "price":"12",
-		        //     "vTxt":1464105600000
-		        // }
-		        // ,{
-		        //     "sku_id":10015,
-		        //     "state":"update",
-		        //     "stock_num":125,
-		        //     "price":"88.9",
-		        //     "vTxt":1464624000000
-		        // },{
-		        //     "sku_id":"fdfd",
-		        //     "state":"update",
-		        //     "stock_num":366,
-		        //     "price":"12.33",
-		        //     "vTxt":1467907200000
-		        // },{
-		        //     "sku_id":10016,
-		        //     "state":"update",
-		        //     "stock_num":58,
-		        //     "price":"100",
-		        //     "vTxt":1464796800000
-		        // },{
-		        //     "sku_id":10018,
-		        //     "state":"update",
-		        //     "stock_num":98,
-		        //     "price":"66",
-		        //     "vTxt":1466524800000
 		        // }
 		        ]
 		   
