@@ -396,8 +396,8 @@ define(function (require, exports, module) {
 			          else{sObj.style.color = '#666';}
 
 			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass();
-			          console.log(checkRangeDay(new Date(SY,SM,sD+1),120));
-			          if(checkRangeDay(new Date(SY,SM,sD+1),120)){
+
+			          if(checkRangeDay(new Date(SY,SM,sD+1),90)){
 				          $(sObj).closest('td').on('click',function(ev){
 				          		var _self=this;
 				          		if(!isCtrl){
@@ -564,7 +564,6 @@ define(function (require, exports, module) {
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
 			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
-			 		console.log('days:'+days);
 			 	if((-behindRangeDay<=days&&days<=frontRangeDay))
 			 		return true;
 			 	else
