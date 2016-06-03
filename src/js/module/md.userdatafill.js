@@ -122,20 +122,10 @@ define(function (require, exports, module) {
 			});
 			
 			$public.actiondata('province','city');
-			$(function(){
 
-				$.ajax({
-					   type: "get",
-					   datatype:"html",
-					   url: $public.urlpath.pageilB,
-					   success: function(data){
-					   			$(".fm_md").html(data);	  									
-					   	   	}
-					   
-					});
-			});
 
 		},
+
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
 			if(isTrue)isLock=false;
@@ -149,5 +139,17 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
+	$(function(){
+
+				$.ajax({
+					   type: "get",
+					   datatype:"html",
+					   url: $public.urlpath.pageilB,
+					   success: function(data){
+					   			$(".fm_md").empty().append(data);	  									
+					   	   	}
+					   
+					});
+			});
 	module.exports = new $userdatafill();
 });
