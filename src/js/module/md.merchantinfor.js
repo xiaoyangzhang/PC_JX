@@ -106,8 +106,8 @@ define(function (require, exports, module) {
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
 					/*console.log(JSON.stringify(params));*/
-					if(/*validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid*/){
-						$public.dialog.waiting();
+					//if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
+					//	$public.dialog.waiting();
 					var idStr="";
 					$("input[type='checkbox']:checked").each(function(){
 						idStr+=$(this).val()+",";
@@ -125,7 +125,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg(data.resultMsg,'error');
 							}
 						});
-					}
+		//			}
 				return false;
 				});
 
