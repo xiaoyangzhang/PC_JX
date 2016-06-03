@@ -395,31 +395,34 @@ define(function (require, exports, module) {
 			          if(cld[sD].isToday){ sObj.style.color = '#ffaf00';} //今日颜色
 			          else{sObj.style.color = '#666';}
 
-			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass()
-			          .on('click',function(ev){
-			          		var _self=this;
-			          		if(!isCtrl){
-			          			$('.day td').filter(function(){
-			          				if($(this).attr('class')){
-										$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
-										$(this).find('label').css('color','#666');
-									}
-			          			});
-			          		}
-							if($(_self).attr('class')){
-								$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
-								$(_self).find('label').css('color','#666');
-								//recordck($(_self),'del');
-							}else{
-								_self.color_temp=$(_self).find('font')[0].style.color;
-								$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
-								$('.price').val($(_self).find('.price_').text());
-								$('.stock').val($(_self).find('.stock_').text());
-								//recordck($(_self),'add');
-							}
-							if(isCtrl) $('.price,.stock').val('');
-							$public.stopBubble(ev);
-					   });                
+			          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass();
+				       
+			          if(checkRangeDay(new Date(SY,SM,sD+1),90)){
+				          $(sObj).closest('td').on('click',function(ev){
+				          		var _self=this;
+				          		if(!isCtrl){
+				          			$('.day td').filter(function(){
+				          				if($(this).attr('class')){
+											$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
+											$(this).find('label').css('color','#666');
+										}
+				          			});
+				          		}
+								if($(_self).attr('class')){
+									$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
+									$(_self).find('label').css('color','#666');
+									//recordck($(_self),'del');
+								}else{
+									_self.color_temp=$(_self).find('font')[0].style.color;
+									$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
+									$('.price').val($(_self).find('.price_').text());
+									$('.stock').val($(_self).find('.stock_').text());
+									//recordck($(_self),'add');
+								}
+								if(isCtrl) $('.price,.stock').val('');
+								$public.stopBubble(ev);
+						   });
+					   }               
 			       }
 			       else { //非日期
 			          sObj.innerHTML = '';
@@ -558,7 +561,7 @@ define(function (require, exports, module) {
 			 //"v" 要检测的日期
 			 //"frontRangeDay" 向前延伸的天数
 			 //"behindRangeDay" 向后延伸的天数
-			 function checkRange(v,frontRangeDay,behindRangeDay){
+			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=Date.parse(new Date()),behindRangeDay=behindRangeDay?behindRangeDay:0,
 			 	frontRangeDay=frontRangeDay?frontRangeDay:0,
 			 	v=Date.parse(v),days=(v-cur_time)/1000/60/60/24;
@@ -572,7 +575,6 @@ define(function (require, exports, module) {
 			 	else
 			 		return false;
 			 }
-			 console.log(checkRange(new Date(2016,4,1),2,33));
 
 			 // var curt=new Date(2016,5,22);
 			 // var cc=(curt).valueOf();
