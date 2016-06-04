@@ -39,7 +39,7 @@ define(function (require, exports, module) {
 
 			//商家入驻总提交
 			$('.allsub').on('click',function(){
-				var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
+				var groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
 
@@ -47,7 +47,7 @@ define(function (require, exports, module) {
 					
 					for(var i=0;i<nuZu.length;i++){
 						var obj={};
-						obj.id=nuZu[i].id;
+						obj.qulificationId=nuZu[i].id;
 						obj.content=$(nuZu[i]).find(':hidden').val();
 						arr.push(JSON.stringify(obj));
 					}
@@ -55,7 +55,7 @@ define(function (require, exports, module) {
 					for(var i=0;i<imgroup.length;i++){
 
 						var obj={};
-						obj.id=imgroup[i].id;
+						obj.qulificationId=imgroup[i].id;
 
 						var img_values=$(imgroup[i]).find(':hidden'),content_value=[];
 						for(var j=0;j<img_values.length;j++){
@@ -73,7 +73,7 @@ define(function (require, exports, module) {
 
 					return;
 
-					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
+					if(validfm.check()&&allimgvalid&&groupimgvalid){
 						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
