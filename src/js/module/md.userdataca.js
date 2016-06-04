@@ -157,6 +157,7 @@ define(function (require, exports, module) {
 				return false;
 			});
 			
+
 			$public.actiondata('province','city');
 			
 		},
@@ -173,5 +174,17 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
+	$(function(){
+
+				$.ajax({
+					   type: "get",
+					   datatype:"html",
+					   url: $public.urlpath.pageilB,
+					   success: function(data){
+					   			$(".fm_md").empty().append(data);	  									
+					   	   	}
+					   
+					});
+			});
 	module.exports = new $userdatafill();
 });
