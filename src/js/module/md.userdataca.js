@@ -98,29 +98,8 @@ define(function (require, exports, module) {
 					return false;
 			});
 
-			//商家入驻总提交
-			$('.allsub').on('click',function(){
-				var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
-					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
-					params=$public.paramcompare($('#forminfo').serializeArray());
-					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
-						$public.dialog.waiting();
-						$.post(subpath,params,function(data){
-							$public.isLogin(data);
-							$public.dialog.closebox();
-							if(data.success){
-								$public.dialog.msg('保存成功！','success');
-								setTimeout(function(){
-									window.location=data.value;
-								},1500); 
-							}else{
-								$public.dialog.msg(data.resultMsg,'error');
-							}
-						});
-					}
-				return false;
-			});
-			
+
+
 			$public.actiondata('province','city');
 			
 		},
@@ -137,5 +116,17 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
+	$(function(){
+
+				$.ajax({
+					   type: "get",
+					   datatype:"html",
+					   url: $public.urlpath.pageilB,
+					   success: function(data){
+					   			$(".fm_md").empty().append(data);	  									
+					   	   	}
+					   
+					});
+			});
 	module.exports = new $userdatafill();
 });
