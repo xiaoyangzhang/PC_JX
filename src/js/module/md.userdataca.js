@@ -18,47 +18,7 @@ define(function (require, exports, module) {
 			
 			var _self=this;
 
-			if($('.error_box').length>0){
-				var tit_top=$('.error_box').offset().top,lock=false;
-				$(window).scroll(function(){
-					var cur_top=$(this).scrollTop();
-					if(tit_top<cur_top&&!lock){
-						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+110)+'px'});
-						lock=true;
-					}else if(tit_top>cur_top&&lock){
-						$('.error_box').css({'position':'absolute','right':'110px'});
-						lock=false;
-					}
-				});
-			}
-
-	        var validoptions={
-					tiptype:3,
-					label:".label",
-					showAllError:true,
-					datatype:{
-						"*2-10" : /^[\w\W]{2,10}$/,
-						"n10-25" : /^\d{10,25}$/
-					},
-					ajaxPost:true
-				},rule=[{
-					ele:".picfile",
-					datatype:"*"
-				},{
-					ele:".businesname",
-					datatype:"*2-10",
-					nullmsg:"请填写姓名",
-					errormsg:"请填写2-10字以内的姓名"
-				},{
-					ele:".finance",
-					datatype:"n10-25",
-					nullmsg:"请填写财务结算账号",
-					errormsg:"财务结算账号只允许10-25个数字"
-				}],validfm=$("#forminfo").Validform(validoptions).addRule(rule);
-
-			$('#principleName_').keyup(function(){
-				$('#financeOpenName_').val($(this).val());
-			});
+		
  
 			//渲染时间控件
 			$( "#tm" ).datepicker();
@@ -75,37 +35,13 @@ define(function (require, exports, module) {
 			});
 			_self.changevalid();
 
-			//下一页并保存
-			$('.nxt').on('click',function(){
-				var allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
-					params=$public.paramcompare($('#forminfo').serializeArray()),groupimgvalid=true;
-					if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
-					if(validfm.check()&&allimgvalid&&groupimgvalid){
-						$public.dialog.waiting();
-						$.post(subpath,params,function(data){
-							$public.isLogin(data);
-							$public.dialog.closebox();
-							if(data.success){
-								$public.dialog.msg('保存成功！','success');
-								setTimeout(function(){
-									window.location=data.value;
-								},1500);
-							}else{
-								$public.dialog.msg(data.resultMsg,'error');
-							}
-						});
-					}
-					return false;
-			});
+			
 
 			//商家入驻总提交
 			$('.allsub').on('click',function(){
 				var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
-
-
-
 
 					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg');
 					
@@ -130,14 +66,12 @@ define(function (require, exports, module) {
 						arr.push(JSON.stringify(obj));
 
 					}
-						console.log(arr);
-					params.ssss=arr;
-					console.log(JSON.stringify(params));
+						/*console.log(arr);*/
+						
+					params.merchantQualificationStr=JSON.stringify(arr);
+					
+
 					return;
-
-
-
-
 
 					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
 						$public.dialog.waiting();
