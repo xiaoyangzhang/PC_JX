@@ -74,47 +74,6 @@ define(function (require, exports, module) {
 				}
 			});
 			_self.changevalid();
-				/*资质上传*/
-				  $('.nxt').on('click',function(){
-				  	var allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
-				  	params=$public.paramcompare($('#forminfo').serializeArray()),groupimgvalid=true;
-				  	if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
-				  	if(validfm.check()&&allimgvalid&&groupimgvalid){
-				  		var upload = $("input:hidden[name='']").val();
-				  		var Quacat  = $("input:hidden[name='content']").val();
-				  		$(".fm_md .zfd").each(function(){
-				  			/*var upload = $(this).val()*/
-				  				/*$.parseJSON(upload);*/
-				  				for (var i = 0; i < listadd.length; i++) {
-									  		if($(this).val() == list[i]) {
-									  			
-									  		}
-									  	}; 
-				        	});
-				  		$public.dialog.waiting();
-						$.post(subpath,params,function(data){
-							$public.isLogin(data);
-							$public.dialog.closebox();
-							if(data.success){
-								$public.dialog.msg('保存成功！','success');
-								setTimeout(function(){
-									window.location=data.value;
-								},1500);
-							}else{
-								$public.dialog.msg(data.resultMsg,'error');
-							}
-						});
-				  	
-				  });
-
-
-
-
-
-
-
-
-
 
 			//下一页并保存
 			$('.nxt').on('click',function(){
@@ -163,10 +122,8 @@ define(function (require, exports, module) {
 			});
 			
 			$public.actiondata('province','city');
-
-
+			
 		},
-
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
 			if(isTrue)isLock=false;
@@ -180,17 +137,5 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
-	$(function(){
-
-				$.ajax({
-					   type: "get",
-					   datatype:"html",
-					   url: $public.urlpath.pageilB,
-					   success: function(data){
-					   			$(".fm_md").empty().append(data);	  									
-					   	   	}
-					   
-					});
-			});
 	module.exports = new $userdatafill();
 });
