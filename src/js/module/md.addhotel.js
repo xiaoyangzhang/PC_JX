@@ -77,10 +77,18 @@ define(function (require, exports, module) {
 
 			//切换房型开关门
 			$(document).on('click',_self.config.radiobar,function(ev){
-				$(_self.config.barbox).css('height','0'); 
-				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_up.jpg');
+				$(_self.config.barbox).css('height','0').attr('id',0);
+				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_down.jpg');
 				$(this).next().css('height',($(_self.config.barboxul).outerHeight()+$(_self.config.barboxdiv).outerHeight()+15)+'px');
-				$(this).find('img').attr('src',static_source+'img/droptip_down.jpg');
+				$(this).find('img').attr('src',static_source+'img/droptip_up.jpg');
+				// if(!$(this).attr('id')){
+				// 	$(this).attr('id',1).next()
+				// 	.css('height',($(_self.config.barboxul).outerHeight()+$(_self.config.barboxdiv).outerHeight()+15)+'px');
+				// 	$(this).find('img').attr('src',static_source+'img/droptip_up.jpg');
+				// }else{
+				// 	$(this).attr('id','').next().css('height','0');
+				// 	$(this).find('img').attr('src',static_source+'img/droptip_down.jpg');
+				// }
 				$public.stopBubble(ev);
 			});
 
@@ -290,7 +298,7 @@ define(function (require, exports, module) {
 					$cklast.append('<span class="Validform_checktip Validform_wrong">最多只能选三个！</span>');
 					return false;
 				}else if($cked.length==0){
-					$cklast.append('<span class="Validform_checktip Validform_wrong"></span>');
+					$cklast.append('<span class="Validform_checktip Validform_wrong">请选择最晚到店时间</span>');
 					return false;
 				}else{
 					$cklast.append('<span class="Validform_checktip Validform_right"></span>');
@@ -596,7 +604,7 @@ define(function (require, exports, module) {
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
 			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
-			 	if((-behindRangeDay<=days&&days<=frontRangeDay))
+			 	if((-(behindRangeDay-1)<=days&&days<=(frontRangeDay-1)))
 			 		return true;
 			 	else
 			 		return false;
@@ -611,8 +619,8 @@ define(function (require, exports, module) {
 						$('.price').focus();
 						return;
 					}
-					if(!/^[1-9]\d{0,8}$/.test($('.stock').val())){
-						$public.dialog.msg('“库存”为纯数字','error');
+					if(!/^[1-9]\d{0,5}$/.test($('.stock').val())){
+						$public.dialog.msg('“库存”为数字,最大6位','error');
 						$('.stock').focus();
 						return;
 					}

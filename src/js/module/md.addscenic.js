@@ -547,7 +547,7 @@ define(function (require, exports, module) {
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
 			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
-			 	if((-behindRangeDay<=days&&days<=frontRangeDay))
+			 	if((-(behindRangeDay-1)<=days&&days<=(frontRangeDay-1)))
 			 		return true;
 			 	else
 			 		return false;
@@ -562,8 +562,8 @@ define(function (require, exports, module) {
 						$('.price').focus();
 						return;
 					}
-					if(!/^[1-9]\d{0,8}$/.test($('.stock').val())){
-						$public.dialog.msg('“库存”为纯数字','error');
+					if(!/^[1-9]\d{0,5}$/.test($('.stock').val())){
+						$public.dialog.msg('“库存”为数字,最大6位','error');
 						$('.stock').focus();
 						return;
 					}
