@@ -181,7 +181,7 @@ define(function (require, exports, module) {
 				$sceniclist=$searchbox.find(_self.config.scenicList);
 				$sceniclist.empty();
 				$.get($public.urlpath.getScenicList,{
-					name:$('#scenicName').val() ? $('#scenicName').val() : 0,
+					name:$('#scenicName').val(),
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
 					locationTownId:$('input[name="area"]').val() ? $('input[name="area"]').val() : 0
@@ -585,6 +585,7 @@ define(function (require, exports, module) {
 						del_chahevalue($(this).parent().find('font').html());
 					});
 					$(document).trigger('click');
+					$('.price,.stock').val('');
 					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 				}else
 					$public.dialog.msg('请选择要清除的日期','error');
