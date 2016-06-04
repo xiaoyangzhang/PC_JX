@@ -103,6 +103,42 @@ define(function (require, exports, module) {
 				var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
+
+
+
+
+					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg');
+					
+					for(var i=0;i<nuZu.length;i++){
+						var obj={};
+						obj.id=nuZu[i].id;
+						obj.content=$(nuZu[i]).find(':hidden').val();
+						arr.push(JSON.stringify(obj));
+					}
+					
+					for(var i=0;i<imgroup.length;i++){
+
+						var obj={};
+						obj.id=imgroup[i].id;
+
+						var img_values=$(imgroup[i]).find(':hidden'),content_value=[];
+						for(var j=0;j<img_values.length;j++){
+							if(img_values[j].value) content_value.push(img_values[j].value);
+						}
+
+						obj.content=content_value.join(',');
+						arr.push(JSON.stringify(obj));
+
+					}
+						console.log(arr);
+					params.ssss=arr;
+					console.log(JSON.stringify(params));
+					return;
+
+
+
+
+
 					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
 						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
