@@ -634,6 +634,7 @@ define(function (require, exports, module) {
 						del_chahevalue($(this).parent().find('font').html());
 					});
 					$(document).trigger('click');
+					$('.price,.stock').val('');
 					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 				}else
 					$public.dialog.msg('请选择要清除的日期','error');
