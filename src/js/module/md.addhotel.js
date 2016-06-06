@@ -35,7 +35,8 @@ define(function (require, exports, module) {
 					showAllError:true,
 					datatype:{
 						"*2-10" : /^[\w\W]{2,10}$/,
-						"n10-25" : /^\d{10,25}$/
+						"n10-25" : /^\d{10,25}$/,
+						"n0-90" : /^\d{0,90}$/
 					},
 					ajaxPost:true
 				},rule=[{
@@ -52,9 +53,9 @@ define(function (require, exports, module) {
 					nullmsg:"请选择退订限制！"
 				},{
 					ele:"input[name='startBookTimeLimit']",
-					datatype:"n",
+					datatype:"n0-90",
 					nullmsg:"请填写提前预定天数！",
-					errormsg:"请输入纯数字！"
+					errormsg:"只能输入0-90范围数字！"
 				}],
 				validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
@@ -98,7 +99,9 @@ define(function (require, exports, module) {
 				$htlst=$searchbox.find(_self.config.hotelist);
 				$public.dialog.content(968,'auto','选择酒店',$searchbox.show(),function(){
 					var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
+					hp=ckid.closest('tr').find(':hidden').val(),
 					htname=ckid.closest('td').next().text();
+					$('.hotelType').text(hp);
 					if(htlid){
 						$('input[name="hotelId"]').val(htlid);
 						$('input[name="name"]').val(htname);
@@ -233,7 +236,7 @@ define(function (require, exports, module) {
 
 			//获取酒店列表
 			function gethotelist(page,pagesize){
-				var page=page?page:1,pagesize=pagesize?pagesize:10,
+				var page=page?page:1,pagesize=pagesize?pagesize:$('#pageSize').val(),
 				$htlst=$(_self.config.searchbox).find(_self.config.hotelist);
 				$htlst.empty();
 				$.get($public.urlpath.gethotelist,{
@@ -552,7 +555,7 @@ define(function (require, exports, module) {
 			//设置日期的价格和库存
 			function set_tdvalue(obj,price,stock){
 				if(obj.find('.tipvl').length==0)
-	          		obj.append('<div class="tipvl"><label>价:￥</label><label class="price_">'+price+'</label><br><label>存:</label><label class="stock_">'+stock+'</label></div>');
+	          		obj.append('<div class="tipvl"><label>￥：</label><label class="price_">'+price+'</label><br><label>库存：</label><label class="stock_">'+stock+'</label></div>');
 				else{
 					obj.find('.price_').text(price);
 					obj.find('.stock_').text(stock);
@@ -604,23 +607,43 @@ define(function (require, exports, module) {
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
 			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
-			 	if((-(behindRangeDay-1)<=days&&days<=(frontRangeDay-1)))
+			 	if(-behindRangeDay<=days&&days<=(frontRangeDay-1))
 			 		return true;
 			 	else
 			 		return false;
 			 }
+
+			 function father(){
+			 	this.name='fth';
+			 	this.run=function(){
+			 		alert('dsfsd');
+			 	}
+			 }
+
+			 function person(){
+			 	person.call(father);
+			 	this.name='xx';
+			 	this.run=function(){
+			 		alert('dsfsd');
+			 	}
+			 }
+
+			 var x=new person();
+			 alert(x.name);
+			 x.run();
+
 
 			//设置价和库存
 			$('.setvl').on('click',function(){
 				var temp='',$dtbx=$('.day .choiced .dtbx'),price=$('.price').val(),stock=$('.stock').val();
 				if($dtbx.length>0){
 					if(!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($('.price').val())){
-						$public.dialog.msg('“价格”为数字,最大整数6位,能带两位小数','error');
+						$public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数','error');
 						$('.price').focus();
 						return;
 					}
 					if(!/^[1-9]\d{0,5}$/.test($('.stock').val())){
-						$public.dialog.msg('“库存”为数字,最大6位','error');
+						$public.dialog.msg('“库存”为数字,最大6位整数','error');
 						$('.stock').focus();
 						return;
 					}
@@ -645,7 +668,7 @@ define(function (require, exports, module) {
 					$('.price,.stock').val('');
 					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 				}else
-					$public.dialog.msg('请选择要清除的日期','error');
+					$public.dialog.msg('请选择要清除信息的日期','error');
 			});
 
 			$('.setvalue').on('click',function(ev){

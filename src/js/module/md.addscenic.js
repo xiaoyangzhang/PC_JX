@@ -38,7 +38,8 @@ define(function (require, exports, module) {
 						'*2-10' : /^[\w\W]{2,10}$/,
 						'n10-25' : /^\d{10,25}$/,
 						'pri' : /^[1-9]\d{0,9}(\.\d{1,2})?$/,
-						'priint' : /^[1-9]\d{0,9}$/
+						'priint' : /^[1-9]\d{0,9}$/,
+						"n0-90" : /^\d{0,90}$/
 					},
 					ajaxPost:true
 				},
@@ -55,15 +56,23 @@ define(function (require, exports, module) {
 					datatype:'pri|priint',
 					errormsg:'请检查价格格式'
 				},{
-					ele:'input[name="startBookTimeLimit"]',
-					datatype:'n',
-					errormsg:'请填写数字'
+					ele:"input[name='startBookTimeLimit']",
+					datatype:"n0-90",
+					nullmsg:"请填写提前预定天数！",
+					errormsg:"只能输入0-90范围数字！"
 				}],
 				validForm=$('.scenicForm').Validform(validoptions).addRule(rule);
 			
 			$('#area').selectlist({width: 200});
 			
 			$public.procityaredata('province','city','area',true);
+
+			//计算输入字数
+			$('.inputxt,textarea').keyup(function(){
+				$(this).next('.mark').find('label.cv').text($(this).val().length);
+			}).filter(function(){
+				$(this).next('.mark').find('label.cv').text($(this).val().length);
+			});
 
 			$(_self.config.eredarli).on('click',function(ev){
 				$(_self.config.eredarli).removeClass('on');
@@ -91,63 +100,76 @@ define(function (require, exports, module) {
 			$('.save-to-picker').on('click',function(){
 				if ($('input[name="scenicId"]').val()==0) {
 					$public.dialog.msg('请选择景区','error');
-					return false;
+					return;
 				}
-				if (!validForm.check()) $('.eredar-info li:eq(0)').trigger('click');
+				if (!validForm.check())
+					return;
+				$('.eredar-info li:eq(1)').trigger('click');
 				$public.stopBubble();
 			});
 			
 			//全部保存
-			$('.allsub').on('click',function(ev){				
-				if (validForm.check()) {		
-					var dynamicArr = [];
-					$('.dynamicTr').each(function () {
-						var dynamicTr ={
-							pId : $(this).attr('pId'),
-							pTxt : $(this).attr('pTxt'),
-							pType : $(this).attr('pType'),
-							vTxt : $(this).find('input').val(),
-							categoryId : parseInt($('input[name="categoryId"]').val()),
-							flag : false
-						};	
-						dynamicArr.push(dynamicTr);
-					});
-	
-					// var scenicManageVO = {
-					// 	scenicId : $('input[name="scenicId"]').val(),
-					// 	name : $('input[name="scenicName"]').val(),
-					// 	//scenicTicket : $('input[name="scenicTicket"]').val(),
-					// 	ticketId :  $('input[name="ticketId"]:checked').val(),
-					// 	ticketTitle : $('input[name="ticketId"]:checked').attr('tTitle'),
-					// 	title : $('input[name="title"]').val(),
-					// 	price : $('input[name="price"]').val(),
-					// 	originalPrice : $('input[name="originalPrice"]').val(),
-					// 	startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
-					// 	dynamicEntry : JSON.stringify(dynamicArr),
-					// 	supplierCalendar : $('input[name="supplierCalendar"]').val()					
-					// };
-
-					var prarm=$public.paramcompare($('.scenicForm').serializeArray());
-					prarm.ticketTitle=$('input[name="ticketId"]:checked').attr('tTitle');
-					prarm.dynamicEntry=JSON.stringify(dynamicArr);
-
-					var subFlag = $('input[name="operationFlag"]').val(),
-					url=subFlag=='update'?$public.urlpath.updateScenic:$public.urlpath.addScenic;
-
-					$.post(url,prarm,function (data) {
-						//console.log(data);
-						$public.isLogin(data);
-						if (data.success) {
-							$public.dialog.msg('保存成功','success');
-							setTimeout(function () {
-								window.location = data.value;
-							},1000);
-						}else{
-							$public.dialog.msg(data.resultMsg,'error');
-						};
-					});	
-				}else
+			$('.allsub').on('click',function(ev){
+				var ls=supplierCalendar.bizSkuInfo,isHave=false;
+				if (!validForm.check()){
 					$('.eredar-info li:eq(0)').trigger('click');
+					return;
+				}
+				for(var i=0;i<ls.length;i++){
+					if(ls[i].state!='del')
+						isHave=true;
+				}
+				if(!isHave){
+					$public.dialog.msg('请设置价格日历！','error');
+					return;
+				}	
+
+				var dynamicArr = [];
+				$('.dynamicTr').each(function () {
+					var dynamicTr ={
+						pId : $(this).attr('pId'),
+						pTxt : $(this).attr('pTxt'),
+						pType : $(this).attr('pType'),
+						vTxt : $(this).find('input').val(),
+						categoryId : parseInt($('input[name="categoryId"]').val()),
+						flag : false
+					};	
+					dynamicArr.push(dynamicTr);
+				});
+
+				// var scenicManageVO = {
+				// 	scenicId : $('input[name="scenicId"]').val(),
+				// 	name : $('input[name="scenicName"]').val(),
+				// 	//scenicTicket : $('input[name="scenicTicket"]').val(),
+				// 	ticketId :  $('input[name="ticketId"]:checked').val(),
+				// 	ticketTitle : $('input[name="ticketId"]:checked').attr('tTitle'),
+				// 	title : $('input[name="title"]').val(),
+				// 	price : $('input[name="price"]').val(),
+				// 	originalPrice : $('input[name="originalPrice"]').val(),
+				// 	startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
+				// 	dynamicEntry : JSON.stringify(dynamicArr),
+				// 	supplierCalendar : $('input[name="supplierCalendar"]').val()					
+				// };
+
+				var prarm=$public.paramcompare($('.scenicForm').serializeArray());
+				prarm.ticketTitle=$('input[name="ticketId"]:checked').attr('tTitle');
+				prarm.dynamicEntry=JSON.stringify(dynamicArr);
+
+				var subFlag = $('input[name="operationFlag"]').val(),
+				url=subFlag=='update'?$public.urlpath.updateScenic:$public.urlpath.addScenic;
+
+				$.post(url,prarm,function (data) {
+					//console.log(data);
+					$public.isLogin(data);
+					if (data.success) {
+						$public.dialog.msg('保存成功','success');
+						setTimeout(function () {
+							window.location = data.value;
+						},1000);
+					}else{
+						$public.dialog.msg(data.resultMsg,'error');
+					};
+				});
 				
 			});
 			//查询景区弹出层
@@ -174,13 +196,42 @@ define(function (require, exports, module) {
 				getScenicList();
 				$public.stopBubble(ev);
 			});
+
+			//上一页
+			$(document).on('click','li.previous:not(".disabled") a',function(){
+				var cur_page=parseInt($('.pagination li.active a').text());
+				$(_self.config.loadlist).show();
+				getScenicList(cur_page>0?(cur_page-1):cur_page);
+			});
+
+			//下一页
+			$(document).on('click','li.next:not(".disabled") a',function(){
+				var cur_page=parseInt($('.pagination li.active a').text());
+				$(_self.config.loadlist).show();
+				getScenicList(cur_page+1);
+			});
+
+			//选择页
+			$(document).on('click','li:not(".active,.previous,.next") a',function(){
+				var cur_page=parseInt($(this).text());
+				$(_self.config.loadlist).show();
+				getScenicList(cur_page);
+			});
+
+			//选择页大小
+			$(document).on('change','li #pageSize',function(){
+				$(_self.config.loadlist).show();
+				getScenicList(1,$(this).val());
+			});
 			
 			//景区列表			
-			function getScenicList(){
-				var $searchbox=$(_self.config.searchbox),
-				$sceniclist=$searchbox.find(_self.config.scenicList);
+			function getScenicList(page,pagesize){
+				var page=page?page:1,pagesize=pagesize?pagesize:$('#pageSize').val(),
+				$sceniclist=$(_self.config.searchbox).find(_self.config.scenicList);
 				$sceniclist.empty();
 				$.get($public.urlpath.getScenicList,{
+					page:page,
+					pageSize:pagesize,
 					name:$('#scenicName').val(),
 					locationProvinceId:$('input[name="province"]').val() ? $('input[name="province"]').val() : 0,
 					locationCityId:$('input[name="city"]').val() ? $('input[name="city"]').val() : 0,
@@ -262,6 +313,7 @@ define(function (require, exports, module) {
 			0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0);
 
 
+
 		    var supplierCalendar={
 		        "seller_id":$('input[name="sellerId"]').val(),
 		        "hotel_id":$('input[name="hotelId"]').val(),
@@ -273,41 +325,12 @@ define(function (require, exports, module) {
 		        //     "stock_num":10,
 		        //     "price":"8.8",
 		        //     "vTxt":1464364800000
-		        // },{
-		        //     "sku_id":10014,
-		        //     "state":"update",
-		        //     "stock_num":228,
-		        //     "price":"12",
-		        //     "vTxt":1464105600000
-		        // }
-		        // ,{
-		        //     "sku_id":10015,
-		        //     "state":"update",
-		        //     "stock_num":125,
-		        //     "price":"88.9",
-		        //     "vTxt":1464624000000
-		        // },{
-		        //     "sku_id":"fdfd",
-		        //     "state":"update",
-		        //     "stock_num":366,
-		        //     "price":"12.33",
-		        //     "vTxt":1467907200000
-		        // },{
-		        //     "sku_id":10016,
-		        //     "state":"update",
-		        //     "stock_num":58,
-		        //     "price":"100",
-		        //     "vTxt":1464796800000
-		        // },{
-		        //     "sku_id":10018,
-		        //     "state":"update",
-		        //     "stock_num":98,
-		        //     "price":"66",
-		        //     "vTxt":1466524800000
 		        // }
 		        ]
 		   
 		    };
+
+
 			  //返回农历y年的总天数
 			  function lYearDays(y) {
 			     var i, sum = 348;
@@ -495,7 +518,7 @@ define(function (require, exports, module) {
 			//设置日期的价格和库存
 			function set_tdvalue(obj,price,stock){
 				if(obj.find('.tipvl').length==0)
-	          		obj.append('<div class="tipvl"><label>价:￥</label><label class="price_">'+price+'</label><br><label>存:</label><label class="stock_">'+stock+'</label></div>');
+	          		obj.append('<div class="tipvl"><label>￥：</label><label class="price_">'+price+'</label><br><label>库存：</label><label class="stock_">'+stock+'</label></div>');
 				else{
 					obj.find('.price_').text(price);
 					obj.find('.stock_').text(stock);
@@ -547,7 +570,7 @@ define(function (require, exports, module) {
 			 function checkRangeDay(v,frontRangeDay,behindRangeDay){
 			 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
 			 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
-			 	if((-(behindRangeDay-1)<=days&&days<=(frontRangeDay-1)))
+			 	if(-behindRangeDay<=days&&days<=(frontRangeDay-1))
 			 		return true;
 			 	else
 			 		return false;
@@ -558,12 +581,12 @@ define(function (require, exports, module) {
 				var temp='',$dtbx=$('.day .choiced .dtbx'),price=$('.price').val(),stock=$('.stock').val();
 				if($dtbx.length>0){
 					if(!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($('.price').val())){
-						$public.dialog.msg('“价格”为数字,最大整数6位,能带两位小数','error');
+						$public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数','error');
 						$('.price').focus();
 						return;
 					}
 					if(!/^[1-9]\d{0,5}$/.test($('.stock').val())){
-						$public.dialog.msg('“库存”为数字,最大6位','error');
+						$public.dialog.msg('“库存”为数字,最大6位整数','error');
 						$('.stock').focus();
 						return;
 					}
@@ -588,7 +611,7 @@ define(function (require, exports, module) {
 					$('.price,.stock').val('');
 					$('input[name="supplierCalendar"]').val(JSON.stringify(supplierCalendar));
 				}else
-					$public.dialog.msg('请选择要清除的日期','error');
+					$public.dialog.msg('请选择要清除信息的日期','error');
 			});
 
 			$('.setvalue').on('click',function(ev){
