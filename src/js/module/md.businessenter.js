@@ -1,8 +1,9 @@
 define(function(require, exports, module) {
    /* var $public = require("public");*/
-   $public=require("public"),
+
    $urlpath=require("urlpath"),
    require("upload"),
+     $public=require("public"),
     require("ajaxform");
     var $module = function() {
         this.init.apply(this, arguments);
@@ -20,8 +21,8 @@ define(function(require, exports, module) {
 
             $self.bindDomEvent();
             $(".mode-tab-nav li").on('click',function(){
-                console.log($public.urlpath.agreement);
-                console.log($public.urlpath.toDetailPage);
+/*                console.log($public.urlpath.agreement);
+                console.log($public.urlpath.toDetailPage);*/
                 if($(this).attr("id")=="shazi"){
                     $("#Settled").attr("href",$public.urlpath.agreement);
 
