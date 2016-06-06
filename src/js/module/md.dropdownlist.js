@@ -1,5 +1,5 @@
 define(function (require, exports, module) {
-    $public=require("public");
+$public=require("public");
 ;(function($,window,document){
 
     var pluginName = 'selectlist',

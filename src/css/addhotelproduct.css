@@ -38,9 +38,9 @@ input[type=text]{height: 32px;line-height: 32px;}
 	-webkit-transition: height 1s;
 	-o-transition: height 1s;}
 .hotelinfo .info-box .bar-box ul{padding:10px 0;}
-.hotelinfo .info-box .bar-box li{float: left;width:148px;padding-left:40px;}
+.hotelinfo .info-box .bar-box li{float: left;width:179px;padding-left:10px;}
 .hotelinfo .info-box .bar-box .img-group{width:590px;}
-.hotelinfo .info-box .bar-box .img-group img{margin-right:15px;}
+.hotelinfo .info-box .bar-box .img-group img{margin-right:15px;width:177px;max-height: 120px;margin-bottom:6px;}
 
 .searchbox{display: none;overflow: hidden;}
 .searchbox .tb{width:100%;}
