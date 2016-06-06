@@ -52,7 +52,7 @@ strong{font-weight: normal;}
 	border: transparent 6px dashed;border-top: 6px solid #ed6c44;position: absolute;left: 40px;bottom: -13px;}
 .eredar-right .rewiewInfo .inforight .upload img{max-width:86px;cursor: pointer;height:86px;}
 .eredar-right .rewiewInfo .inforight .showImg{display:none;width:280px;height:190px;margin-top: 10px;}
-.eredar-right .rewiewInfo .inforight .showImg img{max-width:280px;height:190px;}
+.eredar-right .rewiewInfo .inforight .showImg img{max-width:280px;max-height:190px;}
 
 .eredar-right .skip{margin: 30px 0 90px 298px;}
 .eredar-right .skip ul li{float: left;margin-left: 9px;}
