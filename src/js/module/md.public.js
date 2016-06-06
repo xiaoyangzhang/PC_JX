@@ -100,7 +100,9 @@ define(function (require, exports, module) {
 			addScenic:site_path+'/scenic/addScenicManageVOByDdata',
 			updateScenic:site_path+'/scenic/editScenicManageVOByDdata',
 			getBsScope:site_path+'/apply/getBusinessScope',
-			pageilB:site_path+'/apply/seller/pageDetailB'
+			pageilB:site_path+'/apply/seller/pageDetailB',
+			agreement:site_path+'/apply/talent/agreement',
+			toDetailPage:site_path+'/apply/seller/toDetailPage'
 		},
 		timer:null,
 		dialog:{

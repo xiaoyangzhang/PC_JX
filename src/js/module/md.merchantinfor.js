@@ -108,6 +108,7 @@ define(function (require, exports, module) {
 					/*console.log(JSON.stringify(params));*/
 					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
 						$public.dialog.waiting();
+						/*把从后台去的数据转换成数组*/
 					var idStr="";
 					$("input[type='checkbox']:checked").each(function(){
 						idStr+=$(this).val()+",";
@@ -129,24 +130,24 @@ define(function (require, exports, module) {
 				return false;
 				});
 
-				$(".ccc").on('click',function(){
+				$(".ccc").change(function(){
 					$(".company input[type='radio']").eq(0).prop("checked","checked");
 				});
-				$(".ddd").on('click',function(){
+				$(".ddd").change(function(){
 					$(".ccc").prop("checked",false);
 
 				});
-				$(".company input[type='radio']").on('click',function(){
+				$(".company input[type='radio']").change(function(){
 					$(".ccc").prop("checked","checked");
 				});
-				$(".company input[type='radio']").on('click',function(){
+				$(".company input[type='radio']").change(function(){
 					if ($(this).is(':checked')) {
 						$(".ccc").prop("checked","checked");
 					}else{
 						$(".ccc").prop("checked","");
 					}
 				});
-					$(".comtype input[type='radio']").on('click',function(){
+					$(".comtype input[type='radio']").change(function(){
 						if($(".daible").is(':checked')){
 							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
 						}else{
