@@ -613,26 +613,6 @@ define(function (require, exports, module) {
 			 		return false;
 			 }
 
-			 function father(){
-			 	this.name='fth';
-			 	this.run=function(){
-			 		alert('dsfsd');
-			 	}
-			 }
-
-			 function person(){
-			 	person.call(father);
-			 	this.name='xx';
-			 	this.run=function(){
-			 		alert('dsfsd');
-			 	}
-			 }
-
-			 var x=new person();
-			 alert(x.name);
-			 x.run();
-
-
 			//设置价和库存
 			$('.setvl').on('click',function(){
 				var temp='',$dtbx=$('.day .choiced .dtbx'),price=$('.price').val(),stock=$('.stock').val();
