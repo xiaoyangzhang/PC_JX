@@ -17,9 +17,9 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo .nm span{line-height: 38px;}
 .hotelinfo .nm label{font-size:14px;color:#333;line-height: 32px;}
 .hotelinfo a{width:88px;border:1px solid #ed6c44;background: #fff;color:#ed6c44;line-height: 30px;text-align: center;}
-.hotelinfo .info-bar{width:598px;border:1px solid #ccc;margin:0 10px;}
+.hotelinfo .info-bar{width:598px;border:1px solid #ccc;margin:0 8px;}
 .hotelinfo .info-bar label{line-height: 32px;color:#333;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
-.hotelinfo .info-bar .htn{width:137px;line-height: 32px;border-right:1px solid #ccc;text-align: center;color:#ed6c44;background: #eee;}
+.hotelinfo .info-bar .htn{width:127px;padding:0 5px;line-height: 32px;border-right:1px solid #ccc;text-align: center;color:#ed6c44;background: #eee;}
 .hotelinfo .info-bar .smtt{width:50px;text-align: center;}
 .hotelinfo .info-bar .address{width:228px;}
 .hotelinfo .info-bar .tel{width:118px;}
@@ -33,10 +33,10 @@ input[type=text]{height: 32px;line-height: 32px;}
 .hotelinfo .info-box .bar-box {
 	height: 0;
 	overflow: hidden;
-	transition: height 1s;
-	-moz-transition: height 1s;
-	-webkit-transition: height 1s;
-	-o-transition: height 1s;}
+	transition: height .6s;
+	-moz-transition: height .6s;
+	-webkit-transition: height .6s;
+	-o-transition: height .6s;}
 .hotelinfo .info-box .bar-box ul{padding:10px 0;}
 .hotelinfo .info-box .bar-box li{float: left;width:179px;padding-left:10px;}
 .hotelinfo .info-box .bar-box .img-group{width:590px;}
@@ -84,7 +84,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .coltxt{width:125px;text-align: right;}
 .baseinfo table{margin-top:30px;}
 .baseinfo table td,.baseinfo table td label,.baseinfo table td span{color:#333;}
-.baseinfo table td{padding:10px;}
+.baseinfo table td{padding: 10px 10px 10px 6px;}
 .baseinfo table td textarea{width:488px;height: 88px;padding:5px;}
 .baseinfo .mark,.baseinfo .mark label{vertical-align: bottom;color:#999;}
 .baseinfo .mark{margin-left:10px;}
@@ -92,7 +92,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .checkbox{margin-right:10px;display: inline-block;*display: inline;*zoom:1;width:145px;margin-bottom:20px;cursor: pointer;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
 .baseinfo .dtlrule{padding-right: 40px;line-height: 22px;}
-.savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
+.savenext{padding-left:106px;padding-top:20px;padding-bottom:80px;}
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
 .savenext a,.btngroup a,.allsave a{display:inline-block;text-align: center; height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}

@@ -239,6 +239,7 @@ define(function (require, exports, module) {
 			}
 			return result;
 		},
+		//二级联动
 	    actiondata:function (province,city,is_check) {
 			//加载联动数据
 	        $.ajax({
@@ -247,21 +248,29 @@ define(function (require, exports, module) {
 	            jsonpCallback : "callback",
 	            success : function(data){
 	                setTimeout(function(){
-	                  $("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
+	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
 	                            $(this).attr('selected','selected');
 	                        }
 	                    });
+	                    function clear_select($obj){
+                        	$obj.find('li:eq(0)~li').remove();
+                        	$obj.find('.select-button').val('--请选择--');
+                        	$obj.find(':hidden').val('');
+                        }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
-		                            for(var c_key in data.city){
-		                                if(c_key==cur_p){
-		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-		                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
-		                                }
-		                            }
+			                        if(cur_p){
+			                            for(var c_key in data.city){
+			                                if(c_key==cur_p){
+			                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+			                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
+			                                }
+			                            }
+			                        }else
+			                        	clear_select($("#"+city));
 		                            if(!is_check)$public.selectvalid(this.element.id);
 			                    },
 			                    onSuccess:function(){
@@ -288,6 +297,7 @@ define(function (require, exports, module) {
 	            }             
 	        });
 		},
+		//三级联动
 	    procityaredata:function (province,city,area,is_check) {
 			//加载联动数据
 	        $.ajax({
@@ -296,38 +306,49 @@ define(function (require, exports, module) {
 	            jsonpCallback : "callback",
 	            success : function(data){
 	                setTimeout(function(){
-	                  $("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
+	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
 	                            $(this).attr('selected','selected');
 	                        }
 	                    });
+	                    function clear_select($obj){
+                        	$obj.find('li:eq(0)~li').remove();
+                        	$obj.find('.select-button').val('--请选择--');
+                        	$obj.find(':hidden').val('');
+                        }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
-		                            for(var c_key in data.city){
-		                                if(c_key==cur_p){
-		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-		                                    .selectlist({
-		                                    	width:150,
-		                                    	onChange:function(){
-							                        var cur_p=$('input[name="city"]').val();
-						                            for(var c_key in data.area){
-						                                if(c_key==cur_p){
-						                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
-						                                    .selectlist({
-						                                    	width:200,
-						                                    	onChange:function(){
-						                                    		if(!is_check)$public.selectvalid(this.element.id);
-							                                    }
-							                                });
-						                                }
-						                            }
-		                                    		if(!is_check)$public.selectvalid(this.element.id);
-			                                    }
-			                                });
-		                                }
-		                            }
+			                        if(cur_p){
+			                            for(var c_key in data.city){
+			                                if(c_key==cur_p){
+			                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+			                                    .selectlist({
+			                                    	width:150,
+			                                    	onChange:function(){
+								                        var cur_c=$('input[name="city"]').val();
+				                        				if(cur_c){
+								                            for(var c_key in data.area){
+								                                if(c_key==cur_c){
+								                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+								                                    .selectlist({
+								                                    	width:200,
+								                                    	onChange:function(){
+								                                    		if(!is_check)$public.selectvalid(this.element.id);
+									                                    }
+									                                });
+								                                }
+								                            }
+								                        }else
+								                        	clear_select($("#"+area));
+			                                    		if(!is_check)$public.selectvalid(this.element.id);
+				                                    }
+				                                });
+			                                }
+			                            }
+			                        }else
+			                        	clear_select($("#"+city+",#"+area));
 		                            if(!is_check)$public.selectvalid(this.element.id);
 			                    },
 			                    onSuccess:function(){
@@ -338,53 +359,62 @@ define(function (require, exports, module) {
 				                            $(this).trigger('autoclick');
 				                            setTimeout(function(){
 						                        var cur_p=$('input[name="province"]').val();
-					                            for(var c_key in data.city){
-					                                if(c_key==cur_p){
-					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-					                                    .selectlist({
-					                                    	width:150,
-					                                    	onChange:function(){
-										                        var cur_p=$('input[name="city"]').val();
-									                            for(var c_key in data.area){
-									                                if(c_key==cur_p){
-									                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
-									                                    .selectlist({
-									                                    	width:200,
-									                                    	onChange:function(){
-									                                    		if(!is_check)$public.selectvalid(this.element.id);
-										                                    }
-										                                });
-									                                }
-									                            }
-					                                    		if(!is_check)$public.selectvalid(this.element.id);
-						                                    },
-										                    onSuccess:function(){
-											                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',
-											                    olis=$('#'+this.element.id).find('li'),_self=this;
-											                    olis.filter(function(){
-											                        if($(this).attr('data-value')==cur_value){
-											                            $(this).trigger('autoclick');
-											                            setTimeout(function(){
-													                        var cur_p=$('input[name="city"]').val();
-												                            for(var c_key in data.area){
-												                                if(c_key==cur_p){
-												                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
-												                                    .selectlist({
-												                                    	width:200,
-												                                    	onChange:function(){
-												                                    		if(!is_check)$public.selectvalid(this.element.id);
-													                                    }
-													                                });
-												                                }
-												                            }
-												                            if(!is_check)$public.selectvalid(_self.element.id);
-											                            },100);
-											                        }
-											                    });
-										                    }
-						                                });
-					                                }
-					                            }
+				                        		if(cur_p){
+						                            for(var c_key in data.city){
+						                                if(c_key==cur_p){
+						                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+						                                    .selectlist({
+						                                    	width:150,
+						                                    	onChange:function(){
+											                        var cur_c=$('input[name="city"]').val();
+					                        						if(cur_c){
+											                            for(var c_key in data.area){
+											                                if(c_key==cur_c){
+											                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+											                                    .selectlist({
+											                                    	width:200,
+											                                    	onChange:function(){
+											                                    		if(!is_check)$public.selectvalid(this.element.id);
+												                                    }
+												                                });
+											                                }
+											                            }
+											                        }else
+											                        	clear_select($("#"+area));
+						                                    		if(!is_check)$public.selectvalid(this.element.id);
+							                                    },
+											                    onSuccess:function(){
+												                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',
+												                    olis=$('#'+this.element.id).find('li'),_self=this;
+												                    olis.filter(function(){
+												                        if($(this).attr('data-value')==cur_value){
+												                            $(this).trigger('autoclick');
+												                            setTimeout(function(){
+														                        var cur_c=$('input[name="city"]').val();
+						                        								if(cur_c){
+														                            for(var c_key in data.area){
+														                                if(c_key==cur_c){
+														                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+														                                    .selectlist({
+														                                    	width:200,
+														                                    	onChange:function(){
+														                                    		if(!is_check)$public.selectvalid(this.element.id);
+															                                    }
+															                                });
+														                                }
+														                            }
+														                        }else
+														                        	clear_select($("#"+area));
+													                            if(!is_check)$public.selectvalid(_self.element.id);
+												                            },100);
+												                        }
+												                    });
+											                    }
+							                                });
+						                                }
+						                            }
+						                        }else
+						                        	clear_select($("#"+city+",#"+area));
 					                            if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
