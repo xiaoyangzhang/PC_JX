@@ -7,13 +7,13 @@ define(function (require, exports, module) {
 	require("dropdownlist"),//下拉框组件
 	require("upload"),
 	$public=require("public"),
-	$userdatafill = function () {
+	$userdataca = function () {
 		this.init.apply(this, arguments);
 	};
 
 	var isLock=true;
 
-	$userdatafill.prototype = {
+	$userdataca.prototype = {
 		init:function(){
 			
 			var _self=this;
@@ -49,7 +49,7 @@ define(function (require, exports, module) {
 						var obj={};
 						obj.qulificationId=nuZu[i].id;
 						obj.content=$(nuZu[i]).find(':hidden').val();
-						arr.push(JSON.stringify(obj));
+						arr.push(obj);
 					}
 					
 					for(var i=0;i<imgroup.length;i++){
@@ -63,18 +63,17 @@ define(function (require, exports, module) {
 						}
 
 						obj.content=content_value.join(',');
-						arr.push(JSON.stringify(obj));
+						arr.push(obj);
 
 					}
-						/*console.log(arr);*/
+						//console.log(arr);
 						
 					params.merchantQualificationStr=JSON.stringify(arr);
 					
 
-					return;
 
-					if(validfm.check()&&allimgvalid&&groupimgvalid){
-						$public.dialog.waiting();
+					//if(validfm.check()&&allimgvalid&&groupimgvalid){
+						//$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
 							$public.dialog.closebox();
@@ -87,7 +86,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg(data.resultMsg,'error');
 							}
 						});
-					}
+					//}
 				return false;
 			});
 			
@@ -108,7 +107,7 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
-	$(function(){
+/*	$(function(){
 
 				$.ajax({
 					   type: "get",
@@ -119,6 +118,6 @@ define(function (require, exports, module) {
 					   	   	}
 					   
 					});
-			});
-	module.exports = new $userdatafill();
+			});*/
+	module.exports = new $userdataca();
 });
