@@ -36,7 +36,7 @@ define(function (require, exports, module) {
 					datatype:{
 						"*2-10" : /^[\w\W]{2,10}$/,
 						"n10-25" : /^\d{10,25}$/,
-						"n0-90" : /^\d{0,90}$/
+						"n0-90" : /^([0-9]|90|[1-8][0-9])$/
 					},
 					ajaxPost:true
 				},rule=[{
@@ -78,13 +78,14 @@ define(function (require, exports, module) {
 
 			//切换房型开关门
 			$(document).on('click',_self.config.radiobar,function(ev){
+				var $prentli=$(this).closest('li');
 				$(_self.config.barbox).css('height','0').attr('id',0);
 				$(_self.config.radiobarimg).attr('src',static_source+'img/droptip_down.jpg');
-				$(this).next().css('height',($(_self.config.barboxul).outerHeight()+$(_self.config.barboxdiv).outerHeight()+15)+'px');
+				$(this).next().css('height',($prentli.find(_self.config.barboxul).outerHeight()+$prentli.find(_self.config.barboxdiv).outerHeight()+15)+'px');
 				$(this).find('img').attr('src',static_source+'img/droptip_up.jpg');
 				// if(!$(this).attr('id')){
 				// 	$(this).attr('id',1).next()
-				// 	.css('height',($(_self.config.barboxul).outerHeight()+$(_self.config.barboxdiv).outerHeight()+15)+'px');
+				// 	.css('height',($prentli.find(_self.config.barboxul).outerHeight()+$prentli.find(_self.config.barboxdiv).outerHeight()+15)+'px');
 				// 	$(this).find('img').attr('src',static_source+'img/droptip_up.jpg');
 				// }else{
 				// 	$(this).attr('id','').next().css('height','0');
@@ -155,32 +156,38 @@ define(function (require, exports, module) {
 
 			//“选择酒店”保存并下一步
 			$('.save-to-baseinfo').on('click',function(ev){
-				if(!valid_step_one())
+				if(!valid_step_one()){ 
+					$('.eredar-info li:eq(0)').trigger('click');
 					return;
+				}
 				$('.eredar-info li:eq(1)').trigger('click');
 				$public.stopBubble(ev);
 			});
 
 			//“基本信息”保存并下一步
 			$('.save-to-picker').on('click',function(ev){
-				var validresult=true;
-				if(!valid_step_two())
-					validresult=false;
-				if(!check_storeLastTime())
-					validresult=false;
-				if(!$public.selectvalid('breakfast'))
-					validresult=false;
-				if(!validresult) return;
+				if(!valid_step_one()){ 
+					$('.eredar-info li:eq(0)').trigger('click');
+					return;
+				}
+				if(!valid_step_two()){
+					$('.eredar-info li:eq(1)').trigger('click');
+					return;
+				}
 				$('.eredar-info li:eq(2)').trigger('click');
 				$public.stopBubble(ev);
 			});
 
 			//提交表单
 			$('.allsub').on('click',function(ev){
-				if(!valid_step_one()||!valid_step_two())
+				if(!valid_step_one()){
+					$('.eredar-info li:eq(0)').trigger('click');
 					return;
-				if(!check_storeLastTime()||!$public.selectvalid('breakfast'))
+				}
+				if(!valid_step_two()){
+					$('.eredar-info li:eq(1)').trigger('click');
 					return;
+				}
 				var ls=supplierCalendar.bizSkuInfo,isHave=false;
 				for(var i=0;i<ls.length;i++){
 					if(ls[i].state!='del')
@@ -273,25 +280,27 @@ define(function (require, exports, module) {
 			};
 		
 			function valid_step_one(){
-				$('.eredar-info li:eq(0)').trigger('click');
+				var validresult=true;
 				if($('input[name="hotelId"]').val()==0){
 					$public.dialog.msg('请选择酒店！','error');
-					$(document).scrollTop(0);
-					return false;
+					validresult=false;
 				}else if($('input[name="roomId"]').val()==0){
 					$public.dialog.msg('请选择房型！','error');
-					$(document).scrollTop(0);
-					return false;
+					validresult=false;
 				}
-				return true;
+				if(!validresult) $(document).scrollTop(0);
+				return validresult;
 			}
 					
 			function valid_step_two(){
-				if(!validfm.check()){
-					$('.eredar-info li:eq(1)').trigger('click');
-					return false;
-				}
-				return true;
+				var validresult=true;
+				if(!validfm.check())
+					validresult=false;
+				if(!check_storeLastTime())
+					validresult=false;
+				if(!$public.selectvalid('breakfast'))
+					validresult=false;
+				return validresult;
 			}
 
 			function check_storeLastTime(){
@@ -324,7 +333,6 @@ define(function (require, exports, module) {
 			var nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
 			var empty_ckbox={};
-			var color_temp='';
 			//保存y年m+1月的相关信息
 			var fat=mat=9;
 			//在表格中显示公历和农历的日期,以及相关节日
@@ -503,7 +511,7 @@ define(function (require, exports, module) {
 							var cur_smp=new Date($('#SY').text(),$('.tdmonth li.on').index(),this.innerHTML).valueOf();
 							if(cur_smp==ls[i].vTxt&&ls[i].state!='del'){
 								var cur_td=$(this).closest('td')[0];
-								cur_td.color_temp=$(cur_td).find('font')[0].style.color;
+								if(!cur_td.color_temp) cur_td.color_temp=$(cur_td).find('font')[0].style.color;
 								$(cur_td).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
 								set_tdvalue($(cur_td).find('.dtbx'),ls[i].price,ls[i].stock_num);
 							}

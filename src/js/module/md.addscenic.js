@@ -39,7 +39,7 @@ define(function (require, exports, module) {
 						'n10-25' : /^\d{10,25}$/,
 						'pri' : /^[1-9]\d{0,9}(\.\d{1,2})?$/,
 						'priint' : /^[1-9]\d{0,9}$/,
-						"n0-90" : /^\d{0,90}$/
+						"n0-90" : /^([0-9]|90|[1-8][0-9])$/
 					},
 					ajaxPost:true
 				},
@@ -62,7 +62,7 @@ define(function (require, exports, module) {
 					errormsg:"只能输入0-90范围数字！"
 				}],
 				validForm=$('.scenicForm').Validform(validoptions).addRule(rule);
-			
+				
 			$('#area').selectlist({width: 200});
 			
 			$public.procityaredata('province','city','area',true);
@@ -284,7 +284,6 @@ define(function (require, exports, module) {
 			var nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
 			var empty_ckbox={};
-			var color_temp='';
 			//保存y年m+1月的相关信息
 			var fat=mat=9;
 			//在表格中显示公历和农历的日期,以及相关节日
@@ -466,7 +465,7 @@ define(function (require, exports, module) {
 							var cur_smp=new Date($('#SY').text(),$('.tdmonth li.on').index(),this.innerHTML).valueOf();
 							if(cur_smp==ls[i].vTxt&&ls[i].state!='del'){
 								var cur_td=$(this).closest('td')[0];
-								cur_td.color_temp=$(cur_td).find('font')[0].style.color;
+								if(!cur_td.color_temp) cur_td.color_temp=$(cur_td).find('font')[0].style.color;
 								$(cur_td).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
 								set_tdvalue($(cur_td).find('.dtbx'),ls[i].price,ls[i].stock_num);
 							}
