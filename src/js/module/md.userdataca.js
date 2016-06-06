@@ -72,7 +72,7 @@ define(function (require, exports, module) {
 					
 
 					if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
-					if(validfm.check()&&allimgvalid&&groupimgvalid){
+					if(allimgvalid&&groupimgvalid){
 						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
@@ -80,7 +80,7 @@ define(function (require, exports, module) {
 							if(data.success){
 								$public.dialog.msg('保存成功！','success');
 								setTimeout(function(){
-									window.location=data.value;
+									window.location.href=data.value;
 								},1500); 
 							}else{
 								$public.dialog.msg(data.resultMsg,'error');
