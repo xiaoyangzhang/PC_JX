@@ -71,9 +71,9 @@ define(function (require, exports, module) {
 					params.merchantQualificationStr=JSON.stringify(arr);
 					
 
-
-					//if(validfm.check()&&allimgvalid&&groupimgvalid){
-						//$public.dialog.waiting();
+					if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
+					if(validfm.check()&&allimgvalid&&groupimgvalid){
+						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
 							$public.dialog.closebox();
@@ -86,7 +86,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg(data.resultMsg,'error');
 							}
 						});
-					//}
+					}
 				return false;
 			});
 			

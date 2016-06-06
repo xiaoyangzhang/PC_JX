@@ -119,7 +119,7 @@ define(function (require, exports, module) {
 							if(data.success){
 								$public.dialog.msg('保存成功！','success');
 								setTimeout(function(){
-									window.location=data.value;
+									window.location.href=data.value;
 								},1500); 
 							}else{
 								$public.dialog.msg(data.resultMsg,'error');
@@ -139,11 +139,23 @@ define(function (require, exports, module) {
 				$(".company input[type='radio']").on('click',function(){
 					$(".ccc").prop("checked","checked");
 				});
+				$(".company input[type='radio']").on('click',function(){
+					if ($(this).is(':checked')) {
+						$(".ccc").prop("checked","checked");
+					}else{
+						$(".ccc").prop("checked","");
+					}
+				});
 					$(".comtype input[type='radio']").on('click',function(){
 						if($(".daible").is(':checked')){
 							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
 						}else{
 							$(".dised").prop("disabled","");
+						};
+						if ($(".ts").is(':checked')) {
+							$(".dised").prop("checked","checked").siblings('.disedli').prop("disabled","disabled");
+						}else{
+							$(".disedli").prop("disabled","");
 						}
 					});
 				/*$("选择身份按钮").on("click",function(){
