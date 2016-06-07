@@ -91,10 +91,11 @@ define(function (require, exports, module) {
 						$public.dialog.waiting();
 						/*把从后台去的数据转换成数组*/
 					var idStr="";
-					$("input[type='checkbox']:checked").each(function(){
+					$("input[name='businessScopeId']:checked").each(function(){
 						idStr+=$(this).val()+",";
 					})
 					params.scopeIds=idStr.substring(0,idStr.length-1);
+					delete params.lxs;
 					$.post(subpath,params,function(data){
 							$public.isLogin(data);
 							$public.dialog.closebox();
