@@ -252,7 +252,7 @@ define(function (require, exports, module) {
 	                setTimeout(function(){
 	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
-	                            $(this).attr('selected','selected');
+	                            $(this).attr('selected','selected').parent().find('.Validform_checktip').remove();
 	                        }
 	                    });
 	                    function clear_select($obj){
@@ -310,7 +310,7 @@ define(function (require, exports, module) {
 	                setTimeout(function(){
 	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
-	                            $(this).attr('selected','selected');
+	                            $(this).attr('selected','selected').parent().find('.Validform_checktip').remove();
 	                        }
 	                    });
 	                    function clear_select($obj){
