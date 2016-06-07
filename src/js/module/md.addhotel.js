@@ -59,6 +59,8 @@ define(function (require, exports, module) {
 				}],
 				validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
+			$('.Validform_checktip').remove();
+
 			$('#area,#breakfast').selectlist({width: 200});
 			
 			$('.baseinfo .checkbox:last').css('width','300px');
