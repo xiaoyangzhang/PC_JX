@@ -92,6 +92,11 @@ define(function (require, exports, module) {
 									  			$(this).prop("disabled","");
 									  		}
 									  	}; 
+									  	var subDisabled = $('.bomb input[type="checkbox"]').find(":disabled");
+									  	if (subDisabled.length >0) {
+
+									  		$(".k1").prop("disabled","");
+									  	};
 									  });   
 					   	   	}
 					   
