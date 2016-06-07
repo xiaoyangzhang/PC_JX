@@ -43,7 +43,7 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-						"tax" :/^[\w\W]{0,25}$/
+						"tax" :/^[\w\W]{5,25}$/
 					},
 					ajaxPost:true
 				},rule=[{
@@ -113,6 +113,9 @@ define(function (require, exports, module) {
 
 				$(".ccc").change(function(){
 					$(".company input[type='radio']").eq(0).prop("checked","checked");
+				});
+				$(".k1").change(function(){
+					$(".aaa input[type='checkbox']").eq(0).prop("checked","checked");
 				});
 				$(".ddd").change(function(){
 					$(".ccc").prop("checked","");
