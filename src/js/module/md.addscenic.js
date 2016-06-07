@@ -37,8 +37,7 @@ define(function (require, exports, module) {
 					datatype:{
 						'*2-10' : /^[\w\W]{2,10}$/,
 						'n10-25' : /^\d{10,25}$/,
-						'pri' : /^[1-9]\d{0,9}(\.\d{1,2})?$/,
-						'priint' : /^[1-9]\d{0,9}$/,
+						'price' : /^([1-9]\d{0,5}(\.\d{1,2})?|0\.\d{1,2})$/,
 						"n0-90" : /^([0-9]|90|[1-8][0-9])$/
 					},
 					ajaxPost:true
@@ -53,8 +52,8 @@ define(function (require, exports, module) {
 					nullmsg:'请选择门票类型'
 				},{
 					ele:'input[name="price"],input[name="originalPrice"]',
-					datatype:'pri|priint',
-					errormsg:'请检查价格格式'
+					datatype:'price',
+					errormsg:'整数最多6位,可带两位小数!'
 				},{
 					ele:"input[name='startBookTimeLimit']",
 					datatype:"n0-90",
@@ -62,7 +61,7 @@ define(function (require, exports, module) {
 					errormsg:"只能输入0-90范围数字！"
 				}],
 				validForm=$('.scenicForm').Validform(validoptions).addRule(rule);
-				
+
 			$('#area').selectlist({width: 200});
 			
 			$public.procityaredata('province','city','area',true);
@@ -136,20 +135,6 @@ define(function (require, exports, module) {
 					};	
 					dynamicArr.push(dynamicTr);
 				});
-
-				// var scenicManageVO = {
-				// 	scenicId : $('input[name="scenicId"]').val(),
-				// 	name : $('input[name="scenicName"]').val(),
-				// 	//scenicTicket : $('input[name="scenicTicket"]').val(),
-				// 	ticketId :  $('input[name="ticketId"]:checked').val(),
-				// 	ticketTitle : $('input[name="ticketId"]:checked').attr('tTitle'),
-				// 	title : $('input[name="title"]').val(),
-				// 	price : $('input[name="price"]').val(),
-				// 	originalPrice : $('input[name="originalPrice"]').val(),
-				// 	startBookTimeLimit : $('input[name="startBookTimeLimit"]').val(),
-				// 	dynamicEntry : JSON.stringify(dynamicArr),
-				// 	supplierCalendar : $('input[name="supplierCalendar"]').val()					
-				// };
 
 				var prarm=$public.paramcompare($('.scenicForm').serializeArray());
 				prarm.ticketTitle=$('input[name="ticketId"]:checked').attr('tTitle');
