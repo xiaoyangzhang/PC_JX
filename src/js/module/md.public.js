@@ -46,6 +46,12 @@ define(function (require, exports, module) {
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
+
+			//杜绝编辑时自动优先激活验证
+			setTimeout(function(){
+	        	_self.isVdSelect=true;
+			},500);
+
 				 _self.depath(); 
 		},
 		html_encode : function(str){   
@@ -497,8 +503,7 @@ define(function (require, exports, module) {
 						result=false;
 	            	}
 	            });
-	        }else
-	        	this.isVdSelect=true;
+	        }
 			return result;
 		},
 		//判断上传文件格式是否满足条件
