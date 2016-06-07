@@ -59,7 +59,7 @@ define(function (require, exports, module) {
 				}],
 				validfm=$(".baseinfo form").Validform(validoptions).addRule(rule);
 
-			$('#area,#breakfast').selectlist({width: 200});
+			$('#breakfast').selectlist({width: 200});
 			
 			$('.baseinfo .checkbox:last').css('width','300px');
 

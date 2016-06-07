@@ -266,6 +266,7 @@ define(function (require, exports, module) {
                         	$obj.find('li:eq(0)~li').remove();
                         	$obj.find('.select-button').val('--请选择--');
                         	$obj.find(':hidden').val('');
+                        	$obj.next('.Validform_checktip').remove();
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
@@ -324,6 +325,7 @@ define(function (require, exports, module) {
                         	$obj.find('li:eq(0)~li').remove();
                         	$obj.find('.select-button').val('--请选择--');
                         	$obj.find(':hidden').val('');
+                        	$obj.next('.Validform_checktip').remove();
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
@@ -381,11 +383,11 @@ define(function (require, exports, module) {
 											                                if(c_key==cur_c){
 											                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 											                                    .selectlist({
-											                                    	width:200,
-											                                    	onChange:function(){
-											                                    		if(!is_check)$public.selectvalid(this.element.id);
-												                                    }
-												                                });
+																					width: 200,
+																					onChange:function(){
+														                        		if(!is_check)$public.selectvalid(this.element.id);
+														                            }
+														                        });
 											                                }
 											                            }
 											                        }else
@@ -405,11 +407,11 @@ define(function (require, exports, module) {
 														                                if(c_key==cur_c){
 														                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 														                                    .selectlist({
-														                                    	width:200,
-														                                    	onChange:function(){
-														                                    		if(!is_check)$public.selectvalid(this.element.id);
-															                                    }
-															                                });
+																								width: 200,
+																								onChange:function(){
+																	                        		if(!is_check)$public.selectvalid(this.element.id);
+																	                            }
+																	                        });
 														                                }
 														                            }
 														                        }else
@@ -431,6 +433,12 @@ define(function (require, exports, module) {
 			                    }
 		                });
 						$('#'+city).selectlist({width: 150});
+						$("#"+area).selectlist({
+							width: 200,
+							onChange:function(){
+                        		if(!is_check)$public.selectvalid(this.element.id);
+                            }
+                        });
 	                },100);
 	            }             
 	        });

@@ -62,8 +62,6 @@ define(function (require, exports, module) {
 				}],
 				validForm=$('.scenicForm').Validform(validoptions).addRule(rule);
 
-			$('#area').selectlist({width: 200});
-			
 			$public.procityaredata('province','city','area',true);
 
 			//计算输入字数
