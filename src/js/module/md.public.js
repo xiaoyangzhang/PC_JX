@@ -264,7 +264,7 @@ define(function (require, exports, module) {
 	                    });
 	                    function clear_select($obj){
                         	$obj.find('li:eq(0)~li').remove();
-                        	$obj.find('.select-button').val('--请选择--');
+                        	$obj.find('.select-button').val($obj.find('li:eq(0)').first().text());
                         	$obj.find(':hidden').val('');
                         	$obj.next('.Validform_checktip').remove();
                         }
@@ -323,7 +323,7 @@ define(function (require, exports, module) {
 	                    });
 	                    function clear_select($obj){
                         	$obj.find('li:eq(0)~li').remove();
-                        	$obj.find('.select-button').val('--请选择--');
+                        	$obj.find('.select-button').val($obj.find('li:eq(0)').first().text());
                         	$obj.find(':hidden').val('');
                         	$obj.next('.Validform_checktip').remove();
                         }
