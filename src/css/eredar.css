@@ -17,7 +17,8 @@
 .eredar-list1 table tr td .headID  .upload{position: absolute;bottom: 0; opacity: 0;filter: alpha(opacity=0);cursor: pointer;}
 .eredar-list1 table tr .spe label:first-child,#eredar .eredar-right .eredar-list1 p .radio input:first-child{margin-left: 0px;}
 .eredar-list1 table tr .spe label{margin-left: 5px;cursor: pointer;}
-.eredar-list1 table tr td  .lab{color: #999;vertical-align: bottom;margin-left: 19px;}
+.eredar-list1 table tr td .lab{color: #999;vertical-align: bottom;margin-left: 19px;vertical-align: middle;}
+.eredar-list1 table tr td .lab .change{color: #999;}
 .eredar-list1 table tr td  .spelab{margin-left: 0px;}
 .eredar-list1 table tr .tbtxt{vertical-align: middle;}
 .eredar-list1 table tr .abuteMe{vertical-align: top;}
