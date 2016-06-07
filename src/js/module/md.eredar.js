@@ -56,7 +56,14 @@ define(function (require, exports, module) {
 					errormsg:"除下划线以外的特殊字符不允许输入,请填写10字以内的昵称"
 				}
 				],validfm=$(".registerform").Validform(validoptions).addRule(rule);
-			
+			/* 提示服务描述中文本的字数提示 */
+			$('#serve').bind('input propertychange', function() {
+				var curtxt = $(this).val().length;
+				var txt = $(".change").text();
+				if(txt != curtxt){
+					$(".change").text(curtxt);
+				}
+			});
 			
 			$("#saveBtnEredar").on("click",function(){
 				/* a代表提交按钮的所有表单中是否通过验证为true,b代表下拉框是否通过表单验证，c代表图片是否通过验证成功 */

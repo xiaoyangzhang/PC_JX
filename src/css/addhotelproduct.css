@@ -39,6 +39,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 	-o-transition: height .6s;}
 .hotelinfo .info-box .bar-box ul{padding:10px 0;}
 .hotelinfo .info-box .bar-box li{float: left;width:179px;padding-left:10px;}
+.hotelinfo .info-box .bar-box li label{white-space:normal;max-width:130px;height: auto;line-height: 18px;vertical-align: top;18}
 .hotelinfo .info-box .bar-box .img-group{width:590px;}
 .hotelinfo .info-box .bar-box .img-group img{margin-right:15px;width:177px;max-height: 120px;margin-bottom:6px;}
 
