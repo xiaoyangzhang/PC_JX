@@ -180,7 +180,7 @@ define(function (require, exports, module) {
 						callback();
 						$public.stopBubble(ev);
 					});
-					$('.cancel,.close-tip').off().on('click',function(ev){
+					$('.cancel,.close-tip i').off().on('click',function(ev){
 						_self.closebox();
 						$public.stopBubble(ev);
 					});
