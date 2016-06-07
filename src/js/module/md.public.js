@@ -46,6 +46,12 @@ define(function (require, exports, module) {
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
+
+			//杜绝编辑时自动优先激活验证
+			setTimeout(function(){
+	        	_self.isVdSelect=true;
+			},500);
+
 				 _self.depath(); 
 		},
 		html_encode : function(str){   
@@ -105,6 +111,7 @@ define(function (require, exports, module) {
 			toDetailPage:site_path+'/apply/seller/toDetailPage'
 		},
 		timer:null,
+		isVdSelect:false,
 		dialog:{
 			initbox:function(){
 				var _self=this;
@@ -252,7 +259,7 @@ define(function (require, exports, module) {
 	                setTimeout(function(){
 	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
-	                            $(this).attr('selected','selected').parent().find('.Validform_checktip').remove();
+	                            $(this).attr('selected','selected');
 	                        }
 	                    });
 	                    function clear_select($obj){
@@ -288,7 +295,7 @@ define(function (require, exports, module) {
 					                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 					                                }
 					                            }
-					                            if(!is_check)$public.selectvalid(_self.element.id);
+					                            //if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });
@@ -310,7 +317,7 @@ define(function (require, exports, module) {
 	                setTimeout(function(){
 	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
-	                            $(this).attr('selected','selected').parent().find('.Validform_checktip').remove();
+	                            $(this).attr('selected','selected');
 	                        }
 	                    });
 	                    function clear_select($obj){
@@ -407,7 +414,7 @@ define(function (require, exports, module) {
 														                            }
 														                        }else
 														                        	clear_select($("#"+area));
-													                            if(!is_check)$public.selectvalid(_self.element.id);
+													                            //if(!is_check)$public.selectvalid(_self.element.id);
 												                            },100);
 												                        }
 												                    });
@@ -417,7 +424,7 @@ define(function (require, exports, module) {
 						                            }
 						                        }else
 						                        	clear_select($("#"+city+",#"+area));
-					                            if(!is_check)$public.selectvalid(_self.element.id);
+					                            //if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });
@@ -479,22 +486,24 @@ define(function (require, exports, module) {
 		//验证下拉框
 		selectvalid:function(id){
 			var result=true,$droplist=null;
-			if(id)
-				$droplist=$('input[name="'+id+'"]');
-			else
-				$droplist=$('.select-wrapper input:hidden');
-            $droplist.filter(function(){
-            	var $droplistprent=$(this).closest('.select-wrapper');
-        		$droplistprent.next('.Validform_checktip').remove();
-            	if($(this).val()!=''){
-            		$droplistprent.find('.select-button').css('background','#fff');
-            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
-            	}else{
-            		$droplistprent.find('.select-button').css('background','#ffe7e7');
-            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
-					result=false;
-            	}
-            });
+			if(this.isVdSelect){
+				if(id)
+					$droplist=$('input[name="'+id+'"]');
+				else
+					$droplist=$('.select-wrapper input:hidden');
+	            $droplist.filter(function(){
+	            	var $droplistprent=$(this).closest('.select-wrapper');
+	        		$droplistprent.next('.Validform_checktip').remove();
+	            	if($(this).val()!=''){
+	            		$droplistprent.find('.select-button').css('background','#fff');
+	            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
+	            	}else{
+	            		$droplistprent.find('.select-button').css('background','#ffe7e7');
+	            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
+						result=false;
+	            	}
+	            });
+	        }
 			return result;
 		},
 		//判断上传文件格式是否满足条件
