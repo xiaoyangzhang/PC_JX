@@ -68,7 +68,7 @@ span{color:red;}
 .company{ width:470px;height:38px;background: url("../../img/triangle.png") no-repeat;padding-top: 9px;}
 .company input{margin-top: 8px;margin-right: 5px;vertical-align: bottom;}
 .company .bomb-con{margin-left: 20px;*margin-left: 25px;padding-top: 1px;display: inline-block;vertical-align: bottom;}
-.agreement-box .ts{vertical-align: top;}
+.agreement-box .ts{vertical-align: middle;}
 /***************************等待审核css***************************/
 .examine-box{margin-bottom: 20px;}
 .line-top{width:1140px;height:1px;border-top:1px solid #ddd;margin:0 auto;margin-top: 85px;margin-bottom: 23px;}
