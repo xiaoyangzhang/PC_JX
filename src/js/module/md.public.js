@@ -264,7 +264,9 @@ define(function (require, exports, module) {
 	                    });
 	                    function clear_select($obj){
                         	$obj.find('li:eq(0)~li').remove();
-                        	$obj.find('.select-button').val($obj.find('li:eq(0)').first().text());
+                        	$obj.filter(function(){
+                        		$(this).find('.select-button').val($(this).find('li:eq(0)').first().text());
+                        	});
                         	$obj.find(':hidden').val('');
                         	$obj.next('.Validform_checktip').remove();
                         }
@@ -323,12 +325,15 @@ define(function (require, exports, module) {
 	                    });
 	                    function clear_select($obj){
                         	$obj.find('li:eq(0)~li').remove();
-                        	$obj.find('.select-button').val($obj.find('li:eq(0)').first().text());
+                        	$obj.filter(function(){
+                        		$(this).find('.select-button').val($(this).find('li:eq(0)').first().text());
+                        	});
                         	$obj.find(':hidden').val('');
                         	$obj.next('.Validform_checktip').remove();
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
+								width:120,
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
 			                        if(cur_p){

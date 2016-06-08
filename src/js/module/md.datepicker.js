@@ -6,7 +6,7 @@ define(function (require, exports, module) {
 		this.solarMonth=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
 		this.nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
 
-		this.rangedays=$('.rds').val()?$('.rds').val():60;
+		this.rangedays=90;
 		this.empty_ckbox={};
 		//保存y年m+1月的相关信息
 		this.fat=this.mat=9;
@@ -49,6 +49,9 @@ define(function (require, exports, module) {
 	$datepicker.prototype = {
 		  init:function(){
 		  	var _self=this;
+
+		  	if($('.rds').val()) _self.rangedays=$('.rds').val();
+
 			//设置价和库存
 			$('.setvl').on('click',function(){
 				var temp='',$dtbx=$('.day .choiced .dtbx'),price=$('.price').val(),stock=$('.stock').val();
@@ -90,7 +93,7 @@ define(function (require, exports, module) {
 			$('.setvalue').on('click',function(ev){
 				$public.stopBubble(ev);
 			});
-3
+
 			$('.tdyears .prev').on('click',function(ev){
 				var cur_years=parseInt($('#SY').text());
 				$('#SY').text(cur_years-1);
