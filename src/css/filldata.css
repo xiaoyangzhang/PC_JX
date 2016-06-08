@@ -100,8 +100,8 @@ iframe{display: none;}
 .zh_sc .zfd{float: left;width: 416px;height:110px;padding-left: 130px;text-align: right;margin-top: 25px; }
 .zh_sc-txt{width:205px;margin-left: 179px;padding-top: 5px;}
 .last-step{margin-left: 20px;}
-.fm_md .updateli{float: left;display: block; text-align: left;/* margin: 10px 23px; */width: 770px;margin-right: 140px;}
-.fm_md .listli{width: 195px;display: block;float: right;text-align: right;margin-right: 3px;}
+.fm_md .updateli{float: left;display: block; text-align: left;/* margin: 10px 23px; */width: 863px;margin-top: 40px;}
+.fm_md .listli{width: 195px;display: block;float: right;text-align: right;margin-right: 13px;margin-top: 40px;}
 .fl {float: right;}
 .pagesave{float: left;}
 .zhuyi{width: 665px !important;margin-right: 152px !important;}
