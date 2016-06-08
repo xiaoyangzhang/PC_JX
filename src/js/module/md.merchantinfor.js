@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 		init:function(){
 			var _self=this;
 			$("#forminfo").Validform();
-			$public.actiondata('province','city');
+			
 			//渲染时间控件
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
@@ -118,7 +118,7 @@ define(function (require, exports, module) {
 				}
 				return false;
 				});
-
+				
 				$(".ccc").change(function(){
 					$(".company input[type='radio']").eq(0).prop("checked","checked");
 				});
@@ -126,11 +126,15 @@ define(function (require, exports, module) {
 					$(".aaa input[type='checkbox']").eq(0).prop("checked","checked");
 				});
 				$(".aaa input[type='checkbox']").change(function(){
-					if($(this).is(':checked')){
-						$(".k1").prop("checked","checked");
-					}else{
-						$(".k1").prop("checked","");
-					}
+					var lxtu = $(".aaa input[type='checkbox']:checked").length ;
+						if(lxtu<1){
+							$(".k1").prop("checked","");
+						}else{
+							$(".k1").prop("checked","checked");
+						};
+						if($(this).is(':checked')){
+							$(".k1").prop("checked","checked");
+						};
 				});
 				$(".ddd").change(function(){
 					$(".ccc").prop("checked","");
@@ -162,6 +166,7 @@ define(function (require, exports, module) {
 				$(".close").on('click',function(){
 					$(".big-box").hide();
 				});
+				$public.actiondata('province','city');
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
