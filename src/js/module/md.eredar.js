@@ -57,9 +57,9 @@ define(function (require, exports, module) {
 				}
 				],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 			/* 提示服务描述中文本的字数提示 */
+			var curtxt = $("#serve").val().length;
+			var txt = $(".change").text();
 			$('#serve').bind('input propertychange', function() {
-				var curtxt = $(this).val().length;
-				var txt = $(".change").text();
 				if(txt != curtxt){
 					$(".change").text(curtxt);
 				}
@@ -111,11 +111,15 @@ define(function (require, exports, module) {
 					success:function(data){
 						/* alert(data); */
 						$public.isLogin(data);
+						
 						if( data.success ){
 							$public.dialog.msg("保存成功","success");
 							window.location.href = window.location.href;
 						}else{
 							$public.dialog.msg(data.msg,"error");
+						}
+						if(txt != curtxt){
+							$(".change").text(curtxt);
 						}
 					}
 				});

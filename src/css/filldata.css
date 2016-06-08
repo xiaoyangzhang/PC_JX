@@ -105,4 +105,11 @@ iframe{display: none;}
 .fl {float: right;}
 .pagesave{float: left;}
 .zhuyi{width: 665px !important;margin-right: 152px !important;}
+.lefttitle {text-align: right;display: block;  width: 186px; float: left; margin-right: 10px;}
+/* .gray9 {color: #999;display: block;float: right; text-align: right; margin-right: 76px;width: 152px;} */
+.upload-img{display: inline-block;width: 120px;height: 90px; position: relative; overflow: hidden; text-align: left;float: left;}
+.careful{float: right;width: 231px;margin-left: 63px;}
+
+
+
 
