@@ -43,14 +43,21 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-						"tax" :/^[\w\W]{5,25}$/
+						"tax" :/^[\w\W]{1,25}$/,
+						"name" :/^[\w\W]{2,10}$/
 					},
 					ajaxPost:true
 				},rule=[{
 					ele:".taxL",
 					datatype:"tax",
 					nullmsg:"请填写信息",
-					errormsg:"税务登记号最多25个字符！"
+					errormsg:"请填写1到25位字符！"
+					
+				},{
+					ele:".zrname",
+					datatype:"name",
+					nullmsg:"请填写信息",
+					errormsg:"请填写2到10位字符！"
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 				$(".comtype input[type='radio']").on('click' ,function(){
@@ -117,6 +124,13 @@ define(function (require, exports, module) {
 				});
 				$(".k1").change(function(){
 					$(".aaa input[type='checkbox']").eq(0).prop("checked","checked");
+				});
+				$(".aaa input[type='checkbox']").change(function(){
+					if($(this).is(':checked')){
+						$(".k1").prop("checked","checked");
+					}else{
+						$(".k1").prop("checked","");
+					}
 				});
 				$(".ddd").change(function(){
 					$(".ccc").prop("checked","");
