@@ -56,9 +56,9 @@ define(function (require, exports, module) {
 					errormsg:"财务结算账号只允许10-25个数字"
 				}],validfm=$("#forminfo").Validform(validoptions).addRule(rule);
 
-			$('#principleName_').keyup(function(){
-				$('#financeOpenName_').val($(this).val());
-			});
+			// $('#principleName_').keyup(function(){
+			// 	$('#financeOpenName_').val($(this).val());
+			// });
  
 			//渲染时间控件
 			$( "#tm" ).datepicker();
