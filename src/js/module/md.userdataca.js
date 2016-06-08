@@ -4,7 +4,7 @@ define(function (require, exports, module) {
 	require("datepicker"),//引用时间组件
 	require("uploadfiles"),//上传文件组件
 	require("validform"),//验证组件
-	require("dropdownlist"),//下拉框组件
+	//require("dropdownlist"),//下拉框组件
 	require("upload"),
 	$public=require("public"),
 	$userdataca = function () {
@@ -16,34 +16,27 @@ define(function (require, exports, module) {
 	$userdataca.prototype = {
 		init:function(){
 			
-			var _self=this;
+			//var _self=this;
+			// $('#bank').selectlist({width: 200});
+			// $('#card').selectlist({
+			// 	width: 200,
+			// 	onChange:function(){
+			// 		if(!isLock){
+			// 			$('#cardtxt').removeClass('Validform_error').val('')
+			// 			.next().empty().removeClass('Validform_wrong Validform_right');
+			// 		}
+			// 		_self.changevalid(true);
+			// 	}
+			// });
+			//_self.changevalid();
 
-		
- 
-			//渲染时间控件
-			$( "#tm" ).datepicker();
-			$('#bank').selectlist({width: 200});
-			$('#card').selectlist({
-				width: 200,
-				onChange:function(){
-					if(!isLock){
-						$('#cardtxt').removeClass('Validform_error').val('')
-						.next().empty().removeClass('Validform_wrong Validform_right');
-					}
-					_self.changevalid(true);
-				}
-			});
-			_self.changevalid();
-
-			
 
 			//商家入驻总提交
 			$('.allsub').on('click',function(){
 				var groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
-
-					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg');
+					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg'),n=0;
 					
 					for(var i=0;i<nuZu.length;i++){
 						var obj={};
@@ -69,10 +62,17 @@ define(function (require, exports, module) {
 						//console.log(arr);
 						
 					params.merchantQualificationStr=JSON.stringify(arr);
-					
+					$('.groupimg :hidden').filter(function(){
+						if($(this).val()!='') n++;
+					});
 
-					if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
+					//if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
+
 					if(allimgvalid&&groupimgvalid){
+						if(n<5){
+							$public.dialog.msg('游乐特种设备,至少上传5份文件.','error');
+							return;
+						}
 						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
@@ -91,7 +91,7 @@ define(function (require, exports, module) {
 			});
 			
 
-			$public.actiondata('province','city');
+			//$public.actiondata('province','city');
 			
 		},
 		changevalid : function(isTrue){
