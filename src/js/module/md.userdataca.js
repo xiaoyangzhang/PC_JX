@@ -107,6 +107,7 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','gidcard');
 		}
 	}
+	/*异步加载页面*/
 /*	$(function(){
 
 				$.ajax({

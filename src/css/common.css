@@ -4,6 +4,7 @@ body{background: #f4f4f4;}
 .comwidth{width:1190px;margin-left:auto;margin-right:auto;}
 select{padding:5px 0; border:1px solid #ddd;min-width:90px;}
 input[type=text]{border:1px solid #ddd;padding:0 5px;outline: none;}
+input[type=checkbox],input[type=radio]{width:14px;height:14px;}
 textarea{border:1px solid #ddd;}
 
 /***************************圆图像（兼容IE6、IE7、IE8）***********************/

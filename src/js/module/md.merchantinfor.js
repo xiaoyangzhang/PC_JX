@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 		init:function(){
 			var _self=this;
 			$("#forminfo").Validform();
-			$public.actiondata('province','city');
+			
 			//渲染时间控件
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
@@ -43,41 +43,23 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-						"tax" :/^[\w\W]{0,25}$/
+						"tax" :/^[\w\W]{1,25}$/,
+						"name" :/^[\w\W]{2,10}$/
 					},
 					ajaxPost:true
 				},rule=[{
 					ele:".taxL",
 					datatype:"tax",
 					nullmsg:"请填写信息",
-					errormsg:"税务登记号最多25个字符！"
+					errormsg:"请填写1到25位字符！"
+					
+				},{
+					ele:".zrname",
+					datatype:"name",
+					nullmsg:"请填写信息",
+					errormsg:"请填写2到10位字符！"
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
-
-
-					/*   	var data={
-					   		"success":true,
-					   		"errorMsg":null,
-					   		"errorCode":0,
-					   		"returnCode":null,
-					   		"value":[
-					   		{'businessScopeId':6,'domainId':0,'id':36,'merchantCategoryId':7,'status':0},
-						   	{'businessScopeId':2,'domainId':0,'id':37,'merchantCategoryId':7,'status':0},
-						   	{'businessScopeId':4,'domainId':0,'id':38,'merchantCategoryId':7,'status':0}]
-					   	}*/
-					   		/*if(typeof data=='string')
-					   	   		console.log(data);
-					   	   	else
-					   	   		console.log(JSON.stringify(data));
-
-					   	   alert(typeof data);*/
-					   	   /*	alert(d.success);*/
-
-					   	   /*	var ddd=data.value;
-					   	   	console.log(typeof ddd);
-					   	   	console.log(JSON.stringify(ddd));
-					   	   	console.log(ddd[0]);*/
-
 				$(".comtype input[type='radio']").on('click' ,function(){
 					$.ajax({
 					   type: "post",
@@ -92,7 +74,13 @@ define(function (require, exports, module) {
 									  			$(this).prop("disabled","");
 									  		}
 									  	}; 
+
 									  });   
+									   var subDisabled = $('div.bomb input[type="checkbox"]:disabled');
+									  	if (subDisabled.length <3) {
+
+									  		$(".k1").prop("disabled","");
+									  	};
 					   	   	}
 					   
 					});
@@ -108,11 +96,13 @@ define(function (require, exports, module) {
 					/*console.log(JSON.stringify(params));*/
 					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
 						$public.dialog.waiting();
+						/*把从后台去的数据转换成数组*/
 					var idStr="";
-					$("input[type='checkbox']:checked").each(function(){
+					$("input[name='businessScopeId']:checked").each(function(){
 						idStr+=$(this).val()+",";
 					})
 					params.scopeIds=idStr.substring(0,idStr.length-1);
+					delete params.lxs;
 					$.post(subpath,params,function(data){
 							$public.isLogin(data);
 							$public.dialog.closebox();
@@ -128,66 +118,55 @@ define(function (require, exports, module) {
 				}
 				return false;
 				});
-
-				$(".ccc").on('click',function(){
+				
+				$(".ccc").change(function(){
 					$(".company input[type='radio']").eq(0).prop("checked","checked");
 				});
-				$(".ddd").on('click',function(){
-					$(".ccc").prop("checked",false);
+				$(".k1").change(function(){
+					$(".aaa input[type='checkbox']").eq(0).prop("checked","checked");
+				});
+				$(".aaa input[type='checkbox']").change(function(){
+					var lxtu = $(".aaa input[type='checkbox']:checked").length ;
+						if(lxtu<1){
+							$(".k1").prop("checked","");
+						}else{
+							$(".k1").prop("checked","checked");
+						};
+						if($(this).is(':checked')){
+							$(".k1").prop("checked","checked");
+						};
+				});
+				$(".ddd").change(function(){
+					$(".ccc").prop("checked","");
 
 				});
-				$(".company input[type='radio']").on('click',function(){
+				$(".company input[type='radio']").change(function(){
 					$(".ccc").prop("checked","checked");
-				});
-				$(".company input[type='radio']").on('click',function(){
 					if ($(this).is(':checked')) {
 						$(".ccc").prop("checked","checked");
 					}else{
 						$(".ccc").prop("checked","");
 					}
 				});
-					$(".comtype input[type='radio']").on('click',function(){
-						if($(".daible").is(':checked')){
-							$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
-						}else{
-							$(".dised").prop("disabled","");
-						};
-						if ($(".ts").is(':checked')) {
-							$(".dised").prop("checked","checked").siblings('.disedli').prop("disabled","disabled");
-						}else{
-							$(".disedli").prop("disabled","");
-						}
-					});
-				/*$("选择身份按钮").on("click",function(){
-                $.ajax({
-                    type: "POST",
-                    url: "后台数据接口链接地址",
-                    data: "wxf=2&yu=3",   //可选参数
-                    dataType: "json",
-                    success: function (data) {   //如果访问后台数据接口链接地址 返回数据成功
-                        var html='';
-                        for(i=0;i<data.data.length;i++){  //循环不同的范围html
-                            html+='<li><span>'+data.data[i].name+'</span></li>'
-                        }
-                        $('#txt').html("<ul style='margin-left: 100px;'><li>$.ajax<>" + html + "</ul>");  //最后展示在页面
-                    }
-                });
-            });
-   /* $(".k1").click(function(){     
-        if($(this).is(':checked')){
-            $(".aaa").show();
-        }else{
-            $(".aaa").hide();
-        }
-    });*/
-    	
-    	/*$(".listli input:radio[name='type']").click(function(){
-    		var index = $(".listli input:radio[name='type']").index($(this));
-    			if(index == 0) //选中第2个时，div显示
-       				 $(".company").show();
-   				 else //当被选中的不是第2个时，div隐藏
-        			 $(".company").hide();
-        });*/
+				$(".comtype input[type='radio']").change(function(){
+					if($(".daible").is(':checked')){
+						$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
+					}else{
+						$(".dised").prop("disabled","");
+					};
+					if ($(".ts").is(':checked')) {
+						$(".dised").prop("checked","checked").siblings('.disedli').prop("disabled","disabled");
+					}else{
+						$(".disedli").prop("disabled","");
+					}
+				});
+				$(".rule-name").on('click',function(){
+					$(".big-box").show();
+				});
+				$(".close").on('click',function(){
+					$(".big-box").hide();
+				});
+				$public.actiondata('province','city');
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();

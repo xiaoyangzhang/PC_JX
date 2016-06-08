@@ -46,6 +46,12 @@ define(function (require, exports, module) {
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
+
+			//杜绝编辑时自动优先激活验证
+			setTimeout(function(){
+	        	_self.isVdSelect=true;
+			},500);
+
 				 _self.depath(); 
 		},
 		html_encode : function(str){   
@@ -100,9 +106,12 @@ define(function (require, exports, module) {
 			addScenic:site_path+'/scenic/addScenicManageVOByDdata',
 			updateScenic:site_path+'/scenic/editScenicManageVOByDdata',
 			getBsScope:site_path+'/apply/getBusinessScope',
-			pageilB:site_path+'/apply/seller/pageDetailB'
+			pageilB:site_path+'/apply/seller/pageDetailB',
+			agreement:site_path+'/apply/talent/agreement',
+			toDetailPage:site_path+'/apply/seller/toDetailPage'
 		},
 		timer:null,
+		isVdSelect:false,
 		dialog:{
 			initbox:function(){
 				var _self=this;
@@ -171,7 +180,7 @@ define(function (require, exports, module) {
 						callback();
 						$public.stopBubble(ev);
 					});
-					$('.cancel,.close-tip').off().on('click',function(ev){
+					$('.cancel,.close-tip i').off().on('click',function(ev){
 						_self.closebox();
 						$public.stopBubble(ev);
 					});
@@ -255,8 +264,11 @@ define(function (require, exports, module) {
 	                    });
 	                    function clear_select($obj){
                         	$obj.find('li:eq(0)~li').remove();
-                        	$obj.find('.select-button').val('--请选择--');
+                        	$obj.filter(function(){
+                        		$(this).find('.select-button').val($(this).find('li:eq(0)').first().text());
+                        	});
                         	$obj.find(':hidden').val('');
+                        	$obj.next('.Validform_checktip').remove();
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
@@ -286,7 +298,7 @@ define(function (require, exports, module) {
 					                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 					                                }
 					                            }
-					                            if(!is_check)$public.selectvalid(_self.element.id);
+					                            //if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });
@@ -313,11 +325,15 @@ define(function (require, exports, module) {
 	                    });
 	                    function clear_select($obj){
                         	$obj.find('li:eq(0)~li').remove();
-                        	$obj.find('.select-button').val('--请选择--');
+                        	$obj.filter(function(){
+                        		$(this).find('.select-button').val($(this).find('li:eq(0)').first().text());
+                        	});
                         	$obj.find(':hidden').val('');
+                        	$obj.next('.Validform_checktip').remove();
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
+								width:120,
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
 			                        if(cur_p){
@@ -372,11 +388,11 @@ define(function (require, exports, module) {
 											                                if(c_key==cur_c){
 											                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 											                                    .selectlist({
-											                                    	width:200,
-											                                    	onChange:function(){
-											                                    		if(!is_check)$public.selectvalid(this.element.id);
-												                                    }
-												                                });
+																					width: 200,
+																					onChange:function(){
+														                        		if(!is_check)$public.selectvalid(this.element.id);
+														                            }
+														                        });
 											                                }
 											                            }
 											                        }else
@@ -396,16 +412,16 @@ define(function (require, exports, module) {
 														                                if(c_key==cur_c){
 														                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 														                                    .selectlist({
-														                                    	width:200,
-														                                    	onChange:function(){
-														                                    		if(!is_check)$public.selectvalid(this.element.id);
-															                                    }
-															                                });
+																								width: 200,
+																								onChange:function(){
+																	                        		if(!is_check)$public.selectvalid(this.element.id);
+																	                            }
+																	                        });
 														                                }
 														                            }
 														                        }else
 														                        	clear_select($("#"+area));
-													                            if(!is_check)$public.selectvalid(_self.element.id);
+													                            //if(!is_check)$public.selectvalid(_self.element.id);
 												                            },100);
 												                        }
 												                    });
@@ -415,13 +431,19 @@ define(function (require, exports, module) {
 						                            }
 						                        }else
 						                        	clear_select($("#"+city+",#"+area));
-					                            if(!is_check)$public.selectvalid(_self.element.id);
+					                            //if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });
 			                    }
 		                });
 						$('#'+city).selectlist({width: 150});
+						$("#"+area).selectlist({
+							width: 200,
+							onChange:function(){
+                        		if(!is_check)$public.selectvalid(this.element.id);
+                            }
+                        });
 	                },100);
 	            }             
 	        });
@@ -477,22 +499,24 @@ define(function (require, exports, module) {
 		//验证下拉框
 		selectvalid:function(id){
 			var result=true,$droplist=null;
-			if(id)
-				$droplist=$('input[name="'+id+'"]');
-			else
-				$droplist=$('.select-wrapper input:hidden');
-            $droplist.filter(function(){
-            	var $droplistprent=$(this).closest('.select-wrapper');
-        		$droplistprent.next('.Validform_checktip').remove();
-            	if($(this).val()!=''){
-            		$droplistprent.find('.select-button').css('background','#fff');
-            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
-            	}else{
-            		$droplistprent.find('.select-button').css('background','#ffe7e7');
-            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
-					result=false;
-            	}
-            });
+			if(this.isVdSelect){
+				if(id)
+					$droplist=$('input[name="'+id+'"]');
+				else
+					$droplist=$('.select-wrapper input:hidden');
+	            $droplist.filter(function(){
+	            	var $droplistprent=$(this).closest('.select-wrapper');
+	        		$droplistprent.next('.Validform_checktip').remove();
+	            	if($(this).val()!=''){
+	            		$droplistprent.find('.select-button').css('background','#fff');
+	            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
+	            	}else{
+	            		$droplistprent.find('.select-button').css('background','#ffe7e7');
+	            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
+						result=false;
+	            	}
+	            });
+	        }
 			return result;
 		},
 		//判断上传文件格式是否满足条件
