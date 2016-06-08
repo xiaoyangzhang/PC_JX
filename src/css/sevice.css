@@ -38,15 +38,15 @@ strong{font-weight: normal;}
 .eredar-right .rewiewInfo .infoleft{margin-left: 0px;}
 .eredar-right .rewiewInfo .infoleft img{width:66px;height: 66px;border-radius: 50%;}
 .eredar-right .rewiewInfo .inforight p{color: #666;}
-.eredar-right .rewiewInfo .inforight p.rightGrade{position: absolute;width: 106px;top: 0px;padding-left: 32px;right: -182px;line-height: 20px;border-left: solid 1px #e5e5e5; }
-.eredar-right .rewiewInfo .inforight p.rightGrade p,.eredar-right .rewiewInfo .inforight p.rightGrade em{ color: #222;}
+.eredar-right .rewiewInfo .inforight p.rightGrade{position: absolute;width: 142px;top: 0px;padding-left: 32px;right: -197px;line-height: 20px;border-left: solid 1px #e5e5e5; }
+.eredar-right .rewiewInfo .inforight p.rightGrade p,.eredar-right .rewiewInfo .inforight p.rightGrade em{ color: #222;display: inline-block;width: 70px;text-align: left;}
 .eredar-right .rewiewInfo .inforight p span{display: inline-block;color: #666;vertical-align: top;}
 .eredar-right .rewiewInfo .inforight p span.sName{width:190px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;}
 .eredar-right .rewiewInfo .inforight p em.emW{margin-left: 32px;}
 
 .eredar-right .rewiewInfo .inforight p.infotime{margin-bottom: 30px;color: #999 !important;margin-top: 16px !important;}
 .eredar-right .rewiewInfo strong.infonick{font-weight: normal;display: inline-block;padding-top: 10px;color: #999 !important;width:70px;overflow: hidden;white-space:nowrap;text-overflow:ellipsis;cursor: pointer;}
-.eredar-right .rewiewInfo .inforight span.infoP{display: inline-block;width:570px;line-height: 24px;padding-top: 14px;color: #222;}
+.eredar-right .rewiewInfo .inforight span.infoP{display: inline-block;width:570px;line-height: 24px;padding-top: 14px;color: #222;word-break: break-all;}
 .eredar-right .rewiewInfo .inforight .upload{margin-top: 15px;}
 .eredar-right .rewiewInfo .inforight .upload ul li{float:left;margin-left: 10px;position: relative;border: 2px solid #f2f2f2;vertical-align: middle;text-align:center;line-height: 85px;height:88px;width:88px;}
 .onspe{border:2px solid #ed6c44 !important;}
