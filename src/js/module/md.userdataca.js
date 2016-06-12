@@ -36,7 +36,7 @@ define(function (require, exports, module) {
 				var groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
-					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg'),n=0;
+					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg'),//n=0;
 					
 					for(var i=0;i<nuZu.length;i++){
 						var obj={};
@@ -45,12 +45,12 @@ define(function (require, exports, module) {
 						arr.push(obj);
 					}
 					
-					for(var i=0;i<imgroup.length;i++){
+					//for(var i=0;i<imgroup.length;i++){
 
 						var obj={};
-						obj.qulificationId=imgroup[i].id;
+						obj.qulificationId=$("#qualificationId").attr('qualificationId');
 
-						var img_values=$(imgroup[i]).find(':hidden'),content_value=[];
+						var img_values=$('.qualification : hidden'),content_value=[];
 						for(var j=0;j<img_values.length;j++){
 							if(img_values[j].value) content_value.push(img_values[j].value);
 						}
@@ -58,21 +58,21 @@ define(function (require, exports, module) {
 						obj.content=content_value.join(',');
 						arr.push(obj);
 
-					}
+					//}
 						//console.log(arr);
 						
 					params.merchantQualificationStr=JSON.stringify(arr);
-					$('.groupimg :hidden').filter(function(){
-						if($(this).val()!='') n++;
-					});
+					// $('.groupimg :hidden').filter(function(){
+					// 	if($(this).val()!='') n++;
+					// });
 
 					//if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
 
 					if(allimgvalid&&groupimgvalid){
-						if(n<5){
-							$public.dialog.msg('游乐特种设备,至少上传5份文件.','error');
-							return;
-						}
+						// if(n<5){
+						// 	$public.dialog.msg('游乐特种设备,至少上传5份文件.','error');
+						// 	return;
+						// }
 						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
@@ -94,18 +94,18 @@ define(function (require, exports, module) {
 			//$public.actiondata('province','city');
 			
 		},
-		changevalid : function(isTrue){
-			var cardvalue=$('#card :hidden').val();
-			if(isTrue)isLock=false;
-			if(cardvalue==0)
-				$('#cardtxt').attr('datatype','card');
-			else if(cardvalue==1)
-				$('#cardtxt').attr('datatype','dlic');
-			else if(cardvalue==2)
-				$('#cardtxt').attr('datatype','psport');
-			else if(cardvalue==3)
-				$('#cardtxt').attr('datatype','gidcard');
-		}
+		// changevalid : function(isTrue){
+		// 	var cardvalue=$('#card :hidden').val();
+		// 	if(isTrue)isLock=false;
+		// 	if(cardvalue==0)
+		// 		$('#cardtxt').attr('datatype','card');
+		// 	else if(cardvalue==1)
+		// 		$('#cardtxt').attr('datatype','dlic');
+		// 	else if(cardvalue==2)
+		// 		$('#cardtxt').attr('datatype','psport');
+		// 	else if(cardvalue==3)
+		// 		$('#cardtxt').attr('datatype','gidcard');
+		// }
 	}
 	/*异步加载页面*/
 /*	$(function(){
