@@ -212,10 +212,9 @@ define(function (require, exports, module) {
 		          if(_prent_self.cld[sD].isToday){ sObj.style.color = '#ffaf00';} //今日颜色
 		          else{sObj.style.color = '#666';}
 
-		          $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass();
-
 		          if(_prent_self.checkRangeDay(new Date(SY,SM,sD+1),_prent_self.rangedays)){
-			          $(sObj).closest('td').on('click',function(ev){
+		          	  $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass()
+			          .on('click',function(ev){
 			          		var _self=this;
 			          		if(!_prent_self.isCtrl){
 			          			$('.day td').filter(function(){
@@ -239,6 +238,8 @@ define(function (require, exports, module) {
 							if(_prent_self.isCtrl) $('.price,.stock').val('');
 							$public.stopBubble(ev);
 					   });
+				   }else{
+		          	  $(sObj).closest('td').css({'background':'#f5f5f5','cursor':'initial'}).off().removeClass()
 				   }               
 		       }
 		       else { //非日期
