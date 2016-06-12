@@ -478,3 +478,13 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 #login-pop-frame p.first > a{float:right;color:#fa4619;text-decoration:underline;}
 #login-pop-frame p.last{text-align:center;padding:14px 0;}
 #login-pop-frame p.last > a{display:inline-block;margin-left:1em;color:#fa4619;}
+
+/*----------------------------------------翻页按钮--------------------------------------------*/
+.pagination {position: absolute;bottom:0;}
+.pagination .pager{font-size:0;margin:20px 0;}
+.pagination .disabled a{color:#ccc;}
+.pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
+.pagination li.active a{background: #ffaf00;color:#333;}
+.pagination li a,.pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
+.pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
+.pagination li select{min-width:50px; padding:4px 0;}

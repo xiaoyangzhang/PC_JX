@@ -69,17 +69,6 @@ input[type=text]{height: 32px;line-height: 32px;}
 .sceniclist table td{height:60px;}
 .sceniclist table td a{width:74px;height: 28px;line-height: 28px;display: block;border:1px solid #ed6c44;color:#ed6c44;margin:auto;}
 
-
-.pagination {position: absolute;bottom:0;}
-.pagination .pager{font-size:0;margin:20px 0;}
-.pagination .disabled a{color:#ccc;}
-.pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
-.pagination li.active a{background: #ffaf00;color:#333;}
-.pagination li a,.pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
-.pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
-.pagination li select{min-width:50px; padding:4px 0;}
-
-
 /**********************************************基本信息**********************************************/
 .baseinfo .inputxt{width:488px;}
 .baseinfo .coltxt{width:125px;text-align: right;}
