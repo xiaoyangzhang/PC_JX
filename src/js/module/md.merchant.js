@@ -40,7 +40,7 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-						"addressL" : /^([\w\W]{0,100})?$/,
+						"addressL" : /^([\w\W]{1,100})?$/,
 						"nmname" : /^[\d\w\u4e00-\u9fa5,\—]{2,15}$/
 					},
 					ajaxPost:true
@@ -93,7 +93,6 @@ define(function (require, exports, module) {
 		computed:function(){
 			var length = document.getElementById('textareaInpute').value.length;
 			    document.getElementById('isUsed').innerHTML = length;
-			    document.getElementById('unUse').innerHTML = 100 - length;
 		}
 	}
 	module.exports = new $test();
