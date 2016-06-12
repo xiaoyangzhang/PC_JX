@@ -102,13 +102,13 @@ iframe{display: none;}
 .last-step{margin-left: 20px;}
 .fm_md .updateli{float: right;display: block; text-align: left;/* margin: 10px 23px; */width: 863px;margin-top: 40px;}
 .fm_md .listli{width: 195px;display: block;float: right;text-align: right;margin-right: 13px;margin-top: 40px;}
-.fl {float: right;}
+.fl {}
 .pagesave{float: left;}
 .zhuyi{width: 665px !important;margin-right: 197px !important;}
 .lefttitle {text-align: right;display: block;  width: 186px; float: left; margin-right: 10px;}
 /* .gray9 {color: #999;display: block;float: right; text-align: right; margin-right: 76px;width: 152px;} */
 .upload-img{display: inline-block;width: 120px;height: 90px; position: relative; overflow: hidden; text-align: left;float: left;}
 .careful{margin-left: 63px;float: right;width: 171px; margin-right: 48px;text-align: left;}
-.zu-img{width: 867px;}
+.zu-img{width: 867px;float: right;}
 
 
