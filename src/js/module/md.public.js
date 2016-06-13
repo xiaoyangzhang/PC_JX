@@ -272,13 +272,14 @@ define(function (require, exports, module) {
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
+								width:110,
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
 			                        if(cur_p){
 			                            for(var c_key in data.city){
 			                                if(c_key==cur_p){
 			                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-			                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
+			                                    .selectlist({width:180,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 			                                }
 			                            }
 			                        }else
@@ -295,7 +296,7 @@ define(function (require, exports, module) {
 					                            for(var c_key in data.city){
 					                                if(c_key==cur_p){
 					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-					                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
+					                                    .selectlist({width:180,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 					                                }
 					                            }
 					                            //if(!is_check)$public.selectvalid(_self.element.id);
@@ -304,7 +305,7 @@ define(function (require, exports, module) {
 				                    });
 			                    }
 		                });
-						$('#'+city).selectlist({width: 150});
+						$('#'+city).selectlist({width: 180});
 	                },100);
 	            }             
 	        });
@@ -333,7 +334,7 @@ define(function (require, exports, module) {
                         }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
-								width:120,
+								width:110,
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
 			                        if(cur_p){
@@ -341,7 +342,7 @@ define(function (require, exports, module) {
 			                                if(c_key==cur_p){
 			                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
 			                                    .selectlist({
-			                                    	width:150,
+			                                    	width:180,
 			                                    	onChange:function(){
 								                        var cur_c=$('input[name="city"]').val();
 				                        				if(cur_c){
@@ -349,7 +350,7 @@ define(function (require, exports, module) {
 								                                if(c_key==cur_c){
 								                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 								                                    .selectlist({
-								                                    	width:200,
+								                                    	width:180,
 								                                    	onChange:function(){
 								                                    		if(!is_check)$public.selectvalid(this.element.id);
 									                                    }
@@ -380,7 +381,7 @@ define(function (require, exports, module) {
 						                                if(c_key==cur_p){
 						                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
 						                                    .selectlist({
-						                                    	width:150,
+						                                    	width:180,
 						                                    	onChange:function(){
 											                        var cur_c=$('input[name="city"]').val();
 					                        						if(cur_c){
@@ -388,7 +389,7 @@ define(function (require, exports, module) {
 											                                if(c_key==cur_c){
 											                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 											                                    .selectlist({
-																					width: 200,
+																					width: 180,
 																					onChange:function(){
 														                        		if(!is_check)$public.selectvalid(this.element.id);
 														                            }
@@ -412,7 +413,7 @@ define(function (require, exports, module) {
 														                                if(c_key==cur_c){
 														                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
 														                                    .selectlist({
-																								width: 200,
+																								width: 180,
 																								onChange:function(){
 																	                        		if(!is_check)$public.selectvalid(this.element.id);
 																	                            }
@@ -437,9 +438,9 @@ define(function (require, exports, module) {
 				                    });
 			                    }
 		                });
-						$('#'+city).selectlist({width: 150});
+						$('#'+city).selectlist({width: 180});
 						$("#"+area).selectlist({
-							width: 200,
+							width: 180,
 							onChange:function(){
                         		if(!is_check)$public.selectvalid(this.element.id);
                             }

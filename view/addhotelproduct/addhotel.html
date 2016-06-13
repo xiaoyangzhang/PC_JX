@@ -445,9 +445,9 @@
 				<td><input type="text" class="inputxt"></td>
 				<td class="tb-txt">所在城市：</td>
 				<td>
-					<select id="province"><option value="">--请选择省--</option></select>
-					<select id="city" class="ml10"><option value="">--请选择市--</option></select>
-					<select id="area" class="ml10"><option value="">--请选择区--</option></select>
+					<select id="province"><option value="">-请选择省-</option></select>
+					<select id="city" class="ml10"><option value="">-请选择市-</option></select>
+					<select id="area" class="ml10"><option value="">-请选择区-</option></select>
 					<button class="search-btn">搜索</button>
 				</td>
 			</tr>
@@ -519,19 +519,19 @@
 		</div>
 	</div>
 	<script  type='text/temple' id='province-tpl'>
-	    <option value="">--请选择省--</option>
+	    <option value="">-请选择省-</option>
 	    <# for(var j=0; j<province.length; j++) { #>
 	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
 	    <# } #>
 	</script>
 	<script  type='text/temple' id='city-tpl'>
-	    <option value="">--请选择市--</option>
+	    <option value="">-请选择市-</option>
 	    <# for(var j=0; j<city.length; j++) { #>
 	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
 	    <# } #>
 	</script>
 	<script  type='text/temple' id='area-tpl'>
-	    <option value="">--请选择区--</option>
+	    <option value="">-请选择区-</option>
 	    <# for(var j=0; j<area.length; j++) { #>
 	            <option value="<#= area[j].id#>"><#= area[j].name#></option>
 	    <# } #>
