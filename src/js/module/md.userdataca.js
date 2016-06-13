@@ -36,7 +36,7 @@ define(function (require, exports, module) {
 				var groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
 					params=$public.paramcompare($('#forminfo').serializeArray());
-					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg'),n=0;
+					var arr=[],nuZu=$('.imgbox:not(".groupimg .imgbox")'),imgroup=$('.groupimg');
 					
 					for(var i=0;i<nuZu.length;i++){
 						var obj={};
@@ -62,17 +62,17 @@ define(function (require, exports, module) {
 						//console.log(arr);
 						
 					params.merchantQualificationStr=JSON.stringify(arr);
-					$('.groupimg .updateli :hidden').filter(function(){
-						if($(this).val()!='') n++;
-					});
+					// $('.groupimg .updateli :hidden').filter(function(){
+					// 	if($(this).val()!='') n++;
+					// });
 
 					//if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
 
 					if(allimgvalid&&groupimgvalid){
-						if(n<5){
-							$public.dialog.msg('游乐特种设备,至少上传5份文件.','error');
-							return;
-						}
+						// if(n<5){
+						// 	$public.dialog.msg('游乐特种设备,至少上传5份文件.','error');
+						// 	return;
+						// }
 						$public.dialog.waiting();
 						$.post(subpath,params,function(data){
 							$public.isLogin(data);
