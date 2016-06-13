@@ -575,8 +575,7 @@ define(function (require, exports, module) {
 		        e.preventDefault(); 
 		    //IE中阻止函数器默认动作的方式 
 		    else 
-		        window.event.returnValue = false; 
-		    return false; 
+		        window.event.returnValue = false;
 		},
     	dateFormat: function (date, format) {
 	        format = format || 'yyyy-MM-dd hh:mm:ss';
