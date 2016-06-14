@@ -14,6 +14,7 @@ define(function (require, exports, module) {
 	$test.prototype = {
 		init:function(){
 			var _self=this;
+
 			$("#forminfo").Validform();
 			
 			//渲染时间控件
@@ -37,7 +38,19 @@ define(function (require, exports, module) {
 				height: 32,
 				onChange:function(){}
 			});
-
+				if($('.error_box').length>0){
+				var tit_top=$('.error_box').offset().top,lock=false;
+				$(window).scroll(function(){
+					var cur_top=$(this).scrollTop();
+					if(tit_top<cur_top&&!lock){
+						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+110)+'px'});
+						lock=true;
+					}else if(tit_top>cur_top&&lock){
+						$('.error_box').css({'position':'absolute','right':'110px'});
+						lock=false;
+					}
+				});
+			}
 			var validoptions={
 					tiptype:3,
 					label:".label",

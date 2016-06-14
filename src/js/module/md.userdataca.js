@@ -15,6 +15,19 @@ define(function (require, exports, module) {
 
 	$userdataca.prototype = {
 		init:function(){
+			if($('.error_box').length>0){
+				var tit_top=$('.error_box').offset().top,lock=false;
+				$(window).scroll(function(){
+					var cur_top=$(this).scrollTop();
+					if(tit_top<cur_top&&!lock){
+						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+110)+'px'});
+						lock=true;
+					}else if(tit_top>cur_top&&lock){
+						$('.error_box').css({'position':'absolute','right':'110px'});
+						lock=false;
+					}
+				});
+			}
 			
 			//var _self=this;
 			// $('#bank').selectlist({width: 200});
