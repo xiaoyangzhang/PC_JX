@@ -50,11 +50,18 @@ define(function (require, exports, module) {
 						var obj={};
 						obj.qulificationId=$("#qualificationId").attr('qualificationId');
 
-						var img_values=$('.qualification :hidden'),content_value=[];
-						for(var j=0;j<img_values.length;j++){
-							if(img_values[j].value) content_value.push(img_values[j].value);
-						}
-
+						//var img_values=$('.groupimg .inblock'),
+						content_value=[];
+						// for(var j=0;j<img_values.length;j++){
+						// 	$(img_values[j]).
+						// 	if(img_values[j].value) content_value.push(img_values[j].value);
+						// }
+						$(".groupimg .inblock").each(function(){
+							var value = $(this).find(":hidden").val();
+							if (value) {
+								content_value.push(value);
+							};
+						})
 						obj.content=content_value.join(',');
 						arr.push(obj);
 

@@ -138,18 +138,8 @@ define(function (require, exports, module) {
 
 
 				$(".aaa input[type='checkbox']").change(function(){
-					$(".k1").prop("checked","checked");
-					var lxtu = $(".aaa input[type='checkbox']:checked").length ;
-						if(lxtu<1){
-							$(".k1").prop("checked","");
-						}else{
-							$(".k1").prop("checked","checked");
-						};
-						// if($(this).is(':checked')){
-						// 	$(".k1").prop("checked","checked");
-						// };
+					_self.checkedstate();
 				});
-
 
 				$(".ddd").change(function(){
 					$(".ccc").prop("checked","");
@@ -189,6 +179,7 @@ define(function (require, exports, module) {
 					$(".big-box").hide();
 				});
 				$public.actiondata('province','city');
+				_self.checkedstate();
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
@@ -201,6 +192,15 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','psport');
 			else if(cardvalue==3)
 				$('#cardtxt').attr('datatype','gidcard');
+		},
+		checkedstate : function(){
+			var lxtu = $(".aaa input[type='checkbox']:checked").length ;
+				if(lxtu<1){
+					$(".k1").prop("checked","");
+				}else{
+					$(".k1").prop("checked","checked");
+				};
+				
 		}
 	}
 
