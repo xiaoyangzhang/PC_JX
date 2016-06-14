@@ -27,7 +27,33 @@
 				return '请检查纬度格式'
 			}       	
         }
-        //国内当地玩乐sku
+        //同城活动sku
+			//--------------价格库存信息----------
+		$('.skuTable').find('.stock').each(function () {
+			if ($.trim($(this).val()).length<1) {
+				msg = '请填写库存';
+				$(this).focus();
+				return false;
+			};
+			if (!/^(0|[1-9]\d{0,5})$/.test($(this).val())) {
+				msg = '库存为正整数，最大六位整数';
+				$(this).focus();
+				return false;
+			}
+		});
+		$('.skuTable').find('.price').each(function () {
+			if ($.trim($(this).val()).length<1) {
+				msg = '请填写价格';
+				$(this).focus();
+				return false;
+			};
+			if (!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($(this).val())) {
+				msg = '价格为数字，最大六位整数，可带两位小数';
+				$(this).focus();
+				return false;
+			}
+		});
+		if(msg){return msg;};
 //      if(!skuTableShowFlag){
 //          if(!$('.priceY').val() || !/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/.test($('.priceY').val())){
 //              return '请输入正确的价格';
@@ -59,7 +85,7 @@
 			}
 			
 		}
-			//--------------价格信息----------
+			//--------------价格库存信息----------
 		$('.priceInfo').find('.tc-stock').each(function () {
 			if ($.trim($(this).val()).length<1) {
 				msg = '请填写库存';
@@ -88,9 +114,11 @@
 			//提前天数----------------
 		if ($('.day-limit').length>0) {
 			if ($.trim($('.day-limit').val()).length < 1) {
+				$('.day-limit').focus();
 				return '请填写提前报名天数';
 			}else if ($('.day-limit').val()<1 || $('.day-limit').val()>10000) {
-				return '行程天数为1-10000的整数';
+				$('.day-limit').focus();
+				return '提前报名天数为1-10000的整数';
 			}
 		}
 		

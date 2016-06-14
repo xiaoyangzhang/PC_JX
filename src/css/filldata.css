@@ -21,7 +21,7 @@
 .ag-content .pt_zz span a:hover{text-decoration:underline;}
 /***************************等待审核/审核不通过***************************/
 .agreement-box .waiting i{display: inline-block;width:36px;height:36px;background: url('../../img/spripte.png') no-repeat -75px 0;}
-.agreement-box .waiting .message{background: #FFFFE5;border:1px solid #F39A00;width:418px;height:52px;padding-top:8px;text-align: center;margin:10px auto;}
+.agreement-box .waiting .message{background: #FFFFE5;border:1px solid #F39A00;width:418px;padding-top:8px;text-align: center;margin:10px auto;padding: 11px 63px 11px 63px;}
 .agreement-box .nothrough i{background: url('../../img/spripte.png') no-repeat -111px 0;}
 .agreement-box .nothrough .bcs{color:#ed6c44;}
 

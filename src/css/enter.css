@@ -43,4 +43,4 @@
 .settled{margin:30px 0 30px;}
 .settled a{width:200px;height:36px;background:#ed6c44;text-align: center;line-height: 36px;margin:0 auto;display: block;font-size:16px;color:#fff;}
 .mode-tab-nav ul li.current{border: none; background:none;color:#ffaf00;}
-
+.small-title{color:#333 !important;}
