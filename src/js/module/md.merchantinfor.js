@@ -123,23 +123,39 @@ define(function (require, exports, module) {
 					$(".company input[type='radio']").eq(0).prop("checked","checked");
 				});
 				$(".k1").change(function(){
-					$(".aaa input[type='checkbox']").eq(0).prop("checked","checked");
+
+					 if($(this).prop("checked")){
+					 		$(this).prop("checked","checked");
+							$(".aaa input[type='checkbox']").eq(0).prop("checked","checked");
+						}else{
+					 		$(this).prop("checked","");
+							$(".aaa input[type='checkbox']").prop("checked","");
+						};
+					
 				});
+
+
+
+
 				$(".aaa input[type='checkbox']").change(function(){
+					$(".k1").prop("checked","checked");
 					var lxtu = $(".aaa input[type='checkbox']:checked").length ;
 						if(lxtu<1){
 							$(".k1").prop("checked","");
 						}else{
 							$(".k1").prop("checked","checked");
 						};
-						if($(this).is(':checked')){
-							$(".k1").prop("checked","checked");
-						};
+						// if($(this).is(':checked')){
+						// 	$(".k1").prop("checked","checked");
+						// };
 				});
+
+
 				$(".ddd").change(function(){
 					$(".ccc").prop("checked","");
-
 				});
+
+
 				$(".company input[type='radio']").change(function(){
 					$(".ccc").prop("checked","checked");
 					if ($(this).is(':checked')) {
@@ -148,6 +164,9 @@ define(function (require, exports, module) {
 						$(".ccc").prop("checked","");
 					}
 				});
+
+
+
 				$(".comtype input[type='radio']").change(function(){
 					if($(".daible").is(':checked')){
 						$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
@@ -160,6 +179,9 @@ define(function (require, exports, module) {
 						$(".disedli").prop("disabled","");
 					}
 				});
+
+
+
 				$(".rule-name").on('click',function(){
 					$(".big-box").show();
 				});

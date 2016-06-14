@@ -69,17 +69,6 @@ input[type=text]{height: 32px;line-height: 32px;}
 .sceniclist table td{height:60px;}
 .sceniclist table td a{width:74px;height: 28px;line-height: 28px;display: block;border:1px solid #ed6c44;color:#ed6c44;margin:auto;}
 
-
-.pagination {position: absolute;bottom:0;}
-.pagination .pager{font-size:0;margin:20px 0;}
-.pagination .disabled a{color:#ccc;}
-.pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
-.pagination li.active a{background: #ffaf00;color:#333;}
-.pagination li a,.pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
-.pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
-.pagination li select{min-width:50px; padding:4px 0;}
-
-
 /**********************************************基本信息**********************************************/
 .baseinfo .inputxt{width:488px;}
 .baseinfo .coltxt{width:125px;text-align: right;}
@@ -93,7 +82,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .checkbox{margin-right:10px;display: inline-block;*display: inline;*zoom:1;width:145px;margin-bottom:20px;cursor: pointer;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
 .baseinfo .dtlrule{padding-right: 40px;line-height: 22px;}
-.savenext{padding-left:106px;padding-top:20px;padding-bottom:80px;}
+.savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
 .btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
 .savenext a,.btngroup a,.allsave a{display:inline-block;text-align: center; height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
@@ -124,8 +113,3 @@ input[type=text]{height: 32px;line-height: 32px;}
 .datepicker .setvalue div{padding-top:20px;}
 .datepicker .setvalue .btn a{display: inline-block;text-align: center; width:98px;height: 28px; line-height: 28px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
 .datepicker .nullgray{background: #f9f9f9;cursor: initial !important;}
-
- 
-
-
-
