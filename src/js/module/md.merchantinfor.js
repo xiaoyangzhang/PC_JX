@@ -137,22 +137,17 @@ define(function (require, exports, module) {
 
 
 
-
-
-
-
-
-
 				$(".aaa input[type='checkbox']").change(function(){
+					$(".k1").prop("checked","checked");
 					var lxtu = $(".aaa input[type='checkbox']:checked").length ;
 						if(lxtu<1){
 							$(".k1").prop("checked","");
 						}else{
 							$(".k1").prop("checked","checked");
 						};
-						if($(this).is(':checked')){
-							$(".k1").prop("checked","checked");
-						};
+						// if($(this).is(':checked')){
+						// 	$(".k1").prop("checked","checked");
+						// };
 				});
 
 
