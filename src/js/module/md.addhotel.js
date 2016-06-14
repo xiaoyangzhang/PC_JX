@@ -217,14 +217,14 @@ define(function (require, exports, module) {
 
 			//上一页
 			$(document).on('click','li.previous:not(".disabled") a',function(){
-				var cur_page=parseInt($('.pagination li.active a').text());
+				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
 				$(_self.config.loadlist).show();
 				gethotelist(cur_page>0?(cur_page-1):cur_page);
 			});
 
 			//下一页
 			$(document).on('click','li.next:not(".disabled") a',function(){
-				var cur_page=parseInt($('.pagination li.active a').text());
+				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
 				$(_self.config.loadlist).show();
 				gethotelist(cur_page+1);
 			});
@@ -257,7 +257,7 @@ define(function (require, exports, module) {
 				},function(data){
 					$htlst.append(data);
 					$(_self.config.loadlist).hide();
-					$('.pagination').css('margin-left',(($('.container').width()-$('.pagination').width())/2)+'px');
+					$('.jiuniu_pagination').css('margin-left',(($('.container').width()-$('.jiuniu_pagination').width())/2)+'px');
 					$('.tb-box').height($('.hotelist').height());
 				});
 			};
