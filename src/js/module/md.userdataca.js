@@ -27,7 +27,7 @@ define(function (require, exports, module) {
 						lock=false;
 					}
 				});
-			}
+			};
 			
 			//var _self=this;
 			// $('#bank').selectlist({width: 200});
