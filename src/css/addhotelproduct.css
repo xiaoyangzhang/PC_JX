@@ -113,18 +113,3 @@ input[type=text]{height: 32px;line-height: 32px;}
 .datepicker .setvalue div{padding-top:20px;}
 .datepicker .setvalue .btn a{display: inline-block;text-align: center; width:98px;height: 28px; line-height: 28px;border:1px solid #ed6c44;color:#ed6c44;background: #fff;margin:0 5px;}
 .datepicker .nullgray{background: #f9f9f9;cursor: initial !important;}
-
-/*----------------------------------------翻页按钮--------------------------------------------*/
-.pagination {position: absolute;bottom:0;}
-.pagination .pager{font-size:0;margin:20px 0;}
-.pagination .disabled a{color:#ccc;}
-.pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
-.pagination li.active a{background: #ffaf00;color:#333;}
-.pagination li a,.pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
-.pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
-.pagination li select{min-width:50px; padding:4px 0;}
-
- 
-
-
-

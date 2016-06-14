@@ -167,7 +167,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     width: auto;
     height: 34px;
     line-height: 34px;
-    padding-left: 10px;
+    padding-left: 5px;
     cursor: pointer;
     overflow: hidden;
     white-space: nowrap;
@@ -478,3 +478,13 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 #login-pop-frame p.first > a{float:right;color:#fa4619;text-decoration:underline;}
 #login-pop-frame p.last{text-align:center;padding:14px 0;}
 #login-pop-frame p.last > a{display:inline-block;margin-left:1em;color:#fa4619;}
+
+/*----------------------------------------翻页按钮--------------------------------------------*/
+.jiuniu_pagination {position: absolute;bottom:0;}
+.jiuniu_pagination .pager{font-size:0;margin:20px 0;}
+.jiuniu_pagination .disabled a{color:#ccc;}
+.jiuniu_pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
+.jiuniu_pagination li.active a{background: #ffaf00;color:#333;}
+.jiuniu_pagination li a,.jiuniu_pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
+.jiuniu_pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
+.jiuniu_pagination li select{min-width:50px; padding:4px 0;}
