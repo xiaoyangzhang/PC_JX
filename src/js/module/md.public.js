@@ -165,6 +165,7 @@ define(function (require, exports, module) {
 			content:function(n_width,n_height,title,html_content,callback,init_callback){
 				var _self=this,total_h=0;
 				_self.initbox();
+				$('.bgmeng').off();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
 				if(_self.box.attr('id')=='content-box'){
