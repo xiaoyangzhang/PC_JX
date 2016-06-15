@@ -15,6 +15,19 @@ define(function (require, exports, module) {
 
 	$userdataca.prototype = {
 		init:function(){
+			if($('.error_box').length>0){
+				var tit_top=$('.error_box').offset().top,lock=false;
+				$(window).scroll(function(){
+					var cur_top=$(this).scrollTop();
+					if(tit_top<cur_top&&!lock){
+						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+110)+'px'});
+						lock=true;
+					}else if(tit_top>cur_top&&lock){
+						$('.error_box').css({'position':'absolute','right':'110px'});
+						lock=false;
+					}
+				});
+			};
 			
 			//var _self=this;
 			// $('#bank').selectlist({width: 200});
@@ -50,11 +63,18 @@ define(function (require, exports, module) {
 						var obj={};
 						obj.qulificationId=$("#qualificationId").attr('qualificationId');
 
-						var img_values=$('.qualification :hidden'),content_value=[];
-						for(var j=0;j<img_values.length;j++){
-							if(img_values[j].value) content_value.push(img_values[j].value);
-						}
-
+						//var img_values=$('.groupimg .inblock'),
+						content_value=[];
+						// for(var j=0;j<img_values.length;j++){
+						// 	$(img_values[j]).
+						// 	if(img_values[j].value) content_value.push(img_values[j].value);
+						// }
+						$(".groupimg .inblock").each(function(){
+							var value = $(this).find(":hidden").val();
+							if (value) {
+								content_value.push(value);
+							};
+						})
 						obj.content=content_value.join(',');
 						arr.push(obj);
 

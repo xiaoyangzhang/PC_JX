@@ -12,7 +12,7 @@
 			}
 		});
 		$('.stock').each(function() {
-			if (!$(this).val() || !/^[1-9]\d*|0$/.test($(this).val())) {
+			if (!$(this).val() || !/^(0|[1-9]\d+)$/.test($(this).val())) {
 				msg = '请检查sku库存格式';
 			}
 		});
@@ -199,13 +199,13 @@
 			}
 		}
 		//生成sku表格
-		var tableStart = '<table class="table table-bordered tab-sku">' + '<caption>活动属性匹配表</caption>' + '<thead>';
+		var tableStart = '<table class="table table-bordered tab-sku">' + '<caption><span class="spColor">*</span>活动属性匹配表</caption>' + '<thead>';
 		var titleTrBody = '<tr>';
 		for (var i = 0; i < skuProperty.length; i++) {
 			titleTrBody += '<th><span>' + skuProperty[i]["pTxt"] + '</span></th>';
 		}
 		titleTrBody += '<th><span>价格</span></th>';
-		titleTrBody += '<th><span>数量</span></th>'
+		titleTrBody += '<th><span>库存</span></th>'
 		titleTrBody += '</thead>';
 		titleTrBody += '</tr>';
 		var trBody = '';

@@ -14,6 +14,7 @@ define(function (require, exports, module) {
 	$test.prototype = {
 		init:function(){
 			var _self=this;
+
 			$("#forminfo").Validform();
 			
 			//渲染时间控件
@@ -37,7 +38,19 @@ define(function (require, exports, module) {
 				height: 32,
 				onChange:function(){}
 			});
-
+				if($('.error_box').length>0){
+				var tit_top=$('.error_box').offset().top,lock=false;
+				$(window).scroll(function(){
+					var cur_top=$(this).scrollTop();
+					if(tit_top<cur_top&&!lock){
+						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+110)+'px'});
+						lock=true;
+					}else if(tit_top>cur_top&&lock){
+						$('.error_box').css({'position':'absolute','right':'110px'});
+						lock=false;
+					}
+				});
+			}
 			var validoptions={
 					tiptype:3,
 					label:".label",
@@ -137,24 +150,9 @@ define(function (require, exports, module) {
 
 
 
-
-
-
-
-
-
 				$(".aaa input[type='checkbox']").change(function(){
-					var lxtu = $(".aaa input[type='checkbox']:checked").length ;
-						if(lxtu<1){
-							$(".k1").prop("checked","");
-						}else{
-							$(".k1").prop("checked","checked");
-						};
-						if($(this).is(':checked')){
-							$(".k1").prop("checked","checked");
-						};
+					_self.checkedstate();
 				});
-
 
 				$(".ddd").change(function(){
 					$(".ccc").prop("checked","");
@@ -194,6 +192,7 @@ define(function (require, exports, module) {
 					$(".big-box").hide();
 				});
 				$public.actiondata('province','city');
+				_self.checkedstate();
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
@@ -206,6 +205,15 @@ define(function (require, exports, module) {
 				$('#cardtxt').attr('datatype','psport');
 			else if(cardvalue==3)
 				$('#cardtxt').attr('datatype','gidcard');
+		},
+		checkedstate : function(){
+			var lxtu = $(".aaa input[type='checkbox']:checked").length ;
+				if(lxtu<1){
+					$(".k1").prop("checked","");
+				}else{
+					$(".k1").prop("checked","checked");
+				};
+				
 		}
 	}
 
