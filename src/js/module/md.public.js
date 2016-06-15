@@ -36,7 +36,7 @@ define(function (require, exports, module) {
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// img_domain=$urlpath.img_domain,
-	// static_source=$urlpath.static_source;
+	// static_source=$urlpath. ;
 	
 	$public.prototype = {
 		init:function(){

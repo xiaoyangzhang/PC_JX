@@ -23,7 +23,7 @@
 .agreement-box .waiting i{display: inline-block;width:36px;height:36px;background: url('../../img/spripte.png') no-repeat -75px 0;}
 .agreement-box .waiting .message{background: #FFFFE5;border:1px solid #F39A00;width:418px;padding-top:8px;text-align: center;margin:10px auto;padding: 11px 63px 11px 63px;}
 .agreement-box .nothrough i{background: url('../../img/spripte.png') no-repeat -111px 0;}
-.agreement-box .nothrough .bcs{color:#ed6c44;}
+.agreement-box .nothrough .bcs{color:#ed6c44;max-width:418px;word-wrap: break-word;}
 
 /***************************填写资料***************************/
 .agreement-box .wdfill{width:100%;}
