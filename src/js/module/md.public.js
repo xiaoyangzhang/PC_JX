@@ -29,18 +29,21 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$urlpath.fileuploadURL,
-	site_path=$urlpath.site_path,
-	c_domain=$urlpath.c_domain,
-	img_domain=$urlpath.img_domain,
-	static_source=$urlpath.static_source;
+	fileuploadURL=$('#jiuniu_update_file').val(),
+	site_path=$('#root_path').val(),
+	img_domain='http://img.yimayholiday.com/v1/tfs/',
+	static_source=$('#static_path').val();
+	// fileuploadURL=$urlpath.fileuploadURL,
+	// site_path=$urlpath.site_path,
+	// img_domain=$urlpath.img_domain,
+	// static_source=$urlpath.static_source;
 	
 	$public.prototype = {
 		init:function(){
 			var _self=this;
 			/* 统一主域名 */
-			if(document.domain.indexOf(c_domain)!=-1)
-				document.domain = c_domain;
+			if(document.domain.indexOf('jiuxiulvxing.com')!=-1)
+				document.domain = 'jiuxiulvxing.com';
 			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){
@@ -230,7 +233,7 @@ define(function (require, exports, module) {
 		           //否则就是PC浏览器打开
 		    }
 		},
-		paramcompare:function(arr){
+		paramcompare:function(arr,callback){
 			var result={},temp={};
 			for(var i=0;i<arr.length;i++){
 				if(temp[arr[i].name]){
@@ -247,6 +250,7 @@ define(function (require, exports, module) {
 					temp[arr[i].name]=true;
 				}
 			}
+			callback(result);
 			return result;
 		},
 		//二级联动
