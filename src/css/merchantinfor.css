@@ -95,7 +95,7 @@ input{margin:0;padding:0 }
 .ml10{width: 260px !important;}
 
 .error_tip{position: relative;}
-.error_tip .error_box{position: absolute;z-index:9999;top:0px;right: 110px; width:150px;background: #F2896B;padding-bottom:10px;padding-top:5px;
+.error_tip .error_box{position: absolute;z-index:9999;top:0px;right: 20px; width:150px;background: #F2896B;padding-bottom:10px;padding-top:5px;
 	border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;}
 .error_tip .error_box div{width:118px;color:#fff;margin:auto;font-size:14px;border-bottom:1px solid #fff;height: 24px;line-height: 24px;text-align: center;}
 .error_tip .error_box ol{list-style:decimal inside;}
