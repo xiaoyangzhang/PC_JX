@@ -18,7 +18,8 @@ define(function (require, exports, module) {
 		      changeMonth: true,
 		      changeYear: true
 		    });
-			$self.distanceFun();
+			/* $self.distanceFun(); */
+			$(this).closest(".inforight").find(".showImg").hide();
 		 	
 			var validoptions={
 					tiptype:3,
@@ -62,16 +63,16 @@ define(function (require, exports, module) {
 					$(this).closest(".inforight").find(".showImg img").attr("src",$(this).find('img').get(0).src);
 					$(this).find("b").css("opacity","1");
 					$(this).closest(".inforight").find(".showImg").show();
-					listli.filter(function(){this.is_select=false;});
+					$(".eredar-left").css('min-height',$(".eredar-right").height()+'px');
 					this.is_select=true;
-					$editer.distanceFun();
 				}else{
+					
 					$(this).css("borderColor","#f2f2f2");
 					$(this).find("b").css("opacity","0");
 					$(this).closest(".inforight").find(".showImg").hide();
 					this.is_select=false;
-					$editer.distanceFun();
 				}
+				$(".eredar-left").css('min-height',$(".eredar-right").height()+'px');
 			});
 		},
 		distanceFun :function(){
