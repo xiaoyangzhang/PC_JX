@@ -45,14 +45,14 @@ define(function (require, exports, module) {
 				$(".draftPop").fadeIn();
 			});
 			$(".del-list").on("click",function(){
-				$(".dialog").css("display","none");
+				$(".dialog").remove();
 				$(".draftPop").fadeOut();
 				_sel.closest("tr").remove();
 				$review.distanceFun();
 			});
 			$(".cancel").on("click",function(){
 				$review.distanceFun();
-				$(".dialog").css("display","none");
+				$(".dialog").remove();
 				$(".draftPop").fadeOut();
 			})
 		}
