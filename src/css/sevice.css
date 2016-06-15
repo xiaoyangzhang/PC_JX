@@ -34,14 +34,14 @@ strong{font-weight: normal;}
 .eredar-right .rewiewID{margin: 30px 0 0 40px;}
 .eredar-right .rewiewID p{font-size: 16px;color: #222;border-bottom:solid 1px #ccc;  padding-bottom: 10px;}
 .eredar-right .rewiewInfo{border-bottom: solid 1px #e5e5e5;margin:30px 0 30px 40px;}
-.eredar-right .rewiewInfo dl{float: left;margin-left: 58px; position: relative;}
+.eredar-right .rewiewInfo dl{float: left;margin-left: 33px; position: relative;}
 .eredar-right .rewiewInfo .infoleft{margin-left: 0px;}
 .eredar-right .rewiewInfo .infoleft img{width:66px;height: 66px;border-radius: 50%;}
 .eredar-right .rewiewInfo .inforight p{color: #666;}
 .eredar-right .rewiewInfo .inforight p.rightGrade{position: absolute;width: 142px;top: 0px;padding-left: 32px;right: -197px;line-height: 20px;border-left: solid 1px #e5e5e5; }
 .eredar-right .rewiewInfo .inforight p.rightGrade p,.eredar-right .rewiewInfo .inforight p.rightGrade em{ color: #222;display: inline-block;width: 70px;text-align: left;}
 .eredar-right .rewiewInfo .inforight p span{display: inline-block;color: #666;vertical-align: top;}
-.eredar-right .rewiewInfo .inforight p span.sName{width:190px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;}
+.eredar-right .rewiewInfo .inforight p span.sName{width:185px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;}
 .eredar-right .rewiewInfo .inforight p em.emW{margin-left: 32px;}
 
 .eredar-right .rewiewInfo .inforight p.infotime{margin-bottom: 30px;color: #999 !important;margin-top: 16px !important;}
@@ -53,7 +53,7 @@ strong{font-weight: normal;}
 .eredar-right .rewiewInfo .inforight .upload ul li.first{margin-left: 0px}
 .eredar-right .rewiewInfo .inforight .upload ul li b{filter: alpha(opacity=0);opacity: 0;width: 0;height: 0;line-height: 0;font-size: 0;
 	border: transparent 6px dashed;border-top: 6px solid #ed6c44;position: absolute;left: 40px;bottom: -13px;}
-.eredar-right .rewiewInfo .inforight .upload img{max-width:86px;cursor: pointer;height:86px;}
+.eredar-right .rewiewInfo .inforight .upload img{max-width:84px;cursor: pointer;height:84px;vertical-align: top;}
 .eredar-right .rewiewInfo .inforight .showImg{display:none;width:280px;margin-top: 10px;}
 .eredar-right .rewiewInfo .inforight .showImg img{max-width:280px;}
 
