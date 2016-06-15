@@ -24,6 +24,16 @@ define(function (require, exports, module) {
 			});
 			$review.distanceFun();
 			$self.delFun();
+			
+			$(document).on('click','.LinkeToPage',function(){
+				$('input[name="page"]').val($(this).attr('pageno'));
+				$('form').submit();
+			});
+
+			$(document).on('change','#pageSize',function(){
+				$('input[name="page"]').val(1);
+				$('form').submit();
+			});
 		},
 		delFun : function(){
 			var delList = $(".draft table tr td").find(".del");

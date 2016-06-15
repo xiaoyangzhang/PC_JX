@@ -89,6 +89,7 @@ strong{font-weight: normal;}
 .draftPop p.p{margin-top: 26px;}
 .draftPop p button{width: 80px;height: 34px;border:solid 1px #ed6c44;background-color: #fff;color: #ed6c44;}
 .draftPop p button.cancel{color:#666;border-color: #dcdcdc;margin-left: 12px;}
+.jiuniu_pagination{position:static;}
 
 
 /*保存弹窗*/
