@@ -43,7 +43,7 @@ input{margin:0;padding:0 }
  .agreement-box .shopname{*margin-left: 180px;*width: 955px !important;margin-left: 13px;margin-left: 224px;}
 .agreement-box .seven .nameinput{margin-left: 13px;*margin-left: 25px;}
 .agreement-box .two .qdlm{padding-bottom: 0px}
-span{color:red;}
+.panel span{color:red;}
 .agreement-box .three .lmnotes{padding-top:25px;}
 .agreement-box .seven .namelm{padding-top:38px;}
 .agreement-box .txt01{width:248px;height:34px;border: 1px solid #ddd;}
