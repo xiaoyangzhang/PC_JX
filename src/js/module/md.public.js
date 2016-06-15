@@ -29,10 +29,10 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$('#jiuniu_update_file').val(),
-	site_path=$('#root_path').val(),
+	fileuploadURL=$('#jiuniu_update_file').val()+'/',
+	site_path=$('#root_path').val()+'/',
 	img_domain='http://img.yimayholiday.com/v1/tfs/',
-	static_source=$('#static_path').val();
+	static_source=$('#static_path').val()+'/';
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// img_domain=$urlpath.img_domain,
