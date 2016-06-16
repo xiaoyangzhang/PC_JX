@@ -24,6 +24,10 @@ define(function (require, exports, module) {
 			});
 			$review.distanceFun();
 			$self.delFun();
+			var bigW = $("#eredar .eredar-right").width() - 40;
+			var positionW = $(".jiuniu_pagination").width();
+			/* console.log(bigW,positionW); */
+			$(".jiuniu_pagination").css("margin-left",((bigW-positionW)/2) + 'px');
 			
 			$(document).on('click','.LinkeToPage',function(){
 				$('input[name="page"]').val($(this).attr('pageno'));
@@ -45,14 +49,14 @@ define(function (require, exports, module) {
 				$(".draftPop").fadeIn();
 			});
 			$(".del-list").on("click",function(){
-				$(".dialog").css("display","none");
+				$(".dialog").remove();
 				$(".draftPop").fadeOut();
 				_sel.closest("tr").remove();
 				$review.distanceFun();
 			});
 			$(".cancel").on("click",function(){
 				$review.distanceFun();
-				$(".dialog").css("display","none");
+				$(".dialog").remove();
 				$(".draftPop").fadeOut();
 			})
 		}
