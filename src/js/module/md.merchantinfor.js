@@ -171,16 +171,7 @@ define(function (require, exports, module) {
 
 
 				$(".comtype input[type='radio']").change(function(){
-					if($(".daible").is(':checked')){
-						$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
-					}else{
-						$(".dised").prop("disabled","");
-					};
-					if ($(".ts").is(':checked')) {
-						$(".dised").prop("checked","checked").siblings('.disedli').prop("disabled","disabled");
-					}else{
-						$(".disedli").prop("disabled","");
-					}
+					_self.comtypedisabled();
 				});
 
 
@@ -193,6 +184,7 @@ define(function (require, exports, module) {
 				});
 				$public.actiondata('province','city');
 				_self.checkedstate();
+				_self.comtypedisabled();
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
@@ -214,6 +206,18 @@ define(function (require, exports, module) {
 					$(".k1").prop("checked","checked");
 				};
 				
+		},
+		comtypedisabled :function(){
+			if($(".daible").is(':checked')){
+						$(".dised").prop("disabled","disabled").siblings('.disedli').prop("checked","checked");
+					}else{
+						$(".dised").prop("disabled","");
+					};
+					if ($(".ts").is(':checked')) {
+						$(".dised").prop("checked","checked").siblings('.disedli').prop("disabled","disabled");
+					}else{
+						$(".disedli").prop("disabled","");
+					}
 		}
 	}
 
