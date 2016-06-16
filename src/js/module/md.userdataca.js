@@ -20,10 +20,10 @@ define(function (require, exports, module) {
 				$(window).scroll(function(){
 					var cur_top=$(this).scrollTop();
 					if(tit_top<cur_top&&!lock){
-						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+110)+'px'});
+						$('.error_box').css({'position':'fixed','right':(($(document).width()-1190)/2+0)+'px'});
 						lock=true;
 					}else if(tit_top>cur_top&&lock){
-						$('.error_box').css({'position':'absolute','right':'110px'});
+						$('.error_box').css({'position':'absolute','right':'0px'});
 						lock=false;
 					}
 				});
