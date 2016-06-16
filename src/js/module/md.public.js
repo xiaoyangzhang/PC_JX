@@ -29,14 +29,14 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$('#jiuniu_update_file').val()+'/',
+	fileuploadURL=$('#filegw_url').val()+'/',
 	site_path=$('#root_path').val()+'/',
-	img_domain='http://img.yimayholiday.com/v1/tfs/',
+	img_domain=$('#tfs').val(),
 	static_source=$('#static_path').val()+'/';
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// img_domain=$urlpath.img_domain,
-	// static_source=$urlpath.static_source;
+	// static_source=$urlpath. ;
 	
 	$public.prototype = {
 		init:function(){
@@ -250,7 +250,7 @@ define(function (require, exports, module) {
 					temp[arr[i].name]=true;
 				}
 			}
-			callback(result);
+			if(callback instanceof Function) callback(result);
 			return result;
 		},
 		//二级联动
