@@ -17,8 +17,8 @@ define(function (require, exports, module) {
 
 			$("#forminfo").Validform();
 			
-			//渲染时间控件
-			$( "#tm" ).datepicker();
+			//渲染时间控件s
+			// $( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
 			$('#card').selectlist({
 				width: 200,
@@ -219,7 +219,32 @@ define(function (require, exports, module) {
 						$(".disedli").prop("disabled","");
 					}
 		}
+		
 	}
+	$(function(){
+		var merchantCategoryId = $(".comtype input[name='merchantCategoryId']:checked").val();
+		if (!merchantCategoryId) {
+			return false;
+		}else{
+			$.ajax({
+					   type: "post",
+					   url: $public.urlpath.getBsScope,
+					   data: {merchantCategoryId:merchantCategoryId},
+					   success: function(data){
+					   			  var list = JSON.parse(data.value);
+					   			  $('input[type="checkbox"]').not("input:checked").prop("disabled","disabled");    
+									  $('input[type="checkbox"]:disabled').each(function(){ 
+									  	for (var i = 0; i < list.length; i++) {
+									  		if($(this).val() == list[i].businessScopeId ) {
+									  			$(this).prop("disabled","");
+									  		}
+									  	}; 
 
+									  });   
+					   	   	}
+					   
+					});
+		}
+	})
 	module.exports = new $test();
 });   
