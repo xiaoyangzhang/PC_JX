@@ -105,21 +105,9 @@
 		</div>
 	</div>
 <!-- 尾部结束 -->
-<script  type='text/temple' id='province-tpl'>
-	    <option value="">--请选择--</option>
-	    <# for(var j=0; j<province.length; j++) { #>
-	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
-	    <# } #>
-	</script>
-	<script  type='text/temple' id='city-tpl'>
-	    <option value="">--请选择--</option>
-	    <# for(var j=0; j<city.length; j++) { #>
-	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
-	    <# } #>
-	</script>
 	<script type="text/javascript" src="../../src/js/sea.js"></script>
 	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
 	<script type="text/javascript" src="../../src/js/config.js"></script>		
-	<script>seajs.use("businessenter");</script>	
+	<script>seajs.use("examine");</script>	
 </body>
 </html>
