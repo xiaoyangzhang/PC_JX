@@ -35,8 +35,9 @@ define(function (require, exports, module) {
 	static_source=$('#static_path').val()+'/';
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
+	// static_path=$('#static_path').val(),
 	// img_domain=$urlpath.img_domain,
-	// static_source=$urlpath. ;
+	// static_source=$urlpath.static_source;
 	
 	$public.prototype = {
 		init:function(){
@@ -66,7 +67,7 @@ define(function (require, exports, module) {
 		  s = s.replace(/ /g, "&nbsp;");   
 		  s = s.replace(/\'/g, "&#39;");   
 		  s = s.replace(/\"/g, "&quot;");   
-		  s = s.replace(/\n/g, "<br>");   
+		  s = s.replace(/\n|\r\n/g, "<br>");  
 		  return s;   
 		},
 		html_decode : function(str){
