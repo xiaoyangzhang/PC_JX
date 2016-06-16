@@ -24,6 +24,10 @@ define(function (require, exports, module) {
 			});
 			$review.distanceFun();
 			$self.delFun();
+			var bigW = $("#eredar .eredar-right").width() - 40;
+			var positionW = $(".jiuniu_pagination").width();
+			/* console.log(bigW,positionW); */
+			$(".jiuniu_pagination").css("margin-left",((bigW-positionW)/2) + 'px');
 			
 			$(document).on('click','.LinkeToPage',function(){
 				$('input[name="page"]').val($(this).attr('pageno'));
