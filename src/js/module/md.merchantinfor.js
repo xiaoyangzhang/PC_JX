@@ -105,7 +105,9 @@ define(function (require, exports, module) {
 
 					var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($('.groupimg'),'请选择图片！'),
 					allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
-					params=$public.paramcompare($('#forminfo').serializeArray());
+					params=$public.paramcompare($('#forminfo').serializeArray(),function(data){
+						data.saleScope=data.saleScope.replace(/\r\n/g, '\n');
+					});
 					/*console.log(JSON.stringify(params));*/
 					if(validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid){
 						$public.dialog.waiting();
