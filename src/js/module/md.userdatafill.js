@@ -78,7 +78,9 @@ define(function (require, exports, module) {
 			//下一页并保存
 			$('.nxt').on('click',function(){
 				var allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
-					params=$public.paramcompare($('#forminfo').serializeArray()),groupimgvalid=true;
+					params=$public.paramcompare($('#forminfo').serializeArray(),function(data){
+						data.saleScope=data.saleScope.replace(/\r\n/g, '\n');
+					}),groupimgvalid=true;
 					if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
 					if(validfm.check()&&allimgvalid&&groupimgvalid){
 						$public.dialog.waiting();
