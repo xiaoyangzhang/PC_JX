@@ -32,7 +32,8 @@ define(function (require, exports, module) {
 	fileuploadURL=$('#filegw_url').val()+'/',
 	site_path=$('#root_path').val()+'/',
 	img_domain=$('#tfs').val(),
-	static_source=$('#static_path').val()+'/';
+	static_path=$('#static_path').val(),
+	static_source=static_path.substring(0,static_path.lastIndexOf('/')+1);
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// img_domain=$urlpath.img_domain,
@@ -257,7 +258,7 @@ define(function (require, exports, module) {
 	    actiondata:function (province,city,is_check) {
 			//加载联动数据
 	        $.ajax({
-	            url : static_source+'src/js/allcity.js',
+	            url : static_path+'/js/allcity.js',
 	            dataType : "jsonp",
 	            jsonpCallback : "callback",
 	            success : function(data){
@@ -319,7 +320,7 @@ define(function (require, exports, module) {
 	    procityaredata:function (province,city,area,is_check) {
 			//加载联动数据
 	        $.ajax({
-	            url : static_source+'src/js/allcity.js',
+	            url : static_path+'/js/allcity.js',
 	            dataType : "jsonp",
 	            jsonpCallback : "callback",
 	            success : function(data){
