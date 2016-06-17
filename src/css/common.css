@@ -4,6 +4,7 @@ body{background: #f4f4f4;}
 .comwidth{width:1190px;margin-left:auto;margin-right:auto;}
 select{padding:5px 0; border:1px solid #ddd;min-width:90px;}
 input[type=text]{border:1px solid #ddd;padding:0 5px;outline: none;}
+input[type=checkbox],input[type=radio]{width:14px;height:14px;}
 textarea{border:1px solid #ddd;}
 
 /***************************圆图像（兼容IE6、IE7、IE8）***********************/
@@ -64,10 +65,10 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 
 /***************************弹出框***********************/
 .dialog{position: fixed;width:100%;height:1000px;z-index: 999;left:0;top:0;display: none;}
-.dialog .bgmeng{background-color:#000; opacity:.5;filter:alpha(opacity=50);width:100%;height:1000px;position: absolute;z-index: 999;}
+.dialog .bgmeng{background-color:#000; opacity:.5;filter:alpha(opacity=50);width:100%;position: absolute;z-index: 999;}
 .dialog .msg{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;text-align: center;
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border-radius:6px;}
-.dialog .content-box{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;text-align: center;
+.dialog .content-box{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:50%;left:50%;text-align: center;
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border:2px solid #ccc;}
 .dialog .content-box .close-tip{text-align: right;}
 .dialog .content-box .close-tip i{float: right; display: block;width:30px;height:30px;background:url('../../img/close.png') no-repeat center;cursor: pointer;
@@ -76,7 +77,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
   -moz-transition:all .6s;
   -o-transition:all .6s;
   -ms-transition:all .6s;}
-.dialog .content-box .container{padding:10px;}
+.dialog .content-box .container{padding:10px;position: relative;}
 .dialog .content-box .close-tip i:hover{transform: rotate(180deg);}
 .dialog .content-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;}
 .dialog .content-box .close-tip h2{margin-bottom:-1px;width:82px;text-align:center;color:#ffaf00;font-size:20px;
@@ -166,7 +167,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     width: auto;
     height: 34px;
     line-height: 34px;
-    padding-left: 10px;
+    padding-left: 5px;
     cursor: pointer;
     overflow: hidden;
     white-space: nowrap;
@@ -425,7 +426,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     height: 172px;
     top:-168px;
     left:-58px;
-    background: url('../../img/downapp_new/qr_code_tip.png') no-repeat center center;
+    background: url('../../img/qr_code_tip.png') no-repeat center center;
 }
 .jiux-footer .footer-top li{
     float: left;
@@ -477,3 +478,13 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 #login-pop-frame p.first > a{float:right;color:#fa4619;text-decoration:underline;}
 #login-pop-frame p.last{text-align:center;padding:14px 0;}
 #login-pop-frame p.last > a{display:inline-block;margin-left:1em;color:#fa4619;}
+
+/*----------------------------------------翻页按钮--------------------------------------------*/
+.jiuniu_pagination {position: absolute;bottom:0;}
+.jiuniu_pagination .pager{font-size:0;margin:20px 0;}
+.jiuniu_pagination .disabled a{color:#ccc;}
+.jiuniu_pagination li{display:inline-block;*display:inline;*zoom:1;margin-right:10px;}
+.jiuniu_pagination li.active a{background: #ffaf00;color:#333;}
+.jiuniu_pagination li a,.jiuniu_pagination li span{height: 29px;line-height: 29px;vertical-align: middle;}
+.jiuniu_pagination li a{display: inline-block;border:1px solid #ddd;font-size:14px;padding:0 10px;}
+.jiuniu_pagination li select{min-width:50px; padding:4px 0;}

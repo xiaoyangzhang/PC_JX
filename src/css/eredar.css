@@ -2,7 +2,7 @@
 /*右侧达人信息*/
 #eredar .eredar-right{width: 970px;background-color: #fff;float: right;}
 #eredar .eredar-right .eredar-info{width:892px;margin: 40px 0 15px 40px;border-bottom:solid 1px #e5e5e5;}
-#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;line-height: 20px;color: #999;margin-left: 40px;padding: 0 0 15px;margin-bottom:-1px;}
+#eredar .eredar-right .eredar-info ul li{float:left;font-size: 20px;color: #999;margin-left: 40px;padding: 0 0 15px;}
 #eredar .eredar-right .eredar-info ul li.first{margin-left: 0px;}
 #eredar .eredar-right .eredar-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
 #eredar .eredar-right .eredar-list1{padding: 10px 0 0 60px;}
@@ -17,7 +17,8 @@
 .eredar-list1 table tr td .headID  .upload{position: absolute;bottom: 0; opacity: 0;filter: alpha(opacity=0);cursor: pointer;}
 .eredar-list1 table tr .spe label:first-child,#eredar .eredar-right .eredar-list1 p .radio input:first-child{margin-left: 0px;}
 .eredar-list1 table tr .spe label{margin-left: 5px;cursor: pointer;}
-.eredar-list1 table tr td  .lab{color: #999;vertical-align: bottom;margin-left: 19px;}
+.eredar-list1 table tr td .lab{color: #999;vertical-align: bottom;margin-left: 19px;vertical-align: middle;}
+.eredar-list1 table tr td .lab .change{color: #999;}
 .eredar-list1 table tr td  .spelab{margin-left: 0px;}
 .eredar-list1 table tr .tbtxt{vertical-align: middle;}
 .eredar-list1 table tr .abuteMe{vertical-align: top;}
@@ -118,4 +119,46 @@ table tr td button{
 .table div {font-size: 12px;}
 table tr td div.t-name{font-size: 13px;color:#000;padding-bottom: 10px;}
 .t-userType,.t-date,.t-userType{color:#acacac;font-size: 12px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

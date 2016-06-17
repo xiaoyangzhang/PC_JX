@@ -1,6 +1,6 @@
 /***************************用户协议***************************/
 .ag-content{padding-left:72px;padding-right:72px;padding-bottom:27px;border-bottom:1px solid #ddd;margin-left:auto;margin-right:auto;width:996px;}
-.agreement-box{border:1px solid #ddd;background: #fff;overflow: hidden;margin-bottom:30px;min-height:600px;}
+.agreement-box{border:1px solid #ddd;background: #fff;overflow: hidden;margin-bottom:100px;min-height:600px;}
 .agreement-box .tit{height:44px;line-height: 40px;padding-left:30px;background: #f7f7f7;border-top:1px solid #ddd;}
 .agreement-box .titbox{width:1140px;margin:auto;padding-bottom:22px;}
 .agreement-box h2{margin:auto;text-align: center;font-size:20px;color:#333;padding:23px;}
@@ -21,9 +21,11 @@
 .ag-content .pt_zz span a:hover{text-decoration:underline;}
 /***************************等待审核/审核不通过***************************/
 .agreement-box .waiting i{display: inline-block;width:36px;height:36px;background: url('../../img/spripte.png') no-repeat -75px 0;}
-.agreement-box .waiting .message{background: #FFFFE5;border:1px solid #F39A00;width:418px;height:52px;padding-top:8px;text-align: center;margin:10px auto;}
+.agreement-box .waiting .message{background: #FFFFE5;border:1px solid #F39A00;width:296px;text-align: center;margin:10px auto;
+padding: 11px 60px;}
+.agreement-box .waiting .message .error{text-align: left;}
 .agreement-box .nothrough i{background: url('../../img/spripte.png') no-repeat -111px 0;}
-.agreement-box .nothrough .bcs{color:#ed6c44;}
+.agreement-box .nothrough .bcs{color:#FD514F;max-width:296px;word-wrap: break-word;margin-left:10px;}
 
 /***************************填写资料***************************/
 .agreement-box .wdfill{width:100%;}
@@ -39,6 +41,7 @@
 .w280{width:280px !important;}
 .w250{width:250px !important;}
 .w150{width:150px !important;}
+
 
 .fm_md_two table td.tbtxt,.fm_md_three table td.tbvt{text-align: right;vertical-align: top;}
 .fm_md_two table td.tbtxt label,.fm_md_three table td.tbvt label{display: inline-block;margin-top:34px;}
@@ -77,3 +80,37 @@ iframe{display: none;}
 .tipbox p{width:369px;text-align: left;font-size:14px;line-height: 22px;margin-left:10px;color:#999;}
 .othimb .inblock{margin-top:8px;}
 .othimb .Validform_checktip{margin-top:40px;}
+
+
+
+
+
+
+
+.agreement-box .fill-c .progress{width:845px;margin:45px auto;}
+.agreement-box .fill-c  .progress .step{float:left;height:8px;width:169px;background: #dfdfdf;position: relative;}
+.agreement-box .fill-c  .progress .step div{position:absolute;left: 63px;top:-15px; line-height: 36px;font-size:20px; text-align: center;color:#fff;
+	width:37px;height:37px;background: url('../../img/spripte.png') no-repeat 0 0;}
+.agreement-box .fill-c  .progress .step label{display: block;text-align: center;margin-top:28px;color: #999999;}
+.agreement-box .fill-c  .progress .step-on{background: #ed6c44;}
+.agreement-box .fill-c  .progress .step-on div{background: url('../../img/spripte.png') no-repeat -37px 0;}
+.agreement-box .fill-c  .progress .step-on label{display: block;color:#ed6c44;}
+.agreement-box .fill-c  .progress .step-fr{border-top-right-radius: 0px !important;border-bottom-right-radius: 0px !important;}
+.agreement-box .fill-c  .progress .ya{border-top-right-radius: 6px !important;border-bottom-right-radius: 6px !important;}
+
+.zh_scl{margin-bottom: 20px;}
+.zh_sc .zfd{float: left;width: 416px;height:110px;padding-left: 130px;text-align: right;margin-top: 25px; }
+.zh_sc-txt{width:205px;margin-left: 179px;padding-top: 5px;}
+.last-step{margin-left: 20px;}
+.fm_md .updateli{float: right;display: block; text-align: left;/* margin: 10px 23px; */width: 863px;margin-top: 40px;}
+.fm_md .listli{width: 195px;display: block;float: right;text-align: right;margin-right: 13px;margin-top: 40px;}
+.fl {}
+.pagesave{float: left;}
+.zhuyi{width: 665px !important;margin-right: 197px !important;}
+.lefttitle {text-align: right;display: block;  width: 186px; float: left; margin-right: 10px;}
+/* .gray9 {color: #999;display: block;float: right; text-align: right; margin-right: 76px;width: 152px;} */
+.upload-img{display: inline-block;width: 120px;height: 90px; position: relative; overflow: hidden; text-align: left;float: left;}
+.careful{margin-left: 63px;float: right;width: 171px; margin-right: 48px;text-align: left;}
+.zu-img{width: 867px;float: right;}
+
+.error_tip .error_bigbox{padding-left:10px;right:0px;}

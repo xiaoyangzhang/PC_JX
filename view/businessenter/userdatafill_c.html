@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>上传资质文件</title>
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+<link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/filldata.css">
+</head>
+<body>
+	<input type="hidden" class="subpath" value="/sellerAdmin/merchant/saveUserdata">
+	<div id="jiuxColor" class="jiuw2">
+		<div class="jiux-header wjiuxiu jiuw2 clearfix">
+			<!-- 头部左侧部分 -->
+			<div class="header-l fl clearfix">
+				<a href="http://www.test.jiuxiulvxing.com" class="fl">
+					<div class="logo">九休旅行</div>
+				</a>
+				<ul class="clearfix fl">
+					<li class="fl"><a href="http://www.test.jiuxiulvxing.com">首页</a></li>
+					<li class="fl"><a href="http://www.test.jiuxiulvxing.com/business/">九休商务</a></li>
+					<li class="fl"><a href="http://www.test.jiuxiulvxing.com/app/index.html">九休旅行App</a></li>
+					<li class="fl active"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/home">商家中心</a></li>
+				</ul>
+			</div>
+			<!-- 头部右侧部分 -->
+			<div class="header-r fr clearfix">
+				<div class="tel">
+					<ul>
+						<li class="fl staticW m-r">
+							<a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">登录</a>
+							<span class="cuttingline"></span>
+						</li>
+						<li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/register">注册</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- <form id="fm" method="post" action="/handle.php" enctype=”multipart/form-data”>
+<input type="file" name="adpicfile">
+<input type="submit" value="提交">
+</form>
+<form id='uploadform' action='/handle.php' method='post' enctype='multipart/form-data'><input type="file" name="adpicfile" class="adpicfile single">3333</form>
+	<div class="uploadPicture">  
+       <img id="imgHead" src="" width="106" height="122" alt="头像">   
+       <input type="file" id="basicInfoHead" name="basicInfoHead" /> 
+      </div>  -->
+	<div class="comwidth agreement-box mt30">
+		<div class="titbox wdfill fill-c">
+			<div class="progress clearfix">
+				<div class="step start step-on step-fl">
+					<div class="step1">1</div>
+					<label class="step1">选择身份</label>
+				</div>
+				<div class="step step-fr step-on">
+					<div class="step2">2</div>
+					<label class="step2">填写商家信息</label>
+				</div>
+				<div class="step step-fr step-on">
+					<div class="step3">3</div>
+					<label class="step3">上传资质文件</label>
+				</div>
+				<div class="step step-fr ">
+					<div class="step3">4</div>
+					<label class="step3">签署协议</label>
+				</div>
+				<div class="step step-fr ya">
+					<div class="step3">5</div>
+					<label class="step3">等待审核</label>
+				</div>
+			</div>
+		</div>
+		<div class="tabs">
+			<form id="forminfo">
+				<div class="panel">
+					<div class="tit gray6 f16 error_tip">上传资质
+						<div class="error_box">
+							<ol>
+								<li>负责人身份证过期</li>
+								<li>地址找不到</li>
+							</ol>
+						</div>
+					</div>
+
+					<div class="fm_md_two fm_md">
+						<table>
+							<tr>
+								<td class="tbtxt "><label class="bred">*</label><label>营业执照副本复印件正面：</label></td>
+								<td class="w380 w345">
+									<span class="imgbox" id="123">
+										<div class="canclick card_a">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="ddccc">
+									</span>
+								</td>
+								<td class="tbtxt w150 w217"><label class="bred">*</label><label>组织机构代码证复印件正面：</label></td>
+								<td>
+									<span class="imgbox" id="456">
+										<div class="canclick card_b">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="dhj">
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tbtxt"><label class="bred">*</label><label>税务登记证复印件正面（国税、地税均可）：</label></td>
+								<td>
+									<span class="imgbox" id="147">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="ssssss">
+									</span>
+								</td>
+								<td class="tbtxt"><label class="bred">*</label><label>开户许可证复印件正面：</label></td>
+								<td>
+									<span class="imgbox" id="258">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="ddds">
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tbtxt"><label class="bred">*</label><label>旅行社业务经营许可证复印件正面：</label></td>
+								<td>
+									<span class="imgbox" id="369">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="dsfsd">
+									</span>
+								</td>
+								<td class="tbtxt"><label class="bred">*</label><label>旅行社责任险保险单复印件正面：</label></td>
+								<td>
+									<span class="imgbox allownull" id="452">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="sdsdf">
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tbtxt"><label>联系人（经办人）身份证正面： </label></td>
+								<td>
+									<span class="imgbox allownull" id="7869">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="dsf5sd">
+									</span>
+									<div><label class="bred">*</label><label class="gray9">旅行社必填项</label></div>
+								</td>
+								<td class="tbtxt"><label>联系人（经办人）身份证反面：</label></td>
+								<td>
+									<span class="imgbox allownull" id="562">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="ds">
+									</span>
+									<div><label class="bred">*</label><label class="gray9">仅限合同签署人与联系人不一致情形时上传</label></div>
+								</td>
+							</tr>
+							<tr>
+								<td class="tbtxt"><label>因私出入境中介机构经营许可证正面： </label></td>
+								<td>
+									<span class="imgbox allownull" id="4523">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="dsf5sd">
+									</span>
+									<div><label class="bred">*</label><label class="gray9">旅行社必填项</label></div>
+								</td>
+								<td class="tbtxt"><label>水路运输许可证正面：</label></td>
+								<td>
+									<span class="imgbox allownull" id="259">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="ds">
+									</span>
+									<div><label class="bred">*</label><label class="gray9">仅限旅行社承包部门上传</label></div>
+								</td>
+							</tr>
+							<tr>
+								<td class="tbtxt"><label>联系人变更证明： </label></td>
+								<td>
+									<span class="imgbox allownull" id="345">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="dsf5sd">
+									</span>
+									<div><label class="bred">*</label><label class="gray9">旅行社必填项</label></div>
+								</td>
+								<td class="tbtxt"><label>旅行社分社补充协议：</label></td>
+								<td>
+									<span class="imgbox allownull" id="863">
+										<div class="canclick">
+											<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+										</div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile single"></a>
+										<input type="hidden" name="ds">
+									</span>
+									<div><label class="bred">*</label><label class="gray9">仅限旅行社承包部门上传</label></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="tit gray6 f16">合作合同</div>
+					<div class="fm_md_five fm_md">
+						<div class="column groupimg" id="888"><label class="bred">*</label><label>合作合同：</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+							<label class="inblock">
+								<span class="imgbox mr5 cnat">
+									<div class="canclick">
+										<img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+									</div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class='upldclik'><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden">
+								</span>
+							</label>
+						</div>
+					</div>
+					<div class="nextpage"><a class="nxt">上一步</a><a class="nxt last-step allsub">下一步并保存</a></div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script  type='text/temple' id='province-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<province.length; j++) { #>
+	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
+	    <# } #>
+	</script>
+	<script  type='text/temple' id='city-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<city.length; j++) { #>
+	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
+	    <# } #>
+	</script>
+	<script type="text/javascript" src="../../src/js/sea.js"></script>
+	<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+	<script type="text/javascript" src="../../src/js/config.js"></script>		
+	<script>seajs.use("userdataca");</script>	
+</body>
+</html>

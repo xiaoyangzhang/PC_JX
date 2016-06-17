@@ -29,18 +29,22 @@ seajs.config({
 		"md5":"module/md5.min",
 
 		"public" : "module/md.public",
+		"cus_datepicker" : "module/md.datepicker",
 		"uploadfiles" : "module/md.uploadfiles",
 		"addhotel" : "module/md.addhotel",
-		"urlpath" : "module/md.urlpath",
+		"addscenic" : "module/md.addscenic",
+		"urlpath" : "module/md.urlpath.test",
 		"test" : "module/md.test",
 		"userdatafill" : "module/md.userdatafill",
 		"eredar":"module/md.eredar.js",
 		"password":"module/md.password.js",
 		"merchant":"module/md.merchant.js",	
 		"passwordSucc":"module/md.passwordsucc.js"	,
-		"review":"module/md.review.js"	
-			
-			
+		"review":"module/md.review.js",	
+		"businessenter":"module/md.businessenter.js",	
+		"merchantinfor":"module/md.merchantinfor.js",
+		"draft":"module/md.draft.js",
+		"userdataca":"module/md.userdataca.js"
     },
     preload: ["jquery","underscore"],/*配置提取预加载模块，全局模块，所以页面都需要使用的模块*/
     debug: true // 调试模式

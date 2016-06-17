@@ -3,7 +3,7 @@ define(function (require, exports, module) {
 	require("widget"),
 	require("datepicker"),//引用时间组件
 	require("uploadfiles"),//上传文件组件
-	require("validform"),//上传文件组件
+	require("validform"),//验证组件
 	require("dropdownlist"),//下拉框组件
 	require("upload"),
 	$public=require("public"),
@@ -56,9 +56,9 @@ define(function (require, exports, module) {
 					errormsg:"财务结算账号只允许10-25个数字"
 				}],validfm=$("#forminfo").Validform(validoptions).addRule(rule);
 
-			$('#principleName_').keyup(function(){
-				$('#financeOpenName_').val($(this).val());
-			});
+			// $('#principleName_').keyup(function(){
+			// 	$('#financeOpenName_').val($(this).val());
+			// });
  
 			//渲染时间控件
 			$( "#tm" ).datepicker();
@@ -78,7 +78,9 @@ define(function (require, exports, module) {
 			//下一页并保存
 			$('.nxt').on('click',function(){
 				var allimgvalid=$public.allimgvalid($('.panel').find('.imgbox:not(".cnat")')),subpath=$('.subpath').val(),
-					params=$public.paramcompare($('#forminfo').serializeArray()),groupimgvalid=true;
+					params=$public.paramcompare($('#forminfo').serializeArray(),function(data){
+						data.saleScope=data.saleScope.replace(/\r\n/g, '\n');
+					}),groupimgvalid=true;
 					if($('.darenzh').length>0) groupimgvalid=$public.groupimgvalid($('.darenzh'),'请选择图片！');
 					if(validfm.check()&&allimgvalid&&groupimgvalid){
 						$public.dialog.waiting();

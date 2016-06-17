@@ -2,7 +2,19 @@ define(function (require, exports, module) {
 	require("json"),
 	$urlpath=require("urlpath"),
 	$public = function () {
-		this.init.apply(this, arguments);
+		Array.prototype.remove=function(dx) 
+		{ 
+		    if(isNaN(dx)||dx>this.length){return false;} 
+		    for(var i=0,n=0;i<this.length;i++) 
+		    { 
+		        if(this[i]!=this[dx]) 
+		        { 
+		            this[n++]=this[i] 
+		        } 
+		    } 
+		    this.length-=1;
+		    return this;
+		} 
 		String.prototype.Trim = function()  
 		{  
 			return this.replace(/(^\s*)|(\s*$)/g, "");  
@@ -15,25 +27,61 @@ define(function (require, exports, module) {
 		{  
 			return this.replace(/(\s*$)/g, "");  
 		}
+		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$urlpath.fileuploadURL,
-	site_path=$urlpath.site_path,
-	c_domain=$urlpath.c_domain,
-	img_domain=$urlpath.img_domain,
-	static_source=$urlpath.static_source;
+	fileuploadURL=$('#filegw_url').val()+'/',
+	site_path=$('#root_path').val()+'/',
+	img_domain=$('#tfs').val(),
+	static_path=$('#static_path').val(),
+	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
+	// fileuploadURL=$urlpath.fileuploadURL,
+	// site_path=$urlpath.site_path,
+	// static_path=$('#static_path').val(),
+	// img_domain=$urlpath.img_domain,
+	// static_source=$urlpath.static_source;
 	
 	$public.prototype = {
 		init:function(){
 			var _self=this;
 			/* 统一主域名 */
-			if(document.domain.indexOf(c_domain)!=-1)
-				document.domain = c_domain;
+			if(document.domain.indexOf('jiuxiulvxing.com')!=-1)
+				document.domain = 'jiuxiulvxing.com';
 			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){
 				$(this).css('border','1px solid #ddd');
 			});
-				_self.depath();
+
+			//杜绝编辑时自动优先激活验证
+			setTimeout(function(){
+	        	_self.isVdSelect=true;
+			},500);
+
+				 _self.depath(); 
+		},
+		html_encode : function(str){   
+		  var s = "";   
+		  if (str.length == 0) return "";   
+		  s = str.replace(/&/g, "&amp;");   
+		  s = s.replace(/</g, "&lt;");   
+		  s = s.replace(/>/g, "&gt;");   
+		  s = s.replace(/ /g, "&nbsp;");   
+		  s = s.replace(/\'/g, "&#39;");   
+		  s = s.replace(/\"/g, "&quot;");   
+		  s = s.replace(/\n|\r\n/g, "<br>");  
+		  return s;   
+		},
+		html_decode : function(str){
+		  var s = "";   
+		  if (str.length == 0) return "";   
+		  s = str.replace(/&amp;/g, "&");   
+		  s = s.replace(/&lt;/g, "<");   
+		  s = s.replace(/&gt;/g, ">");   
+		  s = s.replace(/&nbsp;/g, " ");   
+		  s = s.replace(/&#39;/g, "\'");   
+		  s = s.replace(/&quot;/g, "\"");   
+		  s = s.replace(/<br>/g, "\n");   
+		  return s;  
 		},
 		html_encode : function(str){   
 		  var s = "";   
@@ -60,48 +108,64 @@ define(function (require, exports, module) {
 		  return s;  
 		},
 		isLogin :function(data){
-			/* console.log(data); */
 			if(!data instanceof Object)
 				data=JSON.parse(data);
 			if(data.errorCode==22000000)
 				window.location=site_path+'/user/login';
 		},
-		depath :function(){
-			var hh=$("#jiuxColor").height(),fh=$("#footID").height(),el=$(".eredar-left"),er=$(".eredar-right"),
+		 depath :function(){
+			var hh=$("#jiuxColor").height(),fh=$("#footID,.jiux-footer").height(),el=$(".eredar-left"),er=$(".eredar-right"),
 				wdh=$(window).height()-hh-fh-102,auto_height=$(document).height()-hh-fh-60,
 				elh=el.height()+120,erh=er.height();
 			if(wdh>elh&&wdh>erh)
 				el.height(elh);
 			else
 				el.height(auto_height);
-		},
+		}, 
 		urlpath:{
 			eredar:site_path+'/basicInfo/talent/saveTalentInfo',
 			merchant:site_path+'/basicInfo/merchant/saveBasic',
-			updatepwd:site_path+'/account/modifyPassword'
+			updatepwd:site_path+'/account/modifyPassword',
+			gethotelist:site_path+'/hotel/queryHotelManageList',
+			getroominfo:site_path+'/hotel/queryRoomTypeListByData',
+			addhotel:site_path+'/hotel/addHotelMessageVOByData',
+			updatehotel:site_path+'/hotel/editHotelMessageVOByData',
+			getScenicList:site_path+'/scenic/queryScenicManageVOListByData',
+			getScenicTicketType:site_path+'/scenic/queryTicketListByScenicId',
+			addScenic:site_path+'/scenic/addScenicManageVOByDdata',
+			updateScenic:site_path+'/scenic/editScenicManageVOByDdata',
+			getBsScope:site_path+'/apply/getBusinessScope',
+			pageilB:site_path+'/apply/seller/pageDetailB',
+			agreement:site_path+'/apply/talent/agreement',
+			toDetailPage:site_path+'/apply/seller/toDetailPage'
 		},
 		timer:null,
+		isVdSelect:false,
 		dialog:{
 			initbox:function(){
 				var _self=this;
+				clearTimeout(_self.timer);
 				if(!_self.box) {
 					$('body').append('<div class="dialog"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
-					$('.bgmeng').on('click',function(){
-						_self.box.hide();
+					$('.bgmeng').on('click',function(ev){
+						_self.closebox();
+						$public.stopBubble(ev);
 					});
-					_self.box=$('.dialog');
+					_self.box=$('.dialog').height($(window).height());
 				}
 			},
 			closebox:function(){
 				var _self=this;
 				_self.box.hide();
-				$('.bgmeng').off().on('click',function(){
-					_self.box.hide();
+				$('.container').children('div').hide().appendTo('body');
+				$('.bgmeng').off().on('click',function(ev){
+					_self.closebox();
+					$public.stopBubble(ev);
 				});
 			},
 			waiting:function(){
 				var _self=this;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(_self.box.attr('id')=='waiting-box')
 					_self.box.fadeIn();
 				else{
@@ -112,7 +176,7 @@ define(function (require, exports, module) {
 			},
 			msg:function(value,type){
 				var _self=this;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
 				if(_self.box.attr('id')=='msg-box'){
 					$('.msg').text(value);
 					_self.box.fadeIn();
@@ -121,7 +185,7 @@ define(function (require, exports, module) {
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				clearTimeout(_self.timer);
-				_self.timer=setTimeout(function(){_self.box.hide();},2000);
+				_self.timer=setTimeout(function(){_self.closebox();},2000);
 				if(type=='success')
 					$('.msg').css('color','green');
 				else if(type=='error')
@@ -129,7 +193,8 @@ define(function (require, exports, module) {
 			},
 			content:function(n_width,n_height,title,html_content,callback,init_callback){
 				var _self=this,total_h=0;
-				if(!_self.box) _self.initbox();
+				_self.initbox();
+				$('.bgmeng').off();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
 				if(_self.box.attr('id')=='content-box'){
@@ -140,14 +205,17 @@ define(function (require, exports, module) {
 					$('.content-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
 					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
-					$('.container').height(n_height-125).append(html_content);
-					$('.ok').off().on('click',function(){
+					$('.container').height(n_height-125);
+					$('.ok').off().on('click',function(ev){
 						callback();
+						$public.stopBubble(ev);
 					});
-					$('.cancel,.close-tip').off().on('click',function(){
-						_self.box.hide();
+					$('.cancel,.close-tip i').off().on('click',function(ev){
+						_self.closebox();
+						$public.stopBubble(ev);
 					});
 				}
+				html_content.appendTo($('.container'));
 				init_callback();
 			}
 		},
@@ -191,7 +259,7 @@ define(function (require, exports, module) {
 		           //否则就是PC浏览器打开
 		    }
 		},
-		paramcompare:function(arr){
+		paramcompare:function(arr,callback){
 			var result={},temp={};
 			for(var i=0;i<arr.length;i++){
 				if(temp[arr[i].name]){
@@ -208,31 +276,45 @@ define(function (require, exports, module) {
 					temp[arr[i].name]=true;
 				}
 			}
+			if(callback instanceof Function) callback(result);
 			return result;
 		},
+		//二级联动
 	    actiondata:function (province,city,is_check) {
 			//加载联动数据
 	        $.ajax({
-	            url : static_source+'src/js/allcity.js',
+	            url : static_path+'/js/allcity.js',
 	            dataType : "jsonp",
 	            jsonpCallback : "callback",
 	            success : function(data){
 	                setTimeout(function(){
-	                  $("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
+	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
 	                            $(this).attr('selected','selected');
 	                        }
 	                    });
+	                    function clear_select($obj){
+                        	$obj.find('li:eq(0)~li').remove();
+                        	$obj.filter(function(){
+                        		$(this).find('.select-button').val($(this).find('li:eq(0)').first().text());
+                        	});
+                        	$obj.find(':hidden').val('');
+                        	$obj.next('.Validform_checktip').remove();
+                        }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
+								width:110,
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
-		                            for(var c_key in data.city){
-		                                if(c_key==cur_p){
-		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-		                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
-		                                }
-		                            }
+			                        if(cur_p){
+			                            for(var c_key in data.city){
+			                                if(c_key==cur_p){
+			                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+			                                    .selectlist({width:180,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
+			                                }
+			                            }
+			                        }else
+			                        	clear_select($("#"+city));
 		                            if(!is_check)$public.selectvalid(this.element.id);
 			                    },
 			                    onSuccess:function(){
@@ -245,60 +327,76 @@ define(function (require, exports, module) {
 					                            for(var c_key in data.city){
 					                                if(c_key==cur_p){
 					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-					                                    .selectlist({width:150,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
+					                                    .selectlist({width:180,onChange:function(){if(!is_check)$public.selectvalid(this.element.id);}});
 					                                }
 					                            }
-					                            if(!is_check)$public.selectvalid(_self.element.id);
+					                            //if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });
 			                    }
 		                });
-						$('#'+city).selectlist({width: 150});
+						$('#'+city).selectlist({width: 180});
 	                },100);
 	            }             
 	        });
 		},
+		//三级联动
 	    procityaredata:function (province,city,area,is_check) {
 			//加载联动数据
 	        $.ajax({
-	            url : static_source+'src/js/allcity.js',
+	            url : static_path+'/js/allcity.js',
 	            dataType : "jsonp",
 	            jsonpCallback : "callback",
 	            success : function(data){
 	                setTimeout(function(){
-	                  $("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
+	                  	$("#"+province).empty().append(_.template($("#province-tpl").html(),data)).children('option').filter(function(){
 	                        if($(this).val()==$('.province_h').val()){
 	                            $(this).attr('selected','selected');
 	                        }
 	                    });
+	                    function clear_select($obj){
+                        	$obj.find('li:eq(0)~li').remove();
+                        	$obj.filter(function(){
+                        		$(this).find('.select-button').val($(this).find('li:eq(0)').first().text());
+                        	});
+                        	$obj.find(':hidden').val('');
+                        	$obj.next('.Validform_checktip').remove();
+                        }
 						//渲染下拉框控件 
 						$('#'+province).selectlist({
+								width:110,
 								onChange:function(){
 			                        var cur_p=$('input[name="province"]').val();
-		                            for(var c_key in data.city){
-		                                if(c_key==cur_p){
-		                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-		                                    .selectlist({
-		                                    	width:150,
-		                                    	onChange:function(){
-							                        var cur_p=$('input[name="city"]').val();
-						                            for(var c_key in data.area){
-						                                if(c_key==cur_p){
-						                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
-						                                    .selectlist({
-						                                    	width:200,
-						                                    	onChange:function(){
-						                                    		if(!is_check)$public.selectvalid(this.element.id);
-							                                    }
-							                                });
-						                                }
-						                            }
-		                                    		if(!is_check)$public.selectvalid(this.element.id);
-			                                    }
-			                                });
-		                                }
-		                            }
+			                        if(cur_p){
+			                            for(var c_key in data.city){
+			                                if(c_key==cur_p){
+			                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+			                                    .selectlist({
+			                                    	width:180,
+			                                    	onChange:function(){
+								                        var cur_c=$('input[name="city"]').val();
+				                        				if(cur_c){
+								                            for(var c_key in data.area){
+								                                if(c_key==cur_c){
+								                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+								                                    .selectlist({
+								                                    	width:180,
+								                                    	onChange:function(){
+								                                    		if(!is_check)$public.selectvalid(this.element.id);
+									                                    }
+									                                });
+								                                }
+								                            }
+								                        }else
+								                        	clear_select($("#"+area));
+			                                    		if(!is_check)$public.selectvalid(this.element.id);
+				                                    }
+				                                });
+			                                }
+			                            }
+			                        }else
+			                        	clear_select($("#"+city+",#"+area));
 		                            if(!is_check)$public.selectvalid(this.element.id);
 			                    },
 			                    onSuccess:function(){
@@ -309,60 +407,75 @@ define(function (require, exports, module) {
 				                            $(this).trigger('autoclick');
 				                            setTimeout(function(){
 						                        var cur_p=$('input[name="province"]').val();
-					                            for(var c_key in data.city){
-					                                if(c_key==cur_p){
-					                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
-					                                    .selectlist({
-					                                    	width:150,
-					                                    	onChange:function(){
-										                        var cur_p=$('input[name="city"]').val();
-									                            for(var c_key in data.area){
-									                                if(c_key==cur_p){
-									                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
-									                                    .selectlist({
-									                                    	width:200,
-									                                    	onChange:function(){
-									                                    		if(!is_check)$public.selectvalid(this.element.id);
-										                                    }
-										                                });
-									                                }
-									                            }
-					                                    		if(!is_check)$public.selectvalid(this.element.id);
-						                                    },
-										                    onSuccess:function(){
-											                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',
-											                    olis=$('#'+this.element.id).find('li'),_self=this;
-											                    olis.filter(function(){
-											                        if($(this).attr('data-value')==cur_value){
-											                            $(this).trigger('autoclick');
-											                            setTimeout(function(){
-													                        var cur_p=$('input[name="city"]').val();
-												                            for(var c_key in data.area){
-												                                if(c_key==cur_p){
-												                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
-												                                    .selectlist({
-												                                    	width:200,
-												                                    	onChange:function(){
-												                                    		if(!is_check)$public.selectvalid(this.element.id);
-													                                    }
-													                                });
-												                                }
-												                            }
-												                            if(!is_check)$public.selectvalid(_self.element.id);
-											                            },100);
-											                        }
-											                    });
-										                    }
-						                                });
-					                                }
-					                            }
-					                            if(!is_check)$public.selectvalid(_self.element.id);
+				                        		if(cur_p){
+						                            for(var c_key in data.city){
+						                                if(c_key==cur_p){
+						                                    $("#"+city).empty().append(_.template($("#city-tpl").html(),{city: data.city[c_key]}))
+						                                    .selectlist({
+						                                    	width:180,
+						                                    	onChange:function(){
+											                        var cur_c=$('input[name="city"]').val();
+					                        						if(cur_c){
+											                            for(var c_key in data.area){
+											                                if(c_key==cur_c){
+											                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+											                                    .selectlist({
+																					width: 180,
+																					onChange:function(){
+														                        		if(!is_check)$public.selectvalid(this.element.id);
+														                            }
+														                        });
+											                                }
+											                            }
+											                        }else
+											                        	clear_select($("#"+area));
+						                                    		if(!is_check)$public.selectvalid(this.element.id);
+							                                    },
+											                    onSuccess:function(){
+												                    var cur_value=$('#'+this.element.id+'_').val(),cur_value=cur_value?cur_value:'fail',
+												                    olis=$('#'+this.element.id).find('li'),_self=this;
+												                    olis.filter(function(){
+												                        if($(this).attr('data-value')==cur_value){
+												                            $(this).trigger('autoclick');
+												                            setTimeout(function(){
+														                        var cur_c=$('input[name="city"]').val();
+						                        								if(cur_c){
+														                            for(var c_key in data.area){
+														                                if(c_key==cur_c){
+														                                    $("#"+area).empty().append(_.template($("#area-tpl").html(),{area: data.area[c_key]}))
+														                                    .selectlist({
+																								width: 180,
+																								onChange:function(){
+																	                        		if(!is_check)$public.selectvalid(this.element.id);
+																	                            }
+																	                        });
+														                                }
+														                            }
+														                        }else
+														                        	clear_select($("#"+area));
+													                            //if(!is_check)$public.selectvalid(_self.element.id);
+												                            },100);
+												                        }
+												                    });
+											                    }
+							                                });
+						                                }
+						                            }
+						                        }else
+						                        	clear_select($("#"+city+",#"+area));
+					                            //if(!is_check)$public.selectvalid(_self.element.id);
 				                            },100);
 				                        }
 				                    });
 			                    }
 		                });
-						$('#'+city).selectlist({width: 150});
+						$('#'+city).selectlist({width: 180});
+						$("#"+area).selectlist({
+							width: 180,
+							onChange:function(){
+                        		if(!is_check)$public.selectvalid(this.element.id);
+                            }
+                        });
 	                },100);
 	            }             
 	        });
@@ -418,22 +531,24 @@ define(function (require, exports, module) {
 		//验证下拉框
 		selectvalid:function(id){
 			var result=true,$droplist=null;
-			if(id)
-				$droplist=$('input[name="'+id+'"]');
-			else
-				$droplist=$('.select-wrapper input:hidden');
-            $droplist.filter(function(){
-            	var $droplistprent=$(this).closest('.select-wrapper');
-        		$droplistprent.next('.Validform_checktip').remove();
-            	if($(this).val()!=''){
-            		$droplistprent.find('.select-button').css('background','#fff');
-            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
-            	}else{
-            		$droplistprent.find('.select-button').css('background','#ffe7e7');
-            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
-					result=false;
-            	}
-            });
+			if(this.isVdSelect){
+				if(id)
+					$droplist=$('input[name="'+id+'"]');
+				else
+					$droplist=$('.select-wrapper input:hidden');
+	            $droplist.filter(function(){
+	            	var $droplistprent=$(this).closest('.select-wrapper');
+	        		$droplistprent.next('.Validform_checktip').remove();
+	            	if($(this).val()!=''){
+	            		$droplistprent.find('.select-button').css('background','#fff');
+	            		$droplistprent.after('<span class="Validform_checktip Validform_right Select_tip"></span>');
+	            	}else{
+	            		$droplistprent.find('.select-button').css('background','#ffe7e7');
+	            		$droplistprent.after('<span class="Validform_checktip Validform_wrong Select_tip"></span>');
+						result=false;
+	            	}
+	            });
+	        }
 			return result;
 		},
 		//判断上传文件格式是否满足条件
@@ -491,8 +606,7 @@ define(function (require, exports, module) {
 		        e.preventDefault(); 
 		    //IE中阻止函数器默认动作的方式 
 		    else 
-		        window.event.returnValue = false; 
-		    return false; 
+		        window.event.returnValue = false;
 		},
     	dateFormat: function (date, format) {
 	        format = format || 'yyyy-MM-dd hh:mm:ss';

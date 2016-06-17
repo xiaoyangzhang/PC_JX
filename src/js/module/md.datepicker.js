@@ -1,319 +1,390 @@
 define(function (require, exports, module) {
-	$public=require("public"),
+	$public=require("public");
 	$datepicker = function () {
-		this.init.apply(this, arguments);
-	};
-	$datepicker.prototype = {
-		config : {
-			lunarInfo : new Array(
-			0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,
-			0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,
-			0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970,
-			0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950,
-			0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557,
-			0x06ca0,0x0b550,0x15355,0x04da0,0x0a5d0,0x14573,0x052d0,0x0a9a8,0x0e950,0x06aa0,
-			0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0,
-			0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b5a0,0x195a6,
-			0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570,
-			0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x055c0,0x0ab60,0x096d5,0x092e0,
-			0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5,
-			0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930,
-			0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530,
-			0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,
-			0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0),
-			solarMonth : new Array(31,28,31,30,31,30,31,31,30,31,30,31),
-			Animals : new Array("鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"),
-			solarTerm : new Array("小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"),
-			sTermInfo : new Array(0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758),
-			nStr1 : new Array('日','一','二','三','四','五','六','七','八','九','十'),
-			nStr2 : new Array('初','十','廿','卅'),
-			sFtv : new Array(
-			  "0101 元旦",
-			  "0214 情人节",
-			  "0308 妇女节",
-			  "0312 植树节",
-			  "0315 消费者权益日",
-			  "0401 愚人节",
-			  "0501 劳动节",
-			  "0504 青年节",
-			  "0512 护士节",
-			  "0601 儿童节",
-			  "0701 建党节",
-			  "0801 建军节",
-			  "0910 教师节",
-			  "0928 孔子诞辰",
-			 "1001 国庆节",
-			  "1006 老人节",
-			  "1024 联合国日",
-			  "1224 平安夜",
-			  "1225 圣诞节"),
-			lFtv : new Array(
-			  "0101 春节",
-			  "0115 元宵节",
-			  "0505 端午节",
-			  "0707 七夕情人节",
-			  "0715 中元节",
-			  "0815 中秋节",
-			  "0909 重阳节",
-			  "1208 腊八节",
-			  "1224 小年")
-		},
-		init:function(){
-			var _self=this;
-			_self.xiongzhaoling='xiongzhaoling';
-			_self.Today = new Date();
 
-			_self.SY=$('#SY').get(0);
-			_self.SM=$('#SM').get(0);
-			_self.CLD=$('#CLD').get(0);
-			_self.tY=_self.Today.getFullYear(),
-			_self.tM=_self.Today.getMonth(),
-			_self.tD=_self.Today.getDate(),
-			_self.mat=9,
-			_self.fat=9,
-			_self.cld=null;
-		},
-		test:function(){alert(this.SY.length);},
-		//返回农历y年的总天数
-		lYearDays:function(y){
-			this.test()
-			var _self=this;
-		    var i, sum = 348;
-		    for(i=0x8000; i>0x8; i>>=1)sum+=(_self.config.lunarInfo[y-1900]&i)?1:0;
-		    return(sum+leapDays(y));
-		},
-		//返回农历y年闰月的天数
-		leapDays:function(y){
-			var _self=this;
-		     if(_self.leapMonth(y))  return((_self.config.lunarInfo[y-1900] & 0x10000)? 30: 29);
+		/****************************************************价格日历********************************************/
+		this.solarMonth=new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+		this.nStr1 = new Array('日','一','二','三','四','五','六','七','八','九','十');
+
+		this.rangedays=90;
+		this.empty_ckbox={};
+		//保存y年m+1月的相关信息
+		this.fat=this.mat=9;
+		//在表格中显示公历和农历的日期,以及相关节日
+		this.cld,this.isCtrl=false;
+		//用自定义变量保存当前系统中的年月日
+		this.Today = new Date();
+		this.tY = this.Today.getFullYear();
+		this.tM = this.Today.getMonth();
+		this.tD = this.Today.getDate();
+
+		this.lunarInfo=new Array(
+		0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,
+		0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,
+		0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970,
+		0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950,
+		0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557,
+		0x06ca0,0x0b550,0x15355,0x04da0,0x0a5d0,0x14573,0x052d0,0x0a9a8,0x0e950,0x06aa0,
+		0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0,
+		0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b5a0,0x195a6,
+		0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570,
+		0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x055c0,0x0ab60,0x096d5,0x092e0,
+		0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5,
+		0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930,
+		0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530,
+		0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,
+		0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0);
+
+
+	    this.supplierCalendar={
+	        "seller_id":$('input[name="sellerId"]').val(),
+	        "hotel_id":$('input[name="hotelId"]').val(),
+	        "sku_flag":'',
+	        "bizSkuInfo":[]
+	    };
+
+		this.init.apply(this, arguments);
+
+	}
+	$datepicker.prototype = {
+		  init:function(){
+		  	var _self=this;
+
+		  	if($('.rds').val()) _self.rangedays=$('.rds').val();
+
+			//设置价和库存
+			$('.setvl').on('click',function(){
+				var temp='',$dtbx=$('.day .choiced .dtbx'),price=$('.price').val(),stock=$('.stock').val();
+				if($dtbx.length>0){
+					if(!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($('.price').val())){
+						$public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数','error');
+						$('.price').focus();
+						return;
+					}
+					if(!/^[1-9]\d{0,5}$/.test($('.stock').val())){
+						$public.dialog.msg('“库存”为数字,最大6位整数','error');
+						$('.stock').focus();
+						return;
+					}
+					$dtbx.filter(function(){
+						_self.set_tdvalue($(this),price,stock);
+						_self.set_chahevalue(stock,price,$(this).parent().find('font').html());
+					});
+					$('input[name="supplierCalendar"]').val(JSON.stringify(_self.supplierCalendar));
+				}else
+					$public.dialog.msg('请选择要设置的日期','error');
+			});
+
+			//清除价格和库存
+			$('.clearvl').on('click',function(){
+				var temp='',$dtbx=$('.day .choiced .dtbx');
+				if($dtbx.length>0){
+					$dtbx.filter(function(){
+						$(this).find('.tipvl').remove();
+						_self.del_chahevalue($(this).parent().find('font').html());
+					});
+					$(document).trigger('click');
+					$('.price,.stock').val('');
+					$('input[name="supplierCalendar"]').val(JSON.stringify(_self.supplierCalendar));
+				}else
+					$public.dialog.msg('请选择要清除信息的日期','error');
+			});
+
+			$('.setvalue').on('click',function(ev){
+				$public.stopBubble(ev);
+			});
+
+			$('.tdyears .prev').on('click',function(ev){
+				var cur_years=parseInt($('#SY').text());
+				$('#SY').text(cur_years-1);
+				_self.changeCld();
+				$public.stopBubble(ev);
+			});
+			$('.tdyears .next').on('click',function(ev){
+				var cur_years=parseInt($('#SY').text());
+				$('#SY').text(cur_years+1);
+				_self.changeCld();
+				$public.stopBubble(ev);
+			});
+			$('.tdmonth li').on('click',function(ev){
+		    	$('.tdmonth li').removeClass('on');
+		    	$(this).addClass('on');
+				_self.changeCld();
+				$public.stopBubble(ev);
+			});
+			$('.tdmonth li').on('click',function(ev){
+		    	$('.tdmonth li').removeClass('on');
+		    	$(this).addClass('on');
+				_self.changeCld();
+				$public.stopBubble(ev);
+			});
+
+			window.document.onclick = function (){
+	  			$('.day td').filter(function(){
+	  				if($(this).attr('class')){
+						$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
+						$(this).find('label').css('color','#666');
+					}
+	  			});
+	  			if(!_self.isCtrl) _self.empty_ckbox={};
+			}
+			window.document.onkeydown = function (evt){
+				evt = evt || window.event || arguments.callee.caller.arguments[0];
+				if(evt.keyCode == 17) _self.isCtrl=true;
+			}
+			window.document.onkeyup = function (evt){
+				evt = evt || window.event || arguments.callee.caller.arguments[0];
+				if(evt.keyCode == 17) _self.isCtrl=false;
+			}
+
+			_self.initial();
+
+		  },
+		  //返回农历y年的总天数
+		  lYearDays:function(y) {
+		     var i, sum = 348;
+		     for(i=0x8000; i>0x8; i>>=1)sum+=(this.lunarInfo[y-1900]&i)?1:0;
+		     return(sum+this.leapDays(y));
+		  },
+		  //返回农历y年闰月的天数
+		  leapDays:function(y) {
+		     if(this.leapMonth(y))  return((this.lunarInfo[y-1900] & 0x10000)? 30: 29);
 		     else return(0);
-		},
-		//判断y年的农历中那个月是闰月,不是闰月返回0
-		leapMonth:function(y){
-			var _self=this;
-		     return(_self.config.lunarInfo[y-1900]&0xf);
-		},
-		//返回农历y年m月的总天数
-		monthDays:function(y,m){
-			var _self=this;
-		     return((_self.config.lunarInfo[y-1900]&(0x10000>>m))?30:29);
-		},
-		//算出当前月第一天的农历日期和当前农历日期下一个月农历的第一天日期
-		Dianaday:function(objDate){
-		     var i, leap=0, temp=0;
-		     var baseDate = new Date(1900,0,31);
-		     var offset   = (objDate - baseDate)/86400000;
-		     this.dayCyl = offset+40;
-		     this.monCyl = 14;
-		     for(i=1900; i<2050 && offset>0; i++) {
-		        temp = lYearDays(i)
-		        offset -= temp;
-		       this.monCyl += 12;
-		     }
-		     if(offset<0) {
-		        offset += temp;
-		        i--;
-		        this.monCyl -= 12;
-		     }
-		     this.year = i;
-		     this.yearCyl=i-1864;
-		    leap = _self.leapMonth(i); //闰哪个月
-		    this.isLeap = false;
-		    for(i=1; i<13 && offset>0; i++) {
-		       if(leap>0 && i==(leap+1) && this.isLeap==false){    //闰月
-		           --i; this.isLeap = true; temp = leapDays(this.year);}
-		       else{
-		          temp = _self.monthDays(this.year, i);}
-		       if(this.isLeap==true && i==(leap+1)) this.isLeap = false;    //解除闰月
-		       offset -= temp;
-		       if(this.isLeap == false) this.monCyl++;
-		    }
-		    if(offset==0 && leap>0 && i==leap+1)
-		       if(this.isLeap){ this.isLeap = false;}
-		       else{this.isLeap=true;--i;--this.monCyl;}
-		    if(offset<0){offset+=temp;--i;--this.monCyl;}
-		    this.month=i;
-		    this.day=offset+1;
-		},
-		//返回公历y年m+1月的天数
-		solarDays:function(y,m){
-			var _self=this;
+		  },
+		  //判断y年的农历中那个月是闰月,不是闰月返回0
+		  leapMonth:function(y){
+		     return(this.lunarInfo[y-1900]&0xf);
+		  },
+		  //返回农历y年m月的总天数
+		  monthDays:function(y,m){
+		     return((this.lunarInfo[y-1900]&(0x10000>>m))?30:29);
+		  },
+		 //返回公历y年m+1月的天数
+		 solarDays:function(y,m){
 		    if(m==1)
 		       return(((y%4==0)&&(y%100!=0)||(y%400==0))?29:28);
 		    else
-		       return(_self.config.solarMonth[m]);
-		},
-		//记录公历和农历某天的日期
-		calElement:function(sYear,sMonth,sDay,week,lYear,lMonth,lDay,isLeap){
-	       this.isToday = false;
-	       //公历
-	       this.sYear = sYear;
-	       this.sMonth = sMonth;
-	       this.sDay = sDay;
-	       this.week = week;
-	       //农历
-	       this.lYear = lYear;
-	       this.lMonth = lMonth;
-	       this.lDay = lDay;
-	       this.isLeap = isLeap;
-	       //节日记录
-	       this.lunarFestival = ''; //农历节日
-	       this.solarFestival = ''; //公历节日
-	       this.solarTerms = ''; //节气
-		},
-		//返回某年的第n个节气为几日(从0小寒起算)
-		sTerm:function(y,n){
-			var _self=this;
-		    var offDate = new Date((31556925974.7*(y-1900)+_self.config.sTermInfo[n]*60000)+Date.UTC(1900,0,6,2,5));
-		    return(offDate.getUTCDate());
-		},
-		//保存y年m+1月的相关信息
-		calendar:function(y,m){
-			var _self=$datepicker.prototype;
-		    fat=mat=0;
-		    var lDPOS = new Array(3);
-		    var sDObj,lDObj,lY,lM,lD=1,lL,lX=0,tmp1,tmp2;
+		       return(this.solarMonth[m]);
+		 },
+		 //记录公历和农历某天的日期
+		 calElement:function(sYear,sMonth,sDay,week) {
+		 	   return {
+		 	   	isToday:false,
+		 	   	sYear:sYear,
+		 	   	sMonth:sMonth,
+		 	   	sDay:sDay,
+		 	   	week:week,
+		 	   };
+		 },
+		 calendar:function(y,m) {
+		    this.fat=this.mat=0;
+		    var sDObj,lDObj,lD=1,lX=0,obj={};
 		    var n = 0;
 		    var firstLM = 0;
 		    sDObj = new Date(y,m,1);    //当月第一天的日期
-		    _self.length = _self.solarDays(y,m);    //公历当月天数
-		    _self.firstWeek = sDObj.getDay();    //公历当月1日星期几
-		    if ((m+1)==5){fat=sDObj.getDay()}
-		    if ((m+1)==6){mat=sDObj.getDay()}
-		    for(var i=0;i<_self.length;i++) {
+		    obj.length = this.solarDays(y,m);    //公历当月天数
+		    obj.firstWeek = sDObj.getDay();    //公历当月1日星期几
+		    if ((m+1)==5){this.fat=sDObj.getDay()}
+		    if ((m+1)==6){this.mat=sDObj.getDay()}
+		    for(var i=0;i<obj.length;i++) {
 		       if(lD>lX) {
 		          sDObj = new Date(y,m,i+1);    //当月第一天的日期
-		          lDObj = new Dianaday(sDObj);     //农历
-		          lY = lDObj.year;           //农历年
-		          lM = lDObj.month;          //农历月
-		          lD = lDObj.day;            //农历日
-		          lL = lDObj.isLeap;         //农历是否闰月
-		          lX = lL? leapDays(lY): _self.monthDays(lY,lM); //农历当月最後一天
-		          if (lM==12){eve=lX}
-		          if(n==0) firstLM = lM;
-		          lDPOS[n++] = i-lD+1;
 		       }
-		       _self[i] = new calElement(y,m+1,i+1,_self.config.nStr1[(i+_self.firstWeek)%7],lY,lM,lD++,lL);
-		       if((i+_self.firstWeek)%7==0){
-		          _self[i].color = 'red';  //周日颜色
+		       obj[i] = this.calElement(y,m+1,i+1,this.nStr1[(i+obj.firstWeek)%7]);
+		       if((i+obj.firstWeek)%7==0){
+		          obj[i].color = 'red';  //周日颜色
 		       }
 		    }
-		    //节气
-		    tmp1=sTerm(y,m*2)-1;
-		    tmp2=sTerm(y,m*2+1)-1;
-		    _self[tmp1].solarTerms = _self.config.solarTerm[m*2];
-		    _self[tmp2].solarTerms = _self.config.solarTerm[m*2+1];
-		    if((_self.firstWeek+12)%7==5)    //黑色星期五
-		       _self[12].solarFestival += '黑色星期五';
-		    if(y==tY && m==tM) _self[tD-1].isToday = true;    //今日
-		},
-		//用中文显示农历的日期
-		cDay:function(d){
-			var _self=this;
-		    var s;
-		    switch (d) {
-		       case 10:
-		          s = '初十'; break;
-		       case 20:
-		          s = '二十'; break;
-		          break;
-		       case 30:
-		          s = '三十'; break;
-		          break;
-		       default :
-		          s = _self.config.nStr2[Math.floor(d/10)];
-		          s += _self.config.nStr1[d%10];
-		    }
-		    return(s);
-		},
-		//在表格中显示公历和农历的日期,以及相关节日 http://www.cnblogs.com/jihua/
-		drawCld:function(SY,SM){
-			var _self=this;
-		    var TF=true;
+		    if(y==this.tY && m==this.tM) obj[this.tD-1].isToday = true;    //今日
+		    return obj;
+		 },
+		 drawCld:function(SY,SM) {
+		    var TF=true,_prent_self=this;
 		    var p1=p2="";
 		    var i,sD,s,size;
-		    cld = new _self.calendar(SY,SM);
-		    GZ.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【'+_self.config.Animals[(SY-4)%12]+'】';    //生肖
+		    _prent_self.cld = _prent_self.calendar(SY,SM);
 		    for(i=0;i<42;i++) {
 		       sObj=eval('SD'+ i);
-		       lObj=eval('LD'+ i);
 		       sObj.className = '';
-		       sD = i - cld.firstWeek;
-		       if(sD>-1 && sD<cld.length) { //日期内
+		       sD = i - _prent_self.cld.firstWeek;
+		       if(sD>-1 && sD<_prent_self.cld.length) { //日期内
 		          sObj.innerHTML = sD+1;
-		          if(cld[sD].isToday){ sObj.style.color = '#9900FF';} //今日颜色
-		          else{sObj.style.color = '';}
-		          if(cld[sD].lDay==1){ //显示农历月
-		            lObj.innerHTML = '<b>'+(cld[sD].isLeap?'闰':'') + cld[sD].lMonth + '月' + (_self.monthDays(cld[sD].lYear,cld[sD].lMonth)==29?'小':'大')+'</b>';
-		          }
-		          else{lObj.innerHTML = cDay(cld[sD].lDay);}    //显示农历日
-		         var Slfw=Ssfw=null;
-		         s=cld[sD].solarFestival;
-		         for (var ipp=0;ipp<_self.config.lFtv.length;ipp++){    //农历节日
-		             if (parseInt(_self.config.lFtv[ipp].substr(0,2))==(cld[sD].lMonth)){
-		                 if (parseInt(_self.config.lFtv[ipp].substr(2,4))==(cld[sD].lDay)){
-		                     lObj.innerHTML=_self.config.lFtv[ipp].substr(5);
-		                     Slfw=_self.config.lFtv[ipp].substr(5);
-		                 }
-		             }
-		             if (12==(cld[sD].lMonth)){    //判断是否为除夕
-		                 if (eve==(cld[sD].lDay)){lObj.innerHTML="除夕";Slfw="除夕";}
-		             }
-		         }
-		         for (var ipp=0;ipp<_self.config.sFtv.length;ipp++){    //公历节日
-		             if (parseInt(_self.config.sFtv[ipp].substr(0,2))==(SM+1)){
-		                 if (parseInt(_self.config.sFtv[ipp].substr(2,4))==(sD+1)){
-		                     lObj.innerHTML=_self.config.sFtv[ipp].substr(5);
-		                     Ssfw=_self.config.sFtv[ipp].substr(5);
-		                 }
-		             }
-		         }
-		         if ((SM+1)==5){    //母亲节
-		             if (fat==0){
-		                 if ((sD+1)==7){Ssfw="母亲节";lObj.innerHTML="母亲节"}
-		             }
-		             else if (fat<9){
-		                 if ((sD+1)==((7-fat)+8)){Ssfw="母亲节";lObj.innerHTML="母亲节"}
-		             }
-		         }
-		         if ((SM+1)==6){    //父亲节
-		             if (mat==0){
-		                 if ((sD+1)==14){Ssfw="父亲节";lObj.innerHTML="父亲节"}
-		             }
-		             else if (mat<9){
-		                 if ((sD+1)==((7-mat)+15)){Ssfw="父亲节";lObj.innerHTML="父亲节"}
-		             }
-		          }
-		          if (s.length<=0){    //设置节气的颜色
-		             s=cld[sD].solarTerms;
-		             if(s.length>0) s = s.fontcolor('limegreen');        
-		          }
-		          if(s.length>0) {lObj.innerHTML=s;Slfw=s;}    //节气
-		          if ((Slfw!=null)&&(Ssfw!=null)){
-		             lObj.innerHTML=Slfw+"/"+Ssfw;
-		          }                        
+		          if(_prent_self.cld[sD].isToday){ sObj.style.color = '#ffaf00';} //今日颜色
+		          else{sObj.style.color = '#666';}
+
+		          if(_prent_self.checkRangeDay(new Date(SY,SM,sD+1),_prent_self.rangedays)){
+		          	  $(sObj).closest('td').css({'background':'#fff','cursor':'pointer'}).off().removeClass()
+			          .on('click',function(ev){
+			          		var _self=this;
+			          		if(!_prent_self.isCtrl){
+			          			$('.day td').filter(function(){
+			          				if($(this).attr('class')){
+										$(this).css('background','#fff').attr('class','').find('font').css('color',this.color_temp);
+										$(this).find('label').css('color','#666');
+									}
+			          			});
+			          		}
+							if($(_self).attr('class')){
+								$(_self).css('background','#fff').attr('class','').find('font').css('color',_self.color_temp);
+								$(_self).find('label').css('color','#666');
+								//recordck($(_self),'del');
+							}else{
+								_self.color_temp=$(_self).find('font')[0].style.color;
+								$(_self).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
+								$('.price').val($(_self).find('.price_').text());
+								$('.stock').val($(_self).find('.stock_').text());
+								//recordck($(_self),'add');
+							}
+							if(_prent_self.isCtrl) $('.price,.stock').val('');
+							$public.stopBubble(ev);
+					   });
+				   }else{
+		          	  $(sObj).closest('td').css({'background':'#f5f5f5','cursor':'initial'}).off().removeClass()
+				   }               
 		       }
 		       else { //非日期
 		          sObj.innerHTML = '';
-		          lObj.innerHTML = '';
+		          $(sObj).closest('td').css({'background':'#f5f5f5','cursor':'initial'}).off();
 		       }
 		    }
+		    if($('.datepicker tr.last td:eq(0) font').text()=='')
+		    	$('.datepicker tr.last').hide();
+		    else
+		    	$('.datepicker tr.last').show();
+
+		    //渲染已设置的日期
+	    	this.dateRender(this.supplierCalendar);
+
+		 },
+		//记录选中点
+		recordck:function(obj,type){
+			var cur_smp=new Date($('#SY').text(),$('.tdmonth li.on').index(),obj.find('font').html()).valueOf();
+			if(!this.isCtrl) this.empty_ckbox={};
+			if(type=='add'&&!this.empty_ckbox[cur_smp]){
+				this.empty_ckbox[cur_smp]=true;
+			}else if(type=='del'&&this.empty_ckbox[cur_smp]){
+				delete this.empty_ckbox[cur_smp];
+			}
 		},
-		//在下拉列表中选择年月时,调用自定义函数drawCld(),显示公历和农历的相关信息
-		changeCld:function(){
-			var _self=this;
+		//渲染已设置的日期
+		dateRender:function(supplierCalendar){
+			var ls=this.supplierCalendar.bizSkuInfo,days=$('.dtbx font'),_self=this;
+			$('.tipvl').remove();
+			for(var i=0;i<ls.length;i++){
+				days.filter(function(){
+					if(this.innerHTML!=''){
+						var cur_smp=new Date($('#SY').text(),$('.tdmonth li.on').index(),this.innerHTML).valueOf();
+						if(cur_smp==ls[i].vTxt&&ls[i].state!='del'){
+							var cur_td=$(this).closest('td')[0];
+							_self.set_tdvalue($(cur_td).find('.dtbx'),ls[i].price,ls[i].stock_num);
+							if(_self.checkRangeDay(new Date($('#SY').text(),$('.tdmonth li.on').index(),(parseInt(this.innerHTML)+1)),_self.rangedays)){
+								if(!cur_td.color_temp) cur_td.color_temp=$(cur_td).find('font')[0].style.color;
+								$(cur_td).css('background','#ed6c44').attr('class','choiced').find('font,label').css('color','#fff');
+							}else{console.log(this.innerHTML);console.log($(cur_td).find('.tipvl').html());
+								$(cur_td).find('font,label').css('color','rgb(102, 102, 102)');
+							}
+						}
+					}
+				});
+				
+			}
+		},
+		//价格和库存写入缓存
+		set_chahevalue:function(stock,price,day){
+			var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
+			ls=this.supplierCalendar.bizSkuInfo;
+			for(var i=0;i<ls.length;i++){
+				if(cur_time==ls[i].vTxt&&ls[i].state!='del'){
+					if(ls[i].sku_id!=0) ls[i].state='update';
+					ls[i].stock_num=stock;
+					ls[i].price=price;
+	        		console.log(JSON.stringify(this.supplierCalendar.bizSkuInfo)+'   ---------set_chahevalue--update------');
+					return;
+				}
+			}
+          	ls.push({
+		            "sku_id":0,
+		            "state":'add',
+		            "stock_num":stock,
+		            "price":price,
+		            "vTxt":cur_time
+					});
+	        console.log(JSON.stringify(this.supplierCalendar.bizSkuInfo)+'   --------set_chahevalue--add------');
+		},
+		//从缓存删除价格和库存
+		del_chahevalue:function(day){
+			var cur_time=new Date($('#SY').text(),$('.tdmonth li.on').index(),day).getTime()+'',
+			ls=this.supplierCalendar.bizSkuInfo;
+			for(var i=0;i<ls.length;i++){
+				if(cur_time==ls[i].vTxt){
+					if(ls[i].state=='update'||ls[i].state==''){
+						ls[i].state='del';
+					}else if(ls[i].state=='add'){
+          				ls.remove(i);
+					}
+				}
+			}
+	        console.log(JSON.stringify(this.supplierCalendar.bizSkuInfo)+'   -------del_chahevalue----------');
+		},
+		//设置日期的价格和库存
+		set_tdvalue:function(obj,price,stock){
+			if(obj.find('.tipvl').length==0)
+          		obj.append('<div class="tipvl"><label>￥：</label><label class="price_">'+price+'</label><br><label>库存：</label><label class="stock_">'+stock+'</label></div>');
+			else{
+				obj.find('.price_').text(price);
+				obj.find('.stock_').text(stock);
+			}
+          	obj.find('label').css('color','#fff');
+		},
+		 //监测日期是否在规定范围内
+		 //"v" 要检测的日期
+		 //"frontRangeDay" 向前延伸的天数
+		 //"behindRangeDay" 向后延伸的天数
+		 checkRangeDay:function(v,frontRangeDay,behindRangeDay){
+		 	var cur_time=new Date(),behindRangeDay=behindRangeDay?behindRangeDay:0,
+		 	frontRangeDay=frontRangeDay?frontRangeDay:0,days=Math.ceil((v-cur_time)/1000/60/60/24);
+		 	if(-behindRangeDay<=days&&days<=(frontRangeDay-1))
+		 		return true;
+		 	else
+		 		return false;
+		 },
+		 //在下拉列表中选择年月时,调用自定义函数drawCld(),显示公历和农历的相关信息
+		 changeCld:function() {
 		    var y,m;
-		    y=SY.selectedIndex+1900;
-		    m=SM.selectedIndex;
-		    _self.drawCld(y,m);
-		},
-		//打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
-		initial:function(){
-			var _self=this;
-		    SY.selectedIndex=_self.tY-1900;
-		    SM.selectedIndex=_self.tM;
-		    _self.drawCld(_self.tY,_self.tM);
-		}
+		    y=$('#SY').text();
+		    m=$('.tdmonth li.on').index();
+		    this.drawCld(y,m);
+		 },
+		 //打开页时,在下拉列表中显示当前年月,并调用自定义函数drawCld(),显示公历和农历的相关信息
+		 initial:function() {
+			var gNum,str='',slcvalue=$('input[name="supplierCalendar"]').val();
+         	for(i=0;i<6;i++) {
+                str+='<tr class="day '+(i==5?'last':'')+'">';
+                for(j=0;j<7;j++) {
+                   gNum = i*7+j;
+                   str+='<td id="GD' + gNum +'"><div class="dtbx"><font id="SD' + gNum +'"';
+                   if(j == 0) str+=' style="color:red"';
+                   if(j == 6) str+=' style="color:#000080"';
+                   str+='> </font></div></td>';
+                }
+                str+='</tr>';
+     		}
+         	$('.datepicker table').append(str);
+
+		    $('#SY').text(this.tY);
+		    $('.tdmonth li').removeClass('on');
+		    $('.tdmonth').find('li:eq('+this.tM+')').addClass('on');
+
+		    if(slcvalue)
+		    	this.supplierCalendar=JSON.parse(slcvalue);
+		    else
+				$('input[name="supplierCalendar"]').val(JSON.stringify(this.supplierCalendar));
+
+		    this.drawCld(this.tY,this.tM);
+
+		 }
 	}
+
 	module.exports = new $datepicker();
+
 });

@@ -90,9 +90,10 @@
 							<label class="smtt">地址：</label><label class="address">北京市海淀区中关村东路1号院</label>
 							|<label class="smtt">电话：</label><label class="tel">010-83122549</label>
 						</span>
-						<button class="choicehotel">查询酒店</button>
+						<a class="choicehotel">查询酒店</a>
 					</p>
-					<div>
+					<div class='load_room'><img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/loading.gif"></div>
+					<div class="hotelcol">
 						<span class="nm"><span class="bred">*</span><label>酒店信息：</label></span>
 						<span class="info-box clearfix">
 							<ul class="clearfix">
@@ -256,7 +257,7 @@
 						</span>
 					</div>
 					<div class="savenext">
-						<button>保存并下一步</button>
+						<a class="save-to-baseinfo">保存并下一步</a>
 					</div>
 				</div>
 			</div>
@@ -265,7 +266,7 @@
 					<form>
 						<table>
 							<tr>
-								<td class="coltxt">商品类型：</td>
+								<td class="coltxt">酒店类型：</td>
 								<td><label>酒店</label></td>
 							</tr>
 							<tr>
@@ -274,11 +275,11 @@
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>商品标题：</td>
-								<td><input type="text" class="inputxt" maxlength="38" name=""><span class="mark"><label>1</label>/38字</span></td>
+								<td><input type="text" class="inputxt" maxlength="38" name=""><span class="mark"><label class="cv">1</label><label>/38字</label></span></td>
 							</tr>
 							<tr>
-								<td class="coltxt"><span class="bred">*</span>商品代码：</td>
-								<td><input type="text" class="inputxt" maxlength="20" name=""><span class="mark"><label>1</label>/20字</span></td>
+								<td class="coltxt">商品代码：</td>
+								<td><input type="text" class="inputxt allownull" maxlength="20" name=""><span class="mark"><label class="cv">1</label><label>/20字</label></span></td>
 							</tr>
 							<tr>
 								<td class="coltxt"><span class="bred">*</span>付款方式：</td>
@@ -297,35 +298,35 @@
 							</tr>
 							<tr>
 								<td class="coltxt vt"><span class="bred">*</span>退订规则：</td>
-								<td><textarea></textarea><span class="mark"><label>1</label>/40字</span></td>
+								<td><textarea maxlength="40"></textarea><span class="mark"><label class="cv">1</label><label>/40字</label></span></td>
 							</tr>
 							<tr>
 								<td class="coltxt vt"><span class="bred">*</span>最晚到店时间：</td>
 								<td>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前0:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前1:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前2:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前3:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前4:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前5:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前6:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前7:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前8:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前9:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前10:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前11:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前12:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前13:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前14:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前15:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前16:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前17:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前18:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前19:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前20:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前21:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前22:00前</label>
-									<label class="checkbox"><input type="checkbox" name="tdl">当前23:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天0:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天1:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天2:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天3:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天4:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天5:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天6:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天7:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天8:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天9:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天10:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天11:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天12:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天13:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天14:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天15:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天16:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天17:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天18:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天19:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天20:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天21:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天22:00前</label>
+									<label class="checkbox"><input type="checkbox" name="tdl">当天23:00前</label>
 									<div class="gray9">最晚到店时间最多选择3个</div>
 								</td>
 							</tr>
@@ -333,22 +334,36 @@
 								<td class="coltxt"><span class="bred">*</span>提前预定天数：</td>
 								<td><input type="text" maxlength="10" name=""></td>
 							</tr>
+							<tr>
+								<td class="coltxt"><span class="bred">*</span>早餐：</td>
+								<td colspan="3"><input type="hidden" id="breakfast_" value="">
+									<select id="breakfast" class="selectlist">
+									  <option value="">--请选择--</option>
+									  <option value="0">身份证</option> 
+									  <option value="1">驾驶证</option>
+									  <option value="2">护照</option>
+									  <option value="3">导游证</option>
+									</select>
+								</td>
+							</tr>
 						</table>
 					</form>
 					<div class="btngroup">
-						<button>返回上一页</button>
-						<button>保存并下一步</button>
+						<a class="backprev">返回上一页</a>
+						<a class="save-to-picker">保存并下一步</a>
 					</div>
 				</div>
 			</div>
 			<div class="panel">
 				<div id="CLD" class="clearfix datepicker">
+					<input type="hidden" class="rds" value="120">
 					<table class="fl">
 						<tr>
 							<td class="tdyears clearfix" colspan="7">
 								<i class="fl prev"></i>
-								<select id="SY" ></select>
+								<!-- <select id="SY"></select> -->
 								<i class="fr next"></i>
+								<label id="SY"></label>
 							</td>
 						</tr>
 						<tr>
@@ -381,13 +396,18 @@
 					</table>
 					<div class="setvalue fr">
 						<h2>价格设置</h2>
-						<div><label class="bred">*</label><label>价格：</label><input type="text"></div>
-						<div><label class="bred">*</label><label>价格：</label><input type="text"></div>
+						<div><label class="bred">*</label><label>价格：</label><input type="text" class="price" maxlength="9"></div>
+						<div><label class="bred">*</label><label>库存：</label><input type="text" class="stock" maxlength="9"></div>
 						<div class="btn">
-							<button>确定</button>
-							<button>全部清除</button>
+							<a class="setvl">确定</a>
+							<a class="clearvl">清除</a>
 						</div>
 					</div>
+				</div>
+				<label class="bred ml30">*</label><label class="gray9">按住Ctrl键，可实现多选日期。</label>
+				<div class="allsave">
+					<a class="backprev">返回上一页</a>
+					<a class="allsub">全部提交</a>
 				</div>
 			</div>
 		</div>
@@ -425,146 +445,93 @@
 				<td><input type="text" class="inputxt"></td>
 				<td class="tb-txt">所在城市：</td>
 				<td>
-					<select id="province"><option value="">--请选择--</option></select>
-					<select id="city" class="ml10"><option value="">--请选择--</option></select>
-					<select id="area" class="ml10"><option value="">--请选择--</option></select>
+					<select id="province"><option value="">-请选择省-</option></select>
+					<select id="city" class="ml10"><option value="">-请选择市-</option></select>
+					<select id="area" class="ml10"><option value="">-请选择区-</option></select>
 					<button class="search-btn">搜索</button>
 				</td>
 			</tr>
 		</table>
+		<img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/loading.gif" class='load_list'>
 		<div class="hotelist list">
-			<table>
-				<thead>
-					<tr>
-						<th></th>
-						<th>酒店名称</th>
-						<th>区域</th>
-						<th>地址</th>
-						<th>电话</th>
-						<th>详情</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-					<tr>
-						<td><input type="radio"></td>
-						<td>324233243</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td>32432</td>
-						<td><a>查看详情</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="pagination">
-	        <ul class="pager">
-                <li class="previous disabled">
-	                <a href="javascript:void(0);" id="prePage">« 上一页</a>
-	            </li>
-                <li class="active">
-                    <a href="javascript:void(0);">1</a>
-                </li>
-            	<li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="2">2</a>
-                </li>
-            	<li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="3">3</a>
-                </li>
-            	<li>
-                    <a href="javascript:void(0);" data-toggle="pager" data-placement="top">...</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="131">131</a>
-                </li>
-	            <li>
-                    <a href="javascript:void(0);" class="LinkeToPage" pageno="132">132</a>
-                </li>
-	            <li class="next">
-	                <a href="javascript:void(0);" class="LinkeToPage" pageno="2" id="nextPage">下一页»</a>
-	            </li>
-                <li>
-	                <span class="input-group-addon">每页</span>
-	                <select class="form-control pageSize" id="pageSize">
-	                    <option value="10">10</option>
-	                    <option value="20">20</option>
-	                    <option value="50">50</option>
-	                </select>
-	                <span class="input-group-addon">条</span>
-					<span class="input-group-addon">共 1316 条</span>
-		        </li>
-	    	</ul>
+			<div class="tb-box">
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>酒店名称</th>
+							<th>区域</th>
+							<th>地址</th>
+							<th>电话</th>
+							<th>详情</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="radio" name="htlid" value="1022"></td>
+							<td class="hotel-name">324233243</td>
+							<td>32432</td>
+							<td class="hotel-address">32432</td>
+							<td class="hotel-tel">32432</td>
+							<td><a>查看详情</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="jiuniu_pagination">
+		        <ul class="pager">
+	                <li class="previous disabled">
+		                <a href="javascript:void(0);" id="prePage">« 上一页</a>
+		            </li>
+	                <li class="active">
+	                    <a href="javascript:void(0);">1</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="2">2</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="3">3</a>
+	                </li>
+	            	<li>
+	                    <a href="javascript:void(0);" data-toggle="pager" data-placement="top">...</a>
+	                </li>
+	                <li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="131">131</a>
+	                </li>
+		            <li>
+	                    <a href="javascript:void(0);" class="LinkeToPage" pageno="132">132</a>
+	                </li>
+		            <li class="next">
+		                <a href="javascript:void(0);" class="LinkeToPage" pageno="2" id="nextPage">下一页»</a>
+		            </li>
+	                <li>
+		                <span class="input-group-addon">每页</span>
+		                <select class="form-control pageSize" id="pageSize">
+		                    <option value="10">10</option>
+		                    <option value="20">20</option>
+		                    <option value="50">50</option>
+		                </select>
+		                <span class="input-group-addon">条</span>
+						<span class="input-group-addon">共 1316 条</span>
+			        </li>
+		    	</ul>
+			</div>
 		</div>
 	</div>
 	<script  type='text/temple' id='province-tpl'>
-	    <option value="">--请选择--</option>
+	    <option value="">-请选择省-</option>
 	    <# for(var j=0; j<province.length; j++) { #>
 	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
 	    <# } #>
 	</script>
 	<script  type='text/temple' id='city-tpl'>
-	    <option value="">--请选择--</option>
+	    <option value="">-请选择市-</option>
 	    <# for(var j=0; j<city.length; j++) { #>
 	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
 	    <# } #>
 	</script>
 	<script  type='text/temple' id='area-tpl'>
-	    <option value="">--请选择--</option>
+	    <option value="">-请选择区-</option>
 	    <# for(var j=0; j<area.length; j++) { #>
 	            <option value="<#= area[j].id#>"><#= area[j].name#></option>
 	    <# } #>
