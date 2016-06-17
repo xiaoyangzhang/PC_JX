@@ -96,7 +96,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 
 .dialog .prompt-box .btn-group{width:100%;position:absolute;bottom:0;text-align:right;margin-left:-20px;text-align: center;}
 .dialog .prompt-box .btn-group div{margin:0 20px;border-top:1px solid #ccc;text-align: right;}
-.dialog .prompt-box .btn-group button{margin:6px 0;width:60px;height:30px;line-height:30px;border:none;outline:none;
+.dialog .prompt-box .btn-group button{margin:8px 0;width:60px;height:30px;line-height:30px;border:none;outline:none;
   background: #ed6c44;color:#fff;font-size:14px;}
 .dialog .prompt-box .btn-group button.ok{margin-right:20px;}
 

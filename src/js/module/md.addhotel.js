@@ -24,7 +24,9 @@ define(function (require, exports, module) {
 			btnOk:'.ok',
 			infoBar:'.info-bar',
 			infoBox:'.info-box',
-			inputGp:'input[name="gp"]'
+			inputGp:'input[name="gp"]',
+			svdraftbox:'.svdraftbox',
+			svdraft:'.svdraft'
 		},
 		init:function(){
 
@@ -119,6 +121,47 @@ define(function (require, exports, module) {
 					$(_self.config.loadlist).show();
 				});
 				gethotelist();
+				$public.stopBubble(ev);
+			});
+
+			//保存草稿弹出层
+			$(_self.config.svdraft).on('click',function(ev){
+				var $svdraftbox=$(_self.config.svdraftbox);
+				$public.dialog.content(300,160,'保存草稿标题',$svdraftbox.show(),function(){
+					
+					var prarm=$public.paramcompare($('#hotelfm').serializeArray()),
+					operationFlag=$('input[name="operationFlag"]').val(),svdraftxt=$('.svdraftxt').val();
+					//url=operationFlag=='update'?$public.urlpath.updatehotel:$public.urlpath.addhotel;
+					if(typeof prarm.storeLastTime=='object')prarm.storeLastTime=prarm.storeLastTime.join(',');
+
+					if(!svdraftxt) {
+						$('.svdraftxt').focus();
+						return;
+					}
+					console.log(prarm);
+					$public.dialog.closebox();
+					$public.dialog.waiting();
+					$.post($public.urlpath.saveLineDraft,{
+						json:prarm,
+						draftName:svdraftxt,
+						uuid:$('#uuid').val(),
+						subType:$('#draftSubType').val(),
+						mainType:1,
+						id:$('#draftId').val(),
+					},function(data){
+						if(data.success) {
+							if(data.resultMsg>0) {
+								$("#draftId").val(data.resultMsg);
+								$public.dialog.msg("保存草稿成功！",'success');
+							}
+						}else
+							$public.dialog.msg("保存草稿失败！",'error');
+							
+						$public.dialog.closebox();
+					});
+				},function(){
+					$svdraftbox.height($('.container').height()-120);
+				},1);
 				$public.stopBubble(ev);
 			});
 			

@@ -26,8 +26,8 @@ define(function (require, exports, module) {
 			infoBox:'.info-box',
 			inputGp:'input[name="gp"]',
 			searchScenic:'.searchScenic',
-			svdraftbox:'.svdraftbox',
 			scenicList:'.sceniclist',
+			svdraftbox:'.svdraftbox',
 			svdraft:'.svdraft'
 		},
 		init:function(){
@@ -158,6 +158,7 @@ define(function (require, exports, module) {
 				});
 				
 			});
+
 			//查询景区弹出层
 			$(_self.config.searchScenic).on('click',function(ev){
 				var $searchbox=$(_self.config.searchbox),
@@ -182,10 +183,11 @@ define(function (require, exports, module) {
 				getScenicList();
 				$public.stopBubble(ev);
 			});
+			
 			//保存草稿弹出层
 			$(_self.config.svdraft).on('click',function(ev){
 				var $svdraftbox=$(_self.config.svdraftbox);
-				$public.dialog.prompt(300,160,'保存草稿标题',$svdraftbox.show(),function(){
+				$public.dialog.content(300,160,'保存草稿标题',$svdraftbox.show(),function(){
 					var dynamicArr = [];
 					$('.dynamicTr').each(function () {
 						var dynamicTr ={
@@ -231,7 +233,7 @@ define(function (require, exports, module) {
 					});
 				},function(){
 					$svdraftbox.height($('.container').height()-120);
-				});
+				},1);
 				$public.stopBubble(ev);
 			});
 
