@@ -26,7 +26,9 @@ define(function (require, exports, module) {
 			infoBox:'.info-box',
 			inputGp:'input[name="gp"]',
 			searchScenic:'.searchScenic',
-			scenicList:'.sceniclist'
+			svdraftbox:'.svdraftbox',
+			scenicList:'.sceniclist',
+			svdraft:'.svdraft'
 		},
 		init:function(){
 			var _self=this;
@@ -175,6 +177,29 @@ define(function (require, exports, module) {
 					return false;
 				},function(){
 					$sceniclist.height($('.container').height()-120);
+					$(_self.config.loadlist).show();
+				});
+				getScenicList();
+				$public.stopBubble(ev);
+			});
+			//保存草稿弹出层
+			$(_self.config.svdraft).on('click',function(ev){
+				var $svdraftbox=$(_self.config.svdraftbox);
+				$public.dialog.prompt(300,160,'输入草稿标题',$svdraftbox.show(),function(){
+					var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
+					scenicName=ckid.closest('td').next().text();
+					if(scenicId){
+						$('input[name="scenicId"]').val(scenicId);
+						$('input[name="scenicName"]').val(scenicName);
+						$('#lbscenicname').text(scenicName);
+						$public.dialog.closebox();
+						selectScenic();
+					}else{
+						alert('请选择景区！');
+					}
+					return false;
+				},function(){
+					$svdraftbox.height($('.container').height()-120);
 					$(_self.config.loadlist).show();
 				});
 				getScenicList();

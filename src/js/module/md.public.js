@@ -33,7 +33,7 @@ define(function (require, exports, module) {
 	site_path=$('#root_path').val()+'/',
 	img_domain=$('#tfs').val(),
 	static_path=$('#static_path').val(),
-	static_source=static_path.substring(0,static_path.lastIndexOf('/')+1);
+	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// static_path=$('#static_path').val(),
@@ -166,6 +166,33 @@ define(function (require, exports, module) {
 					$('.msg').css('color','green');
 				else if(type=='error')
 					$('.msg').css('color','red');
+			},
+			prompt:function(n_width,n_height,title,html_content,callback,init_callback){
+				var _self=this,total_h=0;
+				_self.initbox();
+				$('.bgmeng').off();
+				if(n_height=='auto')
+					n_height=$(window).height()-180;
+				if(_self.box.attr('id')=='prompt-box'){
+					_self.box.fadeIn();
+				}else{
+					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.attr('id','prompt-box').append('<div class="prompt-box"></div>').fadeIn();
+					$('.prompt-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
+					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
+					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
+					$('.container').height(n_height-125);
+					$('.ok').off().on('click',function(ev){
+						callback();
+						$public.stopBubble(ev);
+					});
+					$('.cancel,.close-tip i').off().on('click',function(ev){
+						_self.closebox();
+						$public.stopBubble(ev);
+					});
+				}
+				html_content.appendTo($('.container'));
+				init_callback();
 			},
 			content:function(n_width,n_height,title,html_content,callback,init_callback){
 				var _self=this,total_h=0;
