@@ -141,7 +141,7 @@ define(function (require, exports, module) {
 					console.log(prarm);
 					$public.dialog.closebox();
 					$public.dialog.waiting();
-					$.post($public.urlpath.saveLineDraft,{
+					$.post($public.urlpath.saveSPOTDraft,{
 						json:prarm,
 						draftName:svdraftxt,
 						uuid:$('#uuid').val(),
