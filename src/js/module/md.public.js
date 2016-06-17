@@ -58,31 +58,7 @@ define(function (require, exports, module) {
 			},500);
 
 				 _self.depath(); 
-		},
-		html_encode : function(str){   
-		  var s = "";   
-		  if (str.length == 0) return "";   
-		  s = str.replace(/&/g, "&amp;");   
-		  s = s.replace(/</g, "&lt;");   
-		  s = s.replace(/>/g, "&gt;");   
-		  s = s.replace(/ /g, "&nbsp;");   
-		  s = s.replace(/\'/g, "&#39;");   
-		  s = s.replace(/\"/g, "&quot;");   
-		  s = s.replace(/\n|\r\n/g, "<br>");  
-		  return s;   
-		},
-		html_decode : function(str){
-		  var s = "";   
-		  if (str.length == 0) return "";   
-		  s = str.replace(/&amp;/g, "&");   
-		  s = s.replace(/&lt;/g, "<");   
-		  s = s.replace(/&gt;/g, ">");   
-		  s = s.replace(/&nbsp;/g, " ");   
-		  s = s.replace(/&#39;/g, "\'");   
-		  s = s.replace(/&quot;/g, "\"");   
-		  s = s.replace(/<br>/g, "\n");   
-		  return s;  
-		},
+		}, 
 		isLogin :function(data){
 			if(!data instanceof Object)
 				data=JSON.parse(data);
@@ -113,6 +89,7 @@ define(function (require, exports, module) {
 			getBsScope:site_path+'/apply/getBusinessScope',
 			pageilB:site_path+'/apply/seller/pageDetailB',
 			agreement:site_path+'/apply/talent/agreement',
+			saveLineDraft:site_path+'/draft/saveLineDraft',
 			toDetailPage:site_path+'/apply/seller/toDetailPage'
 		},
 		timer:null,

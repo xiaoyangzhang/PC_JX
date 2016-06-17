@@ -185,24 +185,53 @@ define(function (require, exports, module) {
 			//保存草稿弹出层
 			$(_self.config.svdraft).on('click',function(ev){
 				var $svdraftbox=$(_self.config.svdraftbox);
-				$public.dialog.prompt(300,160,'输入草稿标题',$svdraftbox.show(),function(){
-					var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
-					scenicName=ckid.closest('td').next().text();
-					if(scenicId){
-						$('input[name="scenicId"]').val(scenicId);
-						$('input[name="scenicName"]').val(scenicName);
-						$('#lbscenicname').text(scenicName);
-						$public.dialog.closebox();
-						selectScenic();
-					}else{
-						alert('请选择景区！');
+				$public.dialog.prompt(300,160,'保存草稿标题',$svdraftbox.show(),function(){
+					var dynamicArr = [];
+					$('.dynamicTr').each(function () {
+						var dynamicTr ={
+							pId : $(this).attr('pId'),
+							pTxt : $(this).attr('pTxt'),
+							pType : $(this).attr('pType'),
+							vTxt : $(this).find('input').val(),
+							categoryId : parseInt($('input[name="categoryId"]').val()),
+							flag : false
+						};	
+						dynamicArr.push(dynamicTr);
+					});
+
+					var prarm=$public.paramcompare($('.scenicForm').serializeArray()),
+					ticketTitle=$('input[name="ticketId"]:checked').attr('tTitle'),
+					svdraftxt=$('.svdraftxt').val();
+					prarm.ticketTitle=ticketTitle?ticketTitle:'';
+					if(dynamicArr) prarm.dynamicEntry=JSON.stringify(dynamicArr);
+					if(!svdraftxt) {
+						$('.svdraftxt').focus();
+						return;
 					}
-					return false;
+					console.log(prarm);
+					$public.dialog.closebox();
+					$public.dialog.waiting();
+					$.post($public.urlpath.saveLineDraft,{
+						json:prarm,
+						draftName:svdraftxt,
+						uuid:$('#uuid').val(),
+						subType:$('#draftSubType').val(),
+						mainType:1,
+						id:$('#draftId').val(),
+					},function(data){
+						if(data.success) {
+							if(data.resultMsg>0) {
+								$("#draftId").val(data.resultMsg);
+								$public.dialog.msg("保存草稿成功！",'success');
+							}
+						}else
+							$public.dialog.msg("保存草稿失败！",'error');
+							
+						$public.dialog.closebox();
+					});
 				},function(){
 					$svdraftbox.height($('.container').height()-120);
-					$(_self.config.loadlist).show();
 				});
-				getScenicList();
 				$public.stopBubble(ev);
 			});
 

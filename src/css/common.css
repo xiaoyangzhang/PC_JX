@@ -68,19 +68,24 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 .dialog .bgmeng{background-color:#000; opacity:.5;filter:alpha(opacity=50);width:100%;position: absolute;z-index: 999;}
 .dialog .msg{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;text-align: center;
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border-radius:6px;}
-.dialog .content-box{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:50%;left:50%;text-align: center;
+.dialog .loading{width:160px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;
+  margin-top:-25px;margin-left:-80px;z-index: 9999;background: #fff;padding:10px 0;border-radius:6px;}
+.dialog .loading img{margin:0 16px;width:24px;height:24px;}
+.dialog .loading label{color:#666;}
+
+.dialog .content-box,.dialog .prompt-box{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:50%;left:50%;text-align: center;
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border:2px solid #ccc;}
-.dialog .content-box .close-tip{text-align: right;}
-.dialog .content-box .close-tip i{float: right; display: block;width:30px;height:30px;background:url('../../img/close.png') no-repeat center;cursor: pointer;
+.dialog .content-box .close-tip,.dialog .prompt-box .close-tip{text-align: right;}
+.dialog .content-box .close-tip i,.dialog .prompt-box .close-tip i{float: right; display: block;width:30px;height:30px;background:url('../../img/close.png') no-repeat center;cursor: pointer;
   transition:all .6s;
   -webkit-transition:all .6s;
   -moz-transition:all .6s;
   -o-transition:all .6s;
   -ms-transition:all .6s;}
-.dialog .content-box .container{padding:10px;position: relative;}
-.dialog .content-box .close-tip i:hover{transform: rotate(180deg);}
-.dialog .content-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;height: 36px;}
-.dialog .content-box .close-tip h2{margin-bottom:-1px;float:left;text-align:center;color:#ffaf00;font-size:20px;
+.dialog .content-box .container,.dialog .prompt-box .container{padding:10px;position: relative;}
+.dialog .content-box .close-tip i:hover,.dialog .prompt-box .close-tip i:hover{transform: rotate(180deg);}
+.dialog .content-box .close-tip div,.dialog .prompt-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;height: 36px;}
+.dialog .content-box .close-tip h2,.dialog .prompt-box .close-tip h2{margin-bottom:-1px;float:left;text-align:center;color:#ffaf00;font-size:20px;
   border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px;}
 
 .dialog .content-box .btn-group{width:100%;position:absolute;bottom:0;text-align:right;margin-left:-20px;text-align: center;}
@@ -89,31 +94,12 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
   background: #ed6c44;color:#fff;font-size:16px;}
 .dialog .content-box .btn-group button.ok{margin-right:20px;}
 
-.dialog .loading{width:160px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;
-  margin-top:-25px;margin-left:-80px;z-index: 9999;background: #fff;padding:10px 0;border-radius:6px;}
-.dialog .loading img{margin:0 16px;width:24px;height:24px;}
-.dialog .loading label{color:#666;}
-
-
-.dialog .prompt-box{width:200px;box-shadow: 8px 8px 20px #666;position: absolute;top:50%;left:50%;text-align: center;
-  margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border:2px solid #ccc;}
-.dialog .prompt-box .close-tip{text-align: right;}
-.dialog .prompt-box .close-tip i{float: right; display: block;width:30px;height:30px;background:url('../../img/close.png') no-repeat center;cursor: pointer;
-  transition:all .6s;
-  -webkit-transition:all .6s;
-  -moz-transition:all .6s;
-  -o-transition:all .6s;
-  -ms-transition:all .6s;}
-.dialog .prompt-box .container{padding:10px;position: relative;}
-.dialog .prompt-box .close-tip i:hover{transform: rotate(180deg);}
-.dialog .prompt-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;height: 35px;}
-.dialog .prompt-box .close-tip h2{margin-bottom:-1px;float:left;text-align:center;color:#ffaf00;font-size:20px;
-  border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px;}
 .dialog .prompt-box .btn-group{width:100%;position:absolute;bottom:0;text-align:right;margin-left:-20px;text-align: center;}
 .dialog .prompt-box .btn-group div{margin:0 20px;border-top:1px solid #ccc;text-align: right;}
 .dialog .prompt-box .btn-group button{margin:6px 0;width:60px;height:30px;line-height:30px;border:none;outline:none;
-  background: #ed6c44;color:#fff;font-size:12px;}
+  background: #ed6c44;color:#fff;font-size:14px;}
 .dialog .prompt-box .btn-group button.ok{margin-right:20px;}
+
 
 /***************************自定义下拉框***********************/
   .select-wrapper{
