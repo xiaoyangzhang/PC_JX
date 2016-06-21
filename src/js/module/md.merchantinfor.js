@@ -149,9 +149,15 @@ define(function (require, exports, module) {
 					
 				});
 
+<<<<<<< HEAD
 				// $(".qdlm input[type='checkbox']").change(function(){
 				// 	_self.yanzheng();
 			 //    });
+=======
+				$(".qdlm input[type='checkbox']").change(function(){
+					_self.yanzheng();
+			    });
+>>>>>>> v_0_1_0_20160616
 
 
 				$(".aaa input[type='checkbox']").change(function(){
@@ -189,7 +195,11 @@ define(function (require, exports, module) {
 				$public.actiondata('province','city');
 				_self.checkedstate();
 				_self.comtypedisabled();
+<<<<<<< HEAD
 				// _self.yanzheng();
+=======
+				_self.yanzheng();
+>>>>>>> v_0_1_0_20160616
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
@@ -223,6 +233,17 @@ define(function (require, exports, module) {
 					}else{
 						$(".disedli").prop("disabled","");
 					}
+		},
+		yanzheng : function(){
+				if ($(".qdlm input[type='checkbox']").is(':checked')) {
+				 	$(".qdlm").find('.Validform_checktip').prop('class','Validform_right').html('');
+				};
+				if($(".qdlm input[type='checkbox']").not('input:checked')) {
+					$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
+				};
+				// if ($(".qdlm input[type='checkbox']").not("input:checked")) {
+				// 	$(".qdlm").find('.Validform_checktip').attr('class','Validform_wrong').html('请选择');
+				// };
 		}
 		// yanzheng : function(){
 		// 		if ($(".qdlm input[type='checkbox']").is(':checked')) {
