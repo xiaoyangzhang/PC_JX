@@ -189,7 +189,7 @@ define(function (require, exports, module) {
 				$public.actiondata('province','city');
 				_self.checkedstate();
 				_self.comtypedisabled();
-				_self.yanzheng();
+				// _self.yanzheng();
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
