@@ -149,15 +149,10 @@ define(function (require, exports, module) {
 					
 				});
 
-<<<<<<< HEAD
 				// $(".qdlm input[type='checkbox']").change(function(){
 				// 	_self.yanzheng();
 			 //    });
-=======
-				$(".qdlm input[type='checkbox']").change(function(){
-					_self.yanzheng();
-			    });
->>>>>>> v_0_1_0_20160616
+
 
 
 				$(".aaa input[type='checkbox']").change(function(){
@@ -195,11 +190,9 @@ define(function (require, exports, module) {
 				$public.actiondata('province','city');
 				_self.checkedstate();
 				_self.comtypedisabled();
-<<<<<<< HEAD
+
 				// _self.yanzheng();
-=======
-				_self.yanzheng();
->>>>>>> v_0_1_0_20160616
+
 		},
 		changevalid : function(isTrue){
 			var cardvalue=$('#card :hidden').val();
