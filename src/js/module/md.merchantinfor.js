@@ -226,18 +226,19 @@ define(function (require, exports, module) {
 					}else{
 						$(".disedli").prop("disabled","");
 					}
-		},
-		yanzheng : function(){
-				if ($(".qdlm input[type='checkbox']").is(':checked')) {
-				 	$(".qdlm").find('.Validform_checktip').prop('class','Validform_right').html('');
-				};
-				if($(".qdlm input[type='checkbox']").not('input:checked')) {
-					$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
-				};
-				// if ($(".qdlm input[type='checkbox']").not("input:checked")) {
-				// 	$(".qdlm").find('.Validform_checktip').attr('class','Validform_wrong').html('请选择');
-				// };
 		}
+		// ,
+		// yanzheng : function(){
+		// 		if ($(".qdlm input[type='checkbox']").is(':checked')) {
+		// 		 	$(".qdlm").find('.Validform_checktip').prop('class','Validform_right').html('');
+		// 		};
+		// 		if($(".qdlm input[type='checkbox']").not('input:checked')) {
+		// 			$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
+		// 		};
+		// 		// if ($(".qdlm input[type='checkbox']").not("input:checked")) {
+		// 		// 	$(".qdlm").find('.Validform_checktip').attr('class','Validform_wrong').html('请选择');
+		// 		// };
+		// }
 		// yanzheng : function(){
 		// 		if ($(".qdlm input[type='checkbox']").is(':checked')) {
 		// 		 	$(".qdlm").find('.Validform_checktip').prop('class','Validform_right').html('');
