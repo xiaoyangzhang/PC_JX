@@ -36,6 +36,7 @@ table.tab-samecity tbody tr td:nth-child(2){text-align: left;}
 
 /*------保存按钮居中--------*/
 .clubBotBtn{text-align: center;}
+.clubBotBtn .btn-group .savedraft{margin-left:20px;}  
 
 /*--------------------------------------------目的地境外游列表-----------------------------------*/
 

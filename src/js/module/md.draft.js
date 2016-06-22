@@ -1,7 +1,7 @@
 define(function (require, exports, module) {
 	$public = require("public"),
 	require("dropdownlist"),
-	require("datepicker"),//ʱ����
+	require("datepicker"),//Ê±¼ä²å¼þ
 	require("validform"),
 	require("core"),
 	require("widget"),
@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 	$test.prototype = {
 		init:function(){
 			var $self = this;
-			//��Ⱦ������ؼ�
+			//äÖÈ¾ÏÂÀ­¿ò¿Ø¼þ
 			$('#edu').selectlist({
 				zIndex: 10,
 				width: 200,
@@ -23,7 +23,7 @@ define(function (require, exports, module) {
 				onChange:function(){}
 			});
 			$review.distanceFun();
-			$self.delFun();
+			/* $self.delFun(); */
 			var bigW = $("#eredar .eredar-right").width() - 40;
 			var positionW = $(".jiuniu_pagination").width();
 			/* console.log(bigW,positionW); */
@@ -38,6 +38,28 @@ define(function (require, exports, module) {
 				$('input[name="page"]').val(1);
 				$('form').submit();
 			});
+			
+			
+			$(".del").click(function(){
+					var id = $(this).attr("draft-id");
+					operateUrl = $('#root_path').val()+"/draft/delete/"+id;
+					layer.confirm('是否确认删除', {icon: 3, title:'提示'}, function(index){
+						$.post(operateUrl,function(result) {
+							if(result.success) {
+
+								window.location.reload();
+							} else {
+								layer.msg('²Ù×÷Ê§°Ü', {
+									icon : 2,
+									time : 1000
+								});
+							}
+						},"json");
+						layer.close(index);
+					});
+				});
+
+			
 		},
 		delFun : function(){
 			var delList = $(".draft table tr td").find(".del");

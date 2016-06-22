@@ -36,7 +36,7 @@ define(function (require, exports, module) {
 	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
-	// static_path=$('#static_path').val(),
+	// static_path=$urlpath.static_source+'/src',
 	// img_domain=$urlpath.img_domain,
 	// static_source=$urlpath.static_source;
 	
@@ -58,55 +58,8 @@ define(function (require, exports, module) {
 			},500);
 
 				 _self.depath(); 
-		},
-		html_encode : function(str){   
-		  var s = "";   
-		  if (str.length == 0) return "";   
-		  s = str.replace(/&/g, "&amp;");   
-		  s = s.replace(/</g, "&lt;");   
-		  s = s.replace(/>/g, "&gt;");   
-		  s = s.replace(/ /g, "&nbsp;");   
-		  s = s.replace(/\'/g, "&#39;");   
-		  s = s.replace(/\"/g, "&quot;");   
-		  s = s.replace(/\n|\r\n/g, "<br>");  
-		  return s;   
-		},
-		html_decode : function(str){
-		  var s = "";   
-		  if (str.length == 0) return "";   
-		  s = str.replace(/&amp;/g, "&");   
-		  s = s.replace(/&lt;/g, "<");   
-		  s = s.replace(/&gt;/g, ">");   
-		  s = s.replace(/&nbsp;/g, " ");   
-		  s = s.replace(/&#39;/g, "\'");   
-		  s = s.replace(/&quot;/g, "\"");   
-		  s = s.replace(/<br>/g, "\n");   
-		  return s;  
-		},
-		html_encode : function(str){   
-		  var s = "";   
-		  if (str.length == 0) return "";   
-		  s = str.replace(/&/g, "&amp;");   
-		  s = s.replace(/</g, "&lt;");   
-		  s = s.replace(/>/g, "&gt;");   
-		  s = s.replace(/ /g, "&nbsp;");   
-		  s = s.replace(/\'/g, "&#39;");   
-		  s = s.replace(/\"/g, "&quot;");   
-		  s = s.replace(/\n/g, "<br>");   
-		  return s;   
-		},
-		html_decode : function(str){
-		  var s = "";   
-		  if (str.length == 0) return "";   
-		  s = str.replace(/&amp;/g, "&");   
-		  s = s.replace(/&lt;/g, "<");   
-		  s = s.replace(/&gt;/g, ">");   
-		  s = s.replace(/&nbsp;/g, " ");   
-		  s = s.replace(/&#39;/g, "\'");   
-		  s = s.replace(/&quot;/g, "\"");   
-		  s = s.replace(/<br>/g, "\n");   
-		  return s;  
-		},
+
+		}, 
 		isLogin :function(data){
 			if(!data instanceof Object)
 				data=JSON.parse(data);
@@ -137,6 +90,7 @@ define(function (require, exports, module) {
 			getBsScope:site_path+'/apply/getBusinessScope',
 			pageilB:site_path+'/apply/seller/pageDetailB',
 			agreement:site_path+'/apply/talent/agreement',
+			saveSPOTDraft:site_path+'/draft/saveSPOTDraft',
 			toDetailPage:site_path+'/apply/seller/toDetailPage'
 		},
 		timer:null,
@@ -191,18 +145,18 @@ define(function (require, exports, module) {
 				else if(type=='error')
 					$('.msg').css('color','red');
 			},
-			content:function(n_width,n_height,title,html_content,callback,init_callback){
-				var _self=this,total_h=0;
+			content:function(n_width,n_height,title,html_content,callback,init_callback,type){
+				var _self=this,total_h=0,cur_class=type?'prompt-box':'content-box';
 				_self.initbox();
 				$('.bgmeng').off();
 				if(n_height=='auto')
 					n_height=$(window).height()-180;
-				if(_self.box.attr('id')=='content-box'){
+				if(_self.box.attr('id')==cur_class){
 					_self.box.fadeIn();
 				}else{
 					_self.box.children(':not(".bgmeng")').remove();
-					_self.box.attr('id','content-box').append('<div class="content-box"></div>').fadeIn();
-					$('.content-box').append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
+					_self.box.attr('id',cur_class).append('<div class="'+cur_class+'"></div>').fadeIn();
+					$('.'+cur_class).append('<div class="btn-group"><div><button class="ok">确定</button><button class="cancel">取消</button></div></div>')
 					.append('<div class="close-tip clearfix"><i></i><div><h2>'+title+'</h2></div></div>').append('<div class="container"></div>')
 					.width(n_width).height(n_height).css({'margin-left':-(n_width/2)+'px','margin-top':-(n_height/2)+'px'});
 					$('.container').height(n_height-125);
@@ -732,7 +686,31 @@ define(function (require, exports, module) {
 					pic.src = url;
 				   }
 			  }
-	    }	
+	    },
+		html_encode : function(str){   
+		  var s = "";   
+		  if (str.length == 0) return "";   
+		  s = str.replace(/&/g, "&amp;");   
+		  s = s.replace(/</g, "&lt;");   
+		  s = s.replace(/>/g, "&gt;");   
+		  s = s.replace(/ /g, "&nbsp;");   
+		  s = s.replace(/\'/g, "&#39;");   
+		  s = s.replace(/\"/g, "&quot;");   
+		  s = s.replace(/\n|\r\n/g, "<br>");  
+		  return s;   
+		},
+		html_decode : function(str){
+		  var s = "";   
+		  if (str.length == 0) return "";   
+		  s = str.replace(/&amp;/g, "&");   
+		  s = s.replace(/&lt;/g, "<");   
+		  s = s.replace(/&gt;/g, ">");   
+		  s = s.replace(/&nbsp;/g, " ");   
+		  s = s.replace(/&#39;/g, "\'");   
+		  s = s.replace(/&quot;/g, "\"");   
+		  s = s.replace(/<br>/g, "\n");   
+		  return s; 
+		}
 	}
 	module.exports = new $public();
 });
