@@ -24,7 +24,7 @@ input{margin:0;padding:0 }
 .agreement-box .nextpage a{width: 200px;height: 36px;line-height: 36px;text-align: center;display: inline-block;background: #ed6c44;color: #fff;border: none;margin-right: 30px;font-size: 16px;}
 .agreement-box .rigtxt{text-align: right;vertical-align: middle; width: 300px !important;}
 .agreement-box table td{padding: 13px 0;}
-.agreement-box table .rigcontent{padding-left: 12px;}
+.agreement-box table .rigcontent{padding-left: 1px;}
 .agreement-box table .rigtxt label{color:#666;}
 .agreement-box table .rigcontent label{color:#222;}
 .agreement-box  .notes{font-size: 12px;color:#666;margin-left: 320px;}
@@ -41,7 +41,7 @@ input{margin:0;padding:0 }
 .agreement-box .six{padding:27px 0 27px 0;}
 .agreement-box .seven{padding:27px 0 27px 0;}
  .agreement-box .shopname{*margin-left: 180px;*width: 955px !important;margin-left: 13px;margin-left: 224px;}
-.agreement-box .seven .nameinput{margin-left: 13px;*margin-left: 25px;}
+.agreement-box .seven .nameinput{margin-left: 1px;*margin-left: 25px;}
 .agreement-box .two .qdlm{padding-bottom: 0px}
 .panel span{color:red;}
 .agreement-box .three .lmnotes{padding-top:25px;}
