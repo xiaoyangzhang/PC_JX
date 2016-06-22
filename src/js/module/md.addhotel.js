@@ -72,6 +72,11 @@ define(function (require, exports, module) {
 			
 			$public.procityaredata('province','city','area',true);
 
+			$('textarea[name="description"]').keypress(function(ev){
+				var e = ev || window.event || arguments.callee.caller.arguments[0];
+				if(e.keyCode==13) return false;
+			});
+
 			//计算输入字数
 			$('.inputxt,textarea').keyup(function(){
 				$(this).next('.mark').find('label.cv').text($(this).val().length);
