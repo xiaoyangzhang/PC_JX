@@ -237,8 +237,8 @@ define(function (require, exports, module) {
 					$(".qdlm").find('.Validform_checktip').addClass("Validform_wrong").html('请选择');
 					//$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
 			}
-		 },
-		 
+		 }
+
 	}
 
 	$(function(){
@@ -252,7 +252,9 @@ define(function (require, exports, module) {
 					   data: {merchantCategoryId:merchantCategoryId},
 					   success: function(data){
 					   			  var list = JSON.parse(data.value);
+
 					   			  $('input[type="checkbox"]').not("input:checked").prop("disabled","disabled");    
+					   			  $('.k1').prop("disabled","");
 									  $('input[type="checkbox"]:disabled').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() == list[i].businessScopeId ) {
