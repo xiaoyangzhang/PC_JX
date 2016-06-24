@@ -1,0 +1,29 @@
+.eredar-right .coupon{background-color: #f5f5f5;margin: 10px 40px;}
+.eredar-right .coupon p.first{padding-top: 20px;}
+.eredar-right .coupon p{margin:0px 0px 20px 50px}
+.eredar-right .coupon p em{width:70px;text-align: right;display: inline-block;}
+.eredar-right .coupon p em.right{margin-left: 100px;}
+.eredar-right .coupon p a{  display: inline-block;border: solid 1px #ccc;width: 60px;height: 34px;text-align: center;line-height: 34px;margin-left: 10px;background-color:#ececec;}
+.eredar-right .coupon p a.searchBtn{margin-left: 173px;}
+.eredar-right .addcoupon{margin: 15px 40px;}
+.eredar-right .addcoupon .addBtn{color: #ed6c44;border:solid 1px #ed6c44;width:114px;height:30px;display: inline-block;text-align: center;line-height: 30px;margin-left: 7px;}
+.eredar-right .addcoupon em{margin-left: 7px;color: #666;}
+.eredar-right .coupontable{margin: 0 0 0 40px;}
+.eredar-right .coupontable table  tr{width:892px;display: inline-block;}
+.eredar-right .coupontable table  tr.title{background-color: #f5f5f5;height:34px;vertical-align: middle;}
+.eredar-right .coupontable table  tr th{line-height: 34px;}
+.eredar-right .coupontable table  tr td{vertical-align: top;text-align: center;}
+.eredar-right .coupontable table  tr.title td{line-height: 34px;text-align: center;}
+.eredar-right .coupontable table tr .list1{width:95px;}
+.eredar-right .coupontable table tr .list2{width:80px;}
+.eredar-right .coupontable table tr .list3{width:128px;}
+.eredar-right .coupontable table tr .list4{width:80px;}
+.eredar-right .coupontable table tr .list5{width:140px;}
+.eredar-right .coupontable table tr .list6{width:140px;}
+.eredar-right .coupontable table tr .list7{width:115px;}
+.eredar-right .coupontable table tr .list8{width:80px;}
+.eredar-right .coupontable table tbody tr .list3 em{width:100px;line-height: 20px;display: inline-block;}
+.eredar-right .coupontable table tbody tr{height:80px;margin-top:18px;border-bottom:solid 1px #f5f5f5;}
+.eredar-right .coupontable table tbody tr td.conlist p .date{cursor:auto;margin-left: 10px; vertical-align: middle;}
+.eredar-right .coupontable table tbody tr td.conlist p.endtime{margin-top: 10px;}
+.eredar-right .coupontable table tbody tr td.list8 a{width: 80px;color: #ed6c44;display: inline-block;line-height: 22px;cursor: pointer;}
