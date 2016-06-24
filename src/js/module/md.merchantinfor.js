@@ -233,7 +233,7 @@ define(function (require, exports, module) {
 		 		 	$(".qdlm").find('.Validform_checktip').addClass("Validform_right").html('');
 		 		 	$(".qdlm").find('.Validform_checktip').removeClass("Validform_wrong").html('');
 				}else{
-					//alert('打上拔插');
+					//alert('打上x');
 					$(".qdlm").find('.Validform_checktip').addClass("Validform_wrong").html('请选择');
 					//$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
 			}
