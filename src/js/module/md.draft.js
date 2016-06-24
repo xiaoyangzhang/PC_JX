@@ -18,7 +18,7 @@ define(function (require, exports, module) {
 			//äÖÈ¾ÏÂÀ­¿ò¿Ø¼þ
 			$('#edu').selectlist({
 				zIndex: 10,
-				width: 200,
+				width: 198,
 				height: 32,
 				onChange:function(){}
 			});
