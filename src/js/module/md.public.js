@@ -57,8 +57,8 @@ define(function (require, exports, module) {
 	        	_self.isVdSelect=true;
 			},500);
 
-				 _self.depath(); 
-		}, 
+				 _self.depath();
+		},
 		isLogin :function(data){
 			if(!data instanceof Object)
 				data=JSON.parse(data);
