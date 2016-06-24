@@ -90,7 +90,7 @@ define(function (require, exports, module) {
 
 									  });   
 									   var subDisabled = $('div.bomb input[type="checkbox"]:disabled');
-									  	if (subDisabled.length <3) {
+									  	if (subDisabled.length < $('div.aaa input[type="checkbox"]').length) {
 
 									  		$(".k1").prop("disabled","");
 									  	};
