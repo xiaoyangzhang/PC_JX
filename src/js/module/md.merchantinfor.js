@@ -254,7 +254,7 @@ define(function (require, exports, module) {
 					   			  var list = JSON.parse(data.value);
 
 					   			  $('input[type="checkbox"]').not("input:checked").prop("disabled","disabled");    
-					   			  $('.k1').prop("disabled","");
+					   			  //$('.k1').prop("disabled","");
 									  $('input[type="checkbox"]:disabled').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() == list[i].businessScopeId ) {
@@ -263,6 +263,11 @@ define(function (require, exports, module) {
 									  	}; 
  
 									  });   
+									  var subDisabled = $('div.bomb input[type="checkbox"]:disabled');
+									  	if (subDisabled.length < $('div.aaa input[type="checkbox"]').length) {
+
+									  		$(".k1").prop("disabled","");
+									  	};
 					   	   	}
 					   
 					});
