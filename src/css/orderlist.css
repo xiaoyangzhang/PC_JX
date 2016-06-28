@@ -1,0 +1,12 @@
+@charset "utf-8";
+/**************************订单列表备注列*******************************/
+.td-bz .icon-bz{display: inline-block;position: relative; width: 18px;height: 18px;background: url(../../img/icon_beizhu.png) no-repeat center;background-size: contain;}
+.td-bz .bz-box{display: none; position:absolute;left: -101px;top: 26px; width: 220px;padding: 8px;background: #fff3d8; border: 1px solid #ffaf00;border-radius: 3px;text-align: left;}
+.td-bz .bz-box:before{position: absolute;left: 50%;top: -16px;margin-left:-8px;content: "";border: 8px solid transparent;border-bottom-color: #ffaf00;}
+.td-bz .bz-box:after{position: absolute;left: 50%;top: -15px;margin-left: -8px;content: "";border: 8px solid transparent;border-bottom-color: #fff3d8;}
+.td-bz .bz-box .bz-txt{margin-bottom: 5px;word-break: break-all;}
+/**************************订单列表商品列*******************************/
+.goods-item	.t-msg{margin-left: 110px;}	
+/**************************查看订单详情页-订单商品信息*******************************/
+.orderInfo .goods-item .t-img .uploadImgFile{width: 110px;height: 110px;}
+.orderInfo .goods-item .t-msg{margin-left: 120px;}	
