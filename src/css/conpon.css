@@ -27,3 +27,21 @@
 .eredar-right .coupontable table tbody tr td.conlist p .date{cursor:auto;margin-left: 10px; vertical-align: middle;}
 .eredar-right .coupontable table tbody tr td.conlist p.endtime{margin-top: 10px;}
 .eredar-right .coupontable table tbody tr td.list8 a{width: 80px;color: #ed6c44;display: inline-block;line-height: 22px;cursor: pointer;}
+/*添加优惠券*/
+strong{font-weight: normal;}
+.eredar-right .coupon p.add-tit{display: inline-block;padding: 10px 0 10px 15px;margin: 0px;}
+.eredar-right .coupon p.add-tit font{font-size: 16px;color: #666;}
+.eredar-right .coupon-list{margin: 30px 0px 0px 60px;}
+.eredar-right .coupon-list p{margin-top: 18px;}
+.eredar-right .coupon-list p em s{color: #fb0000;text-decoration: none;vertical-align: middle;}
+.eredar-right .coupon-list p em{width:92px;text-align: right;display: inline-block;vertical-align: middle;}
+.eredar-right .coupon-list p span{margin-left: 5px;}
+.eredar-right .coupon-list p span strong{color: #222;}
+.eredar-right .coupon-list p span input.coupon-input,.eredar-right .coupon-list p span input.coupon-num{height: 34px;line-height: 34px;border:solid 1px #ccc;}
+.eredar-right .coupon-list p span input.coupon-input{width: 200px;}
+.eredar-right .coupon-list p span input.coupon-num{width:72px;}
+.eredar-right .coupon-list p span input.field{cursor: pointer;}
+.eredar-right .coupon-list p span .dis{margin-left: 10px;}
+.eredar-right .coupon-list p span .dis2{margin-left: 20px;}
+.eredar-right .coupon-list p span a{color: #999;}
+.eredar-right .coupon-list p .savebtn{width:120px;height:36px;line-height: 36px;background-color: #ed6c44;border-style: none;color: #fff;margin: 14px 0 90px 14px;}
