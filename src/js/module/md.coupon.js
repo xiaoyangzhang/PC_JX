@@ -14,7 +14,24 @@ define(function (require, exports, module) {
 			var $self = this;
 			//渲染时间控件
 			/* 第一组 */
-			$('#putstartime').datepicker({
+			
+			$( "#putstartime" ).datepicker({
+			  defaultDate: "",
+			  changeMonth: true,
+			  numberOfMonths: 1,
+			  onClose: function( selectedDate ) {
+				$( "#putendtime" ).datepicker( "option", "minDate", selectedDate );
+			  }
+			});
+			$( "#putendtime" ).datepicker({
+			  defaultDate: "",
+			  changeMonth: true,
+			  numberOfMonths: 1,
+			  onClose: function( selectedDate ) {
+				$( "#putstartime" ).datepicker( "option", "60D", selectedDate );
+			  }
+			});
+			/* $('#putstartime').datepicker({
 				dateFormat:'yy-mm-dd',
 				onSelect: function( startDate ) {
 					var $startDate = $( "#putstartime" );
@@ -37,7 +54,7 @@ define(function (require, exports, module) {
 					}
 					$startDate.datepicker( "option", "maxDate", endDate );
 				}
-			});
+			}); */
 			/* 第二组 */
 			$('#getstartime').datepicker({
 				dateFormat:'yy-mm-dd',
@@ -63,9 +80,6 @@ define(function (require, exports, module) {
 					$startDate.datepicker( "option", "maxDate", endDate );
 				}
 			});
-			
-			
-			
 			/* 下拉框 */
 			$('#state,#send,#time').selectlist({
 				zIndex: 10,
@@ -79,10 +93,16 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-
+						"ele_p":/^[0-9]*[1-9][0-9]*$/
 					},
 					ajaxPost:true
 				},rule=[
+				{
+					ele:"#part",
+					nullmsg:"请填写不小于1的正整数",
+					datatype:"ele_p",
+					errormsg:"请填写不小于1的正整数"
+				}
 				],validfm=$(".couponform,.addcouponForm").Validform(validoptions).addRule(rule);
 			/* 重置清空表单 */
 			$(".delBtn").on("click",function(){
@@ -105,30 +125,19 @@ define(function (require, exports, module) {
 			$("table tr td").find(".delete").on("click",function(){
 				$(this).closest("tr").remove();
 			});
-			
 			/* addcoupon */
-			var starIndex = $('#starnum').val();
-			var endIndex = $('#emdnum').val();
-			$('#starnum,#emdnum').bind('input change', function() {
-				if(starIndex < endIndex)
-				{
-					$("#starnum").parent().append('<span class="Validform_checktip Validform_wrong">满大于减</span>');
-				}
-				
+			$('#starnum,#emdnum').bind('input focus', function() {
+				$self.compareFun();
 			});
-			/* $('#emdnum').bind('input change', function() {
-				if(starIndex < endIndex)
-				{
-					$("#starnum").parent().append('<span class="Validform_checktip Validform_wrong">满大于减</span>');
-				}
-			}); */
-			
-			$("#fill").bind("change",function(){
+			$('#emdnum').bind('input focus', function() {
+				$self.compareFun();
+			});
+			$("#fill").bind("focus",function(){
 				var curr = $(this).val();
-				var z= /^\d+$/;
+				var z= /^[0-9]*[1-9][0-9]*$/;
 				if(!z.test(curr)){
 					$(this).parent().find('.Validform_checktip').remove();
-					$(this).parent().append('<span class="Validform_checktip Validform_wrong">请填写数字</span>');
+					$(this).parent().append('<span class="Validform_checktip Validform_wrong">请填写1-10之间的数字</span>');
 				}
 				else{
 					if(curr > 10){
@@ -141,20 +150,36 @@ define(function (require, exports, module) {
 					}
 				}
 			});
-			$("#part").bind("change",function(){
-				var currPart = $(this).val();
-				var c = /^\d+$/;
-				if(!c.test(currPart)){
-					alert("an");
-					$(this).parent().find('.Validform_checktip').remove();
-					$(this).parent().append('<span class="Validform_checktip Validform_wrong">请填写不小于1的数字</span>');
+			$(".savebtn").click(function(){
+				alert("a");
+			});
+		},
+		/* 对比两个数量 */
+		compareFun : function(){
+			var starnum = parseFloat($("#starnum").val());
+			var emdnum = parseFloat($("#emdnum").val());
+			var rule = /^(\d+)?$/;
+			if(starnum != "" && emdnum != ""){
+				$(".tip").find('.Validform_checktip').remove();
+				if(!rule.test(starnum) || !rule.test(emdnum)){
+					$(".tip").find('.Validform_checktip').remove();
+					$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额数字</span>');
 				}
 				else{
-					alert("asdjkaghjags");
-					$(this).parent().find('.Validform_checktip').remove();
-					$(this).parent().append('<span class="Validform_checktip Validform_right"></span>');
+					if(starnum < emdnum || starnum == emdnum){
+						$(".tip").find('.Validform_checktip').remove();
+						$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额</span>')
+					}
+					else{
+						$(".tip").find('.Validform_checktip').remove();
+						$(".tip").append('<span class="Validform_checktip Validform_right"></span>');
+					}
 				}
-			});
+			}
+			else{
+				$(".tip").find('.Validform_checktip').remove();
+				$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额数字</span>');
+			}
 		}
 	}
 	module.exports = new $coupon();

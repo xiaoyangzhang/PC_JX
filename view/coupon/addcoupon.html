@@ -83,11 +83,11 @@
 				<form class = "addcouponForm" action = "">
 					<p>
 						<em><s>*</s>优惠券名称：</em>
-						<span><input type = "text" maxlength = "10" class = "coupon-input" name = "couponName"/></span>
+						<span><input type = "text" maxlength = "10" datatype = "*" class = "coupon-input" name = "couponName"/></span>
 					</p>
 					<p>
 						<em><s>*</s>满减金额：</em>
-						<span><strong>满</strong><input type = "text" id = "starnum" class = "coupon-num dis" name = "starnum" value = ""></input>
+						<span class = "tip"><strong>满</strong><input type = "text" id = "starnum" class = "coupon-num dis" name = "starnum" value = ""></input>
 							<strong class = "dis">减</strong><input type = "text" id = "emdnum" class = "coupon-num dis" name = "emdnum"/>
 							<strong class = "dis">元</strong>
 						</span>
@@ -95,17 +95,17 @@
 					<p>
 						<em><s>*</s>投放时间：</em>
 						<span>
-							<input id="putstartime" class = "field coupon-input"  name="putstartime" title="开始时间" datatype="*" errormsg="亲选择时间呀" readonly="readonly">
+							<input id="putstartime" class = "field coupon-input"  name="putstartime" title="开始时间"   readonly="readonly">
 							<font class = "dis">至</font>
-							<input id="putendtime" class = "field coupon-input dis" name="putendtime" title="结束时间" datatype="*" errormsg="亲选择时间呀" readonly="readonly">
+							<input id="putendtime" class = "field coupon-input dis" name="putendtime" title="结束时间" readonly="readonly">
 						</span>
 					</p>
 					<p>
 						<em><s>*</s>使用时间：</em>
 						<span>
-							<input id="getstartime" class = "field coupon-input" name="getstartime" title="开始时间" datatype="*" errormsg="亲选择时间呀" readonly="readonly">
+							<input id="getstartime" class = "field coupon-input" name="getstartime" title="开始时间"   readonly="readonly">
 							<font class = "dis">至</font>
-							<input id="getendtime" class = "field coupon-input dis" name="getendtime" title="结束时间" datatype="*" errormsg="亲选择时间呀" readonly="readonly">
+							<input id="getendtime" class = "field coupon-input dis" name="getendtime" title="结束时间" readonly="readonly">
 						</span>
 					</p>
 					<p>
@@ -119,10 +119,11 @@
 					<p>
 						<em><s>*</s>发券数量：</em>
 						<span>
+							<!-- <input type = "text" id = "part" datatype= "n" errormsg = "请填写不小于1的数字"class = "coupon-num" name = "sendname"/><strong class = "dis">份</strong> -->
 							<input type = "text" id = "part" class = "coupon-num" name = "sendname"/><strong class = "dis">份</strong>
 							<a class = "dis2">发券数量不能小于1</a>
 						</span>
-					</p>
+					</p> 
 					<p><button class = "savebtn">保存</button></p>
 				</form>
 			</div>
