@@ -29,9 +29,9 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$('#filegw_url').val()+'/',
-	site_path=$('#root_path').val()+'/',
-	img_domain=$('#tfs').val(),
+	fileuploadURL=$('#filegw_url').val()?$('#filegw_url').val()+'/':$urlpath.fileuploadURL,
+	site_path=$('#root_path').val()?$('#root_path').val()+'/':$urlpath.site_path,
+	img_domain=$('#tfs').val()?$('#tfs').val():$urlpath.img_domain,
 	static_path=$('#static_path').val(),
 	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
 	// fileuploadURL=$urlpath.fileuploadURL,
