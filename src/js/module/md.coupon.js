@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
 	$public = require("public"),
+	$addcoupon = require("addcoupon"),
 	require("core"),
 	require("widget"),
 	require("datepicker"),
@@ -12,74 +13,6 @@ define(function (require, exports, module) {
 	$coupon.prototype = {
 		init:function(){
 			var $self = this;
-			//渲染时间控件
-			/* 第一组 */
-			
-			$( "#putstartime" ).datepicker({
-			  defaultDate: "",
-			  changeMonth: true,
-			  numberOfMonths: 1,
-			  onClose: function( selectedDate ) {
-				$( "#putendtime" ).datepicker( "option", "minDate", selectedDate );
-			  }
-			});
-			$( "#putendtime" ).datepicker({
-			  defaultDate: "",
-			  changeMonth: true,
-			  numberOfMonths: 1,
-			  onClose: function( selectedDate ) {
-				$( "#putstartime" ).datepicker( "option", "60D", selectedDate );
-			  }
-			});
-			/* $('#putstartime').datepicker({
-				dateFormat:'yy-mm-dd',
-				onSelect: function( startDate ) {
-					var $startDate = $( "#putstartime" );
-					var $endDate = $('#putendtime');
-					var endDate = $endDate.datepicker( 'getDate' );
-					if(endDate < startDate){
-						$endDate.datepicker('setDate', startDate - 3600*1000*24);
-					}
-					$endDate.datepicker( "option", "minDate", startDate );
-				}
-			});
-			$("#putendtime").datepicker({
-				dateFormat:'yy-mm-dd',
-				onSelect: function( endDate ) {
-					var $startDate = $( "#putstartime" );
-					var $endDate = $('#putendtime');
-					var startDate = $startDate.datepicker( "getDate" );
-					if(endDate < startDate){
-						$startDate.datepicker('setDate', startDate + 3600*1000*24);
-					}
-					$startDate.datepicker( "option", "maxDate", endDate );
-				}
-			}); */
-			/* 第二组 */
-			$('#getstartime').datepicker({
-				dateFormat:'yy-mm-dd',
-				onSelect: function( startDate ) {
-					var $startDate = $( "#getstartime" );
-					var $endDate = $('#getendtime');
-					var endDate = $endDate.datepicker( 'getDate' );
-					if(endDate < startDate){
-						$endDate.datepicker('setDate', startDate - 3600*1000*24);
-					}
-					$endDate.datepicker( "option", "minDate", startDate );
-				}
-			});
-			$("#getendtime").datepicker({
-				dateFormat:'yy-mm-dd',
-				onSelect: function( endDate ) {
-					var $startDate = $( "#getstartime" );
-					var $endDate = $('#getendtime');
-					var startDate = $startDate.datepicker( "getDate" );
-					if(endDate < startDate){
-						$startDate.datepicker('setDate', startDate + 3600*1000*24);
-					}
-					$startDate.datepicker( "option", "maxDate", endDate );
-				}
-			});
 			/* 下拉框 */
 			$('#state,#send,#time').selectlist({
 				zIndex: 10,
@@ -129,29 +62,95 @@ define(function (require, exports, module) {
 			$('#starnum,#emdnum').bind('input focus', function() {
 				$self.compareFun();
 			});
-			$('#emdnum').bind('input focus', function() {
-				$self.compareFun();
+			/* 投放时间和使用时间 */
+			$self.time_fun();
+			/* 添加获取ID */
+			$(".addBtn").on("click",function(){
+				var data = $("#addVoucher").val();
+				window.location = data;
+				
 			});
-			$("#fill").bind("focus",function(){
-				var curr = $(this).val();
-				var z= /^[0-9]*[1-9][0-9]*$/;
-				if(!z.test(curr)){
-					$(this).parent().find('.Validform_checktip').remove();
-					$(this).parent().append('<span class="Validform_checktip Validform_wrong">请填写1-10之间的数字</span>');
-				}
-				else{
-					if(curr > 10){
-						$(this).parent().find('.Validform_checktip').remove();
-						$(this).parent().append('<span class="Validform_checktip Validform_wrong">最大限领10张</span>');
-					}
-					else{
-						$(this).parent().find('.Validform_checktip').remove();
-						$(this).parent().append('<span class="Validform_checktip Validform_right"></span>');
-					}
-				}
+			$("#fill").bind("input focus",function(){
+				$self.couponNum();
 			});
 			$(".savebtn").click(function(){
-				alert("a");
+				var a=validfm.check();
+				$self.couponNum();
+				$self.compareFun();
+				if($("#putstartime").val() == "" || $("#putendtime").val() == "" || $("#getstartime").val() == "" || $("#getstartime").val() == ""){
+					alert("您的时间信息有误！"); 
+				}
+				return false;
+				
+				if(a){
+					params=$public.paramcompare($('.addcouponForm').serializeArray());
+					console.log(JSON.stringify(params));
+					$.ajax({
+						type:'POST',
+						url:"" + $("#add").val(),
+						data:params,
+						success:function(data){
+							alert(data);
+							$public.isLogin(data);
+							if( data.success ){
+								$public.dialog.msg("保存成功","success");
+								window.location.href = window.location.href;
+							}else{
+								$public.dialog.msg(data.msg,"error");
+							}
+						}
+					});
+				}
+			});
+			
+		},
+		couponNum : function(){
+			var curr = $("#fill").val();
+				var z= /^[0-9]*[1-9][0-9]*$/;
+				if(curr != ""){
+					$("#fill").parent().find('.Validform_checktip').remove();
+					if(!z.test(curr)){
+						$("#fill").parent().find('.Validform_checktip').remove();
+						$("#fill").parent().append('<span class="Validform_checktip Validform_wrong">请填写1-10之间的数字</span>');
+					}
+					else{
+						if(curr > 10){
+							$("#fill").parent().find('.Validform_checktip').remove();
+							$("#fill").parent().append('<span class="Validform_checktip Validform_wrong">最大限领10张</span>');
+						}
+						else{
+							$("#fill").parent().find('.Validform_checktip').remove();
+							$("#fill").parent().append('<span class="Validform_checktip Validform_right"></span>');
+						}
+					}
+				}
+				else{
+					$("#fill").parent().find('.Validform_checktip').remove();
+					$("#fill").parent().append('<span class="Validform_checktip Validform_wrong">请填写1-10之间的数字</span>');
+				}
+		},
+		time_fun:function(){
+			/* 第一组 */
+			$(".ui-state-default").on("click",function(){
+				$("#putstartime,#putendtime").trigger('change');
+			});
+			$("#putstartime,#putendtime").on("change",function(){
+				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
+			});
+			$( "#putstartime,#putendtime" ).datepicker({
+			  changeMonth: true,
+			  numberOfMonths: 1,
+			});
+			/* 第二组 */
+			$(".ui-state-default").on("click",function(){
+				$("#getstartime,#getendtime").trigger('change');
+			});
+			$("#getstartime,#getendtime").on("change",function(){
+				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
+			});
+			$( "#getstartime,#getendtime").datepicker({
+			  changeMonth: true,
+			  numberOfMonths: 1,
 			});
 		},
 		/* 对比两个数量 */
