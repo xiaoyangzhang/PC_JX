@@ -69,7 +69,7 @@ iframe{display: none;}
 .error_tip .error_box{position: absolute;z-index:9999;top:0px;right: 110px; width:150px;background: #F2896B;padding-bottom:10px;padding-top:5px;
 	border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;}
 .error_tip .error_box div{width:118px;color:#fff;margin:auto;font-size:14px;border-bottom:1px solid #fff;height: 24px;line-height: 24px;text-align: center;}
-.error_tip .error_box ol{list-style:decimal inside;}
+.error_tip .error_box ol{list-style:none;/*list-style:decimal inside;*/}
 .error_tip .error_box ol li{color:#fff;line-height: 20px;margin-left:15px;margin-right: 15px;margin-top:4px;font-size:12px;}
 
 .tipboxl{position: relative;z-index: 999;}
