@@ -54,10 +54,7 @@ define(function (require, exports, module) {
 				});
 				$(".select-button").val(selText);
 			});
-			/* 删除表格行 */
-			$("table tr td").find(".delete").on("click",function(){
-				$(this).closest("tr").remove();
-			});
+			
 			/* addcoupon */
 			$('#starnum,#emdnum').bind('input focus', function() {
 				$self.compareFun();
@@ -70,6 +67,76 @@ define(function (require, exports, module) {
 				window.location = data;
 				
 			});
+			/* 编辑 */
+			$(".editor").on("click",function(){
+				alert($("#voucherId").text());
+				var data = $("#editor").val() + "/" + $("#voucherId").text();
+				window.location = data;
+			});
+			/* 上架 */
+			$(".putaway").on("click",function(){
+				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$("#tip_get").fadeIn();
+			});
+			/* 删除取消 */
+			$(".get_del").on("click",function(){
+				$(".dialog").remove();
+				$("#tip_get").fadeOut();
+				$("#tip_out").fadeOut();
+			})
+			/* 确定上架 */
+			$("#get_sure").on("click",function(){
+				var url_data = $("#putaway").val() + "/" + $("#voucherId").val();
+				$.ajax({
+						type:'POST',
+						url:url_data,
+						success:function(data){
+							$public.isLogin(data);
+							if( data.success ){
+								$public.dialog.msg(data.resultMsg,"success");
+							}else{
+								$public.dialog.msg(data.errorMsg,"error");
+							}
+						}
+					});
+			});
+			/* 下架 */
+			$(".getaway").on("click",function(){
+				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$("#tip_out").fadeIn();
+			});
+			/* 确定下架 */
+			$(".away_sure").on("click",function(){
+				var url_data = $("#getaway").val() + "/" + $("#voucherId").val();
+				$.ajax({
+						type:'POST',
+						url:url_data,
+						success:function(data){
+							$public.isLogin(data);
+							if( data.success ){
+								$public.dialog.msg(data.resultMsg,"success");
+							}else{
+								$public.dialog.msg(data.errorMsg,"error");
+							}
+						}
+					});
+			});
+			/* 删除表格行 */
+			$("table tr td").find(".delete").on("click",function(){
+				var url_data = $("#delete").val() + "/" + $("#voucherId").val();
+				$.ajax({
+						type:'POST',
+						url:url_data,
+						success:function(data){
+							$public.isLogin(data);
+							if( data.success ){
+								$public.dialog.msg(data.resultMsg,"success");
+							}else{
+								$public.dialog.msg(data.errorMsg,"error");
+							}
+						}
+					});
+			});
 			$("#fill").bind("input focus",function(){
 				$self.couponNum();
 			});
@@ -80,7 +147,6 @@ define(function (require, exports, module) {
 				if($("#putstartime").val() == "" || $("#putendtime").val() == "" || $("#getstartime").val() == "" || $("#getstartime").val() == ""){
 					alert("您的时间信息有误！"); 
 				}
-				return false;
 				
 				if(a){
 					params=$public.paramcompare($('.addcouponForm').serializeArray());
@@ -90,13 +156,11 @@ define(function (require, exports, module) {
 						url:"" + $("#add").val(),
 						data:params,
 						success:function(data){
-							alert(data);
 							$public.isLogin(data);
 							if( data.success ){
-								$public.dialog.msg("保存成功","success");
-								window.location.href = window.location.href;
+								$public.dialog.msg(data.resultMsg,"success");
 							}else{
-								$public.dialog.msg(data.msg,"error");
+								$public.dialog.msg(data.errorMsg,"error");
 							}
 						}
 					});
@@ -134,7 +198,11 @@ define(function (require, exports, module) {
 			$(".ui-state-default").on("click",function(){
 				$("#putstartime,#putendtime").trigger('change');
 			});
-			$("#putstartime,#putendtime").on("change",function(){
+			$("#putstartime").on("change",function(){
+				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
+				$addcoupon.comperFun($("#putstartime"),$("#getstartime"));
+			});
+			$("#putendtime").on("change",function(){
 				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
 			});
 			$( "#putstartime,#putendtime" ).datepicker({
@@ -145,19 +213,24 @@ define(function (require, exports, module) {
 			$(".ui-state-default").on("click",function(){
 				$("#getstartime,#getendtime").trigger('change');
 			});
-			$("#getstartime,#getendtime").on("change",function(){
+			$("#getstartime").on("change",function(){
+				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
+				$addcoupon.comperFun($("#putstartime"),$("#getstartime"));
+			});
+			$("#getendtime").on("change",function(){
 				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
 			});
 			$( "#getstartime,#getendtime").datepicker({
 			  changeMonth: true,
-			  numberOfMonths: 1,
+			  /* numberOfMonths: 1, */
 			});
+			$('#getendtime').datepicker('setDate','2011/12/15');
 		},
 		/* 对比两个数量 */
 		compareFun : function(){
 			var starnum = parseFloat($("#starnum").val());
 			var emdnum = parseFloat($("#emdnum").val());
-			var rule = /^(\d+)?$/;
+			var rule = /^\d+(\.{0,1}\d+){0,1}$/;
 			if(starnum != "" && emdnum != ""){
 				$(".tip").find('.Validform_checktip').remove();
 				if(!rule.test(starnum) || !rule.test(emdnum)){
