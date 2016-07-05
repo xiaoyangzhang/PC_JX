@@ -435,7 +435,18 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     height: 172px;
     top:-168px;
     left:-58px;
-    background: url('../../img/qr_code_tip.png') no-repeat center center;
+    background: url('../../img/wx-qr.png') no-repeat center center;
+}
+.jiux-footer .footer-top .qq i{display: block;}
+.jiux-footer .footer-top .qq:hover i{display: block;}
+.jiux-footer .footer-top .qq i{
+    position: absolute;
+    display: none;
+    width:155px;
+    height: 172px;
+    top:-150px;
+    right:-50px;
+    background: url('../../img/qq-qr.jpg') no-repeat center center;
 }
 .jiux-footer .footer-top li{
     float: left;
@@ -466,6 +477,17 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 .footID {
     margin: 0 auto;
     position: relative;
+}
+.downloadIM{
+  width: 156px;
+  height: 44px;
+  margin-top: 31px;
+  cursor: pointer;
+  background: url('../../img/IM_download.png') no-repeat left top;
+  float: right;
+}
+.downloadIM:hover{
+    background: url('../../img/IM_download2.png') no-repeat left top;
 }
 /*-----------------------------------------------------------*/
 
