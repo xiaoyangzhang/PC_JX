@@ -80,18 +80,20 @@
 				<form class ="couponform">
 					<p class = "first">
 						<em>状态：</em>
-						<select id="state">
+						<select id="status">
 							<option value="0" selected>全部</option>
+							<option value="1" selected>全部----</option>
 						</select>
 						<em class = "right">投放期限：</em>
-						<select id="send">
+						<select id="putStatus">
 							<option value="">全部</option>
 						</select>
 					</p>
 					<p>
 						<em>使用期限：</em>
-						<select id="time">
+						<select id="useStatus">
 							<option value="">全部</option>
+							<option value="">全部11111111111</option>
 						</select>
 						<a class = "searchBtn">查询</a>
 						<a  class = "delBtn">清除</a>
@@ -123,12 +125,12 @@
 							<td class = "list3"><em>旅游套餐优惠券仅限线路类商品</em></td>
 							<td class = "list4">未上架</td>
 							<td class = "list5 conlist">
-								<p><img src = "../../img/couponstar.png"><a class = "date">2016-05-31</a></p>
-								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date">2016-05-31</a></p>
+								<p><img src = "../../img/couponstar.png"><a class = "date date_list1">2016-05-31</a></p>
+								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date date_list2">2016-05-31</a></p>
 							</td>
 							<td class = "list6 conlist">
-								<p><img src = "../../img/couponstar.png"><a class = "date">2016-05-31</a></p>
-								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date">2016-05-31</a></p>
+								<p><img src = "../../img/couponstar.png"><a class = "date date_list3">2016-05-31</a></p>
+								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date date_list4">2016-05-31</a></p>
 							</td>
 							<td class = "list7">10000/10000</td>
 							<td class = "list8">
@@ -143,12 +145,12 @@
 							<td class = "list3"><em>旅游套餐优惠券仅限线路类商品</em></td>
 							<td class = "list4">未上架</td>
 							<td class = "list5 conlist">
-								<p><img src = "../../img/couponstar.png"><a class = "date">2016-05-31</a></p>
-								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date">2016-05-31</a></p>
+								<p><img src = "../../img/couponstar.png"><a class = "date date_list1">2016-06-31</a></p>
+								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date date_list2">2016-06-31</a></p>
 							</td>
 							<td class = "list6 conlist">
-								<p><img src = "../../img/couponstar.png"><a class = "date">2016-05-31</a></p>
-								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date">2016-05-31</a></p>
+								<p><img src = "../../img/couponstar.png"><a class = "date date_list3">2016-06-31</a></p>
+								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date date_list4">2016-06-31</a></p>
 							</td>
 							<td class = "list7">10000/10000</td>
 							<td class = "list8">
@@ -163,12 +165,12 @@
 							<td class = "list3"><em>旅游套餐优惠券仅限线路类商品</em></td>
 							<td class = "list4">未上架</td>
 							<td class = "list5 conlist">
-								<p><img src = "../../img/couponstar.png"><a class = "date">2016-05-31</a></p>
-								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date">2016-05-31</a></p>
+								<p><img src = "../../img/couponstar.png"><a class = "date date_list1">2016-07-31</a></p>
+								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date date_list2">2016-07-31</a></p>
 							</td>
 							<td class = "list6 conlist">
-								<p><img src = "../../img/couponstar.png"><a class = "date">2016-05-31</a></p>
-								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date">2016-05-31</a></p>
+								<p><img src = "../../img/couponstar.png"><a class = "date date_list3">2016-07-31</a></p>
+								<p class = "endtime"><img src = "../../img/couponend.png"><a class = "date date_list4">2016-07-31</a></p>
 							</td>
 							<td class = "list7">10000/10000</td>
 							<td class = "list8">
@@ -185,20 +187,25 @@
 	<!-- 下架弹出层 -->
 	<div class = "outcoupon" id = "tip_get">
 		<p class = "first">上架后，在投放期限内用户即可领取是否确上架？</p>
-		<p class = "btn"><a class = "out_surebtn" id = "get_sure">确定</a><a class = "out_clearbtn  get_del">取消</a></p>
+		<p class = "btn_coupon"><a class = "out_surebtn" id = "get_sure">确定</a><a class = "out_clearbtn  get_del">取消</a></p>
 		<img src = "../../img/close.png" class = "out_delete get_del"/>
+		<input type="hidden" id="put_voucherId"/>
 	</div>
 	<div class = "outcoupon" id = "tip_out">
 		<p class = "first">下架后，用户不能领取该优惠券，已发出的券仍可使用,是否确认下架？</p>
-		<p class = "btn"><a class = "out_surebtn" id = "away_sure">确定</a><a class = "out_clearbtn get_del">取消</a></p>
+		<p class = "btn_coupon"><a class = "out_surebtn" id = "away_sure">确定</a><a class = "out_clearbtn get_del">取消</a></p>
 		<img src = "../../img/close.png" class = "out_delete get_del"/>
+		<input type="hidden" id="get_voucherId"/>
 	</div>
 	<div class = "outcoupon" id = "tip_del">
-		<p class><em>投放时间：</em><span>2010-3-20</span></p>
-		<p class><em>投放时间：</em><span>2010-3-20</span></p>
-		<p class><em>投放时间：</em><span>2010-3-20</span></p>
-		<p class = "btn"><a class = "out_surebtn">确定</a><a class = "out_clearbtn get_del">取消</a></p>
+		<p class><em>起：</em><span class = "tou_start"></span></p>
+		<p class><em>止：</em><span class = "tou_end"></span></p>
+		<p class>是否删除该优惠券</p>
+		<p class><em>起：</em><span class = "shi_start"></span></p>
+		<p class><em>止：</em><span class = "shi_end"></span></p>
+		<p class = "btn_coupon"><a class = "out_surebtn delete_sure">确定</a><a class = "out_clearbtn get_del">取消</a></p>
 		<img src = "../../img/close.png" class = "out_delete get_del" />
+		<input type="hidden" id="del_voucherId"/>
 	</div>
 	<!-- 尾部开始 -->
 <div class="jiux-footer jiuw1" id = "footID">

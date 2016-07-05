@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 		init:function(){
 			var $self = this;
 			/* 下拉框 */
-			$('#state,#send,#time').selectlist({
+			$('#status,#putStatus,#useStatus').selectlist({
 				zIndex: 10,
 				width: 220,
 				height: 32,
@@ -69,13 +69,13 @@ define(function (require, exports, module) {
 			});
 			/* 编辑 */
 			$(".editor").on("click",function(){
-				alert($("#voucherId").text());
-				var data = $("#editor").val() + "/" + $("#voucherId").text();
+				var data = $("#editor").val() + "/" + $(this).attr("voucherId");
 				window.location = data;
 			});
 			/* 上架 */
 			$(".putaway").on("click",function(){
 				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$("#put_voucherId").val($(this).attr("voucherId"));
 				$("#tip_get").fadeIn();
 			});
 			/* 删除取消 */
@@ -83,19 +83,44 @@ define(function (require, exports, module) {
 				$(".dialog").remove();
 				$("#tip_get").fadeOut();
 				$("#tip_out").fadeOut();
+				$("#tip_del").fadeOut();
 			})
 			/* 确定上架 */
 			$("#get_sure").on("click",function(){
-				var url_data = $("#putaway").val() + "/" + $("#voucherId").val();
+				var url_data = $("#putaway").val() + "/" + $("#put_voucherId").val();
 				$.ajax({
 						type:'POST',
 						url:url_data,
 						success:function(data){
 							$public.isLogin(data);
 							if( data.success ){
-								$public.dialog.msg(data.resultMsg,"success");
+								$public.dialog.msg("上架成功","success");
+								window.location.href = window.location.href;
 							}else{
-								$public.dialog.msg(data.errorMsg,"error");
+								$public.dialog.msg(data.resultMsg,"error");
+							}
+						}
+					});
+				$(".dialog").remove();
+				$("#tip_get").fadeOut();
+			});
+			/* 列表查询 */
+			$(".searchBtn").on("click",function(){
+				var search_url = $("#subpath").val();
+				var stateData = $("#status").find(".select-button").val();
+				var sendData = $("#putStatus").find(".select-button").val();
+				var timeData = $("#useStatus").find(".select-button").val();
+				$.ajax({
+						type:'GET',
+						url:search_url,
+						data:{state:stateData,send:sendData,time:timeData},
+						success:function(data){
+							$public.isLogin(data);
+							if( data.success ){
+								$public.dialog.msg("查询成功","success");
+								window.location.href = window.location.href;
+							}else{
+								$public.dialog.msg(data.resultMsg,"error");
 							}
 						}
 					});
@@ -103,45 +128,71 @@ define(function (require, exports, module) {
 			/* 下架 */
 			$(".getaway").on("click",function(){
 				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$("#get_voucherId").val($(this).attr("voucherId"));
 				$("#tip_out").fadeIn();
 			});
 			/* 确定下架 */
-			$(".away_sure").on("click",function(){
-				var url_data = $("#getaway").val() + "/" + $("#voucherId").val();
+			$("#away_sure").on("click",function(){
+				var url_data = $("#getaway").val() + "/" + $("#get_voucherId").val();
 				$.ajax({
 						type:'POST',
 						url:url_data,
 						success:function(data){
 							$public.isLogin(data);
 							if( data.success ){
-								$public.dialog.msg(data.resultMsg,"success");
+								$public.dialog.msg("下架成功","success");
+								window.location.href = window.location.href;
 							}else{
-								$public.dialog.msg(data.errorMsg,"error");
+								$public.dialog.msg(data.resultMsg,"error");
 							}
 						}
 					});
+					$("#tip_out").fadeOut();
+					$(".dialog").remove();
 			});
 			/* 删除表格行 */
 			$("table tr td").find(".delete").on("click",function(){
-				var url_data = $("#delete").val() + "/" + $("#voucherId").val();
+				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$("#del_voucherId").val($(this).attr("voucherId"));
+				
+				/* alert("当前"); */
+				var list1 = $(this).closest("tr").find(".date_list1").text();
+				var list2 = $(this).closest("tr").find(".date_list2").text();
+				var list3 = $(this).closest("tr").find(".date_list3").text();
+				var list4 = $(this).closest("tr").find(".date_list4").text();
+				if(list1!= "" && list2 != "" && list3 != "" && list4 != ""){
+					$(".tou_start").html(list1);
+					$(".tou_end").html(list2);
+					$(".shi_start").html(list3);
+					$(".shi_end").html(list4);
+				}
+				$("#tip_del").fadeIn();
+			});
+			/* 确定删除 */
+			$(".delete_sure").on("click",function(){
+				var url_data = $("#delete").val() + "/" + $("#del_voucherId").val();
 				$.ajax({
 						type:'POST',
 						url:url_data,
 						success:function(data){
 							$public.isLogin(data);
 							if( data.success ){
-								$public.dialog.msg(data.resultMsg,"success");
+								$public.dialog.msg("删除成功","success");
+								window.location.href = window.location.href;
 							}else{
-								$public.dialog.msg(data.errorMsg,"error");
+								$public.dialog.msg(data.resultMsg,"error");
 							}
 						}
 					});
+				$("#tip_del").fadeOut();
+				$(".dialog").remove();
 			});
 			$("#fill").bind("input focus",function(){
 				$self.couponNum();
 			});
 			$(".savebtn").click(function(){
 				var a=validfm.check();
+				var id1 = $("#voucherId").val()+ "",id2 = $("#add").val()+ "",id3 = $("#edit").val() + "/" + id1;
 				$self.couponNum();
 				$self.compareFun();
 				if($("#putstartime").val() == "" || $("#putendtime").val() == "" || $("#getstartime").val() == "" || $("#getstartime").val() == ""){
@@ -150,17 +201,17 @@ define(function (require, exports, module) {
 				
 				if(a){
 					params=$public.paramcompare($('.addcouponForm').serializeArray());
-					console.log(JSON.stringify(params));
+					/* console.log(JSON.stringify(params)); */
 					$.ajax({
 						type:'POST',
-						url:"" + $("#add").val(),
+						url:(id1=="" || parseInt(id1) == 0 )?id2:id3,
 						data:params,
 						success:function(data){
 							$public.isLogin(data);
-							if( data.success ){
-								$public.dialog.msg(data.resultMsg,"success");
+							if(data.success ){
+								$public.dialog.msg("保存成功","success");
 							}else{
-								$public.dialog.msg(data.errorMsg,"error");
+								$public.dialog.msg(data.resultMsg,"error");
 							}
 						}
 					});
@@ -196,7 +247,7 @@ define(function (require, exports, module) {
 		time_fun:function(){
 			/* 第一组 */
 			$(".ui-state-default").on("click",function(){
-				$("#putstartime,#putendtime").trigger('change');
+				$("#putstartime,#putendtime,#getstartime,#getendtime").trigger('change');
 			});
 			$("#putstartime").on("change",function(){
 				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
@@ -204,27 +255,21 @@ define(function (require, exports, module) {
 			});
 			$("#putendtime").on("change",function(){
 				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
+				$addcoupon.comperFun($("#putendtime"),$("#getendtime"));
 			});
-			$( "#putstartime,#putendtime" ).datepicker({
+			$( "#putstartime,#putendtime,#getstartime,#getendtime" ).datepicker({
 			  changeMonth: true,
 			  numberOfMonths: 1,
 			});
 			/* 第二组 */
-			$(".ui-state-default").on("click",function(){
-				$("#getstartime,#getendtime").trigger('change');
-			});
 			$("#getstartime").on("change",function(){
 				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
 				$addcoupon.comperFun($("#putstartime"),$("#getstartime"));
 			});
 			$("#getendtime").on("change",function(){
 				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
+				$addcoupon.comperFun($("#putendtime"),$("#getendtime"));
 			});
-			$( "#getstartime,#getendtime").datepicker({
-			  changeMonth: true,
-			  /* numberOfMonths: 1, */
-			});
-			$('#getendtime').datepicker('setDate','2011/12/15');
 		},
 		/* 对比两个数量 */
 		compareFun : function(){
@@ -234,8 +279,14 @@ define(function (require, exports, module) {
 			if(starnum != "" && emdnum != ""){
 				$(".tip").find('.Validform_checktip').remove();
 				if(!rule.test(starnum) || !rule.test(emdnum)){
-					$(".tip").find('.Validform_checktip').remove();
-					$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额数字</span>');
+					if(starnum < 0 || emdnum < 0){
+						$(".tip").find('.Validform_checktip').remove();
+						$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+					}
+					else{
+						$(".tip").find('.Validform_checktip').remove();
+						$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额数字</span>');
+					}
 				}
 				else{
 					if(starnum < emdnum || starnum == emdnum){

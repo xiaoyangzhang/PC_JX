@@ -5,7 +5,7 @@
 	$addcoupon.prototype = {
 		init:function(){
 		},
-		timeFun : function($time1,$time2){
+		timeFun : function($time1,$time2,time3){
 			var startime=$time1.val(),endtime=$time2.val();
 			var datanew1 = startime + " 00:00:00";
 			var datanew2 = endtime + " 00:00:00";
@@ -29,7 +29,7 @@
 			else{
 			}
 		},
-		comperFun : function($time1,time2){
+		comperFun : function($time1,$time2){
 			var startime=$time1.val(),endtime=$time2.val();
 			var datanew1 = startime + " 00:00:00";
 			var datanew2 = endtime + " 00:00:00";
@@ -44,13 +44,6 @@
 					$time1.val("");
 					$time2.val("");
 				}
-				/* if(interval>60){
-					alert("两者之间应该在60天之内");
-					$time1.val("");
-					$time2.val("");
-				} */
-			}
-			else{
 			}
 		}
 	}
