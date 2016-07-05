@@ -40,3 +40,7 @@ table.tab-samecity tbody tr td:nth-child(2){text-align: left;}
 
 /*--------------------------------------------目的地境外游列表-----------------------------------*/
 
+.form-control {
+    display: inline-block;
+    width: 70%;
+}
