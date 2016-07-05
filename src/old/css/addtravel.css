@@ -42,5 +42,5 @@ table.tab-samecity tbody tr td:nth-child(2){text-align: left;}
 
 .form-control {
     display: inline-block;
-    width: 70%;
+    width: 70% !important;
 }

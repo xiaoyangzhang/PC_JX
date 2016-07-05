@@ -52,3 +52,6 @@ strong{font-weight: normal;}
 .outcoupon .btn_coupon .out_surebtn{border-color: #ed6c44;color: #ed6c44;margin-left: 15px;}
 .outcoupon .out_delete{position: absolute;right:10px;top:5px;cursor: pointer;}
 #tip_del p{text-align: center;line-height: 25px;}
+
+.mask{  position: fixed;width: 100%;z-index: 999;left: 0;top: 0;background-color: #000;opacity: .5;filter: alpha(opacity=50);position: absolute;z-index: 10;display: none;
+}

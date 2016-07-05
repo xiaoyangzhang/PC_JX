@@ -48,6 +48,7 @@ define(function (require, exports, module) {
 							selText = $(this).text();
 						}else{
 							$(this).attr("class","");
+							$("input[name = 'status']").val("0");
 						}
 						i++;
 					});
@@ -74,19 +75,23 @@ define(function (require, exports, module) {
 			});
 			/* 上架 */
 			$(".putaway").on("click",function(){
-				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				/* $('body').append('<div class="mask" style= "display:block"></div>');
+				$(".mask").height($(document).height()); */
+				$self.maskFun();
 				$("#put_voucherId").val($(this).attr("voucherId"));
 				$("#tip_get").fadeIn();
 			});
 			/* 删除取消 */
 			$(".get_del").on("click",function(){
-				$(".dialog").remove();
+				$(".mask").remove();
 				$("#tip_get").fadeOut();
 				$("#tip_out").fadeOut();
 				$("#tip_del").fadeOut();
 			})
 			/* 确定上架 */
 			$("#get_sure").on("click",function(){
+				$(".mask").remove();
+				$("#tip_get").fadeOut();
 				var url_data = $("#putaway").val() + "/" + $("#put_voucherId").val();
 				$.ajax({
 						type:'POST',
@@ -101,19 +106,18 @@ define(function (require, exports, module) {
 							}
 						}
 					});
-				$(".dialog").remove();
-				$("#tip_get").fadeOut();
+				
 			});
 			/* 列表查询 */
 			$(".searchBtn").on("click",function(){
 				var search_url = $("#subpath").val();
-				var stateData = $("#status").find(".select-button").val();
-				var sendData = $("#putStatus").find(".select-button").val();
-				var timeData = $("#useStatus").find(".select-button").val();
+				var status = $("input[name='status']").val();
+				var putStatus = $("input[name='putStatus']").val();
+				var useStatus = $("input[name='useStatus']").val();
 				$.ajax({
 						type:'GET',
 						url:search_url,
-						data:{state:stateData,send:sendData,time:timeData},
+						data:{status:status,putStatus:putStatus,useStatus:useStatus},
 						success:function(data){
 							$public.isLogin(data);
 							if( data.success ){
@@ -127,12 +131,14 @@ define(function (require, exports, module) {
 			});
 			/* 下架 */
 			$(".getaway").on("click",function(){
-				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$self.maskFun();
 				$("#get_voucherId").val($(this).attr("voucherId"));
 				$("#tip_out").fadeIn();
 			});
 			/* 确定下架 */
 			$("#away_sure").on("click",function(){
+				$("#tip_out").fadeOut();
+				$(".mask").remove();
 				var url_data = $("#getaway").val() + "/" + $("#get_voucherId").val();
 				$.ajax({
 						type:'POST',
@@ -147,15 +153,11 @@ define(function (require, exports, module) {
 							}
 						}
 					});
-					$("#tip_out").fadeOut();
-					$(".dialog").remove();
 			});
 			/* 删除表格行 */
 			$("table tr td").find(".delete").on("click",function(){
-				$('body').append('<div class="dialog" style= "display:block"><div class="bgmeng" style="height:'+$(document).height()+'px"></div></div>');
+				$self.maskFun();				
 				$("#del_voucherId").val($(this).attr("voucherId"));
-				
-				/* alert("当前"); */
 				var list1 = $(this).closest("tr").find(".date_list1").text();
 				var list2 = $(this).closest("tr").find(".date_list2").text();
 				var list3 = $(this).closest("tr").find(".date_list3").text();
@@ -170,6 +172,9 @@ define(function (require, exports, module) {
 			});
 			/* 确定删除 */
 			$(".delete_sure").on("click",function(){
+				var _self = this;
+				$("#tip_del").fadeOut();
+				$(".mask").remove();
 				var url_data = $("#delete").val() + "/" + $("#del_voucherId").val();
 				$.ajax({
 						type:'POST',
@@ -177,15 +182,14 @@ define(function (require, exports, module) {
 						success:function(data){
 							$public.isLogin(data);
 							if( data.success ){
-								$public.dialog.msg("删除成功","success");
+								clearTimeout(_self.timer);
+								_self.timer=setTimeout(function(){$public.dialog.msg("删除成功","success")},5000);
 								window.location.href = window.location.href;
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
 							}
 						}
 					});
-				$("#tip_del").fadeOut();
-				$(".dialog").remove();
 			});
 			$("#fill").bind("input focus",function(){
 				$self.couponNum();
@@ -270,6 +274,10 @@ define(function (require, exports, module) {
 				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
 				$addcoupon.comperFun($("#putendtime"),$("#getendtime"));
 			});
+		},
+		maskFun : function(){
+			$('body').append('<div class="mask" style= "display:block"></div>');
+			$(".mask").height($(document).height());
 		},
 		/* 对比两个数量 */
 		compareFun : function(){
