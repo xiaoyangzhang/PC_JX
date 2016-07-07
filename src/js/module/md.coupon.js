@@ -66,12 +66,14 @@ define(function (require, exports, module) {
 			$(".addBtn").on("click",function(){
 				var data = $("#addVoucher").val();
 				window.location = data;
-				
 			});
 			/* 编辑 */
 			$(".editor").on("click",function(){
-				var data = $("#editor").val() + "/" + $(this).attr("voucherId");
+				var status = $(this).attr("mode_status");
+				var data = $("#editor").val() + "/" + $(this).attr("voucherId") + "?edtType=" + status;
+				
 				window.location = data;
+				/* $self.editorFun(); */
 			});
 			/* 上架 */
 			$(".putaway").on("click",function(){
@@ -223,6 +225,15 @@ define(function (require, exports, module) {
 			});
 			
 		},
+		/* editorFun :function(){
+			var status = $(this).attr("mode_status");
+			if(status == 'ACTIVE'){
+				$("input[name = 'title'],input[name = 'requirement_'],input[name = 'value_'],input[name='putStartTime'],input[name='startTime'],input[name = 'endTime'],input[name='voucherCount']").attr("disabled",true);
+			}
+			else{
+				$("input[name = 'title'],input[name = 'requirement_'],input[name = 'value_'],input[name='putStartTime'],input[name='startTime'],input[name = 'endTime'],input[name='voucherCount']").attr("disabled",false);
+			}
+		}, */
 		couponNum : function(){
 			var curr = $("#fill").val();
 				var z= /^[0-9]*[1-9][0-9]*$/;
@@ -281,35 +292,34 @@ define(function (require, exports, module) {
 		},
 		/* 对比两个数量 */
 		compareFun : function(){
-			var starnum = parseFloat($("#starnum").val());
-			var emdnum = parseFloat($("#emdnum").val());
+			var starnum = $("#starnum").val();
+			var emdnum = $("#emdnum").val();
 			var rule = /^\d+(\.{0,1}\d+){0,1}$/;
-			if(starnum != "" && emdnum != ""){
-				$(".tip").find('.Validform_checktip').remove();
+			if(starnum != "" || emdnum != "")
+			{
 				if(!rule.test(starnum) || !rule.test(emdnum)){
-					if(starnum < 0 || emdnum < 0){
-						$(".tip").find('.Validform_checktip').remove();
-						$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
-					}
-					else{
-						$(".tip").find('.Validform_checktip').remove();
-						$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额数字</span>');
-					}
+					$(".tip").find('.Validform_checktip').remove();
+					$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+					return false;
 				}
 				else{
-					if(starnum < emdnum || starnum == emdnum){
+					var regex = /^\d+(\.\d{0,2})?$/;
+					if(!regex.test(starnum) || !regex.test(emdnum)){
 						$(".tip").find('.Validform_checktip').remove();
-						$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额</span>')
+						$(".tip").append('<span class="Validform_checktip Validform_wrong">只能保存两位的小数点</span>')
+						return false;
 					}
 					else{
-						$(".tip").find('.Validform_checktip').remove();
-						$(".tip").append('<span class="Validform_checktip Validform_right"></span>');
+						if(starnum < emdnum || starnum == emdnum){
+							$(".tip").find('.Validform_checktip').remove();
+							$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+						}
+						else{
+							$(".tip").find('.Validform_checktip').remove();
+							$(".tip").append('<span class="Validform_checktip Validform_right"></span>');
+						}
 					}
 				}
-			}
-			else{
-				$(".tip").find('.Validform_checktip').remove();
-				$(".tip").append('<span class="Validform_checktip Validform_wrong">请填写满的金额大于减的金额数字</span>');
 			}
 		}
 	}

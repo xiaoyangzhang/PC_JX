@@ -6,8 +6,8 @@
 		init:function(){
 		},
 		timeFun : function($time1,$time2,time3){
-			var startime=$time1.val(),endtime=$time2.val();
 			var datanew1 = startime + " 00:00:00";
+			var startime=$time1.val(),endtime=$time2.val();
 			var datanew2 = endtime + " 00:00:00";
 			var data1 = new Date(datanew1);
 			var data2 = new Date(datanew2);
