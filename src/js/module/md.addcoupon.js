@@ -5,7 +5,7 @@
 	$addcoupon.prototype = {
 		init:function(){
 		},
-		timeFun : function($time1,$time2,time3){
+		timeFun : function($time1,$time2){
 			var datanew1 = startime + " 00:00:00";
 			var startime=$time1.val(),endtime=$time2.val();
 			var datanew2 = endtime + " 00:00:00";
