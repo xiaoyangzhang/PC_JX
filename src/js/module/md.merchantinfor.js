@@ -90,7 +90,7 @@ define(function (require, exports, module) {
 
 									  });   
 									   var subDisabled = $('div.bomb input[type="checkbox"]:disabled');
-									  	if (subDisabled.length <3) {
+									  	if (subDisabled.length < $('div.aaa input[type="checkbox"]').length) {
 
 									  		$(".k1").prop("disabled","");
 									  	};
@@ -149,9 +149,9 @@ define(function (require, exports, module) {
 					
 				});
 
-				// $(".qdlm input[type='checkbox']").change(function(){
-				// 	_self.yanzheng();
-			 //    });
+				 $(".qdlm input[type='checkbox']").change(function(){
+					_self.yanzheng();
+			  });
 
 
 
@@ -226,31 +226,21 @@ define(function (require, exports, module) {
 					}else{
 						$(".disedli").prop("disabled","");
 					}
-		}
-		// ,
-		// yanzheng : function(){
-		// 		if ($(".qdlm input[type='checkbox']").is(':checked')) {
-		// 		 	$(".qdlm").find('.Validform_checktip').prop('class','Validform_right').html('');
-		// 		};
-		// 		if($(".qdlm input[type='checkbox']").not('input:checked')) {
-		// 			$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
-		// 		};
-		// 		// if ($(".qdlm input[type='checkbox']").not("input:checked")) {
-		// 		// 	$(".qdlm").find('.Validform_checktip').attr('class','Validform_wrong').html('请选择');
-		// 		// };
-		// }
-		// yanzheng : function(){
-		// 		if ($(".qdlm input[type='checkbox']").is(':checked')) {
-		// 		 	$(".qdlm").find('.Validform_checktip').prop('class','Validform_right').html('');
-		// 		}else{
-		// 			$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
-		// 		}
-		// 		// if ($(".qdlm input[type='checkbox']").not("input:checked")) {
-		// 		// 	$(".qdlm").find('.Validform_checktip').attr('class','Validform_wrong').html('请选择');
-		// 		// };
-		// } 
-		
+		},
+		yanzheng : function(){
+				if ($(".qdlm input[type='checkbox']").is(':checked')) {
+					//alert('打上对勾');
+		 		 	$(".qdlm").find('.Validform_checktip').addClass("Validform_right").html('');
+		 		 	$(".qdlm").find('.Validform_checktip').removeClass("Validform_wrong").html('');
+				}else{
+					//alert('打上x');
+					$(".qdlm").find('.Validform_checktip').addClass("Validform_wrong").html('请选择');
+					//$(".qdlm").find('.Validform_checktip').prop('class','Validform_wrong').html('请选择');
+			}
+		 }
+
 	}
+
 	$(function(){
 		var merchantCategoryId = $(".comtype input[name='merchantCategoryId']:checked").val();
 		if (!merchantCategoryId) {
@@ -262,7 +252,9 @@ define(function (require, exports, module) {
 					   data: {merchantCategoryId:merchantCategoryId},
 					   success: function(data){
 					   			  var list = JSON.parse(data.value);
-					   			  $('input[type="checkbox"]').not("input:checked").prop("disabled","");    
+
+					   			  $('input[type="checkbox"]').not("input:checked").prop("disabled","disabled");    
+					   			  //$('.k1').prop("disabled","");
 									  $('input[type="checkbox"]:disabled').each(function(){ 
 									  	for (var i = 0; i < list.length; i++) {
 									  		if($(this).val() == list[i].businessScopeId ) {
@@ -271,6 +263,11 @@ define(function (require, exports, module) {
 									  	}; 
  
 									  });   
+									  var subDisabled = $('div.bomb input[type="checkbox"]:disabled');
+									  	if (subDisabled.length < $('div.aaa input[type="checkbox"]').length) {
+
+									  		$(".k1").prop("disabled","");
+									  	};
 					   	   	}
 					   
 					});
