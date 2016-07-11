@@ -49,6 +49,8 @@ define(function (require, exports, module) {
 						}else{
 							$(this).attr("class","");
 							$("input[name = 'status']").val("0");
+							$("input[name = 'putStatus']").val("0");
+							$("input[name = 'useStatus']").val("0");
 						}
 						i++;
 					});
@@ -199,13 +201,13 @@ define(function (require, exports, module) {
 			$(".savebtn").click(function(){
 				var a=validfm.check();
 				var id1 = $("#voucherId").val()+ "",id2 = $("#add").val()+ "",id3 = $("#edit").val() + "/" + id1;
-				$self.couponNum();
-				$self.compareFun();
+				var b = $self.couponNum();
+				var c = $self.compareFun();
 				if($("#putstartime").val() == "" || $("#putendtime").val() == "" || $("#getstartime").val() == "" || $("#getstartime").val() == ""){
 					alert("您的时间信息有误！"); 
 				}
 				
-				if(a){
+				if(a&&b &&c){
 					params=$public.paramcompare($('.addcouponForm').serializeArray());
 					/* console.log(JSON.stringify(params)); */
 					$.ajax({
@@ -218,6 +220,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg("保存成功","success");
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
+								console.log(data.resultMsg);
 							}
 						}
 					});
@@ -235,6 +238,7 @@ define(function (require, exports, module) {
 			}
 		}, */
 		couponNum : function(){
+			var result = false;
 			var curr = $("#fill").val();
 				var z= /^[0-9]*[1-9][0-9]*$/;
 				if(curr != ""){
@@ -249,6 +253,7 @@ define(function (require, exports, module) {
 							$("#fill").parent().append('<span class="Validform_checktip Validform_wrong">最大限领10张</span>');
 						}
 						else{
+							result = true;
 							$("#fill").parent().find('.Validform_checktip').remove();
 							$("#fill").parent().append('<span class="Validform_checktip Validform_right"></span>');
 						}
@@ -258,6 +263,7 @@ define(function (require, exports, module) {
 					$("#fill").parent().find('.Validform_checktip').remove();
 					$("#fill").parent().append('<span class="Validform_checktip Validform_wrong">请填写1-10之间的数字</span>');
 				}
+				return result;
 		},
 		time_fun:function(){
 			/* 第一组 */
@@ -292,6 +298,7 @@ define(function (require, exports, module) {
 		},
 		/* 对比两个数量 */
 		compareFun : function(){
+			var result = false;
 			var starnum = $("#starnum").val();
 			var emdnum = $("#emdnum").val();
 			var rule = /^\d+(\.{0,1}\d+){0,1}$/;
@@ -300,27 +307,31 @@ define(function (require, exports, module) {
 				if(!rule.test(starnum) || !rule.test(emdnum)){
 					$(".tip").find('.Validform_checktip').remove();
 					$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
-					return false;
 				}
 				else{
 					var regex = /^\d+(\.\d{0,2})?$/;
 					if(!regex.test(starnum) || !regex.test(emdnum)){
 						$(".tip").find('.Validform_checktip').remove();
 						$(".tip").append('<span class="Validform_checktip Validform_wrong">只能保存两位的小数点</span>')
-						return false;
 					}
 					else{
-						if(starnum < emdnum || starnum == emdnum){
+						if(parseFloat(starnum) < parseFloat(emdnum) || parseFloat(starnum) == parseFloat(emdnum)){
 							$(".tip").find('.Validform_checktip').remove();
 							$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
 						}
 						else{
 							$(".tip").find('.Validform_checktip').remove();
 							$(".tip").append('<span class="Validform_checktip Validform_right"></span>');
+							result = true;
 						}
 					}
 				}
 			}
+			else{
+				$(".tip").find('.Validform_checktip').remove();
+				$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+			}
+			return result;
 		}
 	}
 	module.exports = new $coupon();
