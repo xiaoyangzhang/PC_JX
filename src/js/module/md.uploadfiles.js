@@ -32,7 +32,7 @@ define(function (require, exports, module) {
 		},
 		uploadPic:function(img,fileObj){
 			  var $imgbox=$(img).closest('span'),_self=this;
-			  $(fileObj).parent().wrap("<form id='uploadform' action='"+(fileuploadURL?fileuploadURL:"http://filegw.test.jiuxiulvxing.com/filegw/file/upload_string")+"' method='post' enctype='multipart/form-data'></form>");
+			  $(fileObj).parent().wrap("<form id='uploadform' action='"+(fileCompressURL?fileCompressURL:"http://filegw.test.jiuxiulvxing.com/filegw/file/upload_compress_string")+"' method='post' enctype='multipart/form-data'></form>");
 			  $imgbox.find(_self.config.plhd).addClass('plhd-action');
 			  $('#uploadform').ajaxSubmit({
 	                success: function (data) {

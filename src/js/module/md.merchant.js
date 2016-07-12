@@ -41,13 +41,15 @@ define(function (require, exports, module) {
 					showAllError:true,
 					datatype:{
 						"addressL" : /^([\w\W]{1,100})?$/,
-						"nmname" : /^[\d\w\u4e00-\u9fa5,\—]{2,15}$/
+						"nmname" : /^[\d\w\u4e00-\u9fa5,\—]{2,15}$/,
+						"kefutel":/^0\d{2,3}-?\d{7,8}$|^1[0-9]{10}$/
 					},
 					ajaxPost:true
 				},rule=[{
 					ele:".fixdetel",
-					datatype:"null_tel"
-					
+					datatype:"kefutel",
+					nullmsg:"请输入客服电话",
+					errormsg:"请检查客服电话格式，例:(0731-83187200)或手机号码!"
 				},{
 					ele:".zetel",
 					datatype:"null_m"

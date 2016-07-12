@@ -30,7 +30,6 @@ define(function (require, exports, module) {
 		this.init.apply(this, arguments);
 	},
 	fileuploadURL=$('#filegw_url').val()+'/',
-	fileCompressURL=$('#filegw_domain').val()+'/',
 	site_path=$('#root_path').val()+'/',
 	img_domain=$('#tfs').val(),
 	static_path=$('#static_path').val(),
