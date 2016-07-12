@@ -57,7 +57,9 @@ define(function (require, exports, module) {
 				});
 				$(".select-button").val(selText);
 			});
-			
+			$("#part").bind("input focus",function(){
+				$self.couponNum_fun();
+			});
 			/* addcoupon */
 			$('#starnum,#emdnum').bind('input focus', function() {
 				$self.compareFun();
@@ -199,15 +201,17 @@ define(function (require, exports, module) {
 				$self.couponNum();
 			});
 			$(".savebtn").click(function(){
+				var dataurl = $("#subpath").val();
 				var a=validfm.check();
 				var id1 = $("#voucherId").val()+ "",id2 = $("#add").val()+ "",id3 = $("#edit").val() + "/" + id1;
 				var b = $self.couponNum();
 				var c = $self.compareFun();
+				var d = $self.couponNum_fun();
 				if($("#putstartime").val() == "" || $("#putendtime").val() == "" || $("#getstartime").val() == "" || $("#getstartime").val() == ""){
-					alert("您的时间信息有误！"); 
+					alert("请选择投放/使用时间"); 
 				}
 				
-				if(a&&b &&c){
+				if(a&&b &&c&&d){
 					params=$public.paramcompare($('.addcouponForm').serializeArray());
 					/* console.log(JSON.stringify(params)); */
 					$.ajax({
@@ -218,9 +222,9 @@ define(function (require, exports, module) {
 							$public.isLogin(data);
 							if(data.success ){
 								$public.dialog.msg("保存成功","success");
+								setTimeout(window.location.href = dataurl,2000);
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
-								console.log(data.resultMsg);
 							}
 						}
 					});
@@ -306,7 +310,7 @@ define(function (require, exports, module) {
 			{
 				if(!rule.test(starnum) || !rule.test(emdnum)){
 					$(".tip").find('.Validform_checktip').remove();
-					$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+					$(".tip").append('<span class="Validform_checktip Validform_wrong">满额必须大于减额</span>');
 				}
 				else{
 					var regex = /^\d+(\.\d{0,2})?$/;
@@ -317,7 +321,7 @@ define(function (require, exports, module) {
 					else{
 						if(parseFloat(starnum) < parseFloat(emdnum) || parseFloat(starnum) == parseFloat(emdnum)){
 							$(".tip").find('.Validform_checktip').remove();
-							$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+							$(".tip").append('<span class="Validform_checktip Validform_wrong">满额必须大于减额</span>');
 						}
 						else{
 							$(".tip").find('.Validform_checktip').remove();
@@ -329,7 +333,30 @@ define(function (require, exports, module) {
 			}
 			else{
 				$(".tip").find('.Validform_checktip').remove();
-				$(".tip").append('<span class="Validform_checktip Validform_wrong">请满足满减金额都是大于0的数</span>');
+				$(".tip").append('<span class="Validform_checktip Validform_wrong">满额必须大于减额</span>');
+			}
+			return result;
+		},
+		couponNum_fun(){
+			var result = false;
+			var data = $("#part");
+			var txt = /^[0-9]*[1-9][0-9]*$/;
+			if(data.val != ""){
+				if(!txt.test(data.val())){
+					data.parent().find('.Validform_checktip').remove();
+					data.parent().append('<span class="Validform_checktip Validform_wrong">请填写不小于1的正整数</span>');
+				}
+				else{
+					if(data.val()>1000){
+						data.parent().find('.Validform_checktip').remove();
+						data.parent().append('<span class="Validform_checktip Validform_wrong">发券数量不能大于10000</span>');
+					}
+					else{
+						result = true; 
+						data.parent().find('.Validform_checktip').remove();
+						data.parent().append('<span class="Validform_checktip Validform_right"></span>');
+					}
+				}
 			}
 			return result;
 		}
