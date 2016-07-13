@@ -109,6 +109,7 @@ define(function (require, exports, module) {
 								window.location.href = window.location.href;
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
+								
 							}
 						}
 					});
@@ -225,6 +226,8 @@ define(function (require, exports, module) {
 								setTimeout(window.location.href = dataurl,2000);
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
+								$(".dialog .msg").css('width','250px');
+								$(".dialog .msg").attr("marginLeft","-140px");
 							}
 						}
 					});
