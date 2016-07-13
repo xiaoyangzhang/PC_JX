@@ -26,15 +26,15 @@ define(function (require, exports, module) {
 					label:".label",
 					showAllError:true,
 					datatype:{
-						"ele_p":/^[0-9]*[1-9][0-9]*$/
+						/* "ele_p":/^[0-9]*[1-9][0-9]*$/ */
 					},
 					ajaxPost:true
 				},rule=[
 				{
-					ele:"#part",
+					/* ele:"#part",
 					nullmsg:"请填写不小于1的正整数",
 					datatype:"ele_p",
-					errormsg:"请填写不小于1的正整数"
+					errormsg:"请填写不小于1的正整数" */
 				}
 				],validfm=$(".couponform,.addcouponForm").Validform(validoptions).addRule(rule);
 			/* 重置清空表单 */
@@ -305,18 +305,18 @@ define(function (require, exports, module) {
 			var result = false;
 			var starnum = $("#starnum").val();
 			var emdnum = $("#emdnum").val();
-			var rule = /^\d+(\.{0,1}\d+){0,1}$/;
+			var rule = /\d{0,5}[\.{1}\d{2} | \.{0} ]$//* /^\d{0,5}(\.\d{1,2})?$/ */;
 			if(starnum != "" || emdnum != "")
 			{
 				if(!rule.test(starnum) || !rule.test(emdnum)){
 					$(".tip").find('.Validform_checktip').remove();
 					$(".tip").append('<span class="Validform_checktip Validform_wrong">满额必须大于减额</span>');
 				}
-				else{
+				 else{
 					var regex = /^\d+(\.\d{0,2})?$/;
 					if(!regex.test(starnum) || !regex.test(emdnum)){
 						$(".tip").find('.Validform_checktip').remove();
-						$(".tip").append('<span class="Validform_checktip Validform_wrong">只能保存两位的小数点</span>')
+						$(".tip").append('<span class="Validform_checktip Validform_wrong">小数点后只能保留2位</span>')
 					}
 					else{
 						if(parseFloat(starnum) < parseFloat(emdnum) || parseFloat(starnum) == parseFloat(emdnum)){
@@ -329,11 +329,11 @@ define(function (require, exports, module) {
 							result = true;
 						}
 					}
-				}
+				} 
 			}
 			else{
 				$(".tip").find('.Validform_checktip').remove();
-				$(".tip").append('<span class="Validform_checktip Validform_wrong">满额必须大于减额</span>');
+				$(".tip").append('<span class="Validform_checktip Validform_wrong">请输入满减金额</span>');
 			}
 			return result;
 		},
@@ -347,7 +347,7 @@ define(function (require, exports, module) {
 					data.parent().append('<span class="Validform_checktip Validform_wrong">请填写不小于1的正整数</span>');
 				}
 				else{
-					if(data.val()>1000){
+					if(parseInt(data.val())>10000){
 						data.parent().find('.Validform_checktip').remove();
 						data.parent().append('<span class="Validform_checktip Validform_wrong">发券数量不能大于10000</span>');
 					}

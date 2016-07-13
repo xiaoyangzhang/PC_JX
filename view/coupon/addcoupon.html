@@ -83,12 +83,12 @@
 				<form class = "addcouponForm" action = "">
 					<p>
 						<em><s>*</s>优惠券名称：</em>
-						<span><input type = "text" maxlength = "10" datatype = "*" class = "coupon-input" name = "couponName"/><a class = "dis2">10字</a></span>
+						<span><input type = "text" maxlength = "10" nullmsg = "请填写优惠券名称！" datatype = "*" class = "coupon-input" name = "couponName"/><a class = "dis2">10字</a></span>
 					</p>
 					<p>
 						<em><s>*</s>满减金额：</em>
-						<span class = "tip"><strong>满</strong><input type = "text" id = "starnum" maxlength="5" class = "coupon-num dis" name = "starnum" value = ""></input>
-							<strong class = "dis">减</strong><input type = "text" id = "emdnum" maxlength="5" class = "coupon-num dis" name = "emdnum"/>
+						<span class = "tip"><strong>满</strong><input type = "text" id = "starnum" maxlength="8" class = "coupon-num dis" name = "starnum" value = ""></input>
+							<strong class = "dis">减</strong><input type = "text" id = "emdnum" maxlength="8" class = "coupon-num dis" name = "emdnum"/>
 							<strong class = "dis">元</strong>
 						</span>
 					</p>
@@ -122,7 +122,7 @@
 						<em><s>*</s>发券数量：</em>
 						<span>
 							<!-- <input type = "text" id = "part" datatype= "n" errormsg = "请填写不小于1的数字"class = "coupon-num" name = "sendname"/><strong class = "dis">份</strong> -->
-							<input type = "text" id = "part" class = "coupon-num" name = "sendname"/><strong class = "dis">份</strong>
+							<input type = "text" id = "part" class = "coupon-num" name = "sendname" maxlength = "5"/><strong class = "dis">份</strong>
 							<a class = "dis2">发券数量不能小于1</a>
 						</span>
 					</p> 

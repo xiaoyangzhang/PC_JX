@@ -43,7 +43,7 @@
 			if(startime != "" && endtime != "")
 			{
 				if(parseInt(data2) < parseInt(data1) && val < 0){
-					alert("使用时间要大于开始的投放时间");
+					alert("使用时间要大于投放时间");
 					$time2.val("");
 				}
 			}
