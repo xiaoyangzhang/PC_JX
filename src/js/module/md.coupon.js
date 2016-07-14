@@ -1,12 +1,15 @@
 define(function (require, exports, module) {
 	$public = require("public"),
-	$addcoupon = require("addcoupon"),
+	require("dropdownlist"),
+	require("datepicker"),//Ê±¼ä²å¼þ
+	require("validform"),
 	require("core"),
 	require("widget"),
-	require("datepicker"),
-	require("dropdownlist"),
+	$review = require("review"),
+	$editer = require("editer"),
+	$addcoupon = require("addcoupon"),
 	
-	require("validform"),
+	
 	$coupon = function () {
 		this.init.apply(this, arguments);
 	};
@@ -16,7 +19,7 @@ define(function (require, exports, module) {
 			/* 下拉框 */
 			$('#status,#putStatus,#useStatus').selectlist({
 				zIndex: 10,
-				width: 220,
+				width: 198,
 				height: 32,
 				onChange:function(){}
 			});
@@ -69,14 +72,14 @@ define(function (require, exports, module) {
 			/* 添加获取ID */
 			$(".addBtn").on("click",function(){
 				var data = $("#addVoucher").val();
-				window.location = data;
+				window.location.href = data;
 			});
 			/* 编辑 */
 			$(".editor").on("click",function(){
 				var status = $(this).attr("mode_status");
 				var data = $("#editor").val() + "/" + $(this).attr("voucherId") + "?edtType=" + status;
 				
-				window.location = data;
+				window.location.href = data;
 				/* $self.editorFun(); */
 			});
 			/* 上架 */
@@ -167,7 +170,7 @@ define(function (require, exports, module) {
 			$("table tr td").find(".delete").on("click",function(){
 				$self.maskFun();				
 				$("#del_voucherId").val($(this).attr("voucherId"));
-				var list1 = $(this).closest("tr").find(".date_list1").text();
+				/* var list1 = $(this).closest("tr").find(".date_list1").text();
 				var list2 = $(this).closest("tr").find(".date_list2").text();
 				var list3 = $(this).closest("tr").find(".date_list3").text();
 				var list4 = $(this).closest("tr").find(".date_list4").text();
@@ -176,7 +179,7 @@ define(function (require, exports, module) {
 					$(".tou_end").html(list2);
 					$(".shi_start").html(list3);
 					$(".shi_end").html(list4);
-				}
+				} */
 				$("#tip_del").fadeIn();
 			});
 			/* 确定删除 */
@@ -311,12 +314,12 @@ define(function (require, exports, module) {
 			var result = false;
 			var starnum = $("#starnum").val();
 			var emdnum = $("#emdnum").val();
-			var rule = /\d{0,5}[\.{1}\d{2} | \.{0} ]$//* /^\d{0,5}(\.\d{1,2})?$/ */;
-			if(starnum != "" || emdnum != "")
+			var rule = /^\d{0,5}(\.\d{1,2})?$/;
+			if(starnum != "" && emdnum != "")
 			{
 				if(!rule.test(starnum) || !rule.test(emdnum)){
 					$(".tip").find('.Validform_checktip').remove();
-					$(".tip").append('<span class="Validform_checktip Validform_wrong">满额必须大于减额</span>');
+					$(".tip").append('<span class="Validform_checktip Validform_wrong">不能输入特殊字符</span>');
 				}
 				 else{
 					var regex = /^\d+(\.\d{0,2})?$/;
@@ -336,6 +339,9 @@ define(function (require, exports, module) {
 						}
 					}
 				} 
+			}
+			else if(starnum != "" && emdnum != ""){
+				
 			}
 			else{
 				$(".tip").find('.Validform_checktip').remove();
