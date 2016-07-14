@@ -223,7 +223,11 @@ define(function (require, exports, module) {
 							$public.isLogin(data);
 							if(data.success ){
 								$public.dialog.msg("保存成功","success");
+<<<<<<< HEAD
 								setTimeout(window.location.href = dataurl,2000);
+=======
+								setTimeout("window.location.href = $('#subpath').val()",1000);
+>>>>>>> 1a90b90e8ebe1058a71e2147ba67fc52800eeab5
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
 								$(".dialog .msg").css('width','250px');
