@@ -51,9 +51,9 @@ define(function (require, exports, module) {
 					errormsg:"请填写2-10字以内的姓名"
 				},{
 					ele:".finance",
-					datatype:"n10-25",
+					datatype:"n8-25",
 					nullmsg:"请填写财务结算账号",
-					errormsg:"财务结算账号只允许10-25个数字"
+					errormsg:"财务结算账号只允许8-25个数字"
 				}],validfm=$("#forminfo").Validform(validoptions).addRule(rule);
 
 			// $('#principleName_').keyup(function(){

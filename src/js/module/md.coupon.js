@@ -216,6 +216,7 @@ define(function (require, exports, module) {
 							$public.isLogin(data);
 							if(data.success ){
 								$public.dialog.msg("保存成功","success");
+								setTimeout("window.location.href = $('#subpath').val()",1000);
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
 							}

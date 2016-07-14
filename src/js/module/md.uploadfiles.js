@@ -56,7 +56,10 @@ define(function (require, exports, module) {
 	                },
 	                error:function(err){
 						$public.dialog.msg('请求发生错误！','error');
+	                	$('#uploadform').remove();
 	                	$(_self.config.plhd).removeClass('plhd-action');
+		                $imgbox.append('<a class="upldclik"><input type="file" name="adpicfile" class="adpicfile"></a>');
+					    $imgbox.find('.adpicfile').on('change',function(){_self.addboximg(_self,this);});
     					$imgbox.find(_self.config.upldclik).css('z-index',9);
 	                }
               });
