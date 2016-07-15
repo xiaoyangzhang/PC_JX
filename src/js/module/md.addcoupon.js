@@ -20,11 +20,11 @@
 			if(startime != "" || endtime != "")
 			{
 				if(day_one > 1 || day_two > 1){
-					alert("投放/使用时间必须选择今天或者以后的");
+					alert("投放/使用时间必须选择今天或者以后的时间");
 					$time1.val("");
 				}
 				else if(day_two > 1){
-					alert("投放/使用时间必须选择今天或者以后的");
+					alert("投放/使用时间必须选择今天或者以后的时间");
 					$time2.val("");
 				}
 				else{
