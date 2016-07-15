@@ -121,7 +121,7 @@ define(function (require, exports, module) {
 				
 			});
 			/* 列表查询 */
-			$(".searchBtn").on("click",function(){
+			/* $(".searchBtn").on("click",function(){
 				var search_url = $("#subpath").val();
 				var status = $("input[name='status']").val();
 				var putStatus = $("input[name='putStatus']").val();
@@ -140,7 +140,7 @@ define(function (require, exports, module) {
 							}
 						}
 					});
-			});
+			}); */
 			/* 下架 */
 			$(".getaway").on("click",function(){
 				$self.maskFun();
