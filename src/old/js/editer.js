@@ -29,7 +29,7 @@
 			uploadClass : ".uploadimg",
 			uploadId : "uploadimg",
 			addImageBtn : ".imgwrap",
-			uploadAction : "#uploadAction",
+			uploadAction : "http://filegw.test.jiuxiulvxing.com/filegw/",
 			contentText : "#contentText",
 			submitBtn : ".submitbtn",
 			inputTxt : ".tbd textarea",
@@ -171,23 +171,24 @@
 			}			
 		},
 		uploadImgEvent : function(_self,_this){
-			var picheck=_self.isPicture(_this[0],500),imgshowbox=$(_self.config.uploadClass).closest("span").prev().find("img");
+			document.domain = 'jiuxiulvxing.com';
+			var picheck=_self.isPicture(_this[0],3),imgshowbox=$(_self.config.uploadClass).closest("span").prev().find("img");
 				if(!picheck.status){
 					alert(picheck.content);
 					return false;
 				}
-			$('#editers').wrap("<form id='uploadform' action='"+$(_self.config.uploadAction).val()+"' method='post' enctype='multipart/form-data'></form>");
+			$('#editers').wrap("<form id='uploadform' action='"+_self.config.uploadAction+"file/upload_compress_string' method='post' enctype='multipart/form-data'></form>");
 			imgshowbox.attr('src',imgurl+'/other-plugins/editer/img/loading.gif');
 			$('#uploadform').ajaxSubmit({
-				success: function (jsondata) {
+				success: function (data) {
 					var _parent = _this.closest("span");
-					jsondata = eval("("+jsondata+")");
-					if(!jsondata.success){
-						alert(jsondata.resultMsg);
-					}else{
-						imgshowbox.attr({'src':$('#editers').find("#imgUrl").val()+jsondata.value,'id':1});
-						_parent.prev().find(".imgDateVal").attr("value",jsondata.value)
-					}
+					data=JSON.parse(data);
+					if(data.status==200){ 	
+						imgshowbox.attr({'src':$('#editers').find("#imgUrl").val()+data.data,'id':1});
+						_parent.prev().find(".imgDateVal").attr("value",data.data)
+	                }else{
+						alert('上传失败，请稍后重试！');
+	                };
 					$('#editers').unwrap();
 					$('.uploadimg').remove();
 					$('.uploadbtn').append('<input type="file" id="uploadimg" class="uploadimg" name="uploadimg">');
@@ -196,6 +197,8 @@
 				},
 				error:function(err){
 					$('#editers').unwrap();
+					$('.uploadimg').remove();
+					$('.uploadbtn').append('<input type="file" id="uploadimg" class="uploadimg" name="uploadimg">');
 					imgshowbox.attr('src',imgurl+'/other-plugins/editer/img/no-img-big.jpg');
 					alert('请求发生错误！');
 				}
@@ -375,8 +378,8 @@
 		},
 		isPicture:function(file,s){
 		    var result={content:'文件类型不合法,只能是jpg、png、jpeg类型！'},fileName=file.value,
-		        szcontent={status:true,content:'文件大小不能超过'+s+'K'},
-		        maxsize = s*1024,filesize = 0,
+		        szcontent={status:true,content:'文件大小不能超过'+s+'M'},
+		        maxsize = s*1024*1024,filesize = 0,
 				ua=navigator.userAgent.toLowerCase(),
 				rMsie = /(msie\s|trident.*rv:)([\w.]+)/,
 				isIE=rMsie.exec(ua)!=null;

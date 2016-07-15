@@ -509,8 +509,8 @@ define(function (require, exports, module) {
 		//判断上传文件格式是否满足条件
 		isPicture:function(file,sz){
 		    var result={content:'文件类型不合法,只能是jpg、png、jpeg类型！'},fileName=file.value,
-		        szcontent={status:true,content:'文件大小不能超过'+sz+'K'},
-		        maxsize = sz*1024,filesize = 0; //M;
+		        szcontent={status:true,content:'文件大小不能超过'+sz+ (sz<10?'M':'K')},
+		        maxsize = (sz<10?sz*1024*1024 : sz*1024),filesize = 0; //M;
 		        if(this.diffBrowser().substring(0,1)!='I') {
 		        	filesize=file.files[0].size;
 				    if(filesize>maxsize){
