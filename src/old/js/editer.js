@@ -1,4 +1,4 @@
-	//document.domain = 'jiuxiulvxing.com';
+
 	var imgurl='http://s0.test.jiuxiulvxing.com';
 	var editer = function () {
 		this.init.apply(this, arguments);
@@ -171,18 +171,19 @@
 			}			
 		},
 		uploadImgEvent : function(_self,_this){
-			document.domain = 'jiuxiulvxing.com';
+			//document.domain = 'jiuxiulvxing.com';
 			var picheck=_self.isPicture(_this[0],3),imgshowbox=$(_self.config.uploadClass).closest("span").prev().find("img");
 				if(!picheck.status){
 					alert(picheck.content);
 					return false;
 				}
-			$('#editers').wrap("<form id='uploadform' action='"+_self.config.uploadAction+"file/upload_compress_string' method='post' enctype='multipart/form-data'></form>");
+			$('#editers').wrap("<form id='uploadform' action='"+_self.config.uploadAction+"file/upload_compress' method='post' enctype='multipart/form-data'></form>");
 			imgshowbox.attr('src',imgurl+'/other-plugins/editer/img/loading.gif');
 			$('#uploadform').ajaxSubmit({
+				dataType:'json',
 				success: function (data) {
 					var _parent = _this.closest("span");
-					data=JSON.parse(data);
+					//data=JSON.parse(data);
 					if(data.status==200){ 	
 						imgshowbox.attr({'src':$('#editers').find("#imgUrl").val()+data.data,'id':1});
 						_parent.prev().find(".imgDateVal").attr("value",data.data)
