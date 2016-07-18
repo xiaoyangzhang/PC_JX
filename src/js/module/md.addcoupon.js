@@ -16,10 +16,10 @@
 			var day_two = parseInt(nowdata - data2)/1000/60/60/24;
 			console.log(day_one);
 			var val = parseInt(data2 - data1)/1000/60/60/24;
-			var interval = Math.abs(parseInt(data2 - data1)/1000/60/60/24);
+			var interval = /* Math.abs */(parseInt(data2 - data1)/1000/60/60/24) + 1;
 			if(startime != "" || endtime != "")
 			{
-				if(day_one > 1 || day_two > 1){
+				if(day_one > 1){
 					alert("投放/使用时间必须选择今天或者以后的时间");
 					$time1.val("");
 				}
@@ -58,8 +58,8 @@
 			if(startime != "" && endtime != "")
 			{
 				if(parseInt(data2) < parseInt(data1) && val < 0){
-					alert("使用时间要大于投放时间");
-					$time2.val("");
+					alert("使用时间不能早于投放时间");
+					$time1.val("");
 				}
 			}
 		}

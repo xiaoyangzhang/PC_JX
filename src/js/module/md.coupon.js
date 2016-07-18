@@ -230,6 +230,7 @@ define(function (require, exports, module) {
 								$public.dialog.msg("保存成功","success");
 								/* setTimeout(window.location.href = dataurl,2000); */
 								setTimeout("window.location.href = $('#subpath').val()",1000);
+								return false;
 							}else{
 								$public.dialog.msg(data.resultMsg,"error");
 								$(".dialog .msg").css('width','250px');
@@ -314,7 +315,7 @@ define(function (require, exports, module) {
 			var result = false;
 			var starnum = $("#starnum").val();
 			var emdnum = $("#emdnum").val();
-			var rule = /^\d{0,5}(\.\d{1,2})?$/;
+			var rule = /^\d{0,8}(\.\d{1,2})?$/;
 			if(starnum != "" && emdnum != "")
 			{
 				if(!rule.test(starnum) || !rule.test(emdnum)){
@@ -339,9 +340,6 @@ define(function (require, exports, module) {
 						}
 					}
 				} 
-			}
-			else if(starnum != "" && emdnum != ""){
-				
 			}
 			else{
 				$(".tip").find('.Validform_checktip').remove();
