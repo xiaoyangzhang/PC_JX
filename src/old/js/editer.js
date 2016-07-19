@@ -39,6 +39,7 @@
 		},
 		bindDomEvent : function(){
 			var _self = this;
+			_self.defaultText = '';
 			$(_self.id).on("click",_self.config.addTextBtn,function(){
 				_self.addTextEvent(_self,$(this));
 				return false;
@@ -156,6 +157,7 @@
 				$(_self.id).find(".bd").append(html);
 				$(_self.id).find(".bd").find("textarea").focus();
 				_self.scrollBottom(".txtinput");
+				_self.defaultText = '';
 			}
 		},
 
@@ -322,14 +324,15 @@
 				_value = _value.replace(/<br>/gi,"\n");
 			var _html = _self.getTextAreaHtml($.trim(_value));
 			_self.closeSiblingsTextEvent(_self,_this);
-			_this.replaceWith(_html);
 			_self.defaultText = _value;
+			_this.replaceWith(_html);
 		},
 		setTextSelect : function(_self,_this){
 			_this.addClass("on").siblings().removeClass("on");
 		},
-		closeCurrTextEvent : function(_self,_this){
+		closeCurrTextEvent : function(_self,_this){			
 			var _parent = _this.closest("p");
+			//_self.defaultText = _self.html_encode(_self.defaultText);
 			var _html = _self.defaultText?'<p class="text"><font>'+_self.defaultText+'</font></p>':"";
 			_parent.replaceWith(_html);
 		},
@@ -339,7 +342,8 @@
 		},	
 		closeSiblingsTextEvent : function(_self,_this){
 			var _siblings = _this.siblings(_self.config.inputClass);
-			var _html = _self.defaultText?'<p class="text">'+_self.defaultText+'</p>':"";
+			//_self.defaultText = _self.html_encode(_self.defaultText);
+			var _html = _self.defaultText?'<p class="text"><font>'+_self.defaultText+'</font></p>':"";
 			_siblings.replaceWith(_html);			
 		},
 		limitTextInputEvent:function(_self,_this){
