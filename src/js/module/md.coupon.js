@@ -215,6 +215,7 @@ define(function (require, exports, module) {
 				var d = $self.couponNum_fun();
 				if($("#putstartime").val() == "" || $("#putendtime").val() == "" || $("#getstartime").val() == "" || $("#getstartime").val() == ""){
 					alert("请选择投放/使用时间"); 
+					return false;
 				}
 				
 				if(a&&b &&c&&d){
@@ -285,11 +286,13 @@ define(function (require, exports, module) {
 				$("#putstartime,#putendtime,#getstartime,#getendtime").trigger('change');
 			});
 			$("#putstartime").on("change",function(){
-				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
+				var status = $("#voucherId").val();
+				$addcoupon.timeFun($("#putstartime"),$("#putendtime"),status);
 				$addcoupon.comperFun($("#putstartime"),$("#getstartime"));
 			});
 			$("#putendtime").on("change",function(){
-				$addcoupon.timeFun($("#putstartime"),$("#putendtime"));
+				var status = $("#voucherId").val();
+				$addcoupon.timeFun($("#putstartime"),$("#putendtime"),status);
 				$addcoupon.comperFun($("#putendtime"),$("#getendtime"));
 			});
 			$( "#putstartime,#putendtime,#getstartime,#getendtime" ).datepicker({
@@ -298,11 +301,13 @@ define(function (require, exports, module) {
 			});
 			/* 第二组 */
 			$("#getstartime").on("change",function(){
-				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
+				var status = $("#voucherId").val();
+				$addcoupon.timeFun($("#getstartime"),$("#getendtime"),status);
 				$addcoupon.comperFun($("#putstartime"),$("#getstartime"));
 			});
 			$("#getendtime").on("change",function(){
-				$addcoupon.timeFun($("#getstartime"),$("#getendtime"));
+				var status = $("#voucherId").val();
+				$addcoupon.timeFun($("#getstartime"),$("#getendtime"),status);
 				$addcoupon.comperFun($("#putendtime"),$("#getendtime"));
 			});
 		},
