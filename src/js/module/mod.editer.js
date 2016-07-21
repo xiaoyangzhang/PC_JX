@@ -305,7 +305,7 @@ define(function (require, exports, module){
 		},	
 		closeSiblingsTextEvent : function(_self,_this){
 			var _siblings = _this.siblings(_self.config.inputClass);
-			var _html = _self.defaultText?'<p class="text">'+_self.defaultText+'</p>':"";
+			var _html = _self.defaultText?'<p class="text"><font>'+_self.defaultText+'</font></p>':"";
 			_siblings.replaceWith(_html);			
 		},
 		limitTextInputEvent:function(_self,_this){
