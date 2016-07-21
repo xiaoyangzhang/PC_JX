@@ -13,12 +13,6 @@ define(function (require, exports, module){
 			$self.config = $.extend($self.config,options);
 			$self.bindDomEvent();
 			$self.setContentData();
-			// setTimeout(function(){
-			// $('.bd p font').filter(function(){
-			// 		var s=$(this).html();
-			// 		$(this).html(s);
-			// 	});
-			// },1000);
 		},
 		config : {
 			addTextBtn : ".addtext",
@@ -150,6 +144,7 @@ define(function (require, exports, module){
 			$(_self.id).find(".bd").append(html);
 			$(_self.id).find(".bd").find("textarea").focus();
 			_self.scrollBottom(".txtinput");
+			_self.defaultText = '';
 		},
 		addImageEvent : function(_self,_this){
 			if(_self.isUploadState()) return false;
