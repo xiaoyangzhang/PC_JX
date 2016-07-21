@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的钱包</title>
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/jquery-ui-1.10.4.custom.css">
+    <!--http://s0.test.jiuxiulvxing.com/PC_JX-->
+    <link rel="stylesheet" href="../../src/css/payment.css">
+</head>
+<body>
+<div id="jiuxColor" class="jiuw2">
+    <div class="jiux-header wjiuxiu jiuw2 clearfix">
+        <!-- 头部左侧部分 -->
+        <div class="header-l fl clearfix">
+            <a href="http://www.test.jiuxiulvxing.com" class="fl">
+                <div class="logo">九休旅行</div>
+            </a>
+            <ul class="clearfix fl">
+                <li class="fl"><a href="http://www.test.jiuxiulvxing.com">首页</a></li>
+                <li class="fl"><a href="http://www.test.jiuxiulvxing.com/business/">九休商务</a></li>
+                <li class="fl"><a href="http://www.test.jiuxiulvxing.com/app/index.html">九休旅行App</a></li>
+                <li class="fl active"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/home">商家中心</a></li>
+            </ul>
+        </div>
+        <!-- 头部右侧部分 -->
+        <div class="header-r fr clearfix">
+            <div class="tel">
+                <ul>
+                    <li class="fl staticW m-r">
+                        <a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">登录</a>
+                        <span class="cuttingline"></span>
+                    </li>
+                    <li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/register">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 面包屑 -->
+<div class = "comwidth crumbs f12">您所在的位置：账户管理><a class = "f12 gray6">修改密码</a></div>
+<div class = "comwidth clearfix" id = "eredar">
+    <div class = "eredar-left">
+        <dl class = "first">
+            <dd>商品管理</dd>
+            <dt class = "one">添加商品</dt>
+            <dt>商品列表</dt>
+        </dl>
+        <dl>
+            <dd>订单管理</dd>
+            <dt class = "one">订单列表</dt>
+        </dl>
+        <dl>
+            <dd>店铺管理</dd>
+            <dt>基本信息</dt>
+            <dt>账户信息</dt>
+            <dt  class = "one">修改密码</dt>
+        </dl>
+        <dl>
+            <dd>对账管理</dd>
+            <dt class = "one">月结账单</dt>
+        </dl>
+        <dl>
+            <dd>财务管理</dd>
+            <dt class = "one">我的钱包</dt>
+            <dt class = "one  on">已结算查询</dt>
+            <dt class = "one">未结算查询</dt>
+        </dl>
+    </div>
+    <div class = "payment-right">
+        <div class="payment-info clearfix">
+            <ul>
+                <li class=" first on">结算查询</li>
+            </ul>
+        </div>
+       <div class="search-wrap">
+            <div class="date-box">
+                <p class="w84 fl lh34">结算如期：</p>
+                <input id="getstartime" class = "date-wrap fl" name="getstartime" title="开始时间" readonly="readonly">
+                <span class="w26 fl lh34">至</span>
+                <input id="getendtime" class = "date-wrap fl" name="getendtime" title="结束时间"   readonly="readonly">
+            </div>
+            <div class="order-number-box">
+                <p class="w84 fl lh34">结算如期：</p>
+
+                <select id="select-type" class="flm select-type"/>
+                    <option value="0">全部</option>
+                    <option value="1">提现</option>
+                    <option value="2">结算</option>
+
+                </select>
+            </div>
+           <a href="javascript:;" class="btn-search">查询</a>
+       </div>
+       <div class="table-box">
+            <table class="search-table mt10">
+                <thead>
+                <tr>
+                    <td>交易订单号</td>
+                    <td>交易完成时间</td>
+                    <td>支付金额</td>
+                    <td>服务费</td>
+                    <td>实际结算</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td>JS001230</td>
+                    <td>2016-04-13</td>
+                    <td>1050.00</td>
+                    <td>10.50</td>
+                    <td>1039.50</td>
+                    <td class="td-details"><a href="">详情</a></td>
+                </tr>
+                <tr>
+                    <td>JS001230</td>
+                    <td>2016-04-13</td>
+                    <td>1050.00</td>
+                    <td>10.50</td>
+                    <td>1039.50</td>
+                    <td class="td-details"><a href="">详情</a></td>
+                </tr>
+                <tr>
+                    <td>JS001230</td>
+                    <td>2016-04-13</td>
+                    <td>1050.00</td>
+                    <td>10.50</td>
+                    <td>1039.50</td>
+                    <td class="td-details"><a href="">详情</a></td>
+                </tr>
+            </table>
+            <p><span>3</span>条记录&ensp;共<span>1页</span></p>
+        </div>
+    </div>
+</div>
+<div id="footID">
+    <div class="jiux-footer jiuw2">
+        <div class="footer-top ">
+            <div class="footID clearfix jiuw2">
+                <ul class="fl">
+                    <li><a href="http://www.test.jiuxiulvxing.com/about/aboutus.html">关于九休</a></li>
+                    <li><a href="http://www.test.jiuxiulvxing.com/about/contactus.html">联系我们</a></li>
+                    <li><a href="http://www.test.jiuxiulvxing.com/feedback/">意见反馈</a></li>
+                    <li>招商咨询&nbsp;&nbsp;4000-696-888/9:00~22:00，周一到周日</li>
+                </ul>
+                <div class="fr">
+                    <a class="wb"></a>
+                    <a class="wx"><i></i></a>
+                    <a class="qq"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bom">
+            <div class="footID jiuw2">
+                <img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/b_logo.png">
+                <p>COPYRIGHT© 2016 JIUXIULVXING.COM 九休旅行版权所有</p>
+                <p><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备16022217号-1</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../src/js/sea.js"></script>
+<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+<script type="text/javascript" src="../../src/js/config.js"></script>
+<script>seajs.use("payment");</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+/*提现*/
+.payment-right{ width:970px; height:690px; background:#fff; float: right;color:#666; }
+.payment-right .payment-info{ width: 892px; margin: 40px 0 0 40px; border-bottom: solid 1px #e5e5e5;}
+.payment-right .payment-info ul li{ float: left;  font-size: 20px; color: #999;  margin-left: 40px; padding: 0 0 15px; }
+.payment-right .payment-info ul li.w82{width:82px;}
+.payment-right .payment-info ul li.first { margin-left: 0px; }
+.payment-right .payment-info ul li.on{color: #ffaf00;border-bottom: solid 1px #ffaf00;}
+.payment-right .payment-info-box{ margin:10px 40px 0 40px; border:1px solid #e5e5e5; width:890px; }
+.payment-right .payment-info-box .payment-bank-info{ height:117px; background:#f9f9f9; padding:20px 0 0 0;}
+.payment-right .payment-info-box .payment-bank-info p{font-size: 14px; height: 32px;  margin:0 0 0 40px; overflow: hidden; }
+.payment-right .payment-info-box .payment-bank-info p i{ color:#222;}
+.payment-right .payment-info-box .w445{width:445px; }
+.payment-right .payment-info-box .payment-balance p{ line-height:58px; height:58px; margin:0 0 0 40px;  }
+.payment-right .payment-info-box .payment-balance p span{ line-height:58px; }
+.payment-right .payment-info-box .payment-balance i{ font-size:24px; color:#ed6c44; *vertical-align: middle !important;}
+.payment-right .submit{ display: block; width:120px; height:36px; background:#ed6c44; text-align: center; line-height: 36px; font-size:16px; color:#fff; margin:26px 0 0 40px;}
+
+/*提现成功box*/
+.payment-right .success-box{ width:300px; margin:42px auto 0 auto; text-align: center; }
+.payment-right .success-box .icon-succPass{ display: block; width:32px; height:32px; background:url("../../img/succPass.png") no-repeat; margin: 0 auto;}
+.payment-right .success-box h3{ font-size:22px; font-weight: bold; color:#333; line-height: 45px; marin:0 0 2px 0; }
+.payment-right .success-box p{ font-size:18px; line-height:30px; white-space:nowrap;}
+
+
+/*我的钱包*/
+.payment-right .money-box{ width: 892px; margin:0 0 0 40px; padding:0 0 20px 0; border-bottom: 1px solid #e5e5e5; overflow: hidden;}
+.payment-right .money-box h3{ height:50px; line-height:60px; overflow: hidden; font-size:18px; color:#333; }
+.payment-right .money-box ul li{ float: left; width: 446px; height:166px; text-align: center;  }
+.payment-right .money-box ul li p{ font-size:18px; color:#fff; line-height:38px; }
+.payment-right .money-box .withdrawal{ background:url("../../img/withdrawal-price.png") no-repeat; }
+.payment-right .money-box .settle{ background:url("../../img/settle-price.png") no-repeat; }
+.payment-right .money-box .price{ font-size:50px; line-height:60px; margin:42px 0 0 0; }
+.payment-right .money-handle{ margin:0 0 0 40px;}
+.payment-right .money-handle h3{ height:68px; line-height:59px;font-size:18px; color:#333; }
+.payment-right .money-handle p a{ float:left; width:112px; height:36px; background:#ed6c44; color:#fff; text-align: center; line-height:36px; font-size:16px; margin:0 28px 0 0;}
+
+
+/*未结算查询*/
+.payment-right .table-box{ margin:10px 0 0 40px; overflow: hidden; }
+.payment-right .search-table{ width:892px; }
+.payment-right .search-table.mt10{ margin-top:10px; }
+.payment-right .search-table thead tr td{ background:#f5f5f5; height:34px; line-height:34px;}
+.payment-right .search-table td{ text-align:center; }
+.payment-right .search-table tr td{height:50px; border-bottom:1px solid #eee;}
+
+
+/*结算查询*/
+.payment-right .search-wrap{ height:54px; width:888px; padding:19px 0 0 4px; background:#f5f5f5; margin:10px 0 0 40px; }
+.payment-right .search-wrap .w84{ width:84px; }
+.payment-right .search-wrap .w26{ width: 26px; text-align: center; }
+.payment-right .search-wrap .date-box,.payment-right .search-wrap .order-number-box,.payment-right .search-wrap .btn-search{ float:left; }
+.payment-right .search-wrap .date-box,.payment-right .search-wrap .order-number-box{ margin:0 0 0 31px; line-height: 34px; }
+
+.payment-right .search-wrap .date-box .date-wrap{ width:112px; padding:0 0 0 6px; height:32px;  border:1px solid #ccc; position: relative; }
+.payment-right .search-wrap .order-number-box .btn-order-number{ width:206px; height:32px;  }
+.payment-right .search-wrap .btn-search{width:58px; height:32px; border:1px solid #ccc; text-align: center; background:#ececec; line-height:32px; margin:0 0 0 20px;}
+.payment-right .search-wrap .lh34{line-height:34px;}
+
+.payment-right .search-table .td-details a{color:#ed6c44;}
+.payment-right .search-date{ line-height: 54px; font-size: 16px; color:#222; height:44px; margin:0 0 0 40px; overflow: hidden;}
+.payment-right .btn-prev-page{ margin: 40px auto 0 auto; display:block; width:120px; height:36px; background:#ed6c44; color:#fff; text-align:center; line-height:36px; font-size: 16px; }
+.payment-right .table-box p{ line-height:50px; text-align: right; padding: 0 40px 0 0; }
+.payment-right .table-box p span{ color:#ed6c44; vertical-align: inherit; }
+
+
+i,span{
+    vertical-align: inherit !important;
+}
+
+/*重置左侧菜单列表*/
+.comwidth{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.eredar-left{ margin-bottom:-9999px !important;padding-bottom:9999px !important;}
+
+
+/*重置日期组件*/
+
+.comwidth{ overflow: hidden; }
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+    width: 35% !important;
+}
+.ui-datepicker .ui-datepicker-prev,.ui-datepicker .ui-datepicker-next{
+    top:5px;
+}
