@@ -29,7 +29,7 @@
 			uploadClass : ".uploadimg",
 			uploadId : "uploadimg",
 			addImageBtn : ".imgwrap",
-			uploadAction : "http://filegw.test.jiuxiulvxing.com/filegw/",
+			uploadAction : $('#uploadAction').val()?$('#uploadAction').val():"http://filegw.test.jiuxiulvxing.com/filegw/",
 			contentText : "#contentText",
 			submitBtn : ".submitbtn",
 			inputTxt : ".tbd textarea",
