@@ -38,7 +38,7 @@ var callbackUpload=function(callback,hidden_obj){
 var uploadPic=function(img,fileObj) {
       var $imgbox=$(img).closest('.imgbox'),_self=this,
       	  picheck=isPicture(fileObj,500);
-      var $uplUrl = $imgbox.siblings(".uplUrl").val();
+      var $uplUrl = $('#filegw_domain').val()+'/file/upload_string';
       var $imgUrl = $imgbox.siblings(".imgUrl").val();
       if(!picheck.status){
       	//$imgbox.css('border','1px solid red');
