@@ -65,14 +65,17 @@ var uploadPic=function(img,fileObj) {
                 }else{
                     $imgbox.find('img').attr('src',defaulturl);
                     alert(data.resultMsg);
-                    return;
                 }
                 $imgbox.find('.upl').append('<input type="file" name="picfile" class="picfile">');
                 $imgbox.find('.picfile').on('change',changeboximg);
             },
-            error:function(err){console.log(err);
+            error:function(err){
+            	//console.log(err);
                 $imgbox.find('img').attr('src',defaulturl);
                 alert('请求发生错误！');
+                $('#uploadform').remove();
+                $imgbox.find('.upl').append('<input type="file" name="picfile" class="picfile">');
+                $imgbox.find('.picfile').on('change',changeboximg);
             }
       });
       return false;
