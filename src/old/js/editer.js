@@ -29,7 +29,7 @@
 			uploadClass : ".uploadimg",
 			uploadId : "uploadimg",
 			addImageBtn : ".imgwrap",
-			uploadAction : $('#uploadAction').val()?$('#uploadAction').val():"http://filegw.test.jiuxiulvxing.com/filegw/",
+			uploadAction : $('#filegw_domain').val(),
 			contentText : "#contentText",
 			submitBtn : ".submitbtn",
 			inputTxt : ".tbd textarea",
@@ -179,7 +179,7 @@
 					alert(picheck.content);
 					return false;
 				}
-			$('#editers').wrap("<form id='uploadform' action='"+_self.config.uploadAction+"file/upload_compress' method='post' enctype='multipart/form-data'></form>");
+			$('#editers').wrap("<form id='uploadform' action='"+_self.config.uploadAction+"/file/upload_compress' method='post' enctype='multipart/form-data'></form>");
 			imgshowbox.attr('src',imgurl+'/other-plugins/editer/img/loading.gif');
 			$('#uploadform').ajaxSubmit({
 				dataType:'json',
