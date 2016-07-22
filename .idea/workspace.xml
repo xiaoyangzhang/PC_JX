@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa307b0d-f1e9-4477-a875-31bb6e6a7632" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/module/md.public.js" afterPath="$PROJECT_DIR$/src/js/module/md.public.js" />
-    </list>
+    <list default="true" id="fa307b0d-f1e9-4477-a875-31bb6e6a7632" name="Default" comment="" />
     <ignored path="PC_JX.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
