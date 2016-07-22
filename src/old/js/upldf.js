@@ -21,20 +21,9 @@ defaulturl='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAA
 			box.find('.del').show();
 		}
 	});
- 
-	//callbackUpload(function(hidden_obj){alert(hidden_obj.val());});
 	
  });
  
-var callbacks=function(){};
- 
-var callbackUpload=function(callback,hidden_obj){
-	callbacks(hidden_obj);
-	if(callback&&callback instanceof Function){
-		callbacks=callback;
-	}
-}
-
 var uploadPic=function(img,fileObj) {
       var $imgbox=$(img).closest('.imgbox'),_self=this,
       	  picheck=isPicture(fileObj,500);
