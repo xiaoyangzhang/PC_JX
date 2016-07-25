@@ -1,4 +1,4 @@
-//document.domain = 'jiuxiulvxing.com';
+
 var imgurl='http://s0.test.jiuxiulvxing.com',
 defaulturl='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
  $(function(){
@@ -27,8 +27,8 @@ defaulturl='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAA
 var uploadPic=function(img,fileObj) {
       var $imgbox=$(img).closest('.imgbox'),_self=this,
       	  picheck=isPicture(fileObj,500);
-      var $uplUrl = $('#filegw_domain').val()+'/file/upload_string';
-      var $imgUrl = $imgbox.siblings(".imgUrl").val();
+      var $uplUrl = $('#filegw_domain').val()+'/file/upload';
+      var $imgUrl = $('#tfs').val();
       if(!picheck.status){
       	//$imgbox.css('border','1px solid red');
       	alert(picheck.content);
@@ -40,33 +40,28 @@ var uploadPic=function(img,fileObj) {
       $(fileObj).wrap("<form id='uploadform' action='"+ $uplUrl +"' method='post' enctype='multipart/form-data'></form>");
       $('#uploadform').ajaxSubmit({
             success: function (data) {
-            	//console.log(typeof data);
-               data=JSON.parse(data);
+               //data=JSON.parse(data);
                // console.log(data);
-                $('#uploadform').remove();
-                if(data.success){
-                	$imgbox.find('img').attr('src',data.value?$imgUrl+data.value:defaulturl);
-                   // $imgbox.find('img').attr('src',data.data?'http://img.test.yimayholiday.com/v1/tfs/'+data.data:defaulturl);
-                    $imgbox.find('.picCode').val(data.value).trigger("change");
-					//callbackUpload(callbacks,$imgbox.find('input:hidden'));
+                if(data.status == 200){
+                	$imgbox.find('img').attr('src',data.data?$imgUrl+data.data:defaulturl);
+                    $imgbox.find('.picCode').val(data.data).trigger("change");
                     $imgbox.find('.upl').hide();
                     $imgbox.find('.del').show();
                 }else{
                     $imgbox.find('img').attr('src',defaulturl);
-                    alert(data.resultMsg);
+                    alert('上传失败，请稍后重试！');
                 }
-                $imgbox.find('.upl').append('<input type="file" name="picfile" class="picfile">');
-                $imgbox.find('.picfile').on('change',changeboximg);
             },
             error:function(err){
             	//console.log(err);
                 $imgbox.find('img').attr('src',defaulturl);
                 alert('请求发生错误！');
-                $('#uploadform').remove();
-                $imgbox.find('.upl').append('<input type="file" name="picfile" class="picfile">');
-                $imgbox.find('.picfile').on('change',changeboximg);
             }
       });
+	    $('#uploadform').remove();
+	    $imgbox.find('.upl').append('<input type="file" name="picfile" class="picfile">');
+	    $imgbox.find('.picfile').on('change',changeboximg);
+           
       return false;
  }
 
