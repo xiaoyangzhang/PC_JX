@@ -325,7 +325,7 @@ define(function (require, exports, module) {
 			{
 				if(!rule.test(starnum) || !rule.test(emdnum)){
 					$(".tip").find('.Validform_checktip').remove();
-					$(".tip").append('<span class="Validform_checktip Validform_wrong">不能输入特殊字符</span>');
+					$(".tip").append('<span class="Validform_checktip Validform_wrong">不能输入特殊字符,并且小数点后只能保留2位</span>');
 				}
 				 else{
 					var regex = /^\d+(\.\d{0,2})?$/;
