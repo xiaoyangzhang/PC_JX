@@ -77,6 +77,13 @@ i,span{
 .eredar-left{ margin-bottom:-9999px !important;padding-bottom:9999px !important;}
 
 
+
+/*翻页居中*/
+.jiuniu_pagination{
+    text-align: center;
+    position: static !important;
+}
+
 /*重置日期组件*/
 
 .comwidth{ overflow: hidden; }

@@ -33,11 +33,11 @@ define(function( require, exports, module ){
         var postUrl = $("#root_path").val() + '/account/withdrawal',
         //成功跳转地址
             jumpUrl = $("#root_path").val() + '/account/withdrawalResult';
-        $(document).on('click','.btn-withdrawal',function(){
+        $(document).on('click','.btn-withdrawal',function( ){
             $.ajax({
-                type : 'get',
+                type : 'post',
                 url : postUrl,
-                dataType : 'jsonp',
+                dataType : 'json',
                 success : function( data ){
                     var d = data;
                     if( d.status == '200' ){
@@ -45,8 +45,12 @@ define(function( require, exports, module ){
                     }else{
                         alert( d.message );
                     }
+                },
+                error : function(xhr,status,error){
+                    alert( error );
                 }
             });
+
         });
     }
 });
