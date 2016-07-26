@@ -66,6 +66,8 @@
 i,span{
     vertical-align: inherit !important;
 }
+.income{color:#ed6c44;}
+.cost{ color:#76b24f; }
 
 /*重置左侧菜单列表*/
 .comwidth{

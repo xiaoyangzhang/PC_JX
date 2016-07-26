@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>提现</title>
+    <title>我的钱包</title>
     <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
     <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
     <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/jquery-ui-1.10.4.custom.css">
@@ -66,28 +66,71 @@
         </dl>
         <dl>
             <dd>财务管理</dd>
-            <dt class = "one on">我的钱包</dt>
+            <dt class = "one  on">我的钱包</dt>
             <dt class = "one">已结算查询</dt>
-            <dt class = "one">为结算查询</dt>
+            <dt class = "one">未结算查询</dt>
         </dl>
     </div>
     <div class = "payment-right">
         <div class="payment-info clearfix">
             <ul>
-                <li class=" first on w82">提现</li>
+                <li class=" first on">收支明细</li>
             </ul>
         </div>
-        <div class="payment-info-box">
-            <div class="payment-bank-info">
-                <p class="w445"><span class="fl">企业名称：<i>北京九休信息科技有限公司</i></span><span class="fr">* 仅支持提现到公司对公户</span></p>
-                <p>对公账户：<i>1010 0001 001021</i></p>
-                <p>开&ensp;户&ensp;行：<i>中国建设银行北京望京SOHO分行</i></p>
+        <div class="search-wrap">
+            <div class="date-box">
+                <p class="w84 fl lh34">结算如期：</p>
+                <input id="getstartime" class = "date-wrap fl" name="getstartime" title="开始时间" readonly="readonly">
+                <span class="w26 fl lh34">至</span>
+                <input id="getendtime" class = "date-wrap fl" name="getendtime" title="结束时间"   readonly="readonly">
             </div>
-            <div class="payment-balance">
-                <p class="w445"><span class="fl">可提现余额：<i>99999.00</i>元</span><span class="fr">* 对公提现仅支持全额提现</span></p>
+            <div class="order-number-box">
+                <p class="w84 fl lh34">结算如期：</p>
+
+                <select id="select-type" class="flm select-type"/>
+                <option value="0">全部</option>
+                <option value="1">提现</option>
+                <option value="2">结算</option>
+
+                </select>
             </div>
+            <a href="javascript:;" class="btn-search">查询</a>
         </div>
-        <a href="" class="submit">确认提交</a>
+        <div class="table-box">
+            <table class="search-table mt10">
+                <thead>
+                <tr>
+                    <td>交易流水号</td>
+                    <td>交易时间</td>
+                    <td>交易类型</td>
+                    <td>收支金额</td>
+                    <td>账户余额</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td>JS001230</td>
+                    <td>2016-04-13</td>
+                    <td>结算</td>
+                    <td class="income">+1200.0</td>
+                    <td>0.00</td>
+                </tr>
+                <tr>
+                    <td>JS001230</td>
+                    <td>2016-04-13</td>
+                    <td>结算</td>
+                    <td class="cost">-800.0</td>
+                    <td>0.00</td>
+                </tr>
+                <tr>
+                    <td>JS001230</td>
+                    <td>2016-04-13</td>
+                    <td>结算</td>
+                    <td>+1200.0</td>
+                    <td>0.00</td>
+                </tr>
+            </table>
+            <p><span>3</span>条记录&ensp;共<span>1页</span></p>
+        </div>
     </div>
 </div>
 <div id="footID">

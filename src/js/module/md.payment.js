@@ -24,7 +24,29 @@ define(function( require, exports, module ){
         height: 32,
         onChange:function(){}
     });
-    //$(document).on('click','.btn-search',function(){
+
+    //console.log( $("#root_path").val());
     //
-    //});
+    withdrawBtnClick();
+    function withdrawBtnClick(){
+        //请求地址
+        var postUrl = $("#root_path").val() + '/account/withdrawal',
+        //成功跳转地址
+            jumpUrl = $("#root_path").val() + '/account/withdrawalResult';
+        $(document).on('click','.btn-withdrawal',function(){
+            $.ajax({
+                type : 'get',
+                url : postUrl,
+                dataType : 'jsonp',
+                success : function( data ){
+                    var d = data;
+                    if( d.status == '200' ){
+                        location.href = jumpUrl;
+                    }else{
+                        alert( d.message );
+                    }
+                }
+            });
+        });
+    }
 });
