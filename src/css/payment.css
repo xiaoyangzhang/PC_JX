@@ -49,9 +49,9 @@
 .payment-right .search-wrap .w84{ width:84px; }
 .payment-right .search-wrap .w26{ width: 26px; text-align: center; }
 .payment-right .search-wrap .date-box,.payment-right .search-wrap .order-number-box,.payment-right .search-wrap .btn-search{ float:left; }
-.payment-right .search-wrap .date-box,.payment-right .search-wrap .order-number-box{ margin:0 0 0 31px; line-height: 34px; }
+.payment-right .search-wrap .date-box,.payment-right .search-wrap .order-number-box{ *display:inline;margin:0 0 0 31px; line-height: 34px; }
 
-.payment-right .search-wrap .date-box .date-wrap{ width:112px; padding:0 0 0 6px; height:32px;  border:1px solid #ccc; position: relative; }
+.payment-right .search-wrap .date-box .date-wrap{ width:112px; padding:0 0 0 6px; height:32px;  border:1px solid #ccc !important; position: relative; }
 .payment-right .search-wrap .order-number-box .btn-order-number{ width:206px; height:32px;  }
 .payment-right .search-wrap .btn-search{width:58px; height:32px; border:1px solid #ccc; text-align: center; background:#ececec; line-height:32px; margin:0 0 0 20px;}
 .payment-right .search-wrap .lh34{line-height:34px;}
@@ -82,6 +82,14 @@ i,span{
 .jiuniu_pagination{
     text-align: center;
     position: static !important;
+}
+
+.statement-text{
+    width:218px;
+    height:32px;
+    border:1px solid #ccc;
+    outline: none;
+    float: left;
 }
 
 /*重置日期组件*/
