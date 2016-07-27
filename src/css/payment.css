@@ -63,7 +63,7 @@
 .payment-right .table-box p span{ color:#ed6c44; vertical-align: inherit; }
 
 
-i,span{
+.payment-info-box i,.payment-info-box span{
     vertical-align: inherit !important;
 }
 .income{color:#ed6c44;}
