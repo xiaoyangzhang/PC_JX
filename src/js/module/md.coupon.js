@@ -352,7 +352,7 @@ define(function (require, exports, module) {
 			}
 			return result;
 		},
-		couponNum_fun(){
+		couponNum_fun : function(){
 			var result = false;
 			var data = $("#part");
 			var txt = /^[0-9]*[1-9][0-9]*$/;

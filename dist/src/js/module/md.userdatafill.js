@@ -1,0 +1,16 @@
+/*! pc_jx - v1.0.0 - 2016-07-28 */
+define(function(require,exports,module){require("core"),require("widget"),require("datepicker"),//引用时间组件
+require("uploadfiles"),//上传文件组件
+require("validform"),//验证组件
+require("dropdownlist"),//下拉框组件
+require("upload"),$public=require("public"),$userdatafill=function(){this.init.apply(this,arguments)};var isLock=!0;$userdatafill.prototype={init:function(){var _self=this;if($(".error_box").length>0){var tit_top=$(".error_box").offset().top,lock=!1;$(window).scroll(function(){var cur_top=$(this).scrollTop();tit_top<cur_top&&!lock?($(".error_box").css({position:"fixed",right:($(document).width()-1190)/2+110+"px"}),lock=!0):tit_top>cur_top&&lock&&($(".error_box").css({position:"absolute",right:"110px"}),lock=!1)})}var validoptions={tiptype:3,label:".label",showAllError:!0,datatype:{"*2-10":/^[\w\W]{2,10}$/,"n10-25":/^\d{10,25}$/},ajaxPost:!0},rule=[{ele:".picfile",datatype:"*"},{ele:".businesname",datatype:"*2-10",nullmsg:"请填写姓名",errormsg:"请填写2-10字以内的姓名"},{ele:".finance",datatype:"n8-25",nullmsg:"请填写财务结算账号",errormsg:"财务结算账号只允许8-25个数字"}],validfm=$("#forminfo").Validform(validoptions).addRule(rule);
+// $('#principleName_').keyup(function(){
+// 	$('#financeOpenName_').val($(this).val());
+// });
+//渲染时间控件
+$("#tm").datepicker(),$("#bank").selectlist({width:200}),$("#card").selectlist({width:200,onChange:function(){isLock||$("#cardtxt").removeClass("Validform_error").val("").next().empty().removeClass("Validform_wrong Validform_right"),_self.changevalid(!0)}}),_self.changevalid(),
+//下一页并保存
+$(".nxt").on("click",function(){var allimgvalid=$public.allimgvalid($(".panel").find('.imgbox:not(".cnat")')),subpath=$(".subpath").val(),params=$public.paramcompare($("#forminfo").serializeArray(),function(data){data.saleScope=data.saleScope.replace(/\r\n/g,"\n")}),groupimgvalid=!0;return $(".darenzh").length>0&&(groupimgvalid=$public.groupimgvalid($(".darenzh"),"请选择图片！")),validfm.check()&&allimgvalid&&groupimgvalid&&($public.dialog.waiting(),$.post(subpath,params,function(data){$public.isLogin(data),$public.dialog.closebox(),data.success?($public.dialog.msg("保存成功！","success"),setTimeout(function(){window.location=data.value},1500)):$public.dialog.msg(data.resultMsg,"error")})),!1}),
+//商家入驻总提交
+$(".allsub").on("click",function(){var selectvalid=$public.selectvalid(),groupimgvalid=$public.groupimgvalid($(".groupimg"),"请选择图片！"),allimgvalid=$public.allimgvalid($(".panel").find('.imgbox:not(".cnat")')),subpath=$(".subpath").val(),params=$public.paramcompare($("#forminfo").serializeArray());return validfm.check()&&allimgvalid&&selectvalid&&groupimgvalid&&($public.dialog.waiting(),$.post(subpath,params,function(data){$public.isLogin(data),$public.dialog.closebox(),data.success?($public.dialog.msg("保存成功！","success"),setTimeout(function(){window.location=data.value},1500)):$public.dialog.msg(data.resultMsg,"error")})),!1}),$public.actiondata("province","city")},changevalid:function(isTrue){var cardvalue=$("#card :hidden").val();isTrue&&(isLock=!1),0==cardvalue?$("#cardtxt").attr("datatype","card"):1==cardvalue?$("#cardtxt").attr("datatype","dlic"):2==cardvalue?$("#cardtxt").attr("datatype","psport"):3==cardvalue&&$("#cardtxt").attr("datatype","gidcard")}},module.exports=new $userdatafill});
+/*! pc_jx 最后修改于： 2016-07-28 */
