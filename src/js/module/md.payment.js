@@ -73,7 +73,7 @@ define(function( require, exports, module ){
                 onSelect : function(dateText,inst){
                     var $startDate = $( _self.config.btnStratTime );
                     var $endDate = $(_self.config.btnEndTime);
-                    var endDate = $endDate.datepicker( 'getDate' ); 
+                    var endDate = $endDate.datepicker( 'getDate' );
                     var startDate = $startDate.datepicker( "getDate" );
                     //if(endDate < startDate){
                     //    $startDate.datepicker('setDate', startDate + 3600*1000*24);
