@@ -40,32 +40,48 @@ define(function( require, exports, module ){
         },
         //初始化时间组件
         initDateComponent : function(_self){
-            var startTime,endTime;
+            //var startDate,endDate;
             $( _self.config.btnStratTime ).datepicker({
                 changeMonth: true,
                 changeYear: true,
                 onSelect: function(dateText, inst) {
-                    startTime = dateText;
-                    _self.isCheckTime( startTime, endTime );
+                    ///console.log( inst );
+
+                    var $startDate = $( _self.config.btnStratTime );
+                    var $endDate = $(_self.config.btnEndTime);
+                    var startDate = $startDate.datepicker( 'getDate');
+                    var endDate = $endDate.datepicker( 'getDate' );
+
+                    //if(endDate < startDate){
+                        //$endDate.datepicker('setDate', startDate - 3600*1000*24);
+                    //}
+                    //console.log( startDate + 3600*1000*24 );
+                    //var endDate = $endDate.datepicker( 'getDate' ) || '0';
+                    //
+                    //if(endDate < startDate){
+                    //$endDate.datepicker('setDate', startDate - 3600*1000*24);
+                    //}
+                    //console.log(  dateText )
+
+                    $endDate.datepicker( "option", "minDate", startDate  );
+
                 }
             });
             $( _self.config.btnEndTime ).datepicker({
                 changeMonth: true,
                 changeYear: true,
                 onSelect : function(dateText,inst){
-                    endTime = dateText;
-                    _self.isCheckTime( startTime, endTime );
+                    var $startDate = $( _self.config.btnStratTime );
+                    var $endDate = $(_self.config.btnEndTime);
+                    var endDate = $endDate.datepicker( 'getDate' ); 
+                    var startDate = $startDate.datepicker( "getDate" );
+                    //if(endDate < startDate){
+                    //    $startDate.datepicker('setDate', startDate + 3600*1000*24);
+                    //}
+                    $startDate.datepicker( "option", "maxDate", endDate );
                 }
             });
 
-        },
-        //判断开始时间是否大于结束时间
-        isCheckTime : function( startTime, endTime ){
-            if( startTime && endTime ){
-                if(  startTime >= endTime ){
-                    g.dialog.msg('开始时间不能大于结束时间','error');
-                }
-            }
         },
         //钱包提现按钮点击操作
         btnWithdrawClick :  function(){
