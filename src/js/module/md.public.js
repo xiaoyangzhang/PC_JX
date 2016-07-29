@@ -172,31 +172,27 @@ define(function (require, exports, module) {
 				init_callback();
 			}
 		},
-		init_pagination:function(callback,loading){
+		init_pagination:function(callback){
 			//上一页
 			$(document).on('click','.jiuniu_pagination li.previous:not(".disabled") a',function(){
 				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
-				loading.show();
 				callback(cur_page>0?(cur_page-1):cur_page);
 			});
 
 			//下一页
 			$(document).on('click','.jiuniu_pagination li.next:not(".disabled") a',function(){
 				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
-				loading.show();
 				callback(cur_page+1);
 			});
 
 			//选择页
 			$(document).on('click','.jiuniu_pagination li:not(".active,.previous,.next") a',function(){
 				var cur_page=parseInt($(this).text());
-				loading.show();
 				callback(cur_page);
 			});
 
 			//选择页大小
 			$(document).on('change','.jiuniu_pagination li #pageSize',function(){
-				loading.show();
 				callback(1,$(this).val());
 			});
 		},
