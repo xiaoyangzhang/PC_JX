@@ -29,11 +29,12 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$('#filegw_url').val()+'/',
+	fileuploadURL=$('#filegw_url').val()?$('#filegw_url').val()+'/':$urlpath.fileuploadURL,
+	fileCompressURL = $('#filegw_domain').val()+'/',
 	site_path=$('#root_path').val()+'/',
-	img_domain=$('#tfs').val(),
-	static_path=$('#static_path').val(),
-	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
+	img_domain=$('#tfs').val()?$('#tfs').val()+'/':$urlpath.img_domain+'/',
+	static_path=$('#static_path').val()?$('#static_path').val():$urlpath.static_source,
+	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):'';
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// static_path=$urlpath.static_source+'/src',
@@ -56,8 +57,7 @@ define(function (require, exports, module) {
 			setTimeout(function(){
 	        	_self.isVdSelect=true;
 			},500);
-
-				// _self.depath();
+			//_self.depath();
 		},
 		isLogin :function(data){
 			if(!data instanceof Object)
@@ -171,6 +171,30 @@ define(function (require, exports, module) {
 				html_content.appendTo($('.container'));
 				init_callback();
 			}
+		},
+		init_pagination:function(callback){
+			//上一页
+			$(document).on('click','.jiuniu_pagination li.previous:not(".disabled") a',function(){
+				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
+				callback(cur_page>0?(cur_page-1):cur_page);
+			});
+
+			//下一页
+			$(document).on('click','.jiuniu_pagination li.next:not(".disabled") a',function(){
+				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
+				callback(cur_page+1);
+			});
+
+			//选择页
+			$(document).on('click','.jiuniu_pagination li:not(".active,.previous,.next") a',function(){
+				var cur_page=parseInt($(this).text());
+				callback(cur_page);
+			});
+
+			//选择页大小
+			$(document).on('change','.jiuniu_pagination li #pageSize',function(){
+				callback(1,$(this).val());
+			});
 		},
 		ck_device:function(){
 		    var browser = {
@@ -507,8 +531,8 @@ define(function (require, exports, module) {
 		//判断上传文件格式是否满足条件
 		isPicture:function(file,sz){
 		    var result={content:'文件类型不合法,只能是jpg、png、jpeg类型！'},fileName=file.value,
-		        szcontent={status:true,content:'文件大小不能超过'+sz+'K'},
-		        maxsize = sz*1024,filesize = 0; //M;
+		        szcontent={status:true,content:'文件大小不能超过'+sz+ (sz<10?'M':'K')},
+		        maxsize = (sz<10?sz*1024*1024 : sz*1024),filesize = 0; //M;
 		        if(this.diffBrowser().substring(0,1)!='I') {
 		        	filesize=file.files[0].size;
 				    if(filesize>maxsize){
