@@ -29,12 +29,12 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$('#filegw_url').val()+'/',
+	fileuploadURL=$('#filegw_url').val()?$('#filegw_url').val()+'/':$urlpath.fileuploadURL,
 	fileCompressURL = $('#filegw_domain').val()+'/',
 	site_path=$('#root_path').val()+'/',
-	img_domain=$('#tfs').val(),
-	static_path=$('#static_path').val(),
-	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
+	img_domain=$('#tfs').val()?$('#tfs').val()+'/':$urlpath.img_domain+'/',
+	static_path=$('#static_path').val()?$('#static_path').val():$urlpath.static_source,
+	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):'';
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// static_path=$urlpath.static_source+'/src',
@@ -171,6 +171,34 @@ define(function (require, exports, module) {
 				html_content.appendTo($('.container'));
 				init_callback();
 			}
+		},
+		init_pagination:function(callback,loading){
+			//上一页
+			$(document).on('click','.jiuniu_pagination li.previous:not(".disabled") a',function(){
+				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
+				loading.show();
+				callback(cur_page>0?(cur_page-1):cur_page);
+			});
+
+			//下一页
+			$(document).on('click','.jiuniu_pagination li.next:not(".disabled") a',function(){
+				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
+				loading.show();
+				callback(cur_page+1);
+			});
+
+			//选择页
+			$(document).on('click','.jiuniu_pagination li:not(".active,.previous,.next") a',function(){
+				var cur_page=parseInt($(this).text());
+				loading.show();
+				callback(cur_page);
+			});
+
+			//选择页大小
+			$(document).on('change','.jiuniu_pagination li #pageSize',function(){
+				loading.show();
+				callback(1,$(this).val());
+			});
 		},
 		ck_device:function(){
 		    var browser = {

@@ -15,16 +15,15 @@ define(function (require, exports, module) {
 	$test.prototype = {
 		init:function(){
 			$editer.distanceFun();
-			$public.diffBrowser();
 			var $self = this;
 			//渲染时间控件
 			$( "#tm" ).datepicker({
 		      changeMonth: true,
 		      changeYear: true
-		    });
+		    }); 
 			/* tab切换 */
 			$self.eredrInfoTab();
-			/* 判断昵称是否存在 */
+			/* 判断昵称是否存在呢 */
 			$self.nickName();
 			/* 省级联动 */
 			$self.provinceFun();
