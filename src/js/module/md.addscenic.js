@@ -236,33 +236,8 @@ define(function (require, exports, module) {
 				},1);
 				$public.stopBubble(ev);
 			});
-
-			//上一页
-			$(document).on('click','li.previous:not(".disabled") a',function(){
-				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
-				$(_self.config.loadlist).show();
-				getScenicList(cur_page>0?(cur_page-1):cur_page);
-			});
-
-			//下一页
-			$(document).on('click','li.next:not(".disabled") a',function(){
-				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
-				$(_self.config.loadlist).show();
-				getScenicList(cur_page+1);
-			});
-
-			//选择页
-			$(document).on('click','li:not(".active,.previous,.next") a',function(){
-				var cur_page=parseInt($(this).text());
-				$(_self.config.loadlist).show();
-				getScenicList(cur_page);
-			});
-
-			//选择页大小
-			$(document).on('change','li #pageSize',function(){
-				$(_self.config.loadlist).show();
-				getScenicList(1,$(this).val());
-			});
+			
+			$public.init_pagination(getScenicList);
 			
 			//景区列表			
 			function getScenicList(page,pagesize){
