@@ -1,0 +1,3 @@
+/*! pc_jx - v1.0.0 - 2016-07-28 */
+define(function(require,exports,module){var $io=function(){return this.init()};$io.prototype={init:function(){},getMessage:function(){var $self=this;$.ajax({cache:!1,url:$self.messageUrl,dataType:"json",type:"post",data:{timeout:20},timeout:20500,success:function(json,textStatus){return json.success?(window.location.href=json.value,!1):void $self.getMessage()},error:function(json,textStatus){$self.getMessage()}})}},module.exports=new $io});
+/*! pc_jx 最后修改于： 2016-07-28 */

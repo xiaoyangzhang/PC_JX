@@ -1,5 +1,5 @@
-/*ÌáÏÖ*/
-.payment-right{ width:970px; height:690px; background:#fff; float: right;color:#666; }
+/*ï¿½ï¿½ï¿½ï¿½*/
+.payment-right{ width:970px; min-height:690px; background:#fff; float: right;color:#666; }
 .payment-right .payment-info{ width: 892px; margin: 40px 0 0 40px; border-bottom: solid 1px #e5e5e5;}
 .payment-right .payment-info ul li{ float: left;  font-size: 20px; color: #999;  margin-left: 40px; padding: 0 0 15px; }
 .payment-right .payment-info ul li.w82{width:82px;}
@@ -15,14 +15,14 @@
 .payment-right .payment-info-box .payment-balance i{ font-size:24px; color:#ed6c44; *vertical-align: middle !important;}
 .payment-right .submit{ display: block; width:120px; height:36px; background:#ed6c44; text-align: center; line-height: 36px; font-size:16px; color:#fff; margin:26px 0 0 40px;}
 
-/*ÌáÏÖ³É¹¦box*/
+/*ï¿½ï¿½ï¿½Ö³É¹ï¿½box*/
 .payment-right .success-box{ width:300px; margin:42px auto 0 auto; text-align: center; }
 .payment-right .success-box .icon-succPass{ display: block; width:32px; height:32px; background:url("../../img/succPass.png") no-repeat; margin: 0 auto;}
 .payment-right .success-box h3{ font-size:22px; font-weight: bold; color:#333; line-height: 45px; marin:0 0 2px 0; }
 .payment-right .success-box p{ font-size:18px; line-height:30px; white-space:nowrap;}
 
 
-/*ÎÒµÄÇ®°ü*/
+/*ï¿½Òµï¿½Ç®ï¿½ï¿½*/
 .payment-right .money-box{ width: 892px; margin:0 0 0 40px; padding:0 0 20px 0; border-bottom: 1px solid #e5e5e5; overflow: hidden;}
 .payment-right .money-box h3{ height:50px; line-height:60px; overflow: hidden; font-size:18px; color:#333; }
 .payment-right .money-box ul li{ float: left; width: 446px; height:166px; text-align: center;  }
@@ -35,7 +35,7 @@
 .payment-right .money-handle p a{ float:left; width:112px; height:36px; background:#ed6c44; color:#fff; text-align: center; line-height:36px; font-size:16px; margin:0 28px 0 0;}
 
 
-/*Î´½áËã²éÑ¯*/
+/*Î´ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯*/
 .payment-right .table-box{ margin:10px 0 0 40px; overflow: hidden; }
 .payment-right .search-table{ width:892px; }
 .payment-right .search-table.mt10{ margin-top:10px; }
@@ -44,7 +44,7 @@
 .payment-right .search-table tr td{height:50px; border-bottom:1px solid #eee;}
 
 
-/*½áËã²éÑ¯*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯*/
 .payment-right .search-wrap{ height:54px; width:888px; padding:19px 0 0 4px; background:#f5f5f5; margin:10px 0 0 40px; }
 .payment-right .search-wrap .w84{ width:84px; }
 .payment-right .search-wrap .w26{ width: 26px; text-align: center; }
@@ -69,7 +69,7 @@
 .income{color:#ed6c44;}
 .cost{ color:#76b24f; }
 
-/*ÖØÖÃ×ó²à²Ëµ¥ÁÐ±í*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½Ð±ï¿½*/
 .comwidth{
     overflow: hidden;
     margin-bottom: 20px;
@@ -78,7 +78,7 @@
 
 
 
-/*·­Ò³¾ÓÖÐ*/
+/*ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½*/
 .jiuniu_pagination{
     text-align: center;
     position: static !important;
@@ -92,7 +92,7 @@
     float: left;
 }
 
-/*ÖØÖÃÈÕÆÚ×é¼þ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 
 .comwidth{ overflow: hidden; }
 .ui-datepicker select.ui-datepicker-month,

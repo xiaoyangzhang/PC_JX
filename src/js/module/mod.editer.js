@@ -13,12 +13,6 @@ define(function (require, exports, module){
 			$self.config = $.extend($self.config,options);
 			$self.bindDomEvent();
 			$self.setContentData();
-			// setTimeout(function(){
-			// $('.bd p font').filter(function(){
-			// 		var s=$(this).html();
-			// 		$(this).html(s);
-			// 	});
-			// },1000);
 		},
 		config : {
 			addTextBtn : ".addtext",
@@ -150,6 +144,7 @@ define(function (require, exports, module){
 			$(_self.id).find(".bd").append(html);
 			$(_self.id).find(".bd").find("textarea").focus();
 			_self.scrollBottom(".txtinput");
+			_self.defaultText = '';
 		},
 		addImageEvent : function(_self,_this){
 			if(_self.isUploadState()) return false;
@@ -158,15 +153,20 @@ define(function (require, exports, module){
 			_self.scrollBottom(".imgwrap");
 		},
 		uploadImgEvent : function(_self,_this){
+			var isPicture=$public.isPicture(_this[0],3);
+			if(!isPicture.status&&isPicture.content){
+				$public.dialog.msg(isPicture.content,'error');
+				return false;
+            }
 			if($('#uploadform').length==0) 
-				$('#editer').wrap("<form id='uploadform' action='"+(fileuploadURL?fileuploadURL:"http://filegw.test.jiuxiulvxing.com/filegw/file/upload_string")+"' method='post' enctype='multipart/form-data'></form>");
+				$('#editer').wrap("<form id='uploadform' action='"+(fileCompressURL?fileCompressURL+"file/upload_compress_string":"http://filegw.test.jiuxiulvxing.com/filegw/file/upload_compress_string")+"' method='post' enctype='multipart/form-data'></form>");
 			  $('#uploadform').ajaxSubmit({
 	                success: function (jsondata) {
 						jsondata = eval("("+jsondata+")");
 						var _this = $(_self.config.uploadClass);
 						var _parent = _this.closest("span");
 						if(!jsondata.status==200){
-							$public.dialog.msg(jsondata.resultMsg,'error');
+							$public.dialog.msg('上传失败，请稍后重试','error');
 						}else{
 							_parent.prev().find("img").attr('src',img_domain+jsondata.data);
 						}
@@ -305,7 +305,7 @@ define(function (require, exports, module){
 		},	
 		closeSiblingsTextEvent : function(_self,_this){
 			var _siblings = _this.siblings(_self.config.inputClass);
-			var _html = _self.defaultText?'<p class="text">'+_self.defaultText+'</p>':"";
+			var _html = _self.defaultText?'<p class="text"><font>'+_self.defaultText+'</font></p>':"";
 			_siblings.replaceWith(_html);			
 		},
 		limitTextInputEvent:function(_self,_this){

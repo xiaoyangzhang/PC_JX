@@ -19,7 +19,8 @@ define(function( require, exports, module ){
             btnStratTime : '#getstartime',
             btnEndTime   :  '#getendtime',
             selectType   :  '.select-type',
-            btnWithdrawal : '.btn-withdrawal'
+            btnWithdrawal : '.btn-withdrawal',
+            queryForm : '#queryForm'
         },
         init : function(){
             var _self = this;
@@ -27,7 +28,17 @@ define(function( require, exports, module ){
             _self.initDateComponent( _self );
             _self.btnWithdrawClick(_self);
             _self.initSelectComponent( _self );
+            //console.log(g.init_pagination );
+            //g.init_pagination( _self.submitPage );
+            g.init_pagination(submitForm);
+            function  submitForm( page, pageSize ){
+                var $form = $( _self.config.queryForm);
+                var serialize = $form.serialize();
+                var oldUrl = $form.attr('action');
+                $form.attr('action',oldUrl + '?' +serialize).submit();
+            };
         },
+
         //初始化下拉菜单组件
         initSelectComponent : function(_self){
             $(_self.config.selectType).selectlist({
@@ -52,16 +63,6 @@ define(function( require, exports, module ){
                     var startDate = $startDate.datepicker( 'getDate');
                     var endDate = $endDate.datepicker( 'getDate' );
 
-                    //if(endDate < startDate){
-                        //$endDate.datepicker('setDate', startDate - 3600*1000*24);
-                    //}
-                    //console.log( startDate + 3600*1000*24 );
-                    //var endDate = $endDate.datepicker( 'getDate' ) || '0';
-                    //
-                    //if(endDate < startDate){
-                    //$endDate.datepicker('setDate', startDate - 3600*1000*24);
-                    //}
-                    //console.log(  dateText )
 
                     $endDate.datepicker( "option", "minDate", startDate  );
 
@@ -75,14 +76,13 @@ define(function( require, exports, module ){
                     var $endDate = $(_self.config.btnEndTime);
                     var endDate = $endDate.datepicker( 'getDate' );
                     var startDate = $startDate.datepicker( "getDate" );
-                    //if(endDate < startDate){
-                    //    $startDate.datepicker('setDate', startDate + 3600*1000*24);
-                    //}
+
                     $startDate.datepicker( "option", "maxDate", endDate );
                 }
             });
 
         },
+
         //钱包提现按钮点击操作
         btnWithdrawClick :  function(){
             //请求地址
@@ -110,5 +110,5 @@ define(function( require, exports, module ){
         }
 
     };
-    module.exports = new Payment;
+    module.exports = new Payment();
 });

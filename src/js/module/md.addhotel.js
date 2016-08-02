@@ -263,38 +263,14 @@ define(function (require, exports, module) {
 				
 			});
 
-			//上一页
-			$(document).on('click','li.previous:not(".disabled") a',function(){
-				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
-				$(_self.config.loadlist).show();
-				gethotelist(cur_page>0?(cur_page-1):cur_page);
-			});
-
-			//下一页
-			$(document).on('click','li.next:not(".disabled") a',function(){
-				var cur_page=parseInt($('.jiuniu_pagination li.active a').text());
-				$(_self.config.loadlist).show();
-				gethotelist(cur_page+1);
-			});
-
-			//选择页
-			$(document).on('click','li:not(".active,.previous,.next") a',function(){
-				var cur_page=parseInt($(this).text());
-				$(_self.config.loadlist).show();
-				gethotelist(cur_page);
-			});
-
-			//选择页大小
-			$(document).on('change','li #pageSize',function(){
-				$(_self.config.loadlist).show();
-				gethotelist(1,$(this).val());
-			});
+			$public.init_pagination(gethotelist);
 
 			//获取酒店列表
 			function gethotelist(page,pagesize){
 				var page=page?page:1,pagesize=pagesize?pagesize:$('#pageSize').val(),
 				$htlst=$(_self.config.searchbox).find(_self.config.hotelist);
 				$htlst.empty();
+				$(_self.config.loadlist).show();
 				$.get($public.urlpath.gethotelist,{
 					page:page,
 					pageSize:pagesize,
