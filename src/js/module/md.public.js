@@ -123,7 +123,7 @@ define(function (require, exports, module) {
 					_self.box.fadeIn();
 				else{
 					$('.bgmeng').off(); 
-					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
 					_self.box.attr('id','waiting-box').append('<div class="loading"><img src="'+static_source+'img/loading.gif"><label>请稍后。。。</label></div>').fadeIn();
 				}
 			},
@@ -134,11 +134,11 @@ define(function (require, exports, module) {
 					$('.msg').text(value);
 					_self.box.fadeIn();
 				}else{
-					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				clearTimeout(_self.timer);
-				_self.timer=setTimeout(function(){_self.closebox();},2000);
+				_self.timer=setTimeout(function(){_self.closebox();},1000);
 				if(type=='success')
 					$('.msg').css('color','green');
 				else if(type=='error')

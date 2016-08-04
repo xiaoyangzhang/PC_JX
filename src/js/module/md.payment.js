@@ -90,21 +90,27 @@ define(function( require, exports, module ){
             //成功跳转地址
                 jumpUrl = $("#root_path").val() + '/account/withdrawalResult';
             $(document).on('click',this.config.btnWithdrawal,function(){
-                $.ajax({
-                    type : 'post',
-                    url : postUrl,
-                    dataType : 'json',
-                    success : function( data ){
-                        var d = data;
-                        if( d.status == '200' ){
-                            location.href = jumpUrl;
-                        }else{
-                            alert( d.message );
+                $public.dialog.content(600,320,'确认信息',$('#bill').show(),function(){
+                    $.ajax({
+                        type : 'post',
+                        url : postUrl,
+                        dataType : 'json',
+                        success : function( data ){
+                            var d = data;
+                            if( d.status == '200' ){
+                                location.href = jumpUrl;
+                            }else{
+                                $public.dialog.msg(d.message,'success');
+                                //alert( d.message );
+                            }
+                        },
+                        error : function(xhr,status,error){
+                            $public.dialog.msg(error,'error');
+                            //alert( error );
                         }
-                    },
-                    error : function(xhr,status,error){
-                        alert( error );
-                    }
+                    });
+                },function(){
+
                 });
             });
         }

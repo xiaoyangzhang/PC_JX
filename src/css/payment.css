@@ -102,3 +102,9 @@
 .ui-datepicker .ui-datepicker-prev,.ui-datepicker .ui-datepicker-next{
     top:5px;
 }
+
+#bill {width:600px;margin:auto;display: none;}
+#bill td{padding:10px 5px;line-height: 22px;vertical-align: bottom;}
+#bill td.field{width:100px;text-align: right;font-weight: bold;}
+#bill td label{margin-left:60px;}
+#bill td span{font-size:24px;color:#ed6c44;vertical-align: inherit;}
