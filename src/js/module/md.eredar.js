@@ -15,16 +15,16 @@ define(function (require, exports, module) {
 	$test.prototype = {
 		init:function(){
 			$editer.distanceFun();
-			$public.diffBrowser();
 			var $self = this;
 			//渲染时间控件
 			$( "#tm" ).datepicker({
 		      changeMonth: true,
-		      changeYear: true
-		    });
+		      changeYear: true,
+			  yearRange: "-76:+0"
+		    }); 
 			/* tab切换 */
 			$self.eredrInfoTab();
-			/* 判断昵称是否存在 */
+			/* 判断昵称是否存在呢 */
 			$self.nickName();
 			/* 省级联动 */
 			$self.provinceFun();
@@ -99,13 +99,25 @@ define(function (require, exports, module) {
 						}
 						if(key=='imgpath'&&params[key]){
 							temparr=params[key];
-							for(var j=0;j<temparr.length;j++){
+							/* for(var j=0;j<temparr.length;j++){
+								if(temparr[j]!=''){
+									imgarr.push(temparr[j]);
+								}
+							}
+							params[key]=JSON.stringify(imgarr); */
+							/* console.log(params[key]); */
+						if(temparr.constructor == String) {
+								imgarr.push(temparr);
+								params[key]=JSON.stringify(imgarr);
+							}
+							if(temparr instanceof Array) {
+								for(var j=0;j<temparr.length;j++){
 								if(temparr[j]!=''){
 									imgarr.push(temparr[j]);
 								}
 							}
 							params[key]=JSON.stringify(imgarr);
-							/* console.log(params[key]); */
+							}
 						}
 					}
 				$.ajax({
