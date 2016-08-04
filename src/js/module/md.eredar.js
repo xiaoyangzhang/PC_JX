@@ -19,7 +19,8 @@ define(function (require, exports, module) {
 			//渲染时间控件
 			$( "#tm" ).datepicker({
 		      changeMonth: true,
-		      changeYear: true
+		      changeYear: true,
+			  yearRange: "-76:+0"
 		    }); 
 			/* tab切换 */
 			$self.eredrInfoTab();
