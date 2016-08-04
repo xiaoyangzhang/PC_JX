@@ -63,6 +63,22 @@ define(function (require, exports, module) {
 			//渲染时间控件
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
+			$('#accountType').selectlist({
+				width: 200,
+				onChange:function(){
+					if($(this).val() == 1){
+						$("#settlementCard").closest("tr")[0].prop("style","display:none");
+						$("#openerTel").closest("tr")[0].prop("style","");
+						$("#openerCard").closest("tr")[0].prop("style","");
+					}
+					if($(this).val() == 2){
+						$("#openerTel").closest("tr")[0].prop("style","display:none");
+						$("#openerCard").closest("tr")[0].prop("style","display:none");
+						$("#settlementCard").closest("tr")[0].prop("style","");
+
+					}
+				}
+			});
 			$('#card').selectlist({
 				width: 200,
 				onChange:function(){
