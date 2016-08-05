@@ -63,6 +63,26 @@ define(function (require, exports, module) {
 			//渲染时间控件
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
+			$('#accountType').selectlist({
+				width: 200,
+				onChange:function(){
+					var cardHtml = '<tr class="openerCard_"><td class="tbtxt w280"><label class="bred">*</label><span>开户人身份证：</span></td><td><input class="inptxt" datatype="card" maxlength="18"    value="$!examineInfo.openerCard" id="openerCard_" name="openerCard" ></td></tr>';
+					var telHtml = '<tr class="openerTel_"><td class="tbtxt w280"><label class="bred">*</label><span>开户人手机号：</span></td><td><input class="inptxt" datatype="m" maxlength="11"    value="$!examineInfo.openerTel" id="openerTel_" name="openerTel" placeholder="银行预留手机号" ></td></tr>';
+					var setHtml = $(".settlementCard_").html();
+					if($("#accountType :hidden").val() == 1){
+						$(".settlementCard_").remove();
+						$(".financeOpenName_").append(cardHtml);
+						$(".financeOpenName_").append(telHtml);
+					}
+					if($("#accountType :hidden").val() == 2){
+						$(".openerTel_").remove();
+						$(".openerCard_").remove();
+						$(".financeOpenName_").append(setHtml);
+
+					}
+
+				}
+			});
 			$('#card').selectlist({
 				width: 200,
 				onChange:function(){
