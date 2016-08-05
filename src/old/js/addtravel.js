@@ -29,51 +29,45 @@
         }
         //同城活动sku
 			//--------------价格库存信息----------
-		$('.skuTable').find('.stock').each(function () {
-			if ($.trim($(this).val()).length<1) {
-				msg = '请填写库存';
-				$(this).focus();
-				return false;
+		if ($('.skuTable').length>0) {
+			if($('.skuTable').find('table').length<1){
+				return '价格套餐不能为空';
+			}; 
+			var sFlag = false;
+			$('.skuTable').find('tr.skuTbEdit').each(function(){
+				var sVal = $.trim($(this).find('.stock').val()),pVal = $.trim($(this).find('.price').val());
+				if (sVal != 0 && pVal != 0) sFlag = true;
+			});
+			if (!sFlag) {
+				msg = '价格套餐至少有一项价格和库存不为0';
 			};
-			if (!/^(0|[1-9]\d{0,5})$/.test($(this).val())) {
-				msg = '库存为正整数，最大六位整数';
-				$(this).focus();
-				return false;
-			}
-		});
-		$('.skuTable').find('.price').each(function () {
-			if ($.trim($(this).val()).length<1) {
-				msg = '请填写价格';
-				$(this).focus();
-				return false;
-			};
-			if (!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($(this).val())) {
-				msg = '价格为数字，最大六位整数，可带两位小数';
-				$(this).focus();
-				return false;
-			}
-		});
+			$('.skuTable').find('.stock').each(function () {
+				if ($.trim($(this).val()).length<1) {
+					msg = '请填写库存';
+					$(this).focus();
+					return false;
+				};
+				if (!/^(0|[1-9]\d{0,5})$/.test($(this).val())) {
+					msg = '库存为正整数，最大六位整数';
+					$(this).focus();
+					return false;
+				}
+			});
+			$('.skuTable').find('.price').each(function () {
+				if ($.trim($(this).val()).length<1) {
+					msg = '请填写价格';
+					$(this).focus();
+					return false;
+				};
+				if (!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($(this).val())) {
+					msg = '价格为数字，最大六位整数，可带两位小数';
+					$(this).focus();
+					return false;
+				}
+			});
+			
+		}
 		if(msg){return msg;};
-//      if(!skuTableShowFlag){
-//          if(!$('.priceY').val() || !/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/.test($('.priceY').val())){
-//              return '请输入正确的价格';
-//          }
-//          if(!$('.stockNum').val() || !/^[1-9]\d*|0$/.test($('.stockNum').val())){
-//              return '请输入正确的库存';
-//          }
-//      }else{
-//          $('.price').each(function(){
-//              if(!$(this).val() || !/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/.test($(this).val())){
-//                  msg = '请检查sku价格格式';
-//              }
-//          });
-//          $('.stock').each(function(){
-//              if(!$(this).val() || !/^[1-9]\d*|0$/.test($(this).val())){
-//                  msg = '请检查sku库存格式';
-//              }
-//          });
-//      }
-//      if(msg){return msg;}
 
 		//--------------线路 自由行跟团游 验证-------------------
 			//--------------行程天数------
