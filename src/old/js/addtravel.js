@@ -157,14 +157,6 @@
 
     };	
     
-    //保存按钮触发验证
-//  $('button.save').click(function () {
-//  	var errmsg = validatePro();
-//  	if (errmsg) {
-//  		layer.msg(errmsg,{icon:2,time:1500});
-//  		return false;   		
-//  	}
-//  });	
 	
 	//文本框字数计数
 	var wordCount = function  () {
@@ -189,6 +181,17 @@
 			}
 			wordCount();
 		});
+		//文本例
+		$(document).on('click','.ic-example',function(){
+			var $txt = $(this).closest('td').find('.text-example').html();
+			layer.open({
+				type:1,
+				title:'文本样例',
+				area:['600px','300px'],
+				shadeClose:true,
+				content:$txt
+			})
+		})
 	})
 	
 
