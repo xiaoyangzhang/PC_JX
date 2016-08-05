@@ -66,15 +66,18 @@ define(function (require, exports, module) {
 			$('#accountType').selectlist({
 				width: 200,
 				onChange:function(){
+					var cardHtml = '<tr class="openerCard_"><td class="tbtxt w280"><label class="bred">*</label><span>开户人身份证：</span></td><td><input class="inptxt" datatype="card" maxlength="18"    value="$!examineInfo.openerCard" id="openerCard_" name="openerCard" ></td></tr>';
+					var telHtml = '<tr class="openerTel_"><td class="tbtxt w280"><label class="bred">*</label><span>开户人手机号：</span></td><td><input class="inptxt" datatype="m" maxlength="11"    value="$!examineInfo.openerTel" id="openerTel_" name="openerTel" placeholder="银行预留手机号" ></td></tr>';
+					var setHtml = $(".settlementCard_").html();
 					if($("#accountType :hidden").val() == 1){
-						$("#settlementCard_").closest("tr").attr("style","display:none");
-						$("#openerTel_").closest("tr").attr("style","");
-						$("#openerCard_").closest("tr").attr("style","");
+						$(".settlementCard_").remove();
+						$("#financeOpenName_").append(cardHtml);
+						$("#financeOpenName_").append(telHtml);
 					}
 					if($("#accountType :hidden").val() == 2){
-						$("#openerTel_").closest("tr").attr("style","display:none");
-						$("#openerCard_").closest("tr").attr("style","display:none");
-						$("#settlementCard_").closest("tr").attr("style","");
+						$("#openerTel_").remove();
+						$("#openerCard_").remove();
+						$("#financeOpenName_").append(setHtml);
 
 					}
 
