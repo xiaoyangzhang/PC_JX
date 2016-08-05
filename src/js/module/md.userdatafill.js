@@ -61,23 +61,27 @@ define(function (require, exports, module) {
 			// });
  
 			//渲染时间控件
+			//var cardHtml = '<td class="tbtxt w280"><label class="bred">*</label><span>开户人身份证：</span></td><td><input class="inptxt" datatype="card" maxlength="18"    //value="$!examineInfo.openerCard" id="openerCard_" name="openerCard" ></td>';
+			//var telHtml = '<td class="tbtxt w280"><label class="bred">*</label><span>开户人手机号：</span></td><td><input class="inptxt" datatype="m" maxlength="11"    //value="$!examineInfo.openerTel" id="openerTel_" name="openerTel" placeholder="银行预留手机号" ></td>';
+			//var setHtml = '<td class="tbtxt w280"><label class="bred">*</label><span>结算联行号：</span></td><td><input class="inptxt" datatype="n" maxlength="12"   //value="$!examineInfo.settlementCard" id="settlementCard_" name="settlementCard" ></td>';
+			var cardHtml = $(".private_card").html();
+			var telHtml = $(".private_tel").html();
+			var setHtml = $(".public").html();
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
 			$('#accountType').selectlist({
 				width: 200,
 				onChange:function(){
-					var cardHtml = '<tr class="openerCard_"><td class="tbtxt w280"><label class="bred">*</label><span>开户人身份证：</span></td><td><input class="inptxt" datatype="card" maxlength="18"    value="$!examineInfo.openerCard" id="openerCard_" name="openerCard" ></td></tr>';
-					var telHtml = '<tr class="openerTel_"><td class="tbtxt w280"><label class="bred">*</label><span>开户人手机号：</span></td><td><input class="inptxt" datatype="m" maxlength="11"    value="$!examineInfo.openerTel" id="openerTel_" name="openerTel" placeholder="银行预留手机号" ></td></tr>';
-					var setHtml = $(".settlementCard_").html();
+					
 					if($("#accountType :hidden").val() == 1){
 						$(".settlementCard_").remove();
-						$(".financeOpenName_").append(cardHtml);
-						$(".financeOpenName_").append(telHtml);
+						$(".financeOpenName_").after($("<tr class=\"openerCard_\"></tr>").html(cardHtml));
+						$(".financeOpenName_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
 					}
 					if($("#accountType :hidden").val() == 2){
 						$(".openerTel_").remove();
 						$(".openerCard_").remove();
-						$(".financeOpenName_").append(setHtml);
+						$(".financeOpenName_").after($("<tr class=\"settlementCard_\"></tr>").html(setHtml));
 
 					}
 
