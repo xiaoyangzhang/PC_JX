@@ -71,13 +71,13 @@ define(function (require, exports, module) {
 					var setHtml = $(".settlementCard_").html();
 					if($("#accountType :hidden").val() == 1){
 						$(".settlementCard_").remove();
-						$("#financeOpenName_").append(cardHtml);
-						$("#financeOpenName_").append(telHtml);
+						$(".financeOpenName_").append(cardHtml);
+						$(".financeOpenName_").append(telHtml);
 					}
 					if($("#accountType :hidden").val() == 2){
-						$("#openerTel_").remove();
-						$("#openerCard_").remove();
-						$("#financeOpenName_").append(setHtml);
+						$(".openerTel_").remove();
+						$(".openerCard_").remove();
+						$(".financeOpenName_").append(setHtml);
 
 					}
 
