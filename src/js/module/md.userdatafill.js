@@ -66,15 +66,15 @@ define(function (require, exports, module) {
 			$('#accountType').selectlist({
 				width: 200,
 				onChange:function(){
-					if($(this).val() == 1){
-						$("#settlementCard").closest("tr")[0].prop("style","display:none");
-						$("#openerTel").closest("tr")[0].prop("style","");
-						$("#openerCard").closest("tr")[0].prop("style","");
+					if($("#accountType :hidden").val() == 1){
+						$("#settlementCard_").closest("tr").attr("style","display:none");
+						$("#openerTel_").closest("tr").attr("style","");
+						$("#openerCard_").closest("tr").attr("style","");
 					}
-					if($(this).val() == 2){
-						$("#openerTel").closest("tr")[0].prop("style","display:none");
-						$("#openerCard").closest("tr")[0].prop("style","display:none");
-						$("#settlementCard").closest("tr")[0].prop("style","");
+					if($("#accountType :hidden").val() == 2){
+						$("#openerTel_").closest("tr").attr("style","display:none");
+						$("#openerCard_").closest("tr").attr("style","display:none");
+						$("#settlementCard_").closest("tr").attr("style","");
 
 					}
 				}

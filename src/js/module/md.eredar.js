@@ -18,10 +18,16 @@ define(function (require, exports, module) {
 			var $self = this;
 			//渲染时间控件
 			$( "#tm" ).datepicker({
+			  changeYear: true,
 		      changeMonth: true,
-		      changeYear: true,
+		      numberOfMonths: 1,
 			  yearRange: "-76:+0"
+			 
 		    }); 
+			$("#tm").bind("input change",function(){
+				$self.timeFun();
+			});
+			
 			/* tab切换 */
 			$self.eredrInfoTab();
 			/* 判断昵称是否存在呢 */
@@ -73,13 +79,12 @@ define(function (require, exports, module) {
 				/* a代表提交按钮的所有表单中是否通过验证为true,b代表下拉框是否通过表单验证，c代表图片是否通过验证成功 */
 				var a=validfm.check(),b=$public.selectvalid(),params=null,arr=[],temparr=[],imgarr=[],obj={},ctval=$('#contentText').val(),
 					c=$public.allimgvalid($('.imgbox:not(".cnat")')),d=$public.groupimgvalid($('.groupimg'),'请选择图片！');
-					e= $editer.tuwencheck();
-					
-				if(a&&b&&c&&d&&e){
+					e= $editer.tuwencheck(),h = $self.timeFun();
+				if(a&&b&&c&&d&&e&&h){
 					params=$public.paramcompare($('.registerform').serializeArray());
 					params.pictureTextDOs=ctval;
-					/* console.log(ctval);
-					console.log(JSON.stringify(params)); */
+					console.log(ctval);
+					console.log(JSON.stringify(params));
 					/*console.log('---------------------------------------------'); */
 					for(var key in params){
 						if(key=='certificatess'&&params[key]){
@@ -147,6 +152,19 @@ define(function (require, exports, module) {
 				$(".eredar-list").hide();
 				$(".eredar-list" + (index + 1)).show();
 			});
+		},
+		timeFun :function(){
+			var result = false;
+			if(!$("#tm").val()){
+				$("#tm").parent().find('.Validform_checktip').remove();
+				$("#tm").parent().append('<span class="Validform_checktip Validform_wrong">请填写时间</span>');
+			}
+			else{
+				result = true; 
+				$("#tm").parent().find('.Validform_checktip').remove();
+				$("#tm").parent().append('<span class="Validform_checktip Validform_right"></span>');
+			}
+			return result;
 		},
 		nickName : function(){
 			$("#nickName").blur(function(){
