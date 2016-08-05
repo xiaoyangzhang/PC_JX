@@ -64,9 +64,9 @@ define(function (require, exports, module) {
 			//var cardHtml = '<td class="tbtxt w280"><label class="bred">*</label><span>开户人身份证：</span></td><td><input class="inptxt" datatype="card" maxlength="18"    //value="$!examineInfo.openerCard" id="openerCard_" name="openerCard" ></td>';
 			//var telHtml = '<td class="tbtxt w280"><label class="bred">*</label><span>开户人手机号：</span></td><td><input class="inptxt" datatype="m" maxlength="11"    //value="$!examineInfo.openerTel" id="openerTel_" name="openerTel" placeholder="银行预留手机号" ></td>';
 			//var setHtml = '<td class="tbtxt w280"><label class="bred">*</label><span>结算联行号：</span></td><td><input class="inptxt" datatype="n" maxlength="12"   //value="$!examineInfo.settlementCard" id="settlementCard_" name="settlementCard" ></td>';
-			var cardHtml = $(".private_card").html();
-			var telHtml = $(".private_tel").html();
-			var setHtml = $(".public").html();
+			var cardHtml = $(".private_card tr").html();
+			var telHtml = $(".private_tel tr").html();
+			var setHtml = $(".public tr").html();
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
 			$('#accountType').selectlist({
