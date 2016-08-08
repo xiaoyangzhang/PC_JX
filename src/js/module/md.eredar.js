@@ -83,8 +83,8 @@ define(function (require, exports, module) {
 				if(a&&b&&c&&d&&e&&h){
 					params=$public.paramcompare($('.registerform').serializeArray());
 					params.pictureTextDOs=ctval;
-					console.log(ctval);
-					console.log(JSON.stringify(params));
+					/* console.log(ctval);
+					console.log(JSON.stringify(params)); */
 					/*console.log('---------------------------------------------'); */
 					for(var key in params){
 						if(key=='certificatess'&&params[key]){

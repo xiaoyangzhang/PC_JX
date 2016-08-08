@@ -19,11 +19,15 @@ define(function (require, exports, module) {
 			
 			//渲染时间控件s
 			// $( "#tm" ).datepicker();
+			var cardHtml = $(".private_card tr").html();
+			var telHtml = $(".private_tel tr").html();
+			var setHtml = $(".public tr").html();
 			$('#bank').selectlist({width: 200});
 			$('#accountType').selectlist({
 				width: 200,
 				onChange:function(){
 					if($("#accountType :hidden").val() == 1){
+<<<<<<< HEAD
 						$("#settlementCard_").closest("tr").attr("style","display:none");
 						$("#openerTel_").closest("tr").attr("style","");
 						$("#openerCard_").closest("tr").attr("style","");
@@ -34,6 +38,19 @@ define(function (require, exports, module) {
 						$("#settlementCard_").closest("tr").attr("style","");
 
 					}
+=======
+						$(".settlementCard_").remove();
+						$(".financeOpenName_").after($("<tr class=\"openerCard_\"></tr>").html(cardHtml));
+						$(".financeOpenName_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
+					}
+					if($("#accountType :hidden").val() == 2){
+						$(".openerTel_").remove();
+						$(".openerCard_").remove();
+						$(".financeOpenName_").after($("<tr class=\"settlementCard_\"></tr>").html(setHtml));
+
+					}
+
+>>>>>>> 24c82dbfd987845b207348851c4cbee5b8ba7b87
 				}
 			});
 			$('#card').selectlist({
