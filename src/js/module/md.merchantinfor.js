@@ -27,18 +27,7 @@ define(function (require, exports, module) {
 				width: 200,
 				onChange:function(){
 					if($("#accountType :hidden").val() == 1){
-<<<<<<< HEAD
-						$("#settlementCard_").closest("tr").attr("style","display:none");
-						$("#openerTel_").closest("tr").attr("style","");
-						$("#openerCard_").closest("tr").attr("style","");
-					}
-					if($("#accountType :hidden").val() == 2){
-						$("#openerTel_").closest("tr").attr("style","display:none");
-						$("#openerCard_").closest("tr").attr("style","display:none");
-						$("#settlementCard_").closest("tr").attr("style","");
 
-					}
-=======
 						$(".settlementCard_").remove();
 						$(".financeOpenName_").after($("<tr class=\"openerCard_\"></tr>").html(cardHtml));
 						$(".financeOpenName_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
@@ -47,11 +36,7 @@ define(function (require, exports, module) {
 						$(".openerTel_").remove();
 						$(".openerCard_").remove();
 						$(".financeOpenName_").after($("<tr class=\"settlementCard_\"></tr>").html(setHtml));
-
 					}
-
->>>>>>> 24c82dbfd987845b207348851c4cbee5b8ba7b87
-				}
 			});
 			$('#card').selectlist({
 				width: 200,
