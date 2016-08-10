@@ -189,7 +189,7 @@
 				title:'文本样例',
 				area:['600px','300px'],
 				shadeClose:true,
-				content:$txt
+				content:'<div style="padding:20px">'+$txt+'</div>'
 			})
 		})
 	})

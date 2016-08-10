@@ -20,7 +20,7 @@ table tr td button{margin: 0;}
 /*------文本框计数-------*/
 .word-num{margin-right: 20px;display: inline-block;}
 .ic-example{font-size: 18px;}
-.layui-layer-content{padding: 20px;line-height: 1.5;}
+.layui-layer-content{line-height: 1.5;}
 /*------添加商品表格-------*/
 .tab-productdetail td{border-bottom: none;}
 .tab-productdetail>tbody>tr>td:first-child{width: 130px; padding: 8px 0 !important;}
