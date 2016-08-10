@@ -28,12 +28,15 @@ define(function (require, exports, module) {
 				onChange:function(){
 					if($("#accountType :hidden").val() == 1){
 						$(".settlementCard_").remove();
+						$(".openerTel_").remove();
+						$(".openerCard_").remove();
 						$(".financeOpenName_").after($("<tr class=\"openerCard_\"></tr>").html(cardHtml));
 						$(".financeOpenName_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
 					}
 					if($("#accountType :hidden").val() == 2){
 						$(".openerTel_").remove();
 						$(".openerCard_").remove();
+						$(".settlementCard_").remove();
 						$(".financeOpenName_").after($("<tr class=\"settlementCard_\"></tr>").html(setHtml));
 
 					}
