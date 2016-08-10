@@ -19,24 +19,9 @@ define(function (require, exports, module) {
 			
 			//渲染时间控件s
 			// $( "#tm" ).datepicker();
+	
 			$('#bank').selectlist({width: 200});
-			$('#accountType').selectlist({
-				width: 200,
-				onChange:function(){
-					if($("#accountType :hidden").val() == 1){
-						$("#settlementCard_").closest("tr").attr("style","display:none");
-						$("#openerTel_").closest("tr").attr("style","");
-						$("#openerCard_").closest("tr").attr("style","");
-					}
-					if($("#accountType :hidden").val() == 2){
-						$("#openerTel_").closest("tr").attr("style","display:none");
-						$("#openerCard_").closest("tr").attr("style","display:none");
-						$("#settlementCard_").closest("tr").attr("style","");
 
-					}
-
-				}
-			});
 			$('#card').selectlist({
 				width: 200,
 				onChange:function(){
