@@ -80,6 +80,7 @@ define(function (require, exports, module) {
 				var a=validfm.check(),b=$public.selectvalid(),params=null,arr=[],temparr=[],imgarr=[],obj={},ctval=$('#contentText').val(),
 					c=$public.allimgvalid($('.imgbox:not(".cnat")')),d=$public.groupimgvalid($('.groupimg'),'请选择图片！');
 					e= $editer.tuwencheck(),h = $self.timeFun();
+				if(!e){$public.dialog.msg("关于我的图文介绍至少需要输入一段文字或一张图片","error");return false;}
 				if(a&&b&&c&&d&&e&&h){
 					params=$public.paramcompare($('.registerform').serializeArray());
 					params.pictureTextDOs=ctval;
