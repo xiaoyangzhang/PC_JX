@@ -31,7 +31,7 @@ define(function (require, exports, module) {
 						$(".openerTel_").remove();
 						$(".openerCard_").remove();
 						$(".financeOpenName_").after($("<tr class=\"openerCard_\"></tr>").html(cardHtml));
-						$(".financeOpenName_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
+						$(".openerCard_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
 					}
 					if($("#accountType :hidden").val() == 2){
 						$(".openerTel_").remove();
