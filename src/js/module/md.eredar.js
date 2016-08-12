@@ -74,7 +74,11 @@ define(function (require, exports, module) {
 					$(".change").text(curtxt);
 				}
 			});
-			
+			$(function(){
+				if($("input[name='certificatess']:checked").length == 0) {
+				$("input[name='certificatess']").attr("checked","checked");
+				}
+			});
 			$("#saveBtnEredar").on("click",function(){
 				/* a代表提交按钮的所有表单中是否通过验证为true,b代表下拉框是否通过表单验证，c代表图片是否通过验证成功 */
 				var a=validfm.check(),b=$public.selectvalid(),params=null,arr=[],temparr=[],imgarr=[],obj={},ctval=$('#contentText').val(),
