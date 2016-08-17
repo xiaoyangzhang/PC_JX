@@ -81,7 +81,8 @@ define(function (require, exports, module) {
 							$public.dialog.msg('保存成功','success');
 							setTimeout(function(){location.reload();},1000);
 						}else{
-							$public.dialog.msg(data.resultMsg,'error');
+							$public.dialog.msg(data.msg,'error');
+							window.location.href = data.value;
 						}
 					});
 				}
