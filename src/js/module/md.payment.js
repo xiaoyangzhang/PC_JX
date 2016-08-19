@@ -100,7 +100,7 @@ define(function( require, exports, module ){
                             if( d.status == '200' ){
                                 location.href = jumpUrl;
                             }else{
-                                $public.dialog.msg(d.message,'success',4000);
+                                $public.dialog.msg(d.message.substr(1,d.message.length-2),'success',4000);
                                 //alert( d.message );
                             }
                         },
