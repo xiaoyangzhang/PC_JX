@@ -137,6 +137,8 @@ define(function (require, exports, module) {
 					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
+				var msg=$('#msg-box .msg');
+				msg.css({'margin-left':(-msg.outerWidth()/2)+'px'}).css({'margin-top':(-msg.outerHeight()/2)+'px'});
 				clearTimeout(_self.timer);
 				_self.timer=setTimeout(function(){_self.closebox();},time?time:1000);
 				if(type=='success')

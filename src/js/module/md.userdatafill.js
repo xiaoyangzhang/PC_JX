@@ -17,7 +17,7 @@ define(function (require, exports, module) {
 		init:function(){
 			
 			var _self=this;
-
+			
 			if($('.error_box').length>0){
 				var tit_top=$('.error_box').offset().top,lock=false;
 				$(window).scroll(function(){
