@@ -127,7 +127,7 @@ define(function (require, exports, module) {
 					_self.box.attr('id','waiting-box').append('<div class="loading"><img src="'+static_source+'img/loading.gif"><label>请稍后。。。</label></div>').fadeIn();
 				}
 			},
-			msg:function(value,type){
+			msg:function(value,type,time){
 				var _self=this;
 				_self.initbox();
 				if(_self.box.attr('id')=='msg-box'){
@@ -138,7 +138,7 @@ define(function (require, exports, module) {
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				clearTimeout(_self.timer);
-				_self.timer=setTimeout(function(){_self.closebox();},1000);
+				_self.timer=setTimeout(function(){_self.closebox();},time?time:1000);
 				if(type=='success')
 					$('.msg').css('color','green');
 				else if(type=='error')
