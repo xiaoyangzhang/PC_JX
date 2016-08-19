@@ -52,7 +52,7 @@ define(function (require, exports, module) {
 				},{
 					ele:'td input[name="ticketId"]:last',
 					datatype:'*',
-					nullmsg:'请选择门票类型'
+					nullmsg:'请选择票务种类'
 				},{
 					ele:'input[name="price"],input[name="originalPrice"]',
 					datatype:'price',
