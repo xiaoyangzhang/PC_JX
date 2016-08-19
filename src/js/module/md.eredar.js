@@ -142,7 +142,10 @@ define(function (require, exports, module) {
 							window.location.href = window.location.href;
 						}else{
 							$public.dialog.msg(data.msg,"error");
-							window.location.href = data.value;
+							if(data.value){
+								window.location.href = data.value;
+							}
+							
 						}
 					}
 				});

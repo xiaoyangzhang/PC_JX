@@ -82,7 +82,10 @@ define(function (require, exports, module) {
 							setTimeout(function(){location.reload();},1000);
 						}else{
 							$public.dialog.msg(data.msg,'error');
-							window.location.href = data.value;
+							if(data.value) {
+								window.location.href = data.value;
+							}
+							
 						}
 					});
 				}
