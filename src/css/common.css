@@ -317,7 +317,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 
 .header-l > ul {
     /*width: 400px;*/
-    padding: 23px 30px 22px;
+    padding: 23px 20px 22px;
     height: 45px;
     margin-left: 56px;
 }
@@ -355,7 +355,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     position:relative;
 }
 .header-r .tel li#loginBox{
-    margin-right:30px;
+    margin-right:25px;
     position: relative;
     padding-left:58px;
 }

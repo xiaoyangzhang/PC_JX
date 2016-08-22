@@ -84,7 +84,7 @@ input[type=text]{height: 32px;line-height: 32px;}
 .baseinfo .radio input,.baseinfo .checkbox input{margin-right:8px;height: 14px;}
 .baseinfo .dtlrule{padding-right: 40px;line-height: 22px;}
 .savenext{padding-left:108px;padding-top:20px;padding-bottom:80px;}
-.btngroup{padding-left:145px;padding-top:10px;padding-bottom:80px;}
+.btngroup{padding-left:145px;padding-top:10px;padding-bottom:105px;}
 .allsave{padding-left:218px;padding-top:67px;padding-bottom:80px;}
 .savenext a,.btngroup a,.allsave a{display:inline-block;text-align: center; height: 34px;line-height: 34px; margin-right:42px;width:120px;border:none;background: #ed6c44;color:#fff;}
 .room-error{padding:6px 0;text-align: center;color:red;}
