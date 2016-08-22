@@ -40,6 +40,7 @@ seajs.config({
 		"password":"module/md.password.js",
 		"merchant":"module/md.merchant.js",
         "merchant2.1":"module/md.merchant2.1.js",
+        "talent":"module/md.talent.js",
 		"passwordSucc":"module/md.passwordsucc.js"	,
 		"review":"module/md.review.js",	
 		"businessenter":"module/md.businessenter.js",	
