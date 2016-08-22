@@ -38,7 +38,7 @@ define(function (require, exports, module){
 			picHeight:750,
 		},
 		tuwencheck : function(){
-			if($(".bd p").length == 0){
+			if(!$("#contentText").val()){
 				$("#editer").css('border','1px solid red');
 				return false;
 			}
@@ -342,8 +342,12 @@ define(function (require, exports, module){
 				}				
 				arr.push(obj);
 			});
-			var _jsonStr = JSON.stringify(arr);
-			$(_self.config.contentText).val(_jsonStr);
+			if (arr.length == 0) {
+				$(_self.config.contentText).val('');
+			}else{
+				var _jsonStr = JSON.stringify(arr);
+				$(_self.config.contentText).val(_jsonStr);
+			};
 		}
 	}
 	module.exports = new editer("#editer");

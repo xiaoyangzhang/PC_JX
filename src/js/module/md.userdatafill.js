@@ -61,8 +61,10 @@ define(function (require, exports, module) {
 			// });
  
 			//渲染时间控件
+
 			$( "#tm" ).datepicker();
 			$('#bank').selectlist({width: 200});
+			
 			$('#card').selectlist({
 				width: 200,
 				onChange:function(){
