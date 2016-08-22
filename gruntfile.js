@@ -3,8 +3,8 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
   var config={
-	  src:'src',
-	  dist:'dist'
+	  res:'res',
+	  src:'src'
   }
   grunt.initConfig({
 	config:config,
@@ -13,30 +13,22 @@ module.exports = function (grunt) {
 			options: {
 				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n'//添加banner
 			},
-			build_merge: {//不混淆变量名，保留注释，添加banner和footer
+			dist: {//不混淆变量名，保留注释，添加banner和footer
 				options: {
 					mangle: false, //不混淆变量名
-					preserveComments: 'all', //不删除注释，还可以为 false（删除全部注释），some（保留@preserve @license @cc_on等注释）
+					preserveComments: false, //不删除注释，还可以为 false（删除全部注释），some（保留@preserve @license @cc_on等注释）
 					footer:'\n/*! <%= pkg.name %> 最后修改于： <%= grunt.template.today("yyyy-mm-dd") %> */'//添加footer
 				},
 				files: [{
 					expand:true,
-					cwd:'<%= config.src %>/js/',
+					cwd:'<%= config.res %>/<%= config.src %>/js/',
 					src:'**/*.js',
-					dest: '<%= config.dist %>/<%= config.src %>/js/'
-				}]
-			},
-			buildall: {
-				files: [{
-					expand:true,
-					cwd:'<%= config.src %>/js/',
-					src:'**/*.js',
-					dest: '<%= config.dist %>/<%= config.src %>/js/'
+					dest: '<%= config.src %>/js/'
 				}]
 			},
 			release: {
 				files: {
-					'<%= config.dist %>/<%= config.src %>/js/index.min.js':  ['<%= config.src %>/js/**/*.js']
+					'<%= config.src %>/js/index.min.js':  ['<%= config.res %>/<%= config.src %>/js/**/*.js']
 				}
 			}
 		},
@@ -47,9 +39,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.src %>/css/',
+					cwd: '<%= config.res %>/<%= config.src %>/css/',
 					src: ['**/*.css'],
-					dest: '<%= config.dist %>/<%= config.src %>/css/'
+					dest: '<%= config.src %>/css/'
 				}]
 			}
 		},
@@ -60,9 +52,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: 'img/',   // 图片在imagemin目录下
-					src: ['**/*.{png,jpg,jpeg}'], // 优化 imagemin 目录下所有 png/jpg/jpeg 图片
-					dest: '<%= config.dist %>/img/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
+					cwd: '<%= config.res %>/img/',   // 图片在imagemin目录下
+					src: ['**/*.{png,jpg,gif,jpeg,ico}'], // 优化 imagemin 目录下所有 png/jpg/gif/jpeg/ico 图片
+					dest: 'img/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
 				}]
 			}
 		}
@@ -74,5 +66,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // 默认任务
-    grunt.registerTask('default', ['uglify:build_merge','cssmin:dist','imagemin:dist']);
+    grunt.registerTask('default', ['uglify:dist','cssmin:dist','imagemin:dist']);
 }

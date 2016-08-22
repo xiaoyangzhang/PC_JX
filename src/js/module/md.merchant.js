@@ -63,7 +63,7 @@ define(function (require, exports, module) {
 					ele:".niname",
 					datatype:"nmname",
 					nullmsg:"请填写信息",
-					errormsg:"昵称至少2个字符,最多15个字符！"
+					errormsg:"请输入2~15位字符，支持中文、字母、数字、下划线"
 					
 				}],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 
@@ -80,7 +80,11 @@ define(function (require, exports, module) {
 							$public.dialog.msg('保存成功','success');
 							setTimeout(function(){location.reload();},1000);
 						}else{
-							$public.dialog.msg(data.resultMsg,'error');
+							$public.dialog.msg(data.msg,'error');
+							if(data.value) {
+								window.location.href = data.value;
+							}
+							
 						}
 					});
 				}
