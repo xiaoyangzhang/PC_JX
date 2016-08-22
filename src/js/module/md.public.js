@@ -196,7 +196,7 @@ define(function (require, exports, module) {
 
 			//选择页大小
 			$(document).on('change','.jiuniu_pagination li #pageSize',function(){
-				$('input[name="pageNo"]').val($(this).val());
+				$('input[name="pageSize"]').val($(this).val());
 				callback(1,$(this).val());
 			});
 		},
