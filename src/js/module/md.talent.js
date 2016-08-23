@@ -95,13 +95,18 @@ define(function (require, exports, module) {
                         }
                         if (key == 'imgpath' && params[key]) {
                             temparr = params[key];
-                            for (var j = 0; j < temparr.length; j++) {
-                                if (temparr[j] != '') {
-                                    imgarr.push(temparr[j]);
-                                }
+                            if(temparr.constructor == String) {
+                                imgarr.push(temparr);
+                                params[key]=JSON.stringify(imgarr);
                             }
-                            params[key] = JSON.stringify(imgarr);
-                            /* console.log(params[key]); */
+                            if(temparr instanceof Array) {
+                                for(var j=0;j<temparr.length;j++){
+                                    if(temparr[j]!=''){
+                                        imgarr.push(temparr[j]);
+                                    }
+                                }
+                                params[key]=JSON.stringify(imgarr);
+                            }
                         }
                     }
 
