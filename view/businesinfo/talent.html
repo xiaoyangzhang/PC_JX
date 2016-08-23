@@ -119,8 +119,9 @@
                                        datatype="*" errormsg="亲选择时间呀" readonly="readonly"><span></span></td>
                         </tr>
                         <tr>
-                            <td class="tbtxt w280"><label class="bred">*</label><label
-                                    class="bred">*</label><span>所在城市：</span></td>
+                            <td class="tbtxt w280">
+                                <label class="bred">*</label><span>所在城市：</span>
+                            </td>
                             <td>
                                 <input type="hidden" id="province_" value="">
                                 <input type="hidden" id="city_" value="">
@@ -152,13 +153,16 @@
 										<input type="hidden" name="imgpath">
 									</span>
                                     </label>
+                                    <label class="lab spelab">图片大小不超过500K，建议图片尺寸为：800*450，至少上传1张图片</label>
                                 </div>
-                                <p class="lab spelab">图片大小不超过500K，建议图片尺寸为：800*450，至少上传1张图片</p>
                             </td>
                         </tr>
                         <tr>
-                            <td class="tbtxt w280"><span>店铺负责人电话：</span></td>
-                            <td><input type="text" class="field inputxt phone" value="" name="tel"><span></span></td>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>店铺负责人电话：</span></td>
+                            <td>
+                                <input type="text" class="field inputxt phone" value="" name="tel">
+                                <span style="color: #999;">注：店铺负责人手机号用于接收商家短信通知</span>
+                            </td>
                         </tr>
                         <tr>
                             <td class="tbtxt w280"><label class="bred">*</label><span>服务类型：</span></td>
@@ -177,12 +181,12 @@
                             <td class="tbtxt w280"><label class="bred">*</label><span>服务描述：</span></td>
                             <td><input type="text" id="serve" class="field inputxt" style="min-width:450px" value=""
                                        name="describe" datatype="*" maxlength="30" errormsg="请输入30以内的描述">
-                                <span></span><label class="lab"><a class="change">0</a>/30</label>
+                                <label class="lab" style="display: inline-block;"><a class="change">0</a>/30</label>
                             </td>
                         </tr>
                         <tr>
                             <td class="tbtxt w280 abuteMe"><label class="bred">*</label><span>关于我：</span></td>
-                            <td width='500px'>
+                            <td>
                                 <div id="editer">
 
                                     <div class="bd">
