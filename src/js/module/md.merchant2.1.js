@@ -23,7 +23,7 @@ define(function (require, exports, module) {
 		addValidform: function () {
 			// http://validform.rjboy.cn
 			SCOPE.validformInstance = $(SCOPE.formClassName).Validform({
-				tiptype: 3, // 侧边提示
+				tiptype: 3, // 侧边提fixdetel示
 				label: ".label", //在没有绑定nullmsg时查找要显示的提示文字
 				showAllError: true, //显示全部错误而不是只显示第一个
 				datatype: {
@@ -38,10 +38,6 @@ define(function (require, exports, module) {
 					datatype: "customerServicePhone",
 					nullmsg: "请输入客服电话",
 					errormsg: "请检查客服电话格式，例:(0731-83187200)或手机号码!"
-				},
-				{
-					ele: ".zetel",
-					datatype: "null_m"
 				},
 				{
 					ele: ".gray",
@@ -71,7 +67,6 @@ define(function (require, exports, module) {
 
 			// 保存
 			$(document).on("click", "#save", function () {
-
 				var fieldsPass = SCOPE.validformInstance.check();
 				if( !fieldsPass ) return;
 
@@ -82,7 +77,7 @@ define(function (require, exports, module) {
 				$.post($public.urlpath.merchant, param, function (data) {
 					$public.isLogin(data);
 					if (data.success) {
-						$public.dialog.msg('保存成功', 'success');
+						$public.dialog.msg('恭喜，您的资料修改成功', 'success');
 						setTimeout(function () {
 							location.reload();
 						}, 1000);

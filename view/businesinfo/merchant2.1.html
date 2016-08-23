@@ -48,26 +48,7 @@
 <!-- 主体部分 -->
 <div class="comwidth clearfix" id="eredar">
 	<!-- 侧边栏 -->
-	<div class="eredar-left" style="display: none;">
-		<dl class="first">
-			<dd>商品管理</dd>
-			<dt class="one">添加商品</dt>
-			<dt>商品列表</dt>
-		</dl>
-		<dl>
-			<dd>订单管理</dd>
-			<dt class="one">订单列表</dt>
-		</dl>
-		<dl>
-			<dd>店铺管理</dd>
-			<dt class="one on">基本信息</dt>
-			<dt>账户信息</dt>
-		</dl>
-		<dl>
-			<dd>对账管理</dd>
-			<dt class="one">月结账单</dt>
-		</dl>
-	</div>
+
 	<!-- 内容区域 -->
 	<div class="eredar-right">
 
@@ -79,8 +60,7 @@
 			<div class="eredar-list">
 				<p>
 					<em>店铺名称 :</em>
-					<input type="text" value="" name="shopName" class="inputxt" datatype="s0-30"
-						   errormsg="30个字符内"/>
+					<input type="text" value="" name="shopName" class="inputxt" datatype="s0-30" errormsg="30个字符内"/>
 				</p>
 
 				<p>
@@ -89,19 +69,19 @@
 				</p>
 
 				<p>
-					<em>店铺负责人电话 :</em>
-					<input type="text" value="" name="tel" class="inputxt zetel"/>
+					<em><i>*</i>店铺负责人电话 :</em>
+					<input type="text" value="" name="chargerTel" datatype="m" class="inputxt zetel" errormsg="请输入正确的电话号码"/>
+					<span>注：店铺负责人手机号用于接收商家短信通知</span>
 				</p>
 
 				<p>
 					<em><i>*</i>客服电话 :</em>
-					<input type="text" class="field inputxt phone fixdetel" value="" name="tel">
+					<input type="text" class="field inputxt phone fixdetel" value="" name="hotline">
 				</p>
 
 				<p>
 					<em class="mt" style="vertical-align: top">店铺地址 :</em>
-                    <textarea tip="请在这里输入您的店铺地址。" altercss="gray" class="gray" name="msg" value=""
-							  id="address"></textarea>
+                    <textarea tip="请在这里输入您的店铺地址。" altercss="gray" class="gray" name="shopAddress" value="" id="address"></textarea>
 					<span><span id="addressLength">0</span>/100</span>
 				</p>
 
@@ -136,7 +116,7 @@
 
 				<p>
 					<em class="mt" style="vertical-align: top">商家简介 :</em>
-					<textarea altercss="gray" class="gray h150" name="summary" value="" id="summary"></textarea>
+					<textarea altercss="gray" class="h150" datatype="*0-500"  name="shopSummary" value="" id="summary"></textarea>
 					<span><span id="summaryLength">0</span>/500</span>
 				</p>
 
