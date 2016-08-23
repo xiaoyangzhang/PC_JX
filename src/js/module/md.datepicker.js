@@ -121,6 +121,7 @@ define(function(require, exports, module) {
             });
             $('.tdmonth li').on('click', function(ev) {
                 $('.tdmonth li').removeClass('on');
+                $(".tdweek input[type='checkbox']").attr("checked",false);
                 $(this).addClass('on');
                 this.lastCtrlSelectDay = 0;
                 _self.changeCld();
@@ -138,9 +139,9 @@ define(function(require, exports, module) {
             });
 
             window.document.onclick = function() {
-                $('.day td.choiced').removeClass("choiced");
-                this.lastCtrlSelectDay = 0;
-                if (!_self.isCtrl) _self.empty_ckbox = {};
+                //$('.day td.choiced').removeClass("choiced");
+                //this.lastCtrlSelectDay = 0;
+                //if (!_self.isCtrl) _self.empty_ckbox = {};
             };
             window.document.onkeydown = function(evt) {
                 evt = evt || window.event || arguments.callee.caller.arguments[0];
