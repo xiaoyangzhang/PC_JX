@@ -122,33 +122,24 @@ define(function(require, exports, module) {
             $('.tdmonth li').on('click', function(ev) {
                 $('.tdmonth li').removeClass('on');
                 $(this).addClass('on');
+                this.lastCtrlSelectDay = 0;
                 _self.changeCld();
                 $public.stopBubble(ev);
             });
 
             $(".tdweek").on("click", "input[type='checkbox']", function() {
                 var checked = this.checked;
-                var week = $(this).data("week");
+                var week = $(this).attr("week");
                 if (checked) {
-                    $(".day td.in-range[data-week='" + week + "']").addClass("choiced");
-                    /*.each(function() {
-                        var $this = $(this);
-                        if ($this.hasClass("in-range")) {
-                            $this.addClass("choiced");
-                        }
-                    });*/
+                    $(".day td.in-range[week='" + week + "']").addClass("choiced");
                 } else {
-                    $(".day td.in-range[data-week='" + week + "']").removeClass("choiced");
+                    $(".day td.in-range[week='" + week + "']").removeClass("choiced");
                 }
             });
 
             window.document.onclick = function() {
-                /*$('.day td').filter(function() {
-                    if ($(this).attr('class')) {
-                        $(this).css('background', '#fff').attr('class', '').find('font').css('color', this.color_temp);
-                        $(this).find('label').css('color', '#666');
-                    }
-                });*/
+                $('.day td.choiced').removeClass("choiced");
+                this.lastCtrlSelectDay = 0;
                 if (!_self.isCtrl) _self.empty_ckbox = {};
             };
             window.document.onkeydown = function(evt) {
@@ -254,7 +245,7 @@ define(function(require, exports, module) {
                     $('.price,.stock').val('');
                 }
 
-                this.lastCtrlSelectDay = parseInt($td.data("day"));
+                this.lastCtrlSelectDay = parseInt($td.attr("day"));
                 console.log("lastCtrlSelectDay:" + this.lastCtrlSelectDay);
             }
         },
@@ -263,7 +254,7 @@ define(function(require, exports, module) {
             var choicedLength = $(".day .choiced").length,
                 startDay,
                 endDay,
-                currentDay = parseInt($td.attr("id").replace(/GD/, ''));
+                currentDay = parseInt($td.attr("day"));
             if (choicedLength == 0) {
                 $td.addClass('choiced');
                 $('.price').val($td.find('.price_').text());
@@ -274,9 +265,9 @@ define(function(require, exports, module) {
                 endDay = currentDay;
 
                 if (choicedLength == 1) {
-                    startDay = parseInt($(".day .choiced").data("day"));
+                    startDay = parseInt($(".day .choiced").attr("day"));
                 } else {
-                    startDay = parseInt($(".day .choiced").last().data("day"));
+                    startDay = parseInt($(".day .choiced").last().attr("day"));
                 }
                 if (this.lastCtrlSelectDay != 0) {
                     startDay = this.lastCtrlSelectDay;
@@ -288,7 +279,7 @@ define(function(require, exports, module) {
                 }
 
                 for (var sid = startDay; sid <= endDay; sid++) {
-                    $("#GD" + sid).addClass("choiced");
+                    $(".day td[day='" + sid + "']").addClass("choiced");
                 }
                 this.lastCtrlSelectDay = 0;
                 $('.price,.stock').val('');
@@ -301,85 +292,48 @@ define(function(require, exports, module) {
             var i, sD, s, size;
             _prent_self.cld = _prent_self.calendar(SY, SM);
             for (i = 0; i < 42; i++) {
-                //sObj=eval('SD'+ i);
                 var sObj = document.getElementById("SD" + i);
-                sObj.className = '';
                 var $td = $(sObj).closest("td");
+                $td.removeClass().attr("day", "").attr("week", "");
                 sD = i - _prent_self.cld.firstWeek;
                 if (sD > -1 && sD < _prent_self.cld.length) { //日期内
                     sObj.innerHTML = sD + 1;
                     if (_prent_self.cld[sD].isToday) {
                         $td.addClass("today");
                     }
-                    /*if (_prent_self.cld[sD].isToday) {
-                        sObj.style.color = '#ffaf00';
-                    } //今日颜色
-                    else {
-                        sObj.style.color = '#666';
-                    }*/
+
                     var cDay = new Date(SY, SM, sD + 1);
-                    $td.attr("data-day", sD + 1).attr("data-week", cDay.getDay());
+                    $td.attr("day", sD + 1).attr("week", cDay.getDay());
 
                     if (_prent_self.checkRangeDay(cDay, _prent_self.rangedays)) {
-                        //$(sObj).closest('td').css({ 'background': '#fff', 'cursor': 'pointer' }).off().removeClass()
-                        //$td.css({ 'cursor': 'pointer' }).off().removeClass()
-                        $td.addClass("in-range").off()
-                            .on('click', function(ev) {
-                                //var _self = this;
-                                var _self = $(this);
+                        $td.addClass("in-range").off().on('click', function(ev) {
+                            var _self = $(this);
+                            if (_self.hasClass("out-range")) {
+                                return;
+                            }
 
-                                if (_prent_self.isCtrl) {
-                                    _prent_self.ctrlSelect(_self);
-                                    /*$('.day td').filter(function() {
-                                        if ($(this).attr('class')) {
-                                            $(this).css('background', '#fff').attr('class', '').find('font').css('color', this.color_temp);
-                                            $(this).find('label').css('color', '#666');
-                                        }
-                                    });*/
-                                    //$('.day td.choiced').removeClass('choiced');
-                                } else if (_prent_self.isShift) {
-                                    _prent_self.shiftSelect(_self);
-                                } else {
-                                    _prent_self.select(_self);
-                                }
-                                /*if ($(_self).attr('class')) {
-                                    $(_self).css('background', '#fff').attr('class', '').find('font').css('color', _self.color_temp);
-                                    $(_self).find('label').css('color', '#666');
-                                    //recordck($(_self),'del');
-                                } else {
-                                    _self.color_temp = $(_self).find('font')[0].style.color;
-                                    $(_self).css('background', '#ed6c44').attr('class', 'choiced').find('font,label').css('color', '#fff');
-                                    $('.price').val($(_self).find('.price_').text());
-                                    $('.stock').val($(_self).find('.stock_').text());
-                                    //recordck($(_self),'add');
-                                }*/
-                                /*if (_self.hasClass('choiced')) {
-                                    _self.removeClass('choiced');
-                                } else {
-                                    _self.addClass('choiced');
-                                    $('.price').val(_self.find('.price_').text());
-                                    $('.stock').val(_self.find('.stock_').text());
-                                    //recordck($(_self),'add');
-                                }*/
-                                //if (_prent_self.isCtrl) $('.price,.stock').val('');
+                            if (_prent_self.isCtrl) {
+                                _prent_self.ctrlSelect(_self);
+                            } else if (_prent_self.isShift) {
+                                _prent_self.shiftSelect(_self);
+                            } else {
+                                _prent_self.select(_self);
+                            }
 
-                                $(".tdweek input[type='checkbox']").each(function() {
-                                    var week = $(this).data("week");
-                                    var inRangeDays = $(".day td.in-range[data-week='" + week + "']").length;
-                                    var choicedDays = $(".day td.choiced[data-week='" + week + "']").length;
-                                    this.checked = inRangeDays == choicedDays;
-                                });
-                                $public.stopBubble(ev);
+                            $(".tdweek input[type='checkbox']").each(function() {
+                                var week = $(this).attr("week");
+                                var inRangeDays = $(".day td.in-range[week='" + week + "']").length;
+                                var choicedDays = $(".day td.choiced[week='" + week + "']").length;
+                                this.checked = inRangeDays == choicedDays;
                             });
+                            $public.stopBubble(ev);
+                        });
                     } else {
-
                         $td.addClass("out-range").off();
-                        //$(sObj).closest('td').css({ 'background': '#f5f5f5', 'cursor': 'initial' }).off().removeClass()
                     }
                 } else { //非日期
                     sObj.innerHTML = '';
                     $td.addClass("out-range").off();
-                    //$(sObj).closest('td').css({ 'background': '#f5f5f5', 'cursor': 'initial' }).off();
                 }
             }
             if ($('.datepicker tr.last td:eq(0) font').text() == '')
@@ -415,12 +369,13 @@ define(function(require, exports, module) {
                             var cur_td = $(this).closest('td')[0];
                             _self.set_tdvalue($(cur_td).find('.dtbx'), ls[i].price, ls[i].stock_num);
                             if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), (parseInt(this.innerHTML) + 1)), _self.rangedays)) {
-                                if (!cur_td.color_temp) cur_td.color_temp = $(cur_td).find('font')[0].style.color;
-                                $(cur_td).css('background', '#ed6c44').attr('class', 'choiced').find('font,label').css('color', '#fff');
+                                //if (!cur_td.color_temp) cur_td.color_temp = $(cur_td).find('font')[0].style.color;
+                                //$(cur_td).css('background', '#ed6c44').attr('class', 'choiced').find('font,label').css('color', '#fff');
+                                $(cur_td).addClass("choiced");
                             } else {
                                 console.log(this.innerHTML);
                                 console.log($(cur_td).find('.tipvl').html());
-                                $(cur_td).find('font,label').css('color', 'rgb(102, 102, 102)');
+                                //$(cur_td).find('font,label').css('color', 'rgb(102, 102, 102)');
                             }
                         }
                     }
