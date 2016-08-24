@@ -49,7 +49,7 @@ define(function (require, exports, module) {
 					ele: ".nickname",
 					datatype: "nickname",
 					nullmsg: "请填写信息",
-					errormsg: "昵称至少2个字符,最多15个字符！"
+					errormsg: "请输入2~15位字符，支持中文、字母、数字、下划线"
 				}
 			]);
 		},
