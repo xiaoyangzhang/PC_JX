@@ -1,0 +1,22 @@
+.my-layer-skin .layui-layer-setwin .layui-layer-close2 {
+        background: #fff url('http://s0.jiuxiulvxing.com/prod/PC_JX/img/close.png') no-repeat center;
+        right: -15px;
+        top: -15px;
+    }
+    
+    .my-layer-skin .layui-layer-btn {
+        padding: 10px 10px 20px;
+        text-align: center;
+    }
+    
+    .my-layer-skin .layui-layer-btn a {
+        margin-right: 30px;
+        width: 150px;
+        height: 36px;
+        line-height: 36px;
+        border: none;
+        outline: none;
+        background: #ed6c44;
+        color: #fff;
+        font-size: 16px;
+    }
