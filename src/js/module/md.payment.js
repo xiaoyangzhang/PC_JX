@@ -37,6 +37,14 @@ define(function( require, exports, module ){
                 var oldUrl = $form.attr('action');
                 $form.attr('action',oldUrl + '?' +serialize).submit();
             };
+
+            $('.withdrawal,.billDetail').on('click',function(){
+                if($('.status').val()==6){
+                    g.dialog.msg($('.tipMessage').val(),'error',5000);
+                }else{
+                    window.location=$(this).attr('redirectUrl');
+                }
+            });
         },
 
         //初始化下拉菜单组件
