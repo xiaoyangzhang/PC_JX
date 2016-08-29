@@ -20,11 +20,6 @@ define(function (require, exports, module) {
 			$( "#tm" ).datepicker({
 			  changeYear: true,
 		      changeMonth: true,
-<<<<<<< HEAD
-		      changeYear: true,
-			  yearRange: "-76:+0"
-		    }); 
-=======
 		      numberOfMonths: 1,
 			  yearRange: "-76:+0"
 			 
@@ -33,7 +28,6 @@ define(function (require, exports, module) {
 				$self.timeFun();
 			});
 			
->>>>>>> master
 			/* tab切换 */
 			$self.eredrInfoTab();
 			/* 判断昵称是否存在呢 */
