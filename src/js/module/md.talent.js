@@ -55,6 +55,9 @@ define(function (require, exports, module) {
                 nullmsg: "请填写您的真实姓名",
                 errormsg: "除下划线以外的特殊字符不允许输入,请填写10字以内的昵称"
             }]);
+            $("#tm").bind("input change",function(){
+                $self.timeFun();
+            });
 
             /* 提示服务描述中文本的字数提示 */
             $('#serve').bind('input propertychange', function () {
@@ -148,6 +151,20 @@ define(function (require, exports, module) {
         },
         provinceFun: function () {
             $public.actiondata('province', 'city');
+        },
+        timeFun :function(){
+            var result = false;
+            if(!$("#tm").val()){
+                $("#tm").parent().find('.Validform_checktip').remove();
+                $("#tm").parent().append('<span class="Validform_checktip Validform_wrong">请填写时间</span>');
+            }
+            else{
+                result = true; 
+                $("#tm").removeClass("Validform_error");
+                $("#tm").parent().find('.Validform_checktip').remove();
+                $("#tm").parent().append('<span class="Validform_checktip Validform_right"></span>');
+            }
+            return result;
         }
     }
     module.exports = new $Talent();
