@@ -109,6 +109,15 @@ define(function (require, exports, module) {
 			});
 			
 			$("#regSubmitBtn").on("click",function(){
+
+				if(!$ajaxform.check()){
+					return false;
+				}
+				
+				if(document.getElementById("member").checked){
+					document.location.href="developing.html";
+				}
+
 				$public.avoidCntClick(function(){
 					$("#registerForm").submit();
 					$('#imgcode').val('');

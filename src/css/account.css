@@ -3,10 +3,10 @@
 #ym-login-banner.login{height:676px;}
 
 #ym-login-banner .login-body{width:680px;background:#fafafa;border-radius:15px;position:absolute;left:50%;top:30px;margin-left:-340px;z-index:999;padding-bottom:40px;}
-#ym-login-banner .login-body form{padding:0 140px;}
+#ym-login-banner .login-body form{padding:0 135px;}
 #ym-login-banner h1.title{font-size:26px;color:#333;text-align:center;margin:36px 0;}
 #ym-login-banner input.textinput,
-#ym-login-banner span.tips{width:336px;padding:12px 32px;border-radius:24px;font-size:16px;background:#fff;border:1px solid #e1e1e1;font-family:"微软雅黑"}
+#ym-login-banner span.tips{width:341px;padding:12px 32px;border-radius:24px;font-size:16px;background:#fff;border:1px solid #e1e1e1;font-family:"微软雅黑"}
 #ym-login-banner span.tips{display:block;color:#999;margin-bottom:14px;}
 #ym-login-banner .winloginbtn{display:block;width:400px;height:48px;line-height:48px;background:#ffaf00;text-align:center;border-radius:24px;
 	margin:14px auto;font-size:20px;color:#333;border:none;cursor:pointer;}
@@ -60,3 +60,62 @@
 #servicenter .servicenterB .content{padding:28px 79px 130px 73px;}
 #servicenter .servicenterB .content .fu-title{font-size: 16px;color:#000000; font-family: "Microsoft YaHei";padding:40px 0 10px 0;}
 #servicenter .servicenterB .content p{font-size: 14px;color:#666666; font-family: "Microsoft YaHei";line-height: 27px;}
+
+/****正在开发页面**/
+
+#developing
+{
+	background: #f4f4f4;
+	padding-bottom: 20px;
+}
+
+
+#developing .location{
+	width: 960px;
+	padding: 13px 0;
+	margin:0 auto; 
+}
+
+#developing .location a{
+	color:#FA491D;
+}
+
+#developing .location span{
+	vertical-align: top;
+}
+
+#developing .content{
+	width: 960px;
+	background: #fff;
+	padding-top:50px; 
+	margin:0 auto;
+}
+
+#developing .content img{
+	display: block;
+	margin:0 auto;
+}
+
+#developing .content .tip
+{
+	text-align: center;
+	color:#999;
+}
+
+#developing .content .button{
+	text-align: center;
+}
+#developing .content .button a{
+	display:inline-block;
+	width:200px;
+	height:48px;
+	line-height:48px;
+	background:#ffaf00;
+	text-align:center;
+	border-radius:24px;
+	margin:20px auto;
+	font-size:20px;
+	color:#333;
+	border:none;
+	cursor:pointer;
+}
