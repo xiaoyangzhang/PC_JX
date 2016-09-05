@@ -104,6 +104,9 @@ define(function (require, exports, module) {
 				ajaxPost : true,
 				beforeSubmit : function(form){
 					$("#userpwd").val(md5($("#userpwd").val()));
+
+					var checked=document.getElementById("member").checked;
+					$("#VIP").val(checked.toString());
 				},					
 				callback : sucCallback
 			});
