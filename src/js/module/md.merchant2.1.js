@@ -39,12 +39,12 @@ define(function (require, exports, module) {
 					nullmsg: "请输入客服电话",
 					errormsg: "请检查客服电话格式，例:(0731-83187200)或手机号码!"
 				},
-				{
-					ele: ".gray",
-					datatype: "address",
-					nullmsg: "请输入店铺地址",
-					errormsg: "请输入0~100位字符！"
-				},
+				// {
+				// 	ele: ".gray",
+				// 	datatype: "address",
+				// 	nullmsg: "请输入店铺地址",
+				// 	errormsg: "请输入0~100位字符！"
+				// },
 				{
 					ele: ".nickname",
 					datatype: "nickname",
@@ -56,13 +56,27 @@ define(function (require, exports, module) {
 
 		bindEvent: function () {
 			//店铺地址
-			$(document).on("keyup", "#address", function () {
-				$("#addressLength").html($(this).val().length);
+			$(document).on("input propertychange", "#address", function () {
+				var curVal=$(this).val();
+				var curCount=curVal.length;
+				if(curCount>100){
+					curCount=100;
+					$(this).val(curVal.substr(0,100));
+				}
+				$("#addressLength").html(curCount);
+				return false;
 			});
 
 			//商家简介
-			$(document).on("keyup", "#summary", function () {
-				$("#summaryLength").html($(this).val().length);
+			$(document).on("input propertychange", "#summary", function () {
+				var curVal=$(this).val();
+				var curCount=curVal.length;
+				if(curCount>500){
+					curCount=500;
+					$(this).val(curVal.substr(0,500));
+				}
+				$("#summaryLength").html(curCount);
+				return false;
 			});
 
 			// 保存
