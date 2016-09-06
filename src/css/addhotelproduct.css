@@ -600,7 +600,8 @@ input[type=text] {
     cursor: pointer;
 }
 
-.day .in-range font {
+.day font,
+.day label {
     color: #666;
 }
 

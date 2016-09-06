@@ -429,7 +429,7 @@ define(function(require, exports, module) {
                 obj.find('.price_').text(price);
                 obj.find('.stock_').text(stock);
             }
-            obj.find('label').css('color', '#fff');
+            //obj.find('label').css('color', '#fff');
         },
         //监测日期是否在规定范围内
         //"v" 要检测的日期
