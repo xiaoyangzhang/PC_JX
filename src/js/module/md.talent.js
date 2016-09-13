@@ -61,7 +61,7 @@ define(function (require, exports, module) {
 
             /* 提示服务描述中文本的字数提示 */
             $('#serve').bind('input propertychange', function () {
-                $(".change").text($(this).val().length);
+                $(this).next(".lab").text($(this).val().length+"/30");
             });
 
             $("#saveBtnEredar").on("click", function () {
