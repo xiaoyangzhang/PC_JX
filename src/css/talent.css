@@ -14,7 +14,7 @@ p.tip span{    display: inline-block;
     float: left;
     line-height: 19px;
     color: #666666;}
-.eredar-list1 table{position: relative;z-index: 1}
+.eredar-list1 table{position: relative;}
 .eredar-list1 table tr td{padding-top:15px;}
 .eredar-list1 table tr td input.field{width:200px;height: 32px;line-height: 32px;border:1px solid #ddd;padding:0 5px;}
 .eredar-list1 table td.tbtxt{text-align: right;vertical-align: top;}
