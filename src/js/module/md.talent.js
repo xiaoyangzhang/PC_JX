@@ -23,7 +23,8 @@ define(function (require, exports, module) {
             //渲染时间控件
             $("#tm").datepicker({
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                yearRange:'1940:c+0'
             });
 
             /* 判断昵称是否存在 */
