@@ -40,7 +40,7 @@ define(function (require, exports, module) {
                 ajaxPost: true
             }).addRule([{
                 ele: ".phone",
-                datatype: "/^1[3578]\d{9}$/",
+                datatype: "/^1[3578][0-9]{9}$/",
                 errormsg: "请输入正确的手机号码"
             },{
                 ele: "#nickName",
