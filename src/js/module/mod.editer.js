@@ -38,15 +38,22 @@ define(function (require, exports, module){
 			picHeight:750,
 		},
 		tuwencheck : function(){
-			if(!$("#contentText").val() ){
+			var count = 0;
+			if(!$("#contentText").val()){
+				
 				$("#editer").css('border','1px solid red');
 				return false;
 			}
-			$("#contentText p").each(function(i,ele) {
+			$(".bd p.text").each(function(i,ele) {
 				if($(this).find("font").text().length > 0) {
 					return true;
 				}
+				count += 1;
 			});
+			if(count > 0) {
+				$("#editer").css('border','1px solid red');
+				return false;
+			}
 			
 			else{
 				$("#editer").css('border','1px solid #ddd');
