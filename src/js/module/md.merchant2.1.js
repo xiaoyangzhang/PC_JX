@@ -96,7 +96,7 @@ define(function (require, exports, module) {
 							location.reload();
 						}, 1000);
 					} else {
-						$public.dialog.msg(data.resultMsg, 'error');
+						$public.dialog.msg(data.msg, 'error');
 					}
 				});
 
