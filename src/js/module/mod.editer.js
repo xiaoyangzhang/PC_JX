@@ -38,10 +38,16 @@ define(function (require, exports, module){
 			picHeight:750,
 		},
 		tuwencheck : function(){
-			if(!$("#contentText").val()){
+			if(!$("#contentText").val() ){
 				$("#editer").css('border','1px solid red');
 				return false;
 			}
+			$("#contentText p").each(function(i,ele) {
+				if($(this).find("font").text().length > 0) {
+					return true;
+				}
+			});
+			
 			else{
 				$("#editer").css('border','1px solid #ddd');
 				return true;
