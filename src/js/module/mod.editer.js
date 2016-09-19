@@ -46,19 +46,17 @@ define(function (require, exports, module){
 			}
 			$(".bd p.text").each(function(i,ele) {
 				if($(this).find("font").text().length > 0) {
-					return true;
+					count += 1;
 				}
-				count += 1;
+				
 			});
 			if(count > 0) {
-				$("#editer").css('border','1px solid red');
-				return false;
-			}
-			
-			else{
 				$("#editer").css('border','1px solid #ddd');
 				return true;
 			}
+			$("#editer").css('border','1px solid #ddd');
+			return true;
+			
 		},
 		distanceFun : function(){
 			$(".eredar-left").height($(".eredar-right").height());
