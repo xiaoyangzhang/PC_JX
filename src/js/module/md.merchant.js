@@ -90,7 +90,7 @@ define(function (require, exports, module) {
 					});
 				}
 			});
-			$("#textareaInpute").on('keyup',function(){
+			$("#textareaInpute,.merchantDesc").on('keyup',function(){
 				$self.computed();
 			});
 					    
@@ -100,7 +100,7 @@ define(function (require, exports, module) {
 			var length = document.getElementById('textareaInpute').value.length;
 			    document.getElementById('isUsed').innerHTML = length;
 			$('.isUsed').each(function() {
-				var length2 = $(this).closest('span').find('textarea').val().length;
+				var length2 = $(this).closest('div').find('textarea').val().length;
 				$(this).html(length2);
 			});
 		}

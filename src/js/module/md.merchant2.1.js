@@ -55,6 +55,12 @@ define(function (require, exports, module) {
 		},
 
 		bindEvent: function () {
+			$("#address").each(function() {
+				$("#addressLength").html($(this).val().length);
+			});
+			$("#summary").each(function() {
+				$("#summaryLength").html($(this).val().length);
+			});
 			//店铺地址
 			$(document).on("input propertychange", "#address", function () {
 				var curVal=$(this).val();
