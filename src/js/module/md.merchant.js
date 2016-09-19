@@ -90,15 +90,19 @@ define(function (require, exports, module) {
 					});
 				}
 			});
-				$("#textareaInpute").on('keyup',function(){
-					$self.computed();
-				});
+			$("#textareaInpute").on('keyup',function(){
+				$self.computed();
+			});
 					    
  							 
 		},
 		computed:function(){
 			var length = document.getElementById('textareaInpute').value.length;
 			    document.getElementById('isUsed').innerHTML = length;
+			$('.isUsed').each(function() {
+				var length2 = $(this).closest('span').find('textarea').val().length;
+				$(this).html(length2);
+			});
 		}
 	}
 	module.exports = new $test();

@@ -46,6 +46,7 @@
 .merchant-shop .imgbox{width:102px;height:102px;}
 .bigbox .imgbox .canclickL{background: #f6f6f6 url('../../img/merchant-head.png') no-repeat;width:100px;height: 100px;}
 #eredar .eredar-right .merchant-list1 p span #isUsed,#eredar .eredar-right .merchant-list1 p span #unUse{padding:0;color: #999;vertical-align: bottom;padding:0;margin:0;}
+#eredar .eredar-right .merchant-list1 p span .isUsed,#eredar .eredar-right .merchant-list1 p span .unUse{padding:0;color: #999;vertical-align: bottom;padding:0;margin:0;}
 #eredar .eredar-right .merchant-list1 p span .fx{color: #999;vertical-align: bottom;padding:0;margin:0;}
 
 
