@@ -42,11 +42,7 @@ define(function (require, exports, module) {
 					datatype:{
 					},
 					ajaxPost:true
-				},rule=[{
-					ele:".phone",
-					datatype:"null_tel"
-					
-				},
+				},rule=[
 				{
 					ele:"#nickName",
 					maxlength:"15",

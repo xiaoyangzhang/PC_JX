@@ -50,10 +50,6 @@ define(function (require, exports, module) {
 					nullmsg:"请输入客服电话",
 					errormsg:"请检查客服电话格式，例:(0731-83187200)或手机号码!"
 				},{
-					ele:".zetel",
-					datatype:"null_m"
-					
-				},{
 					ele:".gray",
 					datatype:"addressL",
 					nullmsg:"请输入店铺地址",
