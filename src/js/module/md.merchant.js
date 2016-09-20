@@ -14,7 +14,6 @@ define(function (require, exports, module) {
 		init:function(){
 			$public.diffBrowser();
 			var $self = this;
-			$self.computed();
 			//äÖÈ¾Ê±¼ä¿Ø¼þ
 			$( "#tm" ).datepicker();
 			//äÖÈ¾ÏÂÀ­¿ò¿Ø¼þ
@@ -90,16 +89,45 @@ define(function (require, exports, module) {
 					});
 				}
 			});
-				$("#textareaInpute").on('keyup',function(){
-					$self.computed();
-				});
-					    
+			$(".address").each(function() {
+				$("#addressLen").html($(this).val().length);
+			});
+			$(".merchantDesc").each(function() {
+				$("#merchantLen").html($(this).val().length);
+			});
+			//店铺地址
+			$(document).on("input propertychange", ".address", function () {
+				var curVal=$(this).val();
+				var curCount=curVal.length;
+				if(curCount>100){
+					curCount=100;
+					$(this).val(curVal.substr(0,100));
+				}
+				$("#addressLen").html(curCount);
+				return false;
+			});
+
+			//商家简介
+			$(document).on("input propertychange", ".merchantDesc", function () {
+				var curVal=$(this).val();
+				var curCount=curVal.length;
+				if(curCount>500){
+					curCount=500;
+					$(this).val(curVal.substr(0,500));
+				}
+				$("#merchantLen").html(curCount);
+				return false;
+			});	    
  							 
-		},
-		computed:function(){
-			var length = document.getElementById('textareaInpute').value.length;
-			    document.getElementById('isUsed').innerHTML = length;
 		}
+		// computed:function(){
+		// 	var length = document.getElementById('textareaInpute').value.length;
+		// 	    document.getElementById('isUsed').innerHTML = length;
+		// 	$('.isUsed').each(function() {
+		// 		var length2 = $(this).closest('div').find('textarea').val().length;
+		// 		$(this).html(length2);
+		// 	});
+		// }
 	}
 	module.exports = new $test();
 });

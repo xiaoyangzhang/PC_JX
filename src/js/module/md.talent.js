@@ -23,7 +23,8 @@ define(function (require, exports, module) {
             //渲染时间控件
             $("#tm").datepicker({
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                yearRange:'1940:c+0'
             });
 
             /* 判断昵称是否存在 */
@@ -41,7 +42,7 @@ define(function (require, exports, module) {
             }).addRule([{
                 ele: ".phone",
                 datatype: "m",
-                errormsg: "请输入正确的电话号码"
+                errormsg: "请输入正确的手机号码"
             },{
                 ele: "#nickName",
                 maxlength: "15",
@@ -55,10 +56,13 @@ define(function (require, exports, module) {
                 nullmsg: "请填写您的真实姓名",
                 errormsg: "除下划线以外的特殊字符不允许输入,请填写10字以内的昵称"
             }]);
+            $("#tm").bind("input change",function(){
+                $self.timeFun();
+            });
 
             /* 提示服务描述中文本的字数提示 */
             $('#serve').bind('input propertychange', function () {
-                $(".change").text($(this).val().length);
+                $(this).closest("td").find(".lab").text($(this).val().length+"/30");
             });
 
             $("#saveBtnEredar").on("click", function () {
@@ -72,7 +76,7 @@ define(function (require, exports, module) {
                     c = $public.allimgvalid($('.imgbox:not(".cnat")')),
                     d = $public.groupimgvalid($('.groupimg'), '请选择图片！'),
                     e = $editer.tuwencheck();
-
+				if(!e){$public.dialog.msg("关于我的图文介绍至少需要输入一段文字或一张图片","error");return false;}
                 if (a && b && e && c && d) {
                     params = $public.paramcompare($('.registerform').serializeArray());
                     params.pictureTextDOs = ctval;
@@ -148,6 +152,20 @@ define(function (require, exports, module) {
         },
         provinceFun: function () {
             $public.actiondata('province', 'city');
+        },
+        timeFun :function(){
+            var result = false;
+            if(!$("#tm").val()){
+                $("#tm").parent().find('.Validform_checktip').remove();
+                $("#tm").parent().append('<span class="Validform_checktip Validform_wrong">请填写时间</span>');
+            }
+            else{
+                result = true; 
+                $("#tm").removeClass("Validform_error");
+                $("#tm").parent().find('.Validform_checktip').remove();
+                $("#tm").parent().append('<span class="Validform_checktip Validform_right"></span>');
+            }
+            return result;
         }
     }
     module.exports = new $Talent();

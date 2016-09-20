@@ -33,7 +33,7 @@ define(function (require, exports, module) {
 	fileCompressURL = $('#filegw_domain').val()+'/',
 	site_path=$('#root_path').val()+'/',
 	img_domain=$('#tfs').val(),
-	static_path=$('#static_path').val(),
+	static_path=$('#static_path').val()||$urlpath.static_source+'/src',
 	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
