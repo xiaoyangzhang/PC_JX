@@ -139,10 +139,14 @@ define(function (require, exports, module){
 				return false;
 			});
 			$(_self.id).on("click",_self.config.saveImgBtn,function(){
-				_self.tuwencheck();
-				_self.saveImgEvent(_self,$(this));
-				_self.distanceFun();
-				return false;
+				if ($(this).closest('.imgwrap').find('img').hasClass('defaultImg')) {
+					$public.dialog.msg('请先选择图片','error');
+				} else {
+					_self.tuwencheck();
+					_self.saveImgEvent(_self,$(this));
+					_self.distanceFun();
+					return false;
+				}
 			});	
 			$(_self.id).on("click",_self.config.picClass,function(){
 				_self.setTextSelect(_self,$(this));
@@ -183,7 +187,7 @@ define(function (require, exports, module){
 						if(!jsondata.status==200){
 							$public.dialog.msg('上传失败，请稍后重试','error');
 						}else{
-							_parent.prev().find("img").attr('src',img_domain+jsondata.data);
+							_parent.prev().find("img").attr('src',img_domain+jsondata.data).removeClass('defaultImg');
 						}
 						_self.scrollBottom(".imgwrap");
 	                },
@@ -191,29 +195,6 @@ define(function (require, exports, module){
 						$public.dialog.msg('请求发生错误！','error');
 	                }
               }).off();
-
-   	// 		$.post('http://192.168.200.107:8080/file/upload_string',{filename:'dfs'},function(data){
-				// alert(data);
-   	// 		});
-
-			// $.ajaxFileUpload({
-			// 	url: 'http://192.168.200.107:8080/file/upload_string',
-			// 	dataType : "json",
-			// 	secureuri: false,
-			// 	fileElementId: _self.config.uploadId,
-			// 	type: "POST",
-			// 	success: function (data){alert(data);
-			// 		var json = JSON.parse(data);
-			// 		var _this = $(_self.config.uploadClass);
-			// 		var _parent = _this.closest("span");
-			// 		if(!json.success){
-			// 			_this.next("em.errormsg").html(json.msg);
-			// 		}else{
-			// 			_parent.prev().find("img").replaceWith('<img src="'+json.value+'"/>');
-			// 		}
-			// 		_self.scrollBottom(".imgwrap");
-			// 	}
-			// });	
 		},
 		addOperationMenu : function(_self,_this){
 			if(_this.find("ul.menu").length>0) return false;
@@ -254,7 +235,7 @@ define(function (require, exports, module){
 		getImgUploadHtml : function(){
 			var _html = [];
 			_html.push('<p class="imgwrap">');
-			_html.push('<span class="tbd"><img src="'+(static_source?static_source+'img/no-img.jpg':'http://s0.test.jiuxiulvxing.com/busines/img/no-img.jpg')+'" width="72" height="72" class="nopic"/></span>');
+			_html.push('<span class="tbd"><img src="'+(static_source?static_source+'img/no-img.jpg':'http://s0.test.jiuxiulvxing.com/busines/img/no-img.jpg')+'" width="72" height="72" class="nopic defaultImg"/></span>');
 			_html.push('<span class="tft clearfix">');
 			_html.push('<label class="selectimg">请选择图片：<input type="file" id="uploadimg" name="uploadimg" class="uploadimg"/><em clsss="errormsg"></em></label>');
 			_html.push('<label class="groupbtn clearfix">');
