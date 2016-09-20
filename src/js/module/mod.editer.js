@@ -58,14 +58,6 @@ define(function (require, exports, module){
 			return true;
 			
 		},
-		//校验”关于我“的图片数量
-		picNumCheck:function(){
-			var picEleNum = $(".bd p.pic");
-			if(picEleNum.length > 10) {
-				return false;
-			}
-			return true;
-		},
 		distanceFun : function(){
 			$(".eredar-left").height($(".eredar-right").height());
 		},
@@ -77,9 +69,13 @@ define(function (require, exports, module){
 				return false;
 			});
 			$(_self.id).on("click",_self.config.addPicBtn,function(){
-				_self.addImageEvent(_self,$(this));
-				_self.distanceFun();
-				return false;
+				if ($(".bd p.pic").length >= 10) {
+					$public.dialog.msg('最多上传10张图片！','error');
+				}else{
+					_self.addImageEvent(_self,$(this));
+					_self.distanceFun();
+					return false;					
+				}
 			});
 			$(_self.id).on("click",_self.config.moveUpBtn,function(){
 				_self.moveUpEvent(_self,$(this));
