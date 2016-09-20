@@ -53,6 +53,9 @@ define(function (require, exports, module){
 			if(count > 0) {
 				$("#editer").css('border','1px solid #ddd');
 				return true;
+			}else{
+				$("#editer").css('border','1px solid red');
+				return false;
 			}
 			$("#editer").css('border','1px solid #ddd');
 			return true;
