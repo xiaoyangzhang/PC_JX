@@ -50,6 +50,7 @@ define(function (require, exports, module){
 				}
 				
 			});
+			if ($(".bd p.pic").length>0) {count += 1;}
 			if(count > 0) {
 				$("#editer").css('border','1px solid #ddd');
 				return true;
