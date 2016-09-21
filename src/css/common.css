@@ -462,7 +462,8 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
     color:#f6ab00;
 }
 .jiux-footer .footer-bom{
-    height: 180px;
+    min-height: 180px;
+    padding-bottom: 20px;
     background: #151515;
 }
 .jiux-footer .footer-bom img{

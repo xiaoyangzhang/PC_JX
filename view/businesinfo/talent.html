@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico"
+          type="image/x-icon"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>达人店铺</title>
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/base.css">
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/common.css">
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/PC_JX/src/css/jquery-ui-1.10.4.custom.css">
+    <link rel="stylesheet" href="../../src/css/talent.css">
+</head>
+<body>
+<!-- 头部开始 -->
+<div id="jiuxColor" class="jiuw2">
+    <div class="jiux-header wjiuxiu jiuw2 clearfix">
+        <!-- 头部左侧部分 -->
+        <div class="header-l fl clearfix">
+            <a href="http://www.test.jiuxiulvxing.com" class="fl">
+                <div class="logo">九休旅行</div>
+            </a>
+            <ul class="clearfix fl">
+                <li class="fl"><a href="http://www.test.jiuxiulvxing.com">首页</a></li>
+                <li class="fl"><a href="http://www.test.jiuxiulvxing.com/business/">九休商务</a></li>
+                <li class="fl"><a href="http://www.test.jiuxiulvxing.com/app/index.html">九休旅行App</a></li>
+                <li class="fl active"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/home">商家中心</a></li>
+            </ul>
+        </div>
+        <!-- 头部右侧部分 -->
+        <div class="header-r fr clearfix">
+            <div class="tel">
+                <ul>
+                    <li class="fl staticW m-r">
+                        <a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">登录</a>
+                        <span class="cuttingline"></span>
+                    </li>
+                    <li class="fl staticW m-r"><a
+                            href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/register">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 头部完成 -->
+<!-- 面包屑 -->
+<div class="comwidth crumbs f12">您所在的位置：店铺管理><a class="f12 gray6">基本信息</a></div>
+<div class="comwidth clearfix" id="eredar">
+    <div class="eredar-left" style="display: none">
+        <dl class="first">
+            <dd>商品管理</dd>
+            <dt class="one">添加商品</dt>
+            <dt>商品列表</dt>
+        </dl>
+        <dl>
+            <dd>订单管理</dd>
+            <dt class="one">订单列表</dt>
+        </dl>
+        <dl>
+            <dd>店铺管理</dd>
+            <dt class="one on">基本信息</dt>
+            <dt>账户信息</dt>
+        </dl>
+        <dl>
+            <dd>对账管理</dd>
+            <dt class="one">月结账单</dt>
+        </dl>
+    </div>
+
+    <div class="eredar-right">
+
+        <div class="eredar-list eredar-list1">
+
+            <form class="registerform" method="post">
+
+                <h1>个人信息</h1>
+
+                <p class="tip clearfix"><i>!</i><span>填写完成基本信息才能发布商品，完善的资料会让用户对您的商品更感兴趣哦！</span></p>
+
+                <div style="margin-left: 60px;">
+                    <table width='100%'>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>头像：</span></td>
+                            <td>
+                                <label class="inblock">
+								<span class="imgbox mr5">
+									<div class="canclick">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                    </div><div class="plhd"></div><div class="del">删除图片</div>
+									<a class="upldclik"><input type="file" name="adpicfile" class="adpicfile mult"></a>
+									<input type="hidden" name="filepath">
+								</span>
+                                </label>
+                                <label class="lab">图片大小不超过500K，建议图片尺寸为：200*200</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>昵称：</span></td>
+                            <td><input id="nickName" class="field inputxt" type="text" name="nickName"></td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>真实姓名：</span></td>
+                            <td><input class="field inputxt" id="realName" type="text" name="peopleName"><span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>性别：</span></td>
+                            <td>
+                                <label><input type="radio" name="gender" value="1" id="male" class="pr1"> ：男</label>
+                                <label><input type="radio" name="gender" value="2" id="female" class="pr1" datatype="*"
+                                              errormsg="请选择性别！"> ：女</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>出生日期：</span></td>
+                            <td><input class="field" id="tm" placeholder="1990-01-01" name="birthday" title="开始时间"
+                                       datatype="*" errormsg="亲选择时间呀" readonly="readonly"><span></span></td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280">
+                                <label class="bred">*</label><span>所在城市：</span>
+                            </td>
+                            <td>
+                                <input type="hidden" id="province_" value="">
+                                <input type="hidden" id="city_" value="">
+                                <select id="province">
+                                    <option value="">--请选择--</option>
+                                </select>
+                                <select id="city" class="ml10">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h1 style="margin-top: 30px;">店铺信息</h1>
+
+                <div style="margin-left: 60px;">
+                    <table width='100%'>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>店铺头图：</span></td>
+                            <td>
+                                <div class="groupimg">
+                                    <label class="inblock">
+									<span class="imgbox mr5 cnat">
+										<div class="canclick">
+                                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </div><div class="plhd"></div><div class="del">删除图片</div>
+										<a class="upldclik"><input type="file" name="adpicfile" class="adpicfile mult"></a>
+										<input type="hidden" name="imgpath">
+									</span>
+                                    </label>
+                                    <label class="lab spelab">图片大小不超过500K，建议图片尺寸为：800*450，至少上传1张图片</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>店铺负责人电话：</span></td>
+                            <td>
+                                <input type="text" class="field inputxt phone" value="" name="tel">
+                                <span style="color: #999;">注：店铺负责人手机号用于接收商家短信通知</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>服务类型：</span></td>
+                            <td class="spe">
+                                <input type="checkbox" name="certificatess" id="shoppingsite21" value="1"><label
+                                    class='mr15' for="shoppingsite21">邀约</label>
+                                <input type="checkbox" name="certificatess" id="shoppingsite22" value="2"><label
+                                    class='mr15' for="shoppingsite22">其他服务</label>
+                                <input type="checkbox" name="certificatess" id="shoppingsite23" value="3"><label
+                                    class='mr15' for="shoppingsite23">在线咨询</label>
+                                <input type="checkbox" name="certificatess" id="shoppingsite24" value="4"><label
+                                    class='mr15' for="shoppingsite24">行程规划</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280"><label class="bred">*</label><span>服务描述：</span></td>
+                            <td><input type="text" id="serve" class="field inputxt" style="min-width:450px" value=""
+                                       name="describe" datatype="*" maxlength="30" errormsg="请输入30以内的描述">
+                                <label class="lab" style="display: inline-block;">0/30</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tbtxt w280 abuteMe"><label class="bred">*</label><span>关于我：</span></td>
+                            <td>
+                                <div id="editer">
+
+                                    <div class="bd">
+                                    </div>
+                                    <textarea id="contentText" style="display:none;"></textarea>
+
+                                    <div class="hd clearfix">
+                                        <ul class="clearfix">
+                                            <li><a href="javascript:void(0)" class="addtext">+添加文本</a></li>
+                                            <li><a href="javascript:void(0)" class="addpic">+添加图片</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="button" class="saveBtn" id="saveBtnEredar">保存</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 尾部开始 -->
+<div id="footID">
+    <div class="jiux-footer jiuw2">
+        <div class="footer-top ">
+            <div class="footID clearfix jiuw2">
+                <ul class="fl">
+                    <li><a href="http://www.test.jiuxiulvxing.com/about/aboutus.html">关于九休</a></li>
+                    <li><a href="http://www.test.jiuxiulvxing.com/about/contactus.html">联系我们</a></li>
+                    <li><a href="http://www.test.jiuxiulvxing.com/feedback/">意见反馈</a></li>
+                    <li>招商咨询&nbsp;&nbsp;4000-696-888/9:00~22:00，周一到周日</li>
+                </ul>
+                <div class="fr">
+                    <a class="wb"></a>
+                    <a class="wx"><i></i></a>
+                    <a class="qq"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bom">
+            <div class="footID jiuw2">
+                <img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/b_logo.png">
+
+                <p>COPYRIGHT© 2016 JIUXIULVXING.COM 九休旅行版权所有</p>
+
+                <p><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备16022217号-1</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 尾部结束 -->
+<script type='text/temple' id='province-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<province.length; j++) { #>
+	            <option value="<#= province[j].id#>"><#= province[j].name#></option>
+	    <# } #>
+
+</script>
+<script type='text/temple' id='city-tpl'>
+	    <option value="">--请选择--</option>
+	    <# for(var j=0; j<city.length; j++) { #>
+	            <option value="<#= city[j].id#>"><#= city[j].name#></option>
+	    <# } #>
+
+</script>
+<script type="text/javascript" src="../../src/js/sea.js"></script>
+<script type="text/javascript" src="../../src/js/seajs-preload.js"></script>
+<script type="text/javascript" src="../../src/js/config.js"></script>
+<script>seajs.use("talent");</script>
+</body>
+</html>

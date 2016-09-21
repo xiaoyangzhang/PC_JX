@@ -104,11 +104,23 @@ define(function (require, exports, module) {
 				ajaxPost : true,
 				beforeSubmit : function(form){
 					$("#userpwd").val(md5($("#userpwd").val()));
+
+					var checked=document.getElementById("member").checked;
+					$("#VIP").val(checked.toString());
 				},					
 				callback : sucCallback
 			});
 			
 			$("#regSubmitBtn").on("click",function(){
+
+				/*if(!$ajaxform.check()){
+					return false;
+				}
+				
+				if(document.getElementById("member").checked){
+					document.location.href="developing.html";
+				}*/
+
 				$public.avoidCntClick(function(){
 					$("#registerForm").submit();
 					$('#imgcode').val('');
