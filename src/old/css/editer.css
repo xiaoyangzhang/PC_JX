@@ -18,7 +18,7 @@
 #editers .bd p.imgwrap span.tft label.groupbtn input{padding:0 10px;}
 
 #editers .bd p.txtinput{border:1px solid #ddd;}
-#editers .bd p.text{padding:10px;border:1px solid #fff;cursor:pointer;word-wrap: break-word;}
+#editers .bd p.text{padding:10px;border:1px solid #fff;cursor:pointer;word-wrap: break-word;word-break: break-all;}
 #editers .bd p.text:hover,
 #editers .bd p.pic:hover{border:1px dashed #FFC926;}
 #editers .bd p ul.menu{position:absolute;height:35px;line-height:35px;right:0;top:-35px;width:240px;}
