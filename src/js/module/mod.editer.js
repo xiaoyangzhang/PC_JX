@@ -38,7 +38,7 @@ define(function (require, exports, module){
 			picHeight:750,
 		},
 		tuwencheck : function(){
-			var count = 0;
+			/* var count = 0;
 			if(!$("#contentText").val()){
 				
 				$("#editer").css('border','1px solid red');
@@ -59,7 +59,30 @@ define(function (require, exports, module){
 				return false;
 			}
 			$("#editer").css('border','1px solid #ddd');
-			return true;
+			return true; */
+			
+			if(!$("#contentText").val()){
+				
+				$("#editer").css('border','1px solid red');
+				return false;
+			}
+			var result ;
+			$(".bd p.text").each(function(i,ele) {
+				if($(this).find("font").text().length > 0) {
+					result = true;
+					return false;
+				}
+				
+			});
+			if ($(".bd p.pic").length>0) {
+				result = true;
+			}
+			if(result){
+				$("#editer").css('border','1px solid #ddd');
+			}else{ 
+				$("#editer").css('border','1px solid red');
+			}
+			return result;
 			
 		},
 		//校验”关于我“的图片数量
