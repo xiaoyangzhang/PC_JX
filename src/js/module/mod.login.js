@@ -29,9 +29,25 @@ define(function (require, exports, module) {
 	            }
 	        }; 	
 	        var isPopImgCodeInput = $("#isPopImgCodeInput").val();
-	        if(isPopImgCodeInput == 'true'){
-	        	$("#isPopImgCodeP").show()
+	        if(isPopImgCodeInput === 'true' && $("#isPopImgCodeP>input").length<1){
+	        	$("#isPopImgCodeP").prepend($("#imgcode").show()).show()
+	        	$(document).on('input','#imgcode',function(){
+	        		if(!$(this).val().trim()){
+	        			$(this).parent().find('.Validform_checktip')
+	        			.html('请输入4位验证码')
+	        			.css({'float':'left','padding-left':'24px','color':'#ffaf00'})
+	        			.show()
+	        		} else if(!new RegExp("^[0-9A-Za-z]{4,4}$").test($(this).val())){
+	        			$(this).parent().find('.Validform_checktip')
+	        			.html('请输入4位验证码')
+	        			.css({'float':'left','padding-left':'24px','color':'#ffaf00'})
+	        			.show()
+	        		} else {
+	        			$(this).parent().find('.Validform_checktip').html('').hide()
+	        		}
+	        	})
 	        }
+
 		},
 		submitLoginEvent : function(){
 			var $self = this;
