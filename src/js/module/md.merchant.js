@@ -12,7 +12,6 @@ define(function (require, exports, module) {
 	};
 	$test.prototype = {
 		init:function(){
-			$public.diffBrowser();
 			var $self = this;
 			//äÖÈ¾Ê±¼ä¿Ø¼þ
 			$( "#tm" ).datepicker();

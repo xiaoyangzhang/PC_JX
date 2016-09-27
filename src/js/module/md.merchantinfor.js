@@ -19,9 +19,30 @@ define(function (require, exports, module) {
 			
 			//渲染时间控件s
 			// $( "#tm" ).datepicker();
-	
+			var cardHtml = $(".private_card tr").html();
+			var telHtml = $(".private_tel tr").html();
+			var setHtml = $(".public tr").html();
 			$('#bank').selectlist({width: 200});
+			$('#accountType').selectlist({
+				width: 200,
+				onChange:function(){
+					if($("#accountType :hidden").val() == 1){
+						$(".settlementCard_").remove();
+						$(".openerTel_").remove();
+						$(".openerCard_").remove();
+						$(".financeOpenName_").after($("<tr class=\"openerCard_\"></tr>").html(cardHtml));
+						$(".openerCard_").after($("<tr class=\"openerTel_\"></tr>").html(telHtml));
+					}
+					if($("#accountType :hidden").val() == 2){
+						$(".openerTel_").remove();
+						$(".openerCard_").remove();
+						$(".settlementCard_").remove();
+						$(".financeOpenName_").after($("<tr class=\"settlementCard_\"></tr>").html(setHtml));
 
+					}
+
+				}
+			});
 			$('#card').selectlist({
 				width: 200,
 				onChange:function(){

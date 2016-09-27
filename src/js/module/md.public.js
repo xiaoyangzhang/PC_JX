@@ -29,12 +29,12 @@ define(function (require, exports, module) {
 		}
 		this.init.apply(this, arguments);
 	},
-	fileuploadURL=$('#filegw_url').val()+'/',
+	fileuploadURL=$('#filegw_url').val()?$('#filegw_url').val()+'/':$urlpath.fileuploadURL,
 	fileCompressURL = $('#filegw_domain').val()+'/',
 	site_path=$('#root_path').val()+'/',
-	img_domain=$('#tfs').val(),
-	static_path=$('#static_path').val()||$urlpath.static_source+'/src',
-	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):static_path;
+	img_domain=$('#tfs').val()?$('#tfs').val()+'/':$urlpath.img_domain+'/',
+	static_path=$('#static_path').val()||$urlpath.static_source,
+	static_source=static_path?static_path.substring(0,static_path.lastIndexOf('/')+1):'';
 	// fileuploadURL=$urlpath.fileuploadURL,
 	// site_path=$urlpath.site_path,
 	// static_path=$urlpath.static_source+'/src',
@@ -57,7 +57,7 @@ define(function (require, exports, module) {
 			setTimeout(function(){
 	        	_self.isVdSelect=true;
 			},500);
-			 //_self.depath();
+			//_self.depath();
 		},
 		isLogin :function(data){
 			if(!data instanceof Object)
@@ -123,22 +123,24 @@ define(function (require, exports, module) {
 					_self.box.fadeIn();
 				else{
 					$('.bgmeng').off(); 
-					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
 					_self.box.attr('id','waiting-box').append('<div class="loading"><img src="'+static_source+'img/loading.gif"><label>请稍后。。。</label></div>').fadeIn();
 				}
 			},
-			msg:function(value,type){
+			msg:function(value,type,time){
 				var _self=this;
 				_self.initbox();
 				if(_self.box.attr('id')=='msg-box'){
 					$('.msg').text(value);
 					_self.box.fadeIn();
 				}else{
-					_self.box.children(':not(".bgmeng")').remove();
+					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
+				var msg=$('#msg-box .msg');
+				msg.css({'margin-left':(-msg.outerWidth()/2)+'px'}).css({'margin-top':(-msg.outerHeight()/2)+'px'});
 				clearTimeout(_self.timer);
-				_self.timer=setTimeout(function(){_self.closebox();},2000);
+				_self.timer=setTimeout(function(){_self.closebox();},time?time:1000);
 				if(type=='success')
 					$('.msg').css('color','green');
 				else if(type=='error')

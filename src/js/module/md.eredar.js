@@ -59,16 +59,10 @@ define(function (require, exports, module) {
 				}
 				],validfm=$(".registerform").Validform(validoptions).addRule(rule);
 			/* 提示服务描述中文本的字数提示 */
-			var curtxt = $("#serve").val().length;
-			var txt = $(".change").text();
-			if(txt != curtxt){
-				$(".change").text(curtxt);
-			}
+			$(".change").text($("#serve").val().length);
 			$('#serve').bind('input propertychange', function() {
 				var curtxt = $(this).val().length;
-				if(txt != curtxt){
-					$(".change").text(curtxt);
-				}
+				$(".change").text(curtxt);
 			});
 			$(function(){
 				if($("input[name='certificatess']:checked").length == 0) {

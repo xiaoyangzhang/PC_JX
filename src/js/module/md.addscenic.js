@@ -236,7 +236,7 @@ define(function (require, exports, module) {
 				},1);
 				$public.stopBubble(ev);
 			});
-
+			
 			$public.init_pagination(getScenicList);
 			
 			//景区列表			

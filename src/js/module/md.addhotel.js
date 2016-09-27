@@ -270,6 +270,7 @@ define(function (require, exports, module) {
 				var page=page?page:1,pagesize=pagesize?pagesize:$('#pageSize').val(),
 				$htlst=$(_self.config.searchbox).find(_self.config.hotelist);
 				$htlst.empty();
+				$(_self.config.loadlist).show();
 				$.get($public.urlpath.gethotelist,{
 					page:page,
 					pageSize:pagesize,
