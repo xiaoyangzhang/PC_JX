@@ -39,10 +39,11 @@ define(function( require, exports, module ){
             };
 
             $('.withdrawal,.billDetail').on('click',function(){
+                var url=$(this).attr('redirectUrl');
                 if($('.status').val()==6){
                     g.dialog.msg($('.tipMessage').val(),'error',5000);
                 }else{
-                    window.location=$(this).attr('redirectUrl');
+                    if(url) window.location=url;
                 }
             });
         },
