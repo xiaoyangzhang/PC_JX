@@ -27,7 +27,11 @@ define(function (require, exports, module) {
 	            if(e && e.keyCode==13){
 	            	$("#regSubmitBtn,#loginSubmitBtn,#resetPwdBtn").trigger('click');
 	            }
-	        }; 			
+	        }; 	
+	        var isPopImgCodeInput = $("#isPopImgCodeInput").val();
+	        if(isPopImgCodeInput == 'true'){
+	        	$("#isPopImgCodeP").show()
+	        }
 		},
 		submitLoginEvent : function(){
 			var $self = this;
