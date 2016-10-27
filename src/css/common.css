@@ -1,5 +1,5 @@
 
-body{background: #f4f4f4;}
+body{background: #f4f4f4 !important;}
 .bodyWhite{background-color: #fff !important;}
 .comwidth{width:1190px;margin:0 auto 20px auto; overflow: hidden;  }
 
@@ -87,9 +87,9 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 .dialog .content-box .close-tip i:hover,.dialog .prompt-box .close-tip i:hover{transform: rotate(180deg);}
 .dialog .content-box .close-tip div,.dialog .prompt-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;height: 36px;}
 .dialog .content-box .close-tip h2,.dialog .prompt-box .close-tip h2{margin-bottom:-1px;float:left;text-align:center;color:#ffaf00;font-size:20px;
-  border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px;}
+  border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px; margin-top:0;}
 
-.dialog .content-box .btn-group{width:100%;position:absolute;bottom:0;text-align:right;margin-left:-20px;text-align: center;}
+.dialog .content-box .btn-group{width:100%;position:absolute;left:0;bottom:0;text-align:right;text-align: center;}
 .dialog .content-box .btn-group div{margin:0 20px;border-top:1px solid #ccc;}
 .dialog .content-box .btn-group button{margin:20px 0;width:160px;height:36px;line-height:36px;border:none;outline:none;
   background: #ed6c44;color:#fff;font-size:16px;}

@@ -116,6 +116,14 @@ define(function (require, exports, module) {
 					$public.stopBubble(ev);
 				});
 			},
+			removebox:function(){
+				var _self=this;
+				_self.box.remove();
+				$('.container').children('div').hide().appendTo('body');
+				$('.bgmeng').off().on('click',function(ev){
+					_self.removebox();
+				});
+			},
 			waiting:function(){
 				var _self=this;
 				_self.initbox();

@@ -1,0 +1,171 @@
+#eredar .eredar-right{width: 970px; background-color: #fff; float: right; margin-bottom: 20px;}
+#eredar .eredar-right .eredar-info{width: 892px; margin: 40px 0 15px 40px; border-bottom: solid 1px #e5e5e5;}
+#eredar .eredar-right .eredar-info ul li{float: left; font-size: 18px; line-height: 18px; color: #999; margin-left: 20px; margin-bottom: -1px; padding: 0 0 15px; cursor: pointer;}
+#eredar .eredar-right .eredar-info .first{margin-left: 0px;}
+#eredar .eredar-right .eredar-info .on{color: #ffaf00; border-bottom: solid 1px #ffaf00;}
+#eredar .eredar-right .panel{display: none;}
+#eredar .eredar-right .on{display: block;}
+/**********************************************选择酒店**********************************************/
+input[type=text]{height: 32px; line-height: 32px;}
+.hotelinfo{padding: 23px 40px;}
+.hotelinfo p{margin-bottom: 16px;}
+.hotelinfo a,
+.hotelinfo span,
+.hotelinfo label{display: inline-block; vertical-align: middle; height: 32px;}
+.hotelinfo i{color: red;}
+.hotelinfo .nm{width: 95px; text-align: right; vertical-align: top;}
+.hotelinfo .nm span{line-height: 38px;}
+.hotelinfo .nm label{font-size: 14px; color: #333; line-height: 32px;}
+.hotelinfo a{width: 88px; border: 1px solid #ed6c44; background: #fff; color: #ed6c44; line-height: 30px; text-align: center;}
+.hotelinfo .info-bar{width: 598px; border: 1px solid #ccc; margin: 0 8px;}
+.hotelinfo .info-bar label{line-height: 32px; color: #333; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.hotelinfo .info-bar .htn{width: 127px; padding: 0 5px; line-height: 32px; border-right: 1px solid #ccc; text-align: center; color: #ed6c44; background: #eee;}
+.hotelinfo .info-bar .smtt{width: 50px; text-align: center;}
+.hotelinfo .info-bar .address{width: 228px;}
+.hotelinfo .info-bar .tel{width: 118px;}
+.hotelinfo .hotelcol{display: none;}
+.hotelinfo .info-box{width: 568px; border: 1px solid #ccc; padding: 0 15px; padding-top: 0; margin: 0 10px; display: inline-block; height: auto;}
+.hotelinfo .info-box ul{margin-top: -1px;}
+.hotelinfo .info-box .radio-bar{height: 47px; border-top: 1px solid #ccc; padding: 0 10px; cursor: pointer;}
+.hotelinfo .info-box .radio-bar label{line-height: 47px;}
+.hotelinfo .info-box .radio-bar img{margin-top: 18px;}
+.hotelinfo .info-box .bar-box{height: 0; overflow: hidden; transition: height .6s; -moz-transition: height .6s; -webkit-transition: height .6s; -o-transition: height .6s;}
+.hotelinfo .info-box .bar-box ul{padding: 10px 0;}
+.hotelinfo .info-box .bar-box li{float: left; width: 179px; padding-left: 10px;}
+.hotelinfo .info-box .bar-box li label{white-space: normal; max-width: 130px; height: auto; line-height: 20px; vertical-align: top; color: #999;}
+.hotelinfo .info-box .bar-box .img-group{width: 590px;}
+.hotelinfo .info-box .bar-box .img-group img{margin-left: 9px; width: 175px; max-height: 120px; margin-bottom: 10px;}
+.searchbox{display: none; overflow: hidden;}
+.searchbox .tb{width: 100%;}
+.searchbox .tb td{text-align: left; padding: 10px 0;}
+.searchbox .tb td button{width: 88px; height: 32px; line-height: 30px; background: #ececec; outline: none; border: 1px solid #ddd; margin-left: 5px;}
+.searchbox .inputxt{width: 180px; margin-right: 8px;}
+.searchbox .tb-txt{text-align: right; width: 75px;}
+.searchbox .load_list{margin: 20px 0; width: 24px; height: 24px;}
+.svdraftbox input{width: 200px; margin-top: 16px;}
+.load_room{display: none; text-align: center;}
+.load_room img{width: 24px; height: 24px;}
+.hotelist{height: 354px; margin-top: 10px;}
+.hotelist .tb-box{height: 354px; margin-top: 10px; overflow: auto;}
+.hotelist table{width: 100%; overflow: auto;}
+.hotelist table tr:hover{background: #f5f5f5; cursor: pointer;}
+.hotelist table th{height: 34px; background: #f5f5f5; text-align: center;}
+.hotelist table td{height: 60px;}
+.hotelist table td a{width: 74px; height: 28px; line-height: 28px; display: block; border: 1px solid #ed6c44; color: #ed6c44; margin: auto;}
+/**********************************************选择景区列表**********************************************/
+.sceniclist{height: 354px; margin-top: 10px; overflow: auto;}
+.sceniclist table{width: 100%; overflow: auto;}
+.sceniclist table tr:hover{background: #f5f5f5; cursor: pointer;}
+.sceniclist table th{height: 34px; background: #f5f5f5; text-align: center;}
+.sceniclist table td{height: 60px;}
+.sceniclist table td a{width: 74px; height: 28px; line-height: 28px; display: block; border: 1px solid #ed6c44; color: #ed6c44; margin: auto;}
+/**********************************************基本信息**********************************************/
+.baseinfo .inputxt{width: 488px;}
+.baseinfo .coltxt{width: 125px; text-align: right;}
+.baseinfo table{margin-top: 30px;}
+.baseinfo table td,
+.baseinfo table td label,
+.baseinfo table td span{color: #333;}
+.baseinfo table td{padding: 10px 10px 10px 6px;}
+.baseinfo table td textarea{width: 488px; height: 88px; padding: 5px;}
+.baseinfo .mark,
+.baseinfo .mark label{vertical-align: bottom; color: #999;}
+.baseinfo .mark{margin-left: 10px;}
+.baseinfo .radio{margin-right: 20px; cursor: pointer;}
+.baseinfo .checkbox{margin-right: 10px; display: inline-block; *display: inline; *zoom: 1; width: 145px; margin-bottom: 20px; cursor: pointer;}
+.baseinfo .radio input,
+.baseinfo .checkbox input{margin-right: 8px; height: 14px;}
+.baseinfo .dtlrule{padding-right: 40px; line-height: 22px;}
+.savenext{padding-left: 108px; padding-top: 20px; padding-bottom: 80px;}
+.btngroup{padding-left: 145px; padding-top: 10px; padding-bottom: 105px;}
+.allsave{padding-left: 218px; padding-top: 67px; padding-bottom: 80px;}
+.savenext a,
+.btngroup a,
+.allsave a{display: inline-block; text-align: center; height: 34px; line-height: 34px; margin-right: 42px; width: 120px; border: none; background: #ed6c44; color: #fff;}
+.room-error{padding: 6px 0; text-align: center; color: red;}
+/**********************************************门票基本信息**********************************************/
+.ticketinfo{padding-bottom: 0;}
+.ticketbaseinfo table{margin-top: 0; width: 858px;}
+/**********************************************价格日历**********************************************/
+.datepicker{padding-left: 30px; padding-right: 20px; padding-bottom: 5px;}
+.datepicker table{width: 658px;}
+.datepicker table td{border: 1px solid #ddd; width: 92px; height: 88px;}
+.datepicker table td div.dtbx{width: 92px; height: 88px; text-align: center; position: relative;}
+.datepicker table td div.dtbx font{font-weight: bold; display: inline-block; right: 10px; top: 20px; position: absolute;}
+.datepicker table td div.dtbx .tipvl{position: absolute; left: 8px; text-align: left; padding-top: 0; padding-right: 4px;}
+.datepicker table td div.dtbx .tipvl label{font-size: 12px !important; line-height: 12px !important;}
+.datepicker .tdyears{text-align: center; padding: 0; height: 40px; border-top: 3px solid #ffaf00; padding: 0 20px; width: 648px;}
+.datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
+.datepicker .tdyears .next{background: url('../../img/date-right.jpg') no-repeat;}
+.datepicker .tdyears .prev,
+.datepicker .tdyears .next{display: block; width: 13px; height: 13px; margin-top: 3px; cursor: pointer;}
+.datepicker .tdmonth{padding: 0; text-align: center; height: 38px; background: #f9f9f9;}
+.datepicker .tdmonth ul{font-size: 0; width: 656px;}
+.datepicker .tdmonth li{display: inline-block; *display: inline; *zoom: 1; height: 16px; width: 35px; text-align: center; cursor: pointer; margin: 0 8px;}
+.datepicker .tdmonth li.on{color: #ffaf00;display:inline-block;}
+.datepicker .tdweek td{text-align: center; padding: 0; height: 48px;}
+.datepicker .setvalue{width: 234px; border-top: 3px solid #ffaf00; padding-bottom: 30px;}
+.datepicker .setvalue h2{height: 40px; border-bottom: 1px solid #ddd; background: #fff9ec; color: #ffaf00; font-size: 16px; line-height: 40px; padding-left: 15px;}
+.datepicker .setvalue dt{background: #f0f0f0; line-height: 35px; padding-left: 20px; font-weight: normal;}
+.datepicker .setvalue dd{padding-left: 5px;}
+.datepicker .setvalue label{font-weight: normal;}
+.datepicker .setvalue div{padding-top: 20px;}
+.datepicker .setvalue .btn{padding: 0; background: none;}
+.datepicker .setvalue .btn a{display: inline-block; text-align: center; width: 98px; height: 28px; line-height: 28px; border: 1px solid #ed6c44; color: #ed6c44; background: #fff; margin: 0 5px;}
+.datepicker .nullgray{background: #f9f9f9; cursor: initial !important;}
+.day .in-range{background: #fff; cursor: pointer;}
+.day font,
+.day label{color: #666;}
+.day .today font{color: #ffaf00;}
+.day .out-range{background: #f5f5f5; cursor: not-allowed;}
+.day .choiced{background: #ed6c44;}
+.day .choiced font,
+.day .choiced label{color: #fff;}
+/* 公用 */
+.inputxt{width: 488px;}
+.mt10{margin-top:10px;}
+.ml10{margin-left:10px;}
+.ml40{margin-left: 40px;}
+.mb40{margin-bottom: 40px;}
+.posr{position:relative;}
+.tc{text-align:center;}
+.btn{border:none;cursor:pointer; display: inline-block; padding:0 30px; line-height: 36px; border-radius: 4px; }
+.btn-orange{color: #fff; background: #ed6c44; padding:0 15px;}
+.btn-orange:hover{background: #d7623e;}
+.btn-outline{background: #fff; border: 1px solid #ddd;}
+.btn-outline:hover{border: 1px solid #cbcbcb;}
+.btn-success{padding:0 20px; border:1px solid #ccc; color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,.2); background-color: #40c148;border-color: #29822e;}
+.btn-success:hover{color: #fff; background-color: #2e9134; border-color: #236e27; -webkit-box-shadow: 0 2px 1px rgba(0,0,0,.1); box-shadow: 0 2px 1px rgba(0,0,0,.1)}
+.btn-success[disabled]{background-color: #cdcdcd; border-color: #cdcdcd}
+.btn-info{color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,.2); background-color: #03b8cf;}
+iframe{border:none; width:100%; height:350px;}
+
+/* 价格信息 */
+.price-info {padding-left:0;}
+/* .price-info div{margin-top: 20px;} */
+.price-info .label{display: inline-block; width: 100px; text-align: right; background:none; font-weight: normal; color:#333;}
+.price-info .tc-tab-content{display:none;}
+.price-info .icon-close{position: absolute; right: 5px; top: 5px; width: 10px; height: 10px; background: url('../../img/icon-close.png') no-repeat;}
+.price-info .package-name{display: none;}
+.price-info .active{background:#f0f0f0;}
+
+/* 上传 */
+.uploadbox{padding: 20px; border: 1px solid #ddd;}
+.uploadbox{padding:20px;border:1px solid #ddd;}
+.uploadbox .imgbox{width:124px;height:162px;float:left;margin-right:15px;overflow:hidden;padding:5px;}
+.uploadbox .imgbox .dimg{width:118px;height:120px;overflow:hidden;margin-bottom:10px;border:1px solid #eee;}
+.uploadbox .imgbox img{width:118px;height:120px;margin-bottom:10px;border:none;}
+.uploadbox .upimgbtn{width:120px;height:30px;position:relative;}
+.uploadbox .upimgbtn .upl{position:absolute;top: -3px; display:block; width:120px;height:30px;line-height: 30px;cursor: pointer; text-align: center;font-size:14px; z-index:999;background:#ed6c44;color:#fff;border:none;outline:none;text-decoration: none;}
+.uploadbox .upimgbtn .del{position:absolute;top: -3px; display:block;font-size:14px; width:120px;height:30px;background:#E26C26;color:#fff;border:none;outline:none;}
+.uploadbox .picfile{position:absolute; right:0; top:0; font-size:100px; opacity:0; filter:alpha(opacity=0);cursor: pointer;}
+.uploadbox .upl-tips{clear: both;padding: 15px 0 0 10px;}
+/* .startlistbox{padding: 20px 25px; height:300px; font-size: 16px; overflow: auto;}
+.startlistbox label,.startlistbox input,.startlistbox span{vertical-align:middle;margin:0;padding:0;outline:none;}
+.startlistbox label{font-size:14px;line-height:14px;color:#666;display:inline-block;margin-right:10px;cursor:pointer;}
+.startlistbox input.ck{height:14px;margin-bottom:2px;margin-right:5px;cursor:pointer;}
+.table .tdl{width: 50px;font-weight: 700;}
+.table .tdp{width: 160px;font-weight: 700;}
+.table .tdp{width: 160px; font-weight: 700;}
+.table th, .table td{padding: 8px; line-height: 1.53846154; vertical-align: top; border-bottom: 1px solid #ddd; text-align: left;} */
+
