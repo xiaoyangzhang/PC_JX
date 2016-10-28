@@ -109,8 +109,9 @@ define(function (require, exports, module) {
 			},
 			closebox:function(){
 				var _self=this;
-				_self.box.hide();
-				$('.container').children('div').hide().appendTo('body');
+				$('.container').children('div').appendTo('body');
+				_self.box.remove();
+				_self.box = null;
 				$('.bgmeng').off().on('click',function(ev){
 					_self.closebox();
 					$public.stopBubble(ev);
