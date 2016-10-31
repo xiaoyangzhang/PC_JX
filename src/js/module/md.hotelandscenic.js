@@ -110,7 +110,8 @@ define(function (require, exports, module) {
 						htname=ckid.closest('td').next().text();
 						$('.hotelType').text(hp);
 						if(htlid){
-							$('input[name="hotelId"]').val(htlid);
+							$('input[name="outId"]').val(htlid);
+							$('input[name="outType"]').val(1);
 							$('input[name="name"]').val(htname);
 							$('.hotel-name').text(htname);
 							$public.dialog.closebox();
@@ -217,7 +218,9 @@ define(function (require, exports, module) {
 						var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
 						scenicName=ckid.closest('td').next().text();
 						if(scenicId){
-							$('input[name="scenicId"]').val(scenicId);
+							$('input[name="outId"]').val(scenicId);
+							$('input[name="outType"]').val(2);
+							/*$('input[name="scenicId"]').val(scenicId);*/
 							$('input[name="scenicName"]').val(scenicName);
 							$('.scenic-name').text(scenicName);
 							$public.dialog.closebox();
