@@ -25,6 +25,7 @@ seajs.config({
 		"datepicker" : "plugin/jquery.ui.datepicker",
 		"jqueryui" : "plugin/jquery-ui-1.10.4.custom",
 		"underscore" : "plugin/underscore-min",
+		"pdfobject" : "plugin/pdfobject",
 		"dropdownlist" : "module/md.dropdownlist",
 		"md5":"module/md5.min",
 
@@ -44,6 +45,7 @@ seajs.config({
         "talent":"module/md.talent.js",
 		"passwordSucc":"module/md.passwordsucc.js"	,
 		"review":"module/md.review.js",	
+		"agreement" : "module/md.agreement",
 		"businessenter":"module/md.businessenter.js",	
 		"merchantinfor":"module/md.merchantinfor.js",
 		"draft":"module/md.draft.js",
