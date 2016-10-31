@@ -9,7 +9,7 @@ define(function(require, exports, module) {
             eredarli: '.eredar-info li',
             priceInfo: '.price-info',
             eredarli: '.eredar-info li',
-            eredarpanel: '.eredar-right .panel',
+            eredarpanel: '.eredar-right .tab-content > .panel',
         },
         init: function() {
 
