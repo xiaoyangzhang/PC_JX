@@ -6,6 +6,7 @@ define(function(require, exports, module) {
         };
     Addtrip.prototype = {
         config: {
+            eredarli: '.eredar-info li',
             priceInfo: '.price-info',
             eredarli: '.eredar-info li',
             eredarpanel: '.eredar-right .panel',
@@ -14,16 +15,16 @@ define(function(require, exports, module) {
 
             var _self = this;
             //基本信息
-            
+            _self.tabSwitch();
             //添加套餐
             _self.addPackage();
             _self.delTc();
             _self.tcTabSwitch();
             //渲染已设置的日期
-            
+            $cus_datepicker.dateRender($cus_datepicker.supplierCalendar);
         },
         /*切换panel卡片*/
-        tagSwitch: function() {
+        tabSwitch: function() {
             var _self = this;
             $(_self.config.eredarli).on('click', function(ev) {
                 $(_self.config.eredarli).removeClass('on');
@@ -44,7 +45,7 @@ define(function(require, exports, module) {
          * @param {$} conClass 内容当前class
          * @param {$} icon 是否有icon
          */
-        tabSwitch: function(type, menus, cons, menuClass, conClass) {
+        /*tabSwitch: function(type, menus, cons, menuClass, conClass) {
             menus.each(function(index, ele) {
                 $(ele).attr({
                     'data-index': index
@@ -57,7 +58,7 @@ define(function(require, exports, module) {
                 menus.removeClass(menuClass).eq($index).addClass(menuClass);
                 cons.removeClass(conClass).eq($index).addClass(conClass);
             });
-        },
+        },*/
         /*添加套餐*/
         addPackage: function() {
             var _self = this,
