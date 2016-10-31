@@ -112,10 +112,9 @@ define(function (require, exports, module) {
 						if(htlid){
 							$('input[name="outId"]').val(htlid);
 							$('input[name="outType"]').val(1);
-							$('input[name="name"]').val(htname);
+							$('input[name="hotelName"]').val(htname);
 							$('.hotel-name').text(htname);
 							$public.dialog.closebox();
-							_this.gitroominfo();
 						}else{
 							alert('请选择酒店！');
 						}
@@ -151,24 +150,6 @@ define(function (require, exports, module) {
 					$('.tb-box').height($('.hotelist').height());
 				});
 				_this.init_pagination && _this.init_pagination(_this.gethotelist);
-			},
-			//获取房型详细信息
-			gitroominfo: function (){
-				var _self=ScenicAndHotel.prototype,
-					$tr = $('input[name="hotelGroup"]:checked').closest('tr');
-				$('.load_room').show();
-				$('.hotelcol').hide();
-				$(_self.config.infoBar).find('.htn').text($tr.find('.hotel-name').text());
-				$(_self.config.infoBar).find('.address').text($tr.find('.hotel-address').text());
-				$(_self.config.infoBar).find('.tel').text($tr.find('.hotel-tel').text());
-				$.get($public.urlpath.getroominfo,{hotelId:$('input[name="hotelGroup"]:checked').val()},function (data) {
-					$('.load_room').hide();
-					$('.hotelcol').show();
-					$(_self.config.infoBox).empty().append(data);
-					var rdlth=$('.radio-bar').length-1;
-					$('.radio-bar:eq('+rdlth+')').css('border-bottom','none');
-					setTimeout(function(){$('.radio-bar:eq(0)').trigger('click');},500);
-				});
 			}
 		},
 		scenic : {
@@ -224,7 +205,7 @@ define(function (require, exports, module) {
 							$('input[name="scenicName"]').val(scenicName);
 							$('.scenic-name').text(scenicName);
 							$public.dialog.closebox();
-							_this.selectScenic();
+							
 						}else{
 							alert('请选择景区！');
 						}
@@ -258,27 +239,6 @@ define(function (require, exports, module) {
 					$('.jiuniu_pagination').css('margin-left',(($('.container').width()-$('.jiuniu_pagination').width())/2)+'px');
 				});
 				_this.init_pagination && _this.init_pagination(_this.getScenicList);
-			},
-
-			selectScenic: function(){
-				var _self=ScenicAndHotel.prototype,
-					$tr = $('input[name="scenicGroup"]:checked').closest('tr');
-				$(_self.config.infoBar).find('.htn').text($tr.find('.scenic-name').text());
-				$(_self.config.infoBar).find('.address').text($tr.find('.scenic-locationText').text());
-				$.post($public.urlpath.getScenicTicketType,{scenicId : $('input[name="scenicId"]').val()},function (data) {
-					//console.log(JSON.stringify(data));
-					if (data.success) {
-						var tikArr = JSON.parse(data.value);
-						var tdHtml = [];
-						for (var i=0;i<tikArr.length;i++) {
-							var lab = '<label class="radio"><input type="radio" name="ticketId" value='+ tikArr[i].id +' tTitle='+ tikArr[i].title +'>'+ tikArr[i].title +'</label>';
-							tdHtml.push(lab);
-						};
-						$('td.ticketType').empty().append(tdHtml.join('\n'));
-					} else{
-						$public.dialog.msg('请求失败','error');
-					}
-				});
 			}
 		}
 	};
