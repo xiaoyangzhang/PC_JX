@@ -13,4 +13,37 @@
 .goods-item	.t-msg{margin-left: 110px;}	
 /**************************查看订单详情页-订单商品信息*******************************/
 .orderInfo .goods-item .t-img .uploadImgFile{width: 110px;height: 110px;}
-.orderInfo .goods-item .t-msg{margin-left: 120px;}	
+.orderInfo .goods-item .t-msg{margin-left: 120px;}
+.questionPrice{
+    background: url(../../img/questionPrice.png) no-repeat;
+    padding-left: 18px;
+    height: 18px;
+    position: relative;
+}
+.question-box{
+    display: none;
+    position: absolute;
+    left: -101px;
+    width: 220px;
+    padding: 8px;
+    background: #fff3d8;
+    border: 1px solid #ffaf00;
+    border-radius: 3px;
+    text-align: left;
+    z-index: 999;
+    top: initial;
+    bottom: 26px;
+}
+.question-box:before{
+    position: absolute;
+    left: 50%;
+    top: -16px;
+    margin-left: -8px;
+    content: "";
+    border: 8px solid transparent;
+    border-bottom-color: #ffaf00;
+    top: initial;
+    bottom: -16px;
+    border: 8px solid transparent;
+    border-top-color: #ffaf00;
+}

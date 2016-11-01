@@ -128,9 +128,27 @@ define(function(require, exports, module) {
                 $public.stopBubble(ev);
             });
 
+            /*
             $(".tdweek").on("click", "input[type='checkbox']", function() {
                 var checked = this.checked;
                 var week = $(this).attr("week");
+                if (checked) {
+                    $(".day td.in-range[week='" + week + "']").addClass("choiced");
+                } else {
+                    $(".day td.in-range[week='" + week + "']").removeClass("choiced");
+                }
+            });
+            */
+            $(".tdweek").on("click", "td:has(input[type='checkbox'])", function() {
+                var tagName = event.target.tagName.toLowerCase();
+                if (tagName == 'td') {
+                    var inputObj = event.target.children[0];
+                    inputObj.checked = !inputObj.checked;
+                } else if (tagName == 'input'){
+                    var inputObj = event.target;
+                }
+                var checked = inputObj.checked;
+                var week = $(inputObj).attr("week");
                 if (checked) {
                     $(".day td.in-range[week='" + week + "']").addClass("choiced");
                 } else {
@@ -159,7 +177,7 @@ define(function(require, exports, module) {
             };
 
             window.document.onselectstart = function() {
-                return false;
+                //return false;
             };
             _self.initial();
 
