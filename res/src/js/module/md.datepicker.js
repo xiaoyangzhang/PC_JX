@@ -59,7 +59,6 @@ define(function(require, exports, module) {
             $('.setvl').on('click', function() {
                 var temp = '',
                     $dtbx = $('.day .choiced .dtbx'),
-<<<<<<< HEAD
                     price = '',
                     stock = '',
                     pTxt = '',
@@ -183,26 +182,6 @@ define(function(require, exports, module) {
                     
                     console.log(JSON.stringify(_tcs));
                     
-=======
-                    price = $('.price').val(),
-                    stock = $('.stock').val();
-                if ($dtbx.length > 0) {
-                    if (!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($('.price').val())) {
-                        $public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数', 'error');
-                        $('.price').focus();
-                        return;
-                    }
-                    if (!/^[1-9]\d{0,5}$/.test($('.stock').val())) {
-                        $public.dialog.msg('“库存”为数字,最大6位整数', 'error');
-                        $('.stock').focus();
-                        return;
-                    }
-                    $dtbx.filter(function() {
-                        _self.set_tdvalue($(this), price, stock);
-                        _self.set_chahevalue(stock, price, $(this).parent().find('font').html());
-                    });
-                    $('input[name="supplierCalendar"]').val(JSON.stringify(_self.supplierCalendar));
->>>>>>> master
                 } else
                     $public.dialog.msg('请选择要设置的日期', 'error');
             });
@@ -254,10 +233,7 @@ define(function(require, exports, module) {
                 $public.stopBubble(ev);
             });
 
-<<<<<<< HEAD
-=======
             /*
->>>>>>> master
             $(".tdweek").on("click", "input[type='checkbox']", function() {
                 var checked = this.checked;
                 var week = $(this).attr("week");
@@ -267,8 +243,6 @@ define(function(require, exports, module) {
                     $(".day td.in-range[week='" + week + "']").removeClass("choiced");
                 }
             });
-<<<<<<< HEAD
-=======
             */
            
             $(".tdweek").on("click", "td:has(input[type='checkbox'])", function() {
@@ -287,7 +261,6 @@ define(function(require, exports, module) {
                     $(".day td.in-range[week='" + week + "']").removeClass("choiced");
                 }
             });
->>>>>>> master
 
             window.document.onclick = function() {
                 //$('.day td.choiced').removeClass("choiced");
@@ -310,11 +283,7 @@ define(function(require, exports, module) {
             };
 
             window.document.onselectstart = function() {
-<<<<<<< HEAD
                 return false;
-=======
-                //return false;
->>>>>>> master
             };
             _self.initial();
 
@@ -577,7 +546,6 @@ define(function(require, exports, module) {
             console.log(JSON.stringify(this.supplierCalendar.bizSkuInfo) + '   -------del_chahevalue----------');
         },
         //设置日期的价格和库存
-<<<<<<< HEAD
         set_tdvalue: function(obj, price, stock, pTxt,tcName) {
             var _html = '',
                 _tcArr = [];
@@ -597,15 +565,6 @@ define(function(require, exports, module) {
             /*if(pTxt){
                 _tcArr.push({pTxt:pTxt,price:price,stock:stock});
             }*/
-=======
-        set_tdvalue: function(obj, price, stock) {
-            if (obj.find('.tipvl').length == 0)
-                obj.append('<div class="tipvl"><label>￥：</label><label class="price_">' + price + '</label><br><label>库存：</label><label class="stock_">' + stock + '</label></div>');
-            else {
-                obj.find('.price_').text(price);
-                obj.find('.stock_').text(stock);
-            }
->>>>>>> master
             //obj.find('label').css('color', '#fff');
         },
         //监测日期是否在规定范围内
