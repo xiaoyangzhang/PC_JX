@@ -61,7 +61,8 @@ define(function (require, exports, module) {
 				height: 32,
 				onChange:function(){}
 			});
-				if($('.error_box').length>0){
+
+			if($('.error_box').length>0){
 				var tit_top=$('.error_box').offset().top,lock=false;
 				$(window).scroll(function(){
 					var cur_top=$(this).scrollTop();
@@ -74,6 +75,13 @@ define(function (require, exports, module) {
 					}
 				});
 			}
+
+			$('.company input').each(function(){
+				if($(this).prop('checked')){
+					$('#travel').prop('checked','checked');
+				}
+			});
+
 			var validoptions={
 					tiptype:3,
 					label:".label",

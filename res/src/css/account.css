@@ -7,6 +7,9 @@
 #ym-login-banner h1.title{font-size:26px;color:#333;text-align:center;margin:36px 0;}
 #ym-login-banner input.textinput,
 #ym-login-banner span.tips{width:341px;padding:12px 32px;border-radius:24px;font-size:16px;background:#fff;border:1px solid #e1e1e1;font-family:"微软雅黑"}
+
+#ym-login-banner input.sortinput{width:162px;float:left;}
+#ym-login-banner img.imgcode{float:right;cursor:pointer;}
 #ym-login-banner span.tips{display:block;color:#999;margin-bottom:14px;}
 #ym-login-banner .winloginbtn{display:block;width:400px;height:48px;line-height:48px;background:#ffaf00;text-align:center;border-radius:24px;
 	margin:14px auto;font-size:20px;color:#333;border:none;cursor:pointer;}
