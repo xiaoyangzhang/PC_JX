@@ -43,10 +43,11 @@ define(function (require, exports, module) {
 	
 	$public.prototype = {
 		init:function(){
-			var _self=this;
+			var _self=this,_linkUrl = window.location.href;
 			/* 统一主域名 */
 			if(document.domain.indexOf('jiuxiulvxing.com')!=-1)
-				//document.domain = 'jiuxiulvxing.com';
+				document.domain = 'jiuxiulvxing.com';
+
 			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){

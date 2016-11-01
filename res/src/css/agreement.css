@@ -17,7 +17,6 @@
 .agreement-box .progress .step-fl{border-top-left-radius: 6px;border-bottom-left-radius: 6px;}
 .agreement-box .progress .ya{border-top-right-radius: 6px;border-bottom-right-radius: 6px;}
 
-
 /***************************九休开放平台旅行社管理规定***************************/
 .line-bottom{width:1140px;height:1px;border-top:1px solid #dddddd;margin:38px auto 0;}
 .lig{margin:0 auto;}
@@ -44,3 +43,4 @@ table tr td{border: 1px solid #ddd;padding:0 10px;}
 .eredar-right .agremt-btn{width:160px;height:36px;line-height: 36px;text-align: center;margin:auto; background: #ed6c44;display: block; color:#fff;margin-top:20px;margin-bottom:10px;}
 .eredar-right .agremt-view{color:#ed6c44;}
 .eredar-right .step-container{background:url(../../img/agreement.png) no-repeat top center;height: 145px;border-bottom: 1px solid #e1e1e1;}
+

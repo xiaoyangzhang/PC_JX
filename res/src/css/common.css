@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 body{background: #eee !important;}
+=======
+body{background: #f4f4f4;}
+>>>>>>> master
 .bodyWhite{background-color: #fff !important;}
 .comwidth{width:1190px;margin:0 auto 20px auto; overflow: hidden;  }
 
@@ -66,7 +70,11 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 
 /***************************内容弹出框***********************/
 .dialog{position: fixed;width:100%;height:1000px;z-index: 999;left:0;top:0;display: none;}
+<<<<<<< HEAD
 .dialog .bgmeng{background-color:#000; opacity:.5;filter:alpha(opacity=50);width:100%;height:1000px;position: absolute;z-index: 999;}
+=======
+.dialog .bgmeng{background-color:#000; opacity:.5;filter:alpha(opacity=50);width:100%;position: absolute;z-index: 999;}
+>>>>>>> master
 .dialog .msg{min-width:100px;max-width:400px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;text-align: left;
   margin-top:-25px;margin-left:-120px;z-index: 9999;background: #fff;padding:10px 20px;border-radius:6px;word-break: break-all;word-wrap: break-word;}
 .dialog .loading{width:160px;box-shadow: 8px 8px 20px #666;position: absolute;top:45%;left:50%;word-break: break-all;word-wrap: break-word;
@@ -87,9 +95,15 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 .dialog .content-box .close-tip i:hover,.dialog .prompt-box .close-tip i:hover{transform: rotate(180deg);}
 .dialog .content-box .close-tip div,.dialog .prompt-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;height: 36px;}
 .dialog .content-box .close-tip h2,.dialog .prompt-box .close-tip h2{margin-bottom:-1px;float:left;text-align:center;color:#ffaf00;font-size:20px;
+<<<<<<< HEAD
   border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px; margin-top:0;}
 
 .dialog .content-box .btn-group{width:100%;position:absolute;left:0;bottom:0;text-align:right;text-align: center;}
+=======
+  border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px;}
+
+.dialog .content-box .btn-group{width:100%;position:absolute;bottom:0;text-align:right;margin-left:-20px;text-align: center;}
+>>>>>>> master
 .dialog .content-box .btn-group div{margin:0 20px;border-top:1px solid #ccc;}
 .dialog .content-box .btn-group button{margin:20px 0;width:160px;height:36px;line-height:36px;border:none;outline:none;
   background: #ed6c44;color:#fff;font-size:16px;}
@@ -101,6 +115,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
   background: #ed6c44;color:#fff;font-size:14px;}
 .dialog .prompt-box .btn-group button.ok{margin-right:20px;}
 
+<<<<<<< HEAD
 /***************************续签协议提示框***********************/
 .dialog-agreement{position: absolute;width:750px;height:340px;left:50%;top:45%;margin-left:-375px;margin-top:-170px; background: #fff;z-index: 9999;}
 .dialog-agreement div{height:46px;background: #f0f0f0;padding-left: 20px;margin-bottom:15px;}
@@ -110,6 +125,8 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 margin:28px auto;}
 .dialog-agreement p{padding:2px 20px;line-height: 25px;font-size:14px;color:#666;}
 .dialog-agreement p label{color:#ed6c44;vertical-align: inherit;}
+=======
+>>>>>>> master
 
 /***************************自定义下拉框***********************/
   .select-wrapper{
