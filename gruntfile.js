@@ -3,7 +3,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
   var config={
-	  res:'res',
+	  dist:'dist',
 	  src:'src'
   }
   grunt.initConfig({
@@ -23,14 +23,14 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand:true,
-					cwd:'<%= config.res %>/<%= config.src %>/js/',
+					cwd:'<%= config.src %>/js/',
 					src:'**/*.js',
-					dest: '<%= config.src %>/js/'
+					dest: '<%= config.dist %>/<%= config.src %>/js/'
 				}]
 			},
 			release: {
 				files: {
-					'<%= config.src %>/js/index.min.js':  ['<%= config.res %>/<%= config.src %>/js/**/*.js']
+					'<%= config.src %>/js/index.min.js':  ['<%= config.src %>/js/**/*.js']
 				}
 			}
 		},
@@ -41,9 +41,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.res %>/<%= config.src %>/css/',
+					cwd: '<%= config.src %>/css/',
 					src: ['**/*.css'],
-					dest: '<%= config.src %>/css/'
+					dest: '<%= config.dist %>/<%= config.src %>/css/'
 				}]
 			}
 		},
@@ -54,15 +54,15 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.res %>/img/',   // 图片在imagemin目录下
+					cwd: 'img/',   // 图片在imagemin目录下
 					src: ['**/*.{png,jpg,gif,jpeg,ico}'], // 优化 imagemin 目录下所有 png/jpg/gif/jpeg/ico 图片
-					dest: 'img/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
+					dest: '<%= config.dist %>/img/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
 				}]
 			}
 		},
 		jshint: {
 			all: [
-				'<%= config.res %>/<%= config.src %>/js/**/*.js'
+				'<%= config.dist %>/<%= config.src %>/js/**/*.js'
 				 ],
 			options: {
 				browser: true,            // browser environment
