@@ -1,12 +1,1 @@
-#error{background-color: #f4f4f4;width: 100%;height: 100%}
-#error div .errorImg{margin: 96px 137px 0  238px;}
-#error .errorid{border-bottom: solid 1px #ddd;}
-#error .updata ul li{float: left;margin-left: 128px;}
-#error .updata ul li:first-child{margin-left: 495px;}
-#error .updata ul li a{ color: #000;display: block;font-size: 18px;height: 56px;line-height: 56px;margin-top: 38px;text-align: center;width: 200px;padding-left: 18px;}
-#error .updata ul li a.last{background:url("../../img/lastbtn.png") no-repeat scroll 0 0;}
-#error .updata ul li a.updata{background:url("../../img/updatabtn.png") no-repeat scroll 0 0;}
-
-/*没有权限*/
-.no-limits div img.limitesImg{margin: 92px 0 34px 320px !important;}
-.no-limits div p{text-align: center;color: #666;font-size: 26px;}
+#error{background-color:#f4f4f4;width:100%;height:100%}#error div .errorImg{margin:96px 137px 0 238px}#error .errorid{border-bottom:solid 1px #ddd}#error .updata ul li{float:left;margin-left:128px}#error .updata ul li:first-child{margin-left:495px}#error .updata ul li a{color:#000;display:block;font-size:18px;height:56px;line-height:56px;margin-top:38px;text-align:center;width:200px;padding-left:18px}#error .updata ul li a.last{background:url(../../img/lastbtn.png) no-repeat}#error .updata ul li a.updata{background:url(../../img/updatabtn.png) no-repeat}.no-limits div img.limitesImg{margin:92px 0 34px 320px!important}.no-limits div p{text-align:center;color:#666;font-size:26px}
