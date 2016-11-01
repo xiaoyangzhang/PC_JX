@@ -53,7 +53,7 @@ select.form-control{display:inline-block; width:70%;}
 #editers{border:none !important; border-radius: 0 !important;}
 #editers .editer-tip dt{background: #f0f0f0; font-weight: normal; line-height: 32px; padding-left: 10px; font-size: 16px;}
 #editers .editer-tip dd{display:block; width:920px; padding:15px 5px;margin-bottom:5px; border: 1px solid #f0f0f0; border-radius: 0; color: #999; font-size: 14px;}
-#editers .bd{margin-top:20px;}
+#editers .bd{margin-top:20px; position:relative;}
 #editers .tbd{display:block; padding:10px; border: 1px solid #f0f0f0; text-align: center;}
 #editers .imgwrap .tbd{background:#fbfbfb;}
 #editers .tbd textarea{border:none !important; width:900px; height:175px;}
@@ -63,6 +63,16 @@ select.form-control{display:inline-block; width:70%;}
 #editers .uploadbtn input{position:absolute; right:0; top:0; font-size:100px;opacity:0; filter:alpha(opacity=0);cursor: pointer;}
 #editers .hd li{display: inline-block;}
 #editers .addtext,#editers .addpic{border:1px solid #ed6c44; color:#ed6c44; padding:5px 20px; margin-right:15px;}
+#editers .bd p.txtinput{border:1px solid #ddd;}
+#editers .bd p.text{padding:10px;border:1px solid #fff;cursor:pointer;word-wrap: break-word;word-break: break-all;}
+#editers .bd p.text:hover,
+#editers .bd p.pic:hover{border:1px dashed #FFC926;}
+#editers .bd p ul.menu{position:absolute;height:35px;line-height:35px;right:0;top:-35px;width:240px;}
+#editers .bd p ul.menu li{float:left;margin-left:19px;cursor:pointer;}
+#editers .bd p ul.menu em{display:inline-block;width:16px;height:16px;margin-right:5px;background:url(../../../img/icon.png) no-repeat;overflow:hidden;position:relative;top:3px;}
+#editers .bd p ul.menu em.icon-up{background-position:-316px -442px;}
+#editers .bd p ul.menu em.icon-down{background-position:-352px -442px;}
+#editers .bd p ul.menu em.icon-del{background-position:-388px -370px;}
 /*商品管理-发布线路-行程信息*/
 .tripInfo{padding: 10px;position: relative;}
 .tripInfo .tripInfoNav{float:left; border-top:2px solid #ffaf00; width: 150px;height: 533px;background: #f9f9f9;overflow: auto;text-align: center;padding:20px 10px;z-index: 100;}

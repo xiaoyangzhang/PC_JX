@@ -6,6 +6,7 @@ seajs.config({
         "jquery": "jquery",
         "common":"module/mod.common",
         "ajaxform" : "plugin/jquery.form",
+        "oldajaxform" : "plugin/jquery.old.form",
 		"validform" : "plugin/jquery.validform.js",
 		"cookie" : "plugin/jquery.cookie.js",
 		"json" : "plugin/jquery.json.js",

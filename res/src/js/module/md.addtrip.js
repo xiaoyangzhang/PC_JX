@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
     var $public = require("public"), //公共js
         $cus_datepicker = require('cus_datepicker'), //日期组件
+        $oldajaxform = require('oldajaxform');
         Addtrip = function() {
             this.init.apply(this, arguments);
         };
@@ -20,6 +21,7 @@ define(function(require, exports, module) {
             _self.addPackage();
             _self.delTc();
             _self.tcTabSwitch();
+            //_self.createTc();
             //渲染已设置的日期
             $cus_datepicker.dateRender($cus_datepicker.supplierCalendar);
         },
@@ -31,10 +33,23 @@ define(function(require, exports, module) {
                 $(this).addClass('on');
                 $(_self.config.eredarpanel).hide();
                 $($(_self.config.eredarpanel)[$(this).index()]).fadeIn();
-                //渲染已设置的日期
-                /*$cus_datepicker.dateRender($cus_datepicker.supplierCalendar);
-                $public.stopBubble(ev);*/
             });
+        },
+        createTc: function(){
+            var priceInfo = $('#priceInfoJson').val(),
+                tcs = priceInfo || priceInfo.tcs;
+            console.log(tcs);
+            $.each(tcs,function(index,tc){
+                var name = tc.name,
+                    months = tc.months;
+                $.each(months,function(index,month){
+                    var days = month.days;
+                    $.each(days,function(index,day){
+
+                    });
+                });
+            });
+
         },
         /**
          * 切换标签

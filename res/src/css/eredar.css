@@ -13,7 +13,7 @@
 .eredar-list1 table td.w280{width:127px;}
 .eredar-list1 table tr td .headID{width:100px;height: 100px;background-color:#f5f5f5;border:solid 1px #ccc;display: inline-block;position: relative;}
 .eredar-list1 table tr td .headID img{width:64px;height: 70px;margin: 15px 18px;}
-.eredar-list1 table tr td .headID  .picter{position: absolute;width:100px;height:21px;bottom: 0;right: 0;text-align: center;background-color: #000;z-index:2;color: #dedede;opacity:0.66;filter: alpha(opacity=66);*display: inline-block; *zoom: 1}
+.eredar-list1 table tr td .headID  .picter{position: absolute;width:100px;height:21px;bottom: 0;right: 0;text-align: center;background-color: #000;z-index:2;color: #dedede;opacity:0.66; filter:alpha(opacity=50);*display: inline-block; *zoom: 1}
 .eredar-list1 table tr td .headID  .upload{position: absolute;bottom: 0; opacity: 0;filter: alpha(opacity=0);cursor: pointer;}
 .eredar-list1 table tr .spe label:first-child,#eredar .eredar-right .eredar-list1 p .radio input:first-child{margin-left: 0px;}
 .eredar-list1 table tr .spe label{margin-left: 5px;cursor: pointer;}

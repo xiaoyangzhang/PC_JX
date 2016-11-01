@@ -101,7 +101,7 @@ define(function(require, exports, module) {
                         });
                         //自由行/跟团游 价格日历存储数据
                         if(_pTxt && _isSetData){
-                            switch(pTxt){
+                            switch(_pTxt){
                                 case '成' :
                                     _id = 1;
                                     _type = 2;
@@ -124,7 +124,7 @@ define(function(require, exports, module) {
                                 PId: 21,
                                 PType: 4,
                                 PTxt: "人员类型",
-                                pTxt:pTxt,
+                                pTxt:_pTxt,
                                 price:_price.val(),
                                 stock:_stock.val()
                             });
