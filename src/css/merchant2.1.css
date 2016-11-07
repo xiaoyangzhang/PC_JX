@@ -1,1 +1,164 @@
-.eredar-right{width:1190px;background-color:#fff;float:right}.eredar-info{margin:40px 0 0 120px}.eredar-info i{display:inline-block;width:17px;height:17px;float:left;background:url(../../img/circle.png);background-size:100%;text-align:center;color:red;margin-right:7px}.eredar-info span{display:inline-block;float:left;line-height:19px;color:#666}.eredar-list{margin-top:20px;padding-left:60px}.eredar-list p{margin-top:15px}.eredar-list p em{width:120px;text-align:right;display:inline-block;color:#666;vertical-align:middle}.eredar-list p em i{color:#fb0000}.eredar-list p input[type=text]{border:1px solid #ccc;height:24px;width:200px;line-height:24px;padding:5px 8px;margin-left:20px}.eredar-list p textarea{border:1px solid #ccc;height:95px;width:490px;padding:5px 0 0 8px;margin-left:20px}.eredar-list p textarea.h150{height:150px}.eredar-list p span{color:#999;vertical-align:bottom}.eredar-list .merchant-shop{padding-top:20px}.eredar-list .merchant-shop .mt{width:120px;text-align:right;display:inline-block;color:#666;vertical-align:top}.eredar-list .merchant-shop .mt font{color:#fb0000}.eredar-list .merchant-shop .bigbox{position:relative;height:102px;display:inline-block}.eredar-list .merchant-shop .imgbox{width:102px;height:102px;margin-left:20px}.eredar-list .bigbox .imgbox .canclickL{background:url(../../img/merchant-head.png) no-repeat #f6f6f6;width:100px;height:100px}.eredar-list .merchant-shop img{width:100px;height:100px;margin:0}.bigbox .imgbox .upldclik,.eredar-list .merchant-shop .bigbox .imgbox .plhd{width:100px;height:100px}.eredar-list .merchant-shop .lab{display:inline-block;color:#999;vertical-align:bottom;margin-left:15px}.eredar-button{padding:30px 0 77px 193px}.eredar-button button{list-style-type:none;border:1px solid #ed6c44;width:120px;height:36px;background-color:#ed6c44;display:block;font-size:16px;color:#fff;text-align:center;font-weight:700}
+.eredar-right {
+	width: 1190px;
+	background-color: #fff;
+	float: right;
+}
+.eredar-info {
+	margin: 40px 0 0 120px;
+}
+
+.eredar-info i {
+	display: inline-block;
+	width: 17px;
+	height: 17px;
+	float: left;
+	background: url(../../img/circle.png);
+	background-size: 100%;
+	text-align: center;
+	color: #ff0000;
+	margin-right: 7px;
+}
+
+.eredar-info span {
+	display: inline-block;
+	float: left;
+	line-height: 19px;
+	color: #666666;
+}
+
+.eredar-list {
+	margin-top: 20px;
+	padding-left: 60px;
+}
+
+.eredar-list p {
+	margin-top: 15px;
+}
+
+.eredar-list p em {
+	width: 120px;
+	text-align: right;
+	display: inline-block;
+	color: #666;
+	vertical-align: middle;
+}
+
+.eredar-list p em i {
+	color: #fb0000;
+}
+
+.eredar-list p input[type = "text"] {
+	border: solid 1px #ccc;
+	height: 24px;
+	width: 200px;
+	line-height: 24px;
+	padding: 5px 8px;
+	margin-left: 20px;
+}
+
+.eredar-list p textarea {
+	border: solid 1px #ccc;
+	height: 95px;
+	width: 490px;
+	padding: 5px 0 0 8px;
+	margin-left: 20px;
+}
+
+.eredar-list p textarea.h150 {
+	height: 150px;
+}
+
+.eredar-list p span {
+	color: #999;
+	vertical-align: bottom;
+}
+
+.eredar-list .merchant-shop {
+	padding-top: 20px;
+}
+
+.eredar-list .merchant-shop .mt {
+	width: 120px;
+	text-align: right;
+	display: inline-block;
+	color: #666;
+	vertical-align: top;
+}
+.eredar-list .merchant-shop .mt font {
+	color: #fb0000;
+}
+
+.eredar-list .merchant-shop .bigbox {
+	position: relative;
+	height: 102px;
+	display: inline-block;
+	_zoom: 1;
+}
+
+.eredar-list .merchant-shop .imgbox {
+	width: 102px;
+	height: 102px;
+	margin-left: 20px;
+}
+
+.eredar-list .bigbox .imgbox .canclickL {
+	background: #f6f6f6 url('../../img/merchant-head.png') no-repeat;
+	width: 100px;
+	height: 100px;
+}
+
+.eredar-list .merchant-shop img {
+	width: 100px;
+	height: 100px;
+	margin: 0;
+}
+
+.eredar-list .merchant-shop .bigbox .imgbox .plhd, .bigbox .imgbox .upldclik {
+	width: 100px;
+	height: 100px;
+}
+
+/*.eredar-list .merchant-shop .imgbox .del {
+	width: 100%;
+	height: 20px;
+	text-align: center;
+	color: #fff;
+	background-color: #000;
+	opacity: .6;
+	filter: alpha(opacity=60);
+	position: absolute;
+	bottom: -20px;
+	z-index: 6;
+	font-size: 12px;
+	line-height: 18px;
+	cursor: pointer;
+	-webkit-transition: all .6s;
+	-moz-transition: all .6s;
+	-ms-transition: all .6s;
+	-o-transition: all .6s;
+	transition: all .6s;
+}*/
+.eredar-list .merchant-shop .lab {
+	display: inline-block;
+	color: #999;
+	vertical-align: bottom;
+	margin-left: 15px;
+
+}
+
+
+.eredar-button {
+	padding: 30px 0 77px 193px;
+}
+.eredar-button button {
+	list-style-type: none;
+	border: 1px solid #ed6c44;
+	width: 120px;
+	height: 36px;
+	background-color: #ed6c44;
+	display: block;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+}

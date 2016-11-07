@@ -1,1 +1,100 @@
-.service{background-color:#f4f4f4}#servicenter{width:1190px;margin:0 auto;background-color:#fff;border:1px solid #ddd}#servicenter .rule{width:1080px;margin:0 auto;text-align:center;border-bottom:solid 1px #ddd;font-size:20px;padding:20px}#servicenter .serviceAll{width:1040px;margin:0 auto}#servicenter .serviceAll .fu-title{font-size:16px;font-weight:700;margin-top:26px}#servicenter .serviceAll .first{margin-top:20px}#servicenter .serviceAll p{font-size:14px;color:#666;line-height:25px;margin-top:15px}#servicenter .serviceAll p.speLab{padding-top:10px}#servicenter .serviceAll p span{padding-top:5px}#servicenter .serviceAll table{width:100%;font-size:14px;color:#666}#servicenter .serviceAll table tr{border:1px solid #ddd}#servicenter .serviceAll table tr th{border:1px solid #ddd;border-left:none;background-color:#f4f4f4;padding:5px}#servicenter .serviceAll table tr td{border:1px solid #ddd;border-left:none;border-top:none;padding:5px}#servicenter .serviceAll table tr td.first,#servicenter .serviceAll table tr th.first{border-left:1px solid #ddd;line-height:25px;vertical-align:middle}#servicenter .serviceAll table tr td.topLine{border-top:solid 1px #ddd}strong{font-weight:400}.reW{width:892px}.eredar-right .rewiewMag{background-color:#f5f5f5;margin:10px 40px}.eredar-right .rewiewMag p.first{padding-top:20px}.eredar-right .rewiewMag p{margin:0 0 20px 35px}.eredar-right .rewiewMag p em{color:#666}.eredar-right .rewiewMag p em.right{margin-left:18px}.eredar-right .rewiewMag p input{width:210px;height:34px;padding-left:10px;margin-left:5px;border:1px solid #ccc}.eredar-right .rewiewMag p input.time{width:120px!important}.eredar-right .rewiewMag p button{display:inline-block;border:1px solid #ccc;width:60px;height:34px;text-align:center;line-height:34px;margin-left:5px}.eredar-right .rewiewMag p button.searchBtn{margin-left:12px}.eredar-right .rewiewID{margin:30px 0 0 40px}.eredar-right .rewiewID p{font-size:16px;color:#222;border-bottom:solid 1px #ccc;padding-bottom:10px}.eredar-right .rewiewInfo{border-bottom:solid 1px #e5e5e5;margin:30px 0 30px 40px}.eredar-right .rewiewInfo dl{float:left;margin-left:33px;position:relative}.eredar-right .rewiewInfo .infoleft{margin-left:0}.eredar-right .rewiewInfo .infoleft img{width:66px;height:66px;border-radius:50%}.eredar-right .rewiewInfo .inforight p{color:#666}.eredar-right .rewiewInfo .inforight p.rightGrade{position:absolute;width:142px;top:0;padding-left:32px;right:-197px;line-height:20px;border-left:solid 1px #e5e5e5}.eredar-right .rewiewInfo .inforight p.rightGrade em,.eredar-right .rewiewInfo .inforight p.rightGrade p{color:#222;display:inline-block;width:70px;text-align:left}.eredar-right .rewiewInfo .inforight p span{display:inline-block;color:#666;vertical-align:top}.eredar-right .rewiewInfo .inforight p span.sName{width:185px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}.eredar-right .rewiewInfo .inforight p em.emW{margin-left:32px}.eredar-right .rewiewInfo .inforight p.infotime{margin-bottom:30px;color:#999!important;margin-top:16px!important}.eredar-right .rewiewInfo strong.infonick{font-weight:400;display:inline-block;padding-top:10px;color:#999!important;width:70px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;cursor:pointer}.eredar-right .rewiewInfo .inforight span.infoP{display:inline-block;width:570px;line-height:24px;padding-top:14px;color:#222;word-break:break-all}.eredar-right .rewiewInfo .inforight .upload{margin-top:15px}.eredar-right .rewiewInfo .inforight .upload ul li{float:left;margin-left:10px;position:relative;border:2px solid #f2f2f2;vertical-align:middle;text-align:center;line-height:85px;height:88px;width:88px}.onspe{border:2px solid #ed6c44!important}.eredar-right .rewiewInfo .inforight .upload ul li.first{margin-left:0}.eredar-right .rewiewInfo .inforight .upload ul li b{filter:alpha(opacity=0);opacity:0;width:0;height:0;line-height:0;font-size:0;border:6px dashed transparent;border-top:6px solid #ed6c44;position:absolute;left:40px;bottom:-13px}.eredar-right .rewiewInfo .inforight .upload img{max-width:84px;cursor:pointer;height:84px;vertical-align:top}.eredar-right .rewiewInfo .inforight .showImg{display:none;width:280px;margin-top:10px}.eredar-right .rewiewInfo .inforight .showImg img{max-width:280px}.eredar-right .skip{margin:30px 0 90px 298px}.eredar-right .skip ul li{float:left;margin-left:9px}.eredar-right .skip ul li.first{margin-left:0}.eredar-right .skip ul li.a{margin-left:2px}.eredar-right .skip ul li a{width:30px;height:30px;text-align:center;border:1px solid #ccc;display:inline-block;line-height:30px;vertical-align:middle}.eredar-right .skip ul li input{width:25px;height:30px;border:1px solid #ccc;padding-left:5px}.eredar-right .skip ul li strong{vertical-align:middle;font-weight:400;line-height:30px;margin-left:24px}.eredar-right .skip ul li a:hover{background-color:#ffaf00;border:1px solid #ffaf00}.eredar-right .draft{padding:0 0 0 40px}.eredar-right .draft p{background-color:#f5f5f5;width:892px;padding:20px 0}.eredar-right .draft p em{margin-left:34px}.eredar-right .draft p select{width:220px;border:1px solid #ccc;padding-left:10px}.eredar-right .draft p select option{height:30px}.eredar-right .draft p .searchBtn{background-color:#ececec;border:1px solid #ccc;width:60px;height:34px;margin-left:18px}.eredar-right .draft table{margin-top:30px}.eredar-right .draft table tr th{background-color:#f5f5f5;height:40px}#svaeDraft,.draftPop,.draftPop p button{background-color:#fff}.eredar-right .draft table tr th.name{width:262px}.eredar-right .draft table tr th.style{width:238px}.eredar-right .draft table tr th.time{width:210px}.eredar-right .draft table tr{border-bottom:solid 1px #eee}.eredar-right .draft table tr td{text-align:center;height:65px}.eredar-right .draft table tr td a{color:#ed6c44}.eredar-right .draft table tr td a.del{margin-left:20px}.draftPop{width:258px;height:140px;border:1px solid #dcdcdc;position:fixed;z-index:9999;left:50%;top:50%;margin:-70px 0 0 -129px;display:none}.draftPop p{text-align:center;color:#222;margin-top:34px}.draftPop p.p{margin-top:26px}.draftPop p button{width:80px;height:34px;border:1px solid #ed6c44;color:#ed6c44}.draftPop p button.cancel{color:#666;border-color:#dcdcdc;margin-left:12px}.jiuniu_pagination{position:static;display:inline-block}#svaeDraft{height:139px;width:387px;position:fixed;top:50%;left:50%;margin:-69.5px 0 0 -193.5px;display:none}#svaeDraft .namedDra{border:1px solid #eee}#svaeDraft .namedDra p{margin-top:32px;text-align:center}#svaeDraft .namedDra p input{width:210px;height:34px}#svaeDraft .namedDra button{width:80px;height:34px;line-height:34px;color:#ed6c44;border:1px solid #ed6c44;background-color:#fff;margin:10px 138px}
+.service{background-color: #f4f4f4;}
+#servicenter{width: 1190px;margin: 0 auto;background-color: #fff;border:solid 1px #ddd;}
+#servicenter .rule{width:1080px;margin: 0 auto;text-align: center;border-bottom:solid 1px #ddd;font-size: 20px;padding: 20px;}
+#servicenter .serviceAll{width:1040px;margin: 0 auto;}
+#servicenter .serviceAll .fu-title{font-size: 16px;font-weight:bold;margin-top: 26px;}
+#servicenter .serviceAll .first{margin-top: 20px;}
+#servicenter .serviceAll p{font-size: 14px;color: #666;line-height: 25px;margin-top: 15px;}
+#servicenter .serviceAll p.speLab{padding-top: 10px;}
+#servicenter .serviceAll p span{padding-top: 5px;}
+#servicenter .serviceAll table{width: 100%;font-size: 14px;color: #666;}
+#servicenter .serviceAll table tr{border:solid 1px #ddd;}
+#servicenter .serviceAll table tr th{border:solid 1px #ddd;border-left: none;background-color: #f4f4f4; padding: 5px;}
+#servicenter .serviceAll table tr td{border:solid 1px #ddd;border-left: none;border-top: none;padding: 5px;}
+#servicenter .serviceAll table tr th.first,#servicenter .serviceAll table tr td.first{
+	border-left: 1px solid #ddd;
+    line-height: 25px;
+    vertical-align: middle;}
+#servicenter .serviceAll table tr td.topLine{border-top: solid 1px #ddd;}
+
+
+strong{font-weight: normal;}
+
+/*顶单管理评论*/
+.reW{width:892px;}
+.eredar-right .rewiewMag{background-color: #f5f5f5;margin: 10px 40px;}
+.eredar-right .rewiewMag p.first{padding-top: 20px;}
+.eredar-right .rewiewMag p{margin:0px 0px 20px 35px;}
+.eredar-right .rewiewMag p em{color: #666;}
+.eredar-right .rewiewMag p em.right{margin-left: 18px;}
+.eredar-right .rewiewMag p input{width: 210px;height: 34px;padding-left: 10px;margin-left: 5px;border:solid 1px #ccc;}
+.eredar-right .rewiewMag p input.time{width:120px !important;}
+.eredar-right .rewiewMag p button{display: inline-block;border:solid 1px #ccc;width:60px;height: 34px;text-align: center;line-height: 34px;margin-left: 5px;}
+.eredar-right .rewiewMag p button.searchBtn{margin-left: 12px;}
+.eredar-right .rewiewID{margin: 30px 0 0 40px;}
+.eredar-right .rewiewID p{font-size: 16px;color: #222;border-bottom:solid 1px #ccc;  padding-bottom: 10px;}
+.eredar-right .rewiewInfo{border-bottom: solid 1px #e5e5e5;margin:30px 0 30px 40px;}
+.eredar-right .rewiewInfo dl{float: left;margin-left: 33px; position: relative;}
+.eredar-right .rewiewInfo .infoleft{margin-left: 0px;}
+.eredar-right .rewiewInfo .infoleft img{width:66px;height: 66px;border-radius: 50%;}
+.eredar-right .rewiewInfo .inforight p{color: #666;}
+.eredar-right .rewiewInfo .inforight p.rightGrade{position: absolute;width: 142px;top: 0px;padding-left: 32px;right: -197px;line-height: 20px;border-left: solid 1px #e5e5e5; }
+.eredar-right .rewiewInfo .inforight p.rightGrade p,.eredar-right .rewiewInfo .inforight p.rightGrade em{ color: #222;display: inline-block;width: 70px;text-align: left;}
+.eredar-right .rewiewInfo .inforight p span{display: inline-block;color: #666;vertical-align: top;}
+.eredar-right .rewiewInfo .inforight p span.sName{width:185px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;}
+.eredar-right .rewiewInfo .inforight p em.emW{margin-left: 32px;}
+
+.eredar-right .rewiewInfo .inforight p.infotime{margin-bottom: 30px;color: #999 !important;margin-top: 16px !important;}
+.eredar-right .rewiewInfo strong.infonick{font-weight: normal;display: inline-block;padding-top: 10px;color: #999 !important;width:70px;overflow: hidden;white-space:nowrap;text-overflow:ellipsis;cursor: pointer;}
+.eredar-right .rewiewInfo .inforight span.infoP{display: inline-block;width:570px;line-height: 24px;padding-top: 14px;color: #222;word-break: break-all;}
+.eredar-right .rewiewInfo .inforight .upload{margin-top: 15px;}
+.eredar-right .rewiewInfo .inforight .upload ul li{float:left;margin-left: 10px;position: relative;border: 2px solid #f2f2f2;vertical-align: middle;text-align:center;line-height: 85px;height:88px;width:88px;}
+.onspe{border:2px solid #ed6c44 !important;}
+.eredar-right .rewiewInfo .inforight .upload ul li.first{margin-left: 0px}
+.eredar-right .rewiewInfo .inforight .upload ul li b{filter: alpha(opacity=0);opacity: 0;width: 0;height: 0;line-height: 0;font-size: 0;
+	border: transparent 6px dashed;border-top: 6px solid #ed6c44;position: absolute;left: 40px;bottom: -13px;}
+.eredar-right .rewiewInfo .inforight .upload img{max-width:84px;cursor: pointer;height:84px;vertical-align: top;}
+.eredar-right .rewiewInfo .inforight .showImg{display:none;width:280px;margin-top: 10px;}
+.eredar-right .rewiewInfo .inforight .showImg img{max-width:280px;}
+
+.eredar-right .skip{margin: 30px 0 90px 298px;}
+.eredar-right .skip ul li{float: left;margin-left: 9px;}
+.eredar-right .skip ul li.first{margin-left: 0px;}
+.eredar-right .skip ul li.a{margin-left: 2px;}
+.eredar-right .skip ul li a{width: 30px;height: 30px;text-align: center;border:solid 1px #ccc;display: inline-block;line-height: 30px;vertical-align: middle;}
+.eredar-right .skip ul li input{width:25px;height: 30px;border:solid 1px #ccc;padding-left: 5px;}
+.eredar-right .skip ul li strong{vertical-align: middle;font-weight: normal;line-height: 30px;margin-left: 24px;}
+.eredar-right .skip ul li a:hover{background-color: #ffaf00;border: solid 1px #ffaf00;}
+
+
+/*草稿箱*/
+.eredar-right .draft{padding:0 0 0 40px;}
+.eredar-right .draft p{background-color:#f5f5f5;width: 892px;padding: 20px 0;}
+.eredar-right .draft p em{margin-left: 34px;}
+.eredar-right .draft p select{width: 220px;border:solid 1px #ccc;padding-left: 10px;}
+.eredar-right .draft p select option{height:30px;}
+.eredar-right .draft p .searchBtn{background-color: #ececec;border:solid 1px #ccc;width: 60px;height: 34px;margin-left: 18px;}
+.eredar-right .draft table{margin-top: 30px;}
+.eredar-right .draft table tr th{background-color:#f5f5f5;height:40px;}
+.eredar-right .draft table tr th.name{width:262px;}
+.eredar-right .draft table tr th.style{width:238px;}
+.eredar-right .draft table tr th.time{width: 210px;}
+.eredar-right .draft table tr th.handle{}
+.eredar-right .draft table tr{border-bottom: solid 1px #eee;}
+.eredar-right .draft table tr td{text-align: center;height: 65px;}
+.eredar-right .draft table tr td a{color: #ed6c44;}
+.eredar-right .draft table tr td a.del{margin-left: 20px;}
+.draftPop{width:258px;height: 140px;border:solid 1px #dcdcdc;position: fixed;z-index: 9999;left:50%;top:50%;margin: -70px 0 0 -129px;background-color: #fff;display: none;}
+.draftPop p{text-align: center;color: #222;margin-top: 34px;}
+.draftPop p.p{margin-top: 26px;}
+.draftPop p button{width: 80px;height: 34px;border:solid 1px #ed6c44;background-color: #fff;color: #ed6c44;}
+.draftPop p button.cancel{color:#666;border-color: #dcdcdc;margin-left: 12px;}
+.jiuniu_pagination{position:static;display: inline-block;}
+
+
+/*保存弹窗*/
+#svaeDraft{position: relative;height: 139px;width: 387px;background-color: #fff;position: fixed;top:50%;left: 50%;margin: -69.5px 0 0 -193.5px;display: none;}
+#svaeDraft .namedDra{border:solid 1px #eee;}
+#svaeDraft .namedDra p{margin-top: 32px;text-align: center;}
+#svaeDraft .namedDra p input{width:210px;height: 34px;}
+#svaeDraft .namedDra button{width:80px;height:34px;line-height: 34px;color: #ed6c44;border: solid 1px #ed6c44;background-color: #fff;margin: 10px 138px;}

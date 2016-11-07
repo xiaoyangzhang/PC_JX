@@ -1,1 +1,624 @@
-#eredar .eredar-right{width:970px;background-color:#fff;float:right;margin-bottom:20px}#eredar .eredar-right .eredar-info{width:892px;margin:40px 0 15px 40px;border-bottom:solid 1px #e5e5e5}#eredar .eredar-right .eredar-info ul li{float:left;font-size:18px;line-height:18px;color:#999;margin-left:20px;margin-bottom:-1px;padding:0 0 15px;cursor:pointer}#eredar .eredar-right .eredar-info ul li.first{margin-left:0}#eredar .eredar-right .eredar-info ul li.on{color:#ffaf00;border-bottom:solid 1px #ffaf00}#eredar .eredar-right .panel{display:none}#eredar .eredar-right div.on{display:block}input[type=text]{height:32px;line-height:32px}.hotelinfo{padding:23px 40px}.hotelinfo p{margin-bottom:16px}.hotelinfo a,.hotelinfo label,.hotelinfo span{display:inline-block;vertical-align:middle;height:32px}.hotelinfo i{color:red}.hotelinfo .nm{width:95px;text-align:right;vertical-align:top}.hotelinfo .nm span{line-height:38px}.hotelinfo .nm label{font-size:14px;color:#333;line-height:32px}.hotelinfo a{width:88px;border:1px solid #ed6c44;background:#fff;color:#ed6c44;line-height:30px;text-align:center}.hotelinfo .info-bar{width:598px;border:1px solid #ccc;margin:0 8px}.hotelinfo .info-bar label{line-height:32px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.hotelinfo .info-bar .htn{width:127px;padding:0 5px;line-height:32px;border-right:1px solid #ccc;text-align:center;color:#ed6c44;background:#eee}.hotelinfo .info-bar .smtt{width:50px;text-align:center}.hotelinfo .info-bar .address{width:228px}.hotelinfo .info-bar .tel{width:118px}.hotelinfo .hotelcol{display:none}.hotelinfo .info-box{width:568px;border:1px solid #ccc;padding:0 15px;margin:0 10px;display:inline-block;height:auto}.hotelinfo .info-box ul{margin-top:-1px}.hotelinfo .info-box .radio-bar{height:47px;border-top:1px solid #ccc;padding:0 10px;cursor:pointer}.hotelinfo .info-box .radio-bar label{line-height:47px}.hotelinfo .info-box .radio-bar img{margin-top:18px}.hotelinfo .info-box .bar-box{height:0;overflow:hidden;transition:height .6s;-moz-transition:height .6s;-webkit-transition:height .6s;-o-transition:height .6s}.hotelinfo .info-box .bar-box ul{padding:10px 0}.hotelinfo .info-box .bar-box li{float:left;width:179px;padding-left:10px}.hotelinfo .info-box .bar-box li label{white-space:normal;max-width:130px;height:auto;line-height:20px;vertical-align:top;color:#999}.hotelinfo .info-box .bar-box .img-group{width:590px}.hotelinfo .info-box .bar-box .img-group img{margin-left:9px;width:175px;max-height:120px;margin-bottom:10px}.searchbox{display:none;overflow:hidden}.hotelist .tb-box,.hotelist table,.sceniclist{overflow:auto}.searchbox .tb{width:100%}.searchbox .tb td{text-align:left;padding:10px 0}.searchbox .tb td button{width:88px;height:32px;line-height:30px;background:#ececec;outline:0;border:1px solid #ddd;margin-left:5px}.searchbox .inputxt{width:180px;margin-right:8px}.searchbox .tb-txt{text-align:right;width:75px}.searchbox .load_list{margin:20px 0;width:24px;height:24px}.svdraftbox input{width:200px;margin-top:16px}.load_room{display:none;text-align:center}.hotelist table td a,.sceniclist table td a{line-height:28px;display:block;border:1px solid #ed6c44;color:#ed6c44}.load_room img{width:24px;height:24px}.hotelist,.hotelist .tb-box{height:354px;margin-top:10px}.hotelist table{width:100%}.hotelist table tr:hover{background:#f5f5f5;cursor:pointer}.hotelist table th{height:34px;background:#f5f5f5;text-align:center}.hotelist table td{height:60px}.hotelist table td a{width:74px;height:28px;margin:auto}.sceniclist{height:354px;margin-top:10px}.sceniclist table{width:100%;overflow:auto}.sceniclist table tr:hover{background:#f5f5f5;cursor:pointer}.sceniclist table th{height:34px;background:#f5f5f5;text-align:center}.sceniclist table td{height:60px}.sceniclist table td a{width:74px;height:28px;margin:auto}.baseinfo .inputxt{width:488px}.baseinfo .coltxt{width:125px;text-align:right}.baseinfo table{margin-top:30px}.baseinfo table td,.baseinfo table td label,.baseinfo table td span{color:#333}.baseinfo table td{padding:10px 10px 10px 6px}.baseinfo table td textarea{width:488px;height:88px;padding:5px}.baseinfo .mark,.baseinfo .mark label{vertical-align:bottom;color:#999}.baseinfo .mark{margin-left:10px}.baseinfo .radio{margin-right:20px;cursor:pointer}.baseinfo .checkbox{margin-right:10px;display:inline-block;width:145px;margin-bottom:20px;cursor:pointer}.baseinfo .checkbox input,.baseinfo .radio input{margin-right:8px;height:14px}.baseinfo .dtlrule{padding-right:40px;line-height:22px}.savenext{padding-left:108px;padding-top:20px;padding-bottom:80px}.btngroup{padding-left:145px;padding-top:10px;padding-bottom:105px}.allsave{padding-left:218px;padding-top:67px;padding-bottom:80px}.allsave a,.btngroup a,.savenext a{display:inline-block;text-align:center;height:34px;line-height:34px;margin-right:42px;width:120px;border:none;background:#ed6c44;color:#fff}.room-error{padding:6px 0;text-align:center;color:red}.ticketinfo{padding-bottom:0}.ticketbaseinfo table{margin-top:0;width:858px}.datepicker{padding-left:30px;padding-right:30px;padding-bottom:5px}.datepicker table{width:658px}.datepicker table td{border:1px solid #ddd;width:92px;height:68px}.datepicker table td div.dtbx{width:92px;height:68px;text-align:center;position:relative}.datepicker table td div.dtbx font{font-weight:700;display:inline-block;left:10px;top:10px;position:absolute}.datepicker table td div.dtbx .tipvl{text-align:right;padding-top:25px;padding-right:4px}.datepicker table td div.dtbx .tipvl label{font-size:12px;line-height:16px}.datepicker .tdyears{text-align:center;height:40px;border-top:3px solid #ffaf00;padding:0 20px;width:648px}.datepicker .tdyears .prev{background:url(../../img/date-left.jpg) no-repeat}.datepicker .tdyears .next{background:url(../../img/date-right.jpg) no-repeat}.datepicker .tdyears .next,.datepicker .tdyears .prev{display:block;width:13px;height:13px;margin-top:3px;cursor:pointer}.datepicker .tdmonth{padding:0;text-align:center;height:38px;background:#f9f9f9}.datepicker .tdmonth ul{font-size:0;width:656px}.datepicker .tdmonth li{display:inline-block;height:16px;width:35px;text-align:center;cursor:pointer;margin:0 8px}.datepicker .tdmonth li.on{color:#ffaf00}.datepicker .tdweek td{text-align:center;padding:0;height:48px}.datepicker .setvalue{width:234px;border-top:3px solid #ffaf00;padding-bottom:30px}.datepicker .setvalue h2{height:40px;border-bottom:1px solid #ddd;background:#fff9ec;color:#ffaf00;font-size:16px;line-height:40px;padding-left:15px}.datepicker .setvalue div{padding-top:20px}.datepicker .setvalue .btn a{display:inline-block;text-align:center;width:98px;height:28px;line-height:28px;border:1px solid #ed6c44;color:#ed6c44;background:#fff;margin:0 5px}.datepicker .nullgray{background:#f9f9f9;cursor:initial!important}.day .in-range{background:#fff;cursor:pointer}.day font,.day label{color:#666}.day .today font{color:#ffaf00}.day .out-range{background:#f5f5f5;cursor:not-allowed}.day .choiced{background:#ed6c44}.day .choiced font,.day .choiced label{color:#fff}
+#eredar .eredar-right {
+    width: 970px;
+    background-color: #fff;
+    float: right;
+    margin-bottom: 20px;
+}
+
+#eredar .eredar-right .eredar-info {
+    width: 892px;
+    margin: 40px 0 15px 40px;
+    border-bottom: solid 1px #e5e5e5;
+}
+
+#eredar .eredar-right .eredar-info ul li {
+    float: left;
+    font-size: 18px;
+    line-height: 18px;
+    color: #999;
+    margin-left: 20px;
+    margin-bottom: -1px;
+    padding: 0 0 15px;
+    cursor: pointer;
+}
+
+#eredar .eredar-right .eredar-info ul li.first {
+    margin-left: 0px;
+}
+
+#eredar .eredar-right .eredar-info ul li.on {
+    color: #ffaf00;
+    border-bottom: solid 1px #ffaf00;
+}
+
+#eredar .eredar-right .panel {
+    display: none;
+}
+
+#eredar .eredar-right div.on {
+    display: block;
+}
+
+
+/**********************************************选择酒店**********************************************/
+
+input[type=text] {
+    height: 32px;
+    line-height: 32px;
+}
+
+.hotelinfo {
+    padding: 23px 40px;
+}
+
+.hotelinfo p {
+    margin-bottom: 16px;
+}
+
+.hotelinfo a,
+.hotelinfo span,
+.hotelinfo label {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+}
+
+.hotelinfo i {
+    color: red;
+}
+
+.hotelinfo .nm {
+    width: 95px;
+    text-align: right;
+    vertical-align: top;
+}
+
+.hotelinfo .nm span {
+    line-height: 38px;
+}
+
+.hotelinfo .nm label {
+    font-size: 14px;
+    color: #333;
+    line-height: 32px;
+}
+
+.hotelinfo a {
+    width: 88px;
+    border: 1px solid #ed6c44;
+    background: #fff;
+    color: #ed6c44;
+    line-height: 30px;
+    text-align: center;
+}
+
+.hotelinfo .info-bar {
+    width: 598px;
+    border: 1px solid #ccc;
+    margin: 0 8px;
+}
+
+.hotelinfo .info-bar label {
+    line-height: 32px;
+    color: #333;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.hotelinfo .info-bar .htn {
+    width: 127px;
+    padding: 0 5px;
+    line-height: 32px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    color: #ed6c44;
+    background: #eee;
+}
+
+.hotelinfo .info-bar .smtt {
+    width: 50px;
+    text-align: center;
+}
+
+.hotelinfo .info-bar .address {
+    width: 228px;
+}
+
+.hotelinfo .info-bar .tel {
+    width: 118px;
+}
+
+.hotelinfo .hotelcol {
+    display: none;
+}
+
+.hotelinfo .info-box {
+    width: 568px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    padding-top: 0;
+    margin: 0 10px;
+    display: inline-block;
+    height: auto;
+}
+
+.hotelinfo .info-box ul {
+    margin-top: -1px;
+}
+
+.hotelinfo .info-box .radio-bar {
+    height: 47px;
+    border-top: 1px solid #ccc;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.hotelinfo .info-box .radio-bar label {
+    line-height: 47px;
+}
+
+.hotelinfo .info-box .radio-bar img {
+    margin-top: 18px;
+}
+
+.hotelinfo .info-box .bar-box {
+    height: 0;
+    overflow: hidden;
+    transition: height .6s;
+    -moz-transition: height .6s;
+    -webkit-transition: height .6s;
+    -o-transition: height .6s;
+}
+
+.hotelinfo .info-box .bar-box ul {
+    padding: 10px 0;
+}
+
+.hotelinfo .info-box .bar-box li {
+    float: left;
+    width: 179px;
+    padding-left: 10px;
+}
+
+.hotelinfo .info-box .bar-box li label {
+    white-space: normal;
+    max-width: 130px;
+    height: auto;
+    line-height: 20px;
+    vertical-align: top;
+    color: #999;
+}
+
+.hotelinfo .info-box .bar-box .img-group {
+    width: 590px;
+}
+
+.hotelinfo .info-box .bar-box .img-group img {
+    margin-left: 9px;
+    width: 175px;
+    max-height: 120px;
+    margin-bottom: 10px;
+}
+
+.searchbox {
+    display: none;
+    overflow: hidden;
+}
+
+.searchbox .tb {
+    width: 100%;
+}
+
+.searchbox .tb td {
+    text-align: left;
+    padding: 10px 0;
+}
+
+.searchbox .tb td button {
+    width: 88px;
+    height: 32px;
+    line-height: 30px;
+    background: #ececec;
+    outline: none;
+    border: 1px solid #ddd;
+    margin-left: 5px;
+}
+
+.searchbox .inputxt {
+    width: 180px;
+    margin-right: 8px;
+}
+
+.searchbox .tb-txt {
+    text-align: right;
+    width: 75px;
+}
+
+.searchbox .load_list {
+    margin: 20px 0;
+    width: 24px;
+    height: 24px;
+}
+
+.svdraftbox input {
+    width: 200px;
+    margin-top: 16px;
+}
+
+.load_room {
+    display: none;
+    text-align: center;
+}
+
+.load_room img {
+    width: 24px;
+    height: 24px;
+}
+
+.hotelist {
+    height: 354px;
+    margin-top: 10px;
+}
+
+.hotelist .tb-box {
+    height: 354px;
+    margin-top: 10px;
+    overflow: auto;
+}
+
+.hotelist table {
+    width: 100%;
+    overflow: auto;
+}
+
+.hotelist table tr:hover {
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+.hotelist table th {
+    height: 34px;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.hotelist table td {
+    height: 60px;
+}
+
+.hotelist table td a {
+    width: 74px;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    border: 1px solid #ed6c44;
+    color: #ed6c44;
+    margin: auto;
+}
+
+
+/**********************************************选择景区列表**********************************************/
+
+.sceniclist {
+    height: 354px;
+    margin-top: 10px;
+    overflow: auto;
+}
+
+.sceniclist table {
+    width: 100%;
+    overflow: auto;
+}
+
+.sceniclist table tr:hover {
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+.sceniclist table th {
+    height: 34px;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.sceniclist table td {
+    height: 60px;
+}
+
+.sceniclist table td a {
+    width: 74px;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    border: 1px solid #ed6c44;
+    color: #ed6c44;
+    margin: auto;
+}
+
+
+/**********************************************基本信息**********************************************/
+
+.baseinfo .inputxt {
+    width: 488px;
+}
+
+.baseinfo .coltxt {
+    width: 125px;
+    text-align: right;
+}
+
+.baseinfo table {
+    margin-top: 30px;
+}
+
+.baseinfo table td,
+.baseinfo table td label,
+.baseinfo table td span {
+    color: #333;
+}
+
+.baseinfo table td {
+    padding: 10px 10px 10px 6px;
+}
+
+.baseinfo table td textarea {
+    width: 488px;
+    height: 88px;
+    padding: 5px;
+}
+
+.baseinfo .mark,
+.baseinfo .mark label {
+    vertical-align: bottom;
+    color: #999;
+}
+
+.baseinfo .mark {
+    margin-left: 10px;
+}
+
+.baseinfo .radio {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.baseinfo .checkbox {
+    margin-right: 10px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 145px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.baseinfo .radio input,
+.baseinfo .checkbox input {
+    margin-right: 8px;
+    height: 14px;
+}
+
+.baseinfo .dtlrule {
+    padding-right: 40px;
+    line-height: 22px;
+}
+
+.savenext {
+    padding-left: 108px;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.btngroup {
+    padding-left: 145px;
+    padding-top: 10px;
+    padding-bottom: 105px;
+}
+
+.allsave {
+    padding-left: 218px;
+    padding-top: 67px;
+    padding-bottom: 80px;
+}
+
+.savenext a,
+.btngroup a,
+.allsave a {
+    display: inline-block;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 42px;
+    width: 120px;
+    border: none;
+    background: #ed6c44;
+    color: #fff;
+}
+
+.room-error {
+    padding: 6px 0;
+    text-align: center;
+    color: red;
+}
+
+
+/**********************************************门票基本信息**********************************************/
+
+.ticketinfo {
+    padding-bottom: 0;
+}
+
+.ticketbaseinfo table {
+    margin-top: 0;
+    width: 858px;
+}
+
+
+/**********************************************价格日历**********************************************/
+
+.datepicker {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+}
+
+.datepicker table {
+    width: 658px;
+}
+
+.datepicker table td {
+    border: 1px solid #ddd;
+    width: 92px;
+    height: 68px;
+}
+
+.datepicker table td div.dtbx {
+    width: 92px;
+    height: 68px;
+    text-align: center;
+    position: relative;
+}
+
+.datepicker table td div.dtbx font {
+    font-weight: bold;
+    display: inline-block;
+    left: 10px;
+    top: 10px;
+    position: absolute;
+}
+
+.datepicker table td div.dtbx .tipvl {
+    text-align: right;
+    padding-top: 25px;
+    padding-right: 4px;
+}
+
+.datepicker table td div.dtbx .tipvl label {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.datepicker .tdyears {
+    text-align: center;
+    padding: 0;
+    height: 40px;
+    border-top: 3px solid #ffaf00;
+    padding: 0 20px;
+    width: 648px;
+}
+
+.datepicker .tdyears .prev {
+    background: url('../../img/date-left.jpg') no-repeat;
+}
+
+.datepicker .tdyears .next {
+    background: url('../../img/date-right.jpg') no-repeat;
+}
+
+.datepicker .tdyears .prev,
+.datepicker .tdyears .next {
+    display: block;
+    width: 13px;
+    height: 13px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.datepicker .tdmonth {
+    padding: 0;
+    text-align: center;
+    height: 38px;
+    background: #f9f9f9;
+}
+
+.datepicker .tdmonth ul {
+    font-size: 0;
+    width: 656px;
+}
+
+.datepicker .tdmonth li {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 16px;
+    width: 35px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 8px;
+}
+
+.datepicker .tdmonth li.on {
+    color: #ffaf00;
+}
+
+.datepicker .tdweek td {
+    text-align: center;
+    padding: 0;
+    height: 48px;
+}
+
+.datepicker .setvalue {
+    width: 234px;
+    border-top: 3px solid #ffaf00;
+    padding-bottom: 30px;
+}
+
+.datepicker .setvalue h2 {
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+    background: #fff9ec;
+    color: #ffaf00;
+    font-size: 16px;
+    line-height: 40px;
+    padding-left: 15px;
+}
+
+.datepicker .setvalue div {
+    padding-top: 20px;
+}
+
+.datepicker .setvalue .btn a {
+    display: inline-block;
+    text-align: center;
+    width: 98px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #ed6c44;
+    color: #ed6c44;
+    background: #fff;
+    margin: 0 5px;
+}
+
+.datepicker .nullgray {
+    background: #f9f9f9;
+    cursor: initial !important;
+}
+
+.day .in-range {
+    background: #fff;
+    cursor: pointer;
+}
+
+.day font,
+.day label {
+    color: #666;
+}
+
+.day .today font {
+    color: #ffaf00;
+}
+
+.day .out-range {
+    background: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.day .choiced {
+    background: #ed6c44;
+}
+
+.day .choiced font,
+.day .choiced label {
+    color: #fff;
+}
