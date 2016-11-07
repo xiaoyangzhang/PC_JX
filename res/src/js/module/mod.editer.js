@@ -270,7 +270,7 @@ define(function (require, exports, module){
 		getImgUploadHtml : function(){
 			var _html = [];
 			_html.push('<p class="imgwrap">');
-			_html.push('<span class="tbd"><img src="'+(static_source?static_source+'img/no-img.jpg':'http://s0.test.jiuxiulvxing.com/busines/img/no-img.jpg')+'" width="72" height="72" class="nopic defaultImg"/></span>');
+			_html.push('<span class="tbd"><img src="'+(static_source?static_source+'img/no-img.jpg':'http://s0.test.jiuxiulvxing.com/busines/img/no-img.jpg')+'" width="724" class="nopic defaultImg"/></span>');
 			_html.push('<span class="tft clearfix">');
 			_html.push('<label class="selectimg">请选择图片：<input type="file" id="uploadimg" name="uploadimg" class="uploadimg"/><em clsss="errormsg"></em></label>');
 			_html.push('<label class="groupbtn clearfix">');
