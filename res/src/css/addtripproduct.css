@@ -7,7 +7,7 @@
 .btn{border:none;cursor:pointer; display: inline-block; padding:0 30px; line-height: 36px;}
 .btn-orange{color: #fff; background: #ed6c44; padding:0 15px;}
 .btn-orange:hover{background: #d7623e;}
-.btn-outline{background: #fff; border: 1px solid #ddd;}
+.btn-outline{background: #fff; border: 1px solid #ddd;max-width: 100px; vertical-align: middle; height: 36px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;} 
 .btn-outline:hover{border: 1px solid #cbcbcb;}
 .btn-outline-orange{background: #fff; border: 1px solid #ed6c44; color:#ed6c44;}
 .btn-outline-orange:hover{border: 1px solid #ed6c44;}
@@ -135,10 +135,10 @@ select.form-control{display:inline-block; width:70%;}
 /**********************************************价格日历**********************************************/
 .datepicker{padding-left: 30px; padding-right: 20px; padding-bottom: 5px;}
 .datepicker table{width: 658px;}
-.datepicker table td{border: 1px solid #ddd; width: 92px; height: 88px;}
+.datepicker table td{border: 1px solid #ddd; width: 92px; height: 88px;overflow: hidden;}
 .datepicker table td div.dtbx{width: 92px; height: 88px; text-align: center; position: relative;}
 .datepicker table td div.dtbx font{font-weight: bold; display: inline-block; right: 10px; top: 20px; position: absolute;}
-.datepicker table td div.dtbx .tipvl{position: absolute; left: 8px; text-align: left; padding-top: 0; padding-right: 4px;}
+.datepicker table td div.dtbx .tipvl{position: absolute; left: 8px;  text-align: left; padding-top: 0; padding-right: 4px;}
 .datepicker table td div.dtbx .tipvl label{font-size: 12px !important; line-height: 12px !important;}
 .datepicker .tdyears{text-align: center; padding: 0; height: 40px; border-top: 3px solid #ffaf00; padding: 0 20px; width: 648px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}
@@ -166,3 +166,11 @@ select.form-control{display:inline-block; width:70%;}
 .day .choiced{background: #ed6c44;}
 .day .choiced font,
 .day .choiced label{color: #fff;}
+.tripPackageInfo{margin: 10px 35px 10px 40px;}
+
+.panel>.panel-heading {background: #f0f0f0; font-weight: normal; line-height: 32px; padding-left: 10px; font-size: 16px;} 
+.panel>.table {margin-bottom: 10px; width:895px;border: 1px solid #f0f0f0;}
+.tab-inputgroup tr td{border-bottom: none; padding:10px;}
+.tab-inputgroup>tbody>tr>td:first-child{width: 130px; padding: 8px 0 !important; text-align: right;}
+.panel>.table textarea{ width: 95%; height: 80px;}
+
