@@ -49,6 +49,19 @@
 #eredar .eredar-right .merchant-list1 span .isUsed,#eredar .eredar-right .merchant-list1 span .unUse{padding:0;color: #999;vertical-align: bottom;padding:0;margin:0;}
 #eredar .eredar-right .merchant-list1 span .fx{color: #999;vertical-align: bottom;padding:0;margin:0;}
 
+#eredar .eredar-right .eredar-info ul li.expire{
+    float: right;
+}
+
+#eredar .eredar-right .eredar-info ul li.expire.over span{
+    color:#ff0000;
+}
+
+#eredar .eredar-right .eredar-info ul li.expire .btn-renew{
+    border:1px solid #ccc;
+    padding:5px;
+    border-radius: 5px;
+}
 
 
 
