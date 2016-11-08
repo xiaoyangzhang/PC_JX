@@ -110,19 +110,12 @@ define(function (require, exports, module) {
 			},
 			closebox:function(){
 				var _self=this;
-				_self.box.hide();
 				$('.container').children('div').hide().appendTo('body');
+				_self.box.remove();
+				_self.box = null;
 				$('.bgmeng').off().on('click',function(ev){
 					_self.closebox();
 					$public.stopBubble(ev);
-				});
-			},
-			removebox:function(){
-				var _self=this;
-				_self.box.remove();
-				$('.container').children('div').hide().appendTo('body');
-				$('.bgmeng').off().on('click',function(ev){
-					_self.removebox();
 				});
 			},
 			waiting:function(){
