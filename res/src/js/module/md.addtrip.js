@@ -16,16 +16,14 @@ define(function(require, exports, module) {
         },
         init: function() {
             var _self = this;
-            //基本信息
+            //标签切换
             _self.tabSwitch();
             //添加套餐
             _self.addPackage();
+            //删除套餐
             _self.delTc();
-            //_self.tcTabSwitch();
             _self.createTc();
             _self.updateTc();
-
-
         },
         /*切换panel卡片*/
         tabSwitch: function() {
@@ -51,6 +49,31 @@ define(function(require, exports, module) {
                 skuId && window.updatedSKU.push(skuId);
             }
 
+            //更改套餐名
+            $('.tc-tab-content .tc-name').change(function(){
+                var name = $(this).val();
+                $('.add-tc .btn-outline').each(function(){
+                    if($(this).hasClass('active')){
+                        var tc = $(this).attr('data-tc') && JSON.parse($(this).attr('data-tc'));
+                        tc.name = name;
+                        $(this).attr('data-tc',JSON.stringify(tc));
+
+                        months = tc && tc.months;
+                        if(months){
+                            $.each(months, function(index, month) {
+                                days = month.days;
+                                $.each(days, function(index, day) {
+                                    blocks = day.blocks;
+                                    $.each(blocks, function(index, block) {
+                                        skuId = block.skuId;
+                                        skuId && window.updatedSKU.push(skuId,skuId);
+                                    });
+                                });
+                            });
+                        }
+                    }
+                });
+            });
         },
         createTc: function() {
             var priceInfo = $('#priceInfoJson').val() && JSON.parse($('#priceInfoJson').val()),
