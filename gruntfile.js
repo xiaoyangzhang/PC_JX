@@ -77,10 +77,10 @@ module.exports = function (grunt) {
     });
 
     // 加载提供"uglify"任务的插件
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
+	// grunt.loadNpmTasks('grunt-contrib-jshint');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
+    // grunt.loadNpmTasks('grunt-contrib-cssmin');
+    // grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // 默认任务
     grunt.registerTask('default', ['uglify:dist','cssmin:dist','imagemin:dist']);
