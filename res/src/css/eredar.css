@@ -66,7 +66,7 @@
 #editer .bd p{line-height:12px;position:relative;}
 #editer .bd p.imgwrap{border:1px solid #ddd;text-align:left;margin:0 auto 20px;}
 #editer .bd p.imgwrap span.tbd{min-height:240px;position:relative;display:block;background:#fbfbfb;}
-#editer .bd p.imgwrap span.tbd img.nopic{position:absolute;left:50%;margin-left:-36px;top:50%;margin-top:-36px;}
+#editer .bd p.imgwrap span.tbd img.nopic{ max-width: 700px;}
 #editer .bd p.imgwrap span.tft label.selectimg{height:27px;line-height:27px;float:left;}
 #editer .bd p.imgwrap span.tft label.selectimg input{position:relative;top:0;vertical-align:top;}
 #editer .bd p.imgwrap span.tft label.groupbtn{height:27px;line-height:27px;float:right;}
