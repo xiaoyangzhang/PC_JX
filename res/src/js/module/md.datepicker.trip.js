@@ -56,7 +56,7 @@ define(function(require, exports, module) {
                     $dtbx = $('.day .choiced .dtbx'),
                     $tipvl = $('.day .choiced .dtbx .tipvl'),
                     isSetData = true,
-                    isCheckedInput = false,
+                    
                     months = [],
                     days = [],
                     blocks = [],
@@ -68,25 +68,26 @@ define(function(require, exports, module) {
                 $tipvl.remove();
                 if ($dtbx.length > 0) {
                     $('.datepicker .price').each(function(index){
-                        var price = $(this),
+                        var isCheckedInput = true,
+                            price = $(this),
                             stock = $(this).parent().next().find('.stock'),
                             pTxt = $(this).parent().prev().attr('data-pTxt') || '',
                             tcName = $('.tc-tab .inputxt').val();
 
 
-                        if (!isCheckedInput && !/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test(price.val())) {
+                        if ((isCheckedInput && price.val() && !/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test(price.val())) || stock.val() && !price.val()){
                             $public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数', 'error');
                             price.focus();
                             isSetData = false;
                             return false;
                         }
-                        if (price.val() && (stock.length && !/^\d{1,6}$/.test(stock.val()))) {
+                        if (price.val() && (stock.length && !/^[1-9]\d{0,5}$/.test(stock.val()))) {
                             $public.dialog.msg('“库存”为数字,最大6位整数', 'error');
                             stock.focus();
                             isSetData = false;
                             return false;
                         }
-                        isCheckedInput = true;
+                        isCheckedInput = false;
 
                         if(price.val()){
                             $dtbx.filter(function() {
@@ -123,7 +124,7 @@ define(function(require, exports, module) {
                                 PId: 21,
                                 PType: 4,
                                 pTxt:pTxt,
-                                price:price.val(),
+                                price:price.val()*100,
                                 stock:(stock && stock.val()) || 999
                             });
                         }
@@ -134,7 +135,7 @@ define(function(require, exports, module) {
                         return false;
                     }
 
-                    $('.datepicker .setvalue input[type=text]').val('');
+                    //$('.datepicker .setvalue input[type=text]').val('');
                     
                     //自由行/跟团游 价格日历存储数据
                     if(isSetData){
@@ -551,7 +552,7 @@ define(function(require, exports, module) {
                             if (cur_smp == day.time) {
                                 var cur_td = $(this).closest('td')[0];
                                 $.each(day.blocks, function(index, block) {
-                                    _self.set_tdvalue($(cur_td).find('.dtbx'), block.price, block.stock, block.pTxt, block.skuId);
+                                    _self.set_tdvalue($(cur_td).find('.dtbx'), block.price/100, block.stock, block.pTxt, block.skuId);
                                 });
 
                                 if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), (parseInt(this.innerHTML) + 1)), _self.rangedays)) {
@@ -584,9 +585,9 @@ define(function(require, exports, module) {
                         html += '<br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'">' + stock + '</label>';
                     }
                 }else{
-                    html += '<br><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'">' + price + '</label>';
+                    html += '<br><label>'+pTxt+'￥</label><label class="price_">' + price + '</label>';
                     if(stock){
-                        html += '<br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'">' + stock + '</label>';
+                        html += '<br><label>库</label><label class="stock_">' + stock + '</label>';
                     }
                 }
                 

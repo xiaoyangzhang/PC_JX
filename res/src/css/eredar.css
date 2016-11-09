@@ -113,8 +113,6 @@ table tr td div.t-img{
 table tr td button{
 	margin: 3px;
 }
-table .market-price{text-align:center;}
-
 
 .hd_wh{width:100px;height:100px;}
 /*.table div {font-size: 12px;}*/
@@ -122,4 +120,4 @@ table tr td div.t-name{font-size: 14px;color:#333;padding-bottom: 10px;}
 /*.t-userType,.t-date{color:#acacac;font-size: 12px;}*/
 
 .fullCut{border:solid 1px #ddd;display: inline-block;font-size: 12px;width: 75px;text-align: center;}
-.market-price{display:inline-block; width:100%; text-decoration: line-through; color: red; }
+.market-price{display:inline-block; width:100%; text-decoration: line-through; color: #999; }
