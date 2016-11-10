@@ -93,21 +93,24 @@ define(function(require, exports, module) {
             var _self = this,
                 $priceInfo = $(_self.config.priceInfo),
                 $packageName = $priceInfo.find('.package-name');
+                
 
             $priceInfo.on('click', '.add-package', function(ev) {
+                var isAddPackage = true;
                 //最多可添加20个套餐
                 var tcLen = $priceInfo.find('.btn-outline').length;
-                if (tcLen > 20) {
+                if (tcLen > 19) {
                     $public.dialog.msg("最多可添加20个套餐", 'error');
                     return;
                 }
 
+                
                 //添加套餐弹框
                 $public.dialog.content(500, 200, '添加套餐', $packageName.show(), function() {
                     var $name = $packageName.find('.tc-name'),
                         $html = '',
                         $parentLi = $('.add-tc');
-                    if (!$name.val()) {
+                    if (!$.trim($name.val())) {
                         $public.dialog.msg('请输入套餐名称','error');
                         return;
                     }else if($name.val().length > 20){
@@ -115,6 +118,17 @@ define(function(require, exports, module) {
                         return;
                     }
 
+                    $priceInfo.find('.btn-outline').each(function(){
+                        if($(this).text() == $name.val()){
+                            $public.dialog.msg("添加的套餐名称重复", 'error');
+                            isAddPackage = false;
+                        }
+                    });
+                    
+                    if(!isAddPackage) {
+                        $packageName.find('.tc-name').val('');
+                        return;
+                    }
                     //创建套餐标签
                     $html = $('<a href="javascript:;" class="btn btn-outline posr ml10">' + $name.val() + '<i class="icon-close"></i></a>');
                     $parentLi.append($html);
@@ -182,14 +196,13 @@ define(function(require, exports, module) {
                             });
                         });
                     }
-                    
-                    $('.add-tc .btn-outline').eq(0).click();
-                    len = $('.add-tc .btn-outline').length;
-                    if(len == 1){
-                        $('.tc-tab-content').hide();
-                    }
                     $(_this).parent().remove();
                     $public.dialog.closebox();
+                    $('.add-tc .btn-outline').eq(0).click();
+                    len = $('.add-tc .btn-outline').length;
+                    if(!len){
+                        $('.tc-tab-content').hide();
+                    }
                     //_self.tcTabSwitch();
 
                 }, function() {
