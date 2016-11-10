@@ -86,7 +86,7 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 .dialog .content-box .close-tip i:hover,.dialog .prompt-box .close-tip i:hover{transform: rotate(180deg);}
 .dialog .content-box .close-tip div,.dialog .prompt-box .close-tip div{border-bottom:1px solid #ddd;text-align: left;height: 36px;}
 .dialog .content-box .close-tip h2,.dialog .prompt-box .close-tip h2{margin-bottom:-1px;float:left;text-align:center;color:#ffaf00;font-size:20px;
-  border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px;}
+border-bottom:1px solid #ffaf00;padding-bottom:5px;line-height: 30px;}
 
 .dialog .content-box .btn-group{width:100%;position:absolute;bottom:0;text-align:right;margin-left:-20px;text-align: center;}
 .dialog .content-box .btn-group div{margin:0 20px;border-top:1px solid #ccc;}
@@ -109,6 +109,17 @@ background-size: 30%; background-repeat: no-repeat;background-position: center;z
 margin:28px auto;}
 .dialog-agreement p{padding:2px 20px;line-height: 25px;font-size:14px;color:#666;}
 .dialog-agreement p label{color:#ed6c44;vertical-align: inherit;}
+.dialog .pager .form-control{float:left; display:inline-block;height:auto;}
+
+.dialog .input-group-addon{width:auto;}
+.dialog .select-wrapper{-webkit-box-sizing: content-box;box-sizing: content-box;}
+.dialog .searchbox .tb td button {padding:0 10px; height: 32px; line-height: 30px; background: #ececec; outline: none; border: 1px solid #ddd; margin-left: 5px; }
+.dialog .inputxt{line-height: 30px;}
+.dialog .hotelist{margin-top:10px;}
+.dialog .hotelist {height: 354px; margin-top: 10px;} 
+.dialog .hotelist table td{line-height: 24px; cursor: pointer; padding:5px;}
+.dialog .hotelist th{height: 34px; background: #f5f5f5; text-align: center;} 
+.dialog .hotelist .hotel-tel{white-space: nowrap;}
 
 /***************************自定义下拉框***********************/
   .select-wrapper{

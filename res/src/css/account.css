@@ -10,6 +10,7 @@
 
 #ym-login-banner input.sortinput{width:162px;float:left;}
 #ym-login-banner img.imgcode{float:right;cursor:pointer;}
+
 #ym-login-banner span.tips{display:block;color:#999;margin-bottom:14px;}
 #ym-login-banner .winloginbtn{display:block;width:400px;height:48px;line-height:48px;background:#ffaf00;text-align:center;border-radius:24px;
 	margin:14px auto;font-size:20px;color:#333;border:none;cursor:pointer;}

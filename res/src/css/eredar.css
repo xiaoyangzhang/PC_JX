@@ -120,4 +120,8 @@ table tr td div.t-name{font-size: 14px;color:#333;padding-bottom: 10px;}
 /*.t-userType,.t-date{color:#acacac;font-size: 12px;}*/
 
 .fullCut{border:solid 1px #ddd;display: inline-block;font-size: 12px;width: 75px;text-align: center;}
+
 .market-price{display:inline-block; width:100%; text-decoration: line-through; color: #999; }
+.searchbox{display: none; }
+.dialog .content-box .close-tip h2,.dialog .prompt-box .close-tip h2 {margin-top:0;}
+.dialog .content-box .btn-group{left:0; margin-left:0;}

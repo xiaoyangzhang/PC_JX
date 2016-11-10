@@ -96,6 +96,10 @@ define(function (require, exports, module) {
 				var _self=ScenicAndHotel.prototype,
 					_this = this;
 				$(_self.config.searchotel).on('click',function(ev){
+					if($.trim($('.info-bar .scenic-name,.info-bar .hotel-name').text())){
+						$public.dialog.msg("景区和酒店只能选择一个",'error');
+						return;
+					}
 					var $searchbox=$('.searchbox'),
 					$htlst=$searchbox.find(_self.config.hotelist);
 					$htlst.css({'overflow':'auto','height':300});
@@ -186,6 +190,10 @@ define(function (require, exports, module) {
 					_this = this;
 
 				$(_self.config.searchScenic).on('click',function(ev){
+					if($.trim($('.info-bar .scenic-name,.info-bar .hotel-name').text())){
+						$public.dialog.msg("景区和酒店只能选择一个",'error');
+						return;
+					}
 					var $searchbox=$('.searchbox'),
 					$sceniclist=$searchbox.find(_self.config.hotelist);
 					/*var $searchbox=$(_self.config.searchbox),
