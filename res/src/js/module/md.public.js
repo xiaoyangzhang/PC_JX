@@ -135,7 +135,7 @@ define(function (require, exports, module) {
 					$('.msg').text(value);
 					_self.box.fadeIn();
 				}else{
-					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
+					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				var msg=$('#msg-box .msg');
