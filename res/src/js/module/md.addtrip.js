@@ -44,10 +44,10 @@ define(function(require, exports, module) {
                 var skuId = $(this).attr('data-sku-id');
                 skuId && window.updatedSKU.push(skuId);
             });
-            if ($hiddenInput.length) {
+            /*if ($hiddenInput.length) {
                 skuId = $inputHidden.attr('data-sku-id');
                 skuId && window.updatedSKU.push(skuId);
-            }
+            }*/
 
             //更改套餐名
             $('.tc-tab-content .tc-name').change(function(){

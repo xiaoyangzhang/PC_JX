@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <link rel="shortcut icon" href="../../img/jiuxiu_favicon.ico" mce_href="../../img/jiuxiu_favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加酒店</title>
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Test/PC_JX_20161010/src/css/base.css">
+    <link rel="stylesheet" href="../../src/css/common.css">
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Test/PC_JX_20161010/src/css/jquery-ui-1.10.4.custom.css">
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Test/PC_JX_20161010/src/css/eredar.css">
+    <!-- <link rel="stylesheet" href="http://localhost:8080/sellerAdmin/resources/zui/lib/datetimepicker/datetimepicker.min.css"> -->
+    <link rel="stylesheet" href="../../res/src/css/addtripproduct.css">
+    <!-- <link rel="stylesheet" href="http://localhost:8080/sellerAdmin/resources/zui/css/zui.min.css"> -->
+    
+    <link rel="stylesheet" href="http://s0.test.jiuxiulvxing.com/Test/PC_JX_20161010/src/old/css/addtravel.css">
+    <link rel="stylesheet" href="../../src/css/editer.css">
+</head>
+
+<body>
+    <div id="jiuxColor" class="jiuw2">
+        <div class="jiux-header wjiuxiu jiuw2 clearfix">
+            <!-- 头部左侧部分 -->
+            <div class="header-l fl clearfix">
+                <a href="http://www.test.jiuxiulvxing.com" class="fl">
+                    <div class="logo">九休旅行</div>
+                </a>
+                <ul class="clearfix fl">
+                    <li class="fl"><a href="http://www.test.jiuxiulvxing.com">首页</a></li>
+                    <li class="fl"><a href="http://www.test.jiuxiulvxing.com/business/">九休商务</a></li>
+                    <li class="fl"><a href="http://www.test.jiuxiulvxing.com/app/index.html">九休旅行App</a></li>
+                    <li class="fl active"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/home">商家中心</a></li>
+                </ul>
+            </div>
+            <!-- 头部右侧部分 -->
+            <div class="header-r fr clearfix">
+                <div class="tel">
+                    <ul>
+                        <li class="fl staticW m-r">
+                            <a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/login">登录</a>
+                            <span class="cuttingline"></span>
+                        </li>
+                        <li class="fl staticW m-r"><a href="http://selleradmin.test.jiuxiulvxing.com/sellerAdmin/user/register">注册</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 面包屑 -->
+    <div class="comwidth crumbs f12">您所在的位置：添加酒店商品><a class="f12 gray6">选择酒店</a></div>
+    <div class="comwidth clearfix" id="eredar">
+        <div class="eredar-left">
+            <dl class="first">
+                <dd>商品管理</dd>
+                <dt class="one">添加商品</dt>
+                <dt>商品列表</dt>
+            </dl>
+            <dl>
+                <dd>添加酒店商品</dd>
+                <dt class="on">选择酒店</dt>
+                <dt>基本信息</dt>
+                <dt>价格日历</dt>
+            </dl>
+            <dl>
+                <dd>添加景区门票</dd>
+                <dt>基本信息</dt>
+                <dt>价格日历</dt>
+            </dl>
+            <dl>
+                <dd>订单管理</dd>
+                <dt class="one">订单列表</dt>
+            </dl>
+            <dl>
+                <dd>店铺管理</dd>
+                <dt class="one">基本信息</dt>
+                <dt>账户信息</dt>
+            </dl>
+            <dl>
+                <dd>对账管理</dd>
+                <dt class="one">月结账单</dt>
+            </dl>
+        </div>
+        <div class="eredar-right">
+            <div class="eredar-info clearfix">
+                <ul>
+                    <li class="first on">基本信息</li>
+                    <li>图文介绍</li>
+                    <li>行程信息</li>
+                    <li>价格信息</li>
+                    <li>预定须知</li>
+                </ul>
+            </div>
+            <!-- 基本信息 start -->
+            <div class="panel">
+                <div class="baseinfo">
+                    <table border="0" class="table tab-inputgroup base-info">
+                        <tbody>
+                            <tr>
+                                <td>商品类型：</td>
+                                <td>国内跟团游</td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>商品标题：</td>
+                                <td>
+                                    <input type="text" value="" class="form-control item-name" placeholder="请输入商品标题" maxlength="38">
+                                    <span class="limit">38字</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>商品代码：</td>
+                                <td>
+                                    <input type="text" value="" class="form-control item-code w300" placeholder="请输入商品编号" maxlength="20">
+                                    <span class="limit">20字</span>
+                                    <span class="ml10">注：商品代码供商家管理商品使用，不会展示给用户</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>出发地：</td>
+                                <td>
+                                    <div>
+                                        <button type="button" class="btn btn-success select-departs">请选择出发地</button>
+                                        <label class="checkbox-inline ml50">
+                                            <input type="checkbox" class="all-departs" value="true">全国
+                                        </label>
+                                        <div id="departs-content" class="mt5">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>目的地：</td>
+                                <td>
+                                    <div>
+                                        <button type="button" class="btn btn-success select-dests">请选择目的地</button>
+                                        <div id="dests-content">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>行程天数（天）：</td>
+                                <td>
+                                    <input type="text" value="" class="form-control days int-only" placeholder="请填写1-100整数" maxlength="3">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>线路亮点：</td>
+                                <td>
+                                    <textarea class="form-control textarea-count description" rows="3" placeholder="把线路亮点写出来，订单量嗖嗖往上涨哟…"></textarea>
+                                    <div class="word-num"><span class="num-a">0</span>/<span class="num-b">200字</span></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>线路主题：</td>
+                                <td>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="1000901" rname="彩虹之恋">彩虹之恋
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="1000804" rname="测试2">测试2
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="1000803" rname="测试">测试
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="5301" rname="纯纯粹粹">纯纯粹粹
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="171" rname="艳遇">艳遇
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="156" rname="休闲养生">休闲养生
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="157" rname="协伴同游">协伴同游
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="154" rname="自然风光">自然风光
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="109" rname="家庭">家庭
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="110" rname="任性">任性
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" class="productTag" rid="108" rname="文艺">文艺
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="red">*</span>商品图：</td>
+                                <td>
+                                    <div class="uploadbox clearfix">
+                                        <input type="hidden" class="uplUrl" value="http://selleradmin.secondtest.jiuxiulvxing.com/sellerAdmin/upload/file_string">
+                                        <input type="hidden" class="imgUrl" value="http://192.168.1.209:7500/v1/tfs/">
+                                        <div class="imgbox">
+                                            <div class="dimg">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                <input type="hidden" class="picCode baseInfo-picCode">
+                                            </div>
+                                            <div class="upimgbtn">
+                                                <a class="upl">上传图片<input type="file" name="picfile" class="picfile"></a>
+                                                <button class="del">删除图片</button>
+                                            </div>
+                                        </div>
+                                        <div class="imgbox">
+                                            <div class="dimg">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                <input type="hidden" class="picCode baseInfo-picCode">
+                                            </div>
+                                            <div class="upimgbtn">
+                                                <a class="upl">上传图片<input type="file" name="picfile" class="picfile"></a>
+                                                <button class="del">删除图片</button>
+                                            </div>
+                                        </div>
+                                        <div class="imgbox">
+                                            <div class="dimg">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                <input type="hidden" class="picCode baseInfo-picCode">
+                                            </div>
+                                            <div class="upimgbtn">
+                                                <a class="upl">上传图片<input type="file" name="picfile" class="picfile"></a>
+                                                <button class="del">删除图片</button>
+                                            </div>
+                                        </div>
+                                        <div class="imgbox">
+                                            <div class="dimg">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                <input type="hidden" class="picCode baseInfo-picCode">
+                                            </div>
+                                            <div class="upimgbtn">
+                                                <a class="upl">上传图片<input type="file" name="picfile" class="picfile"></a>
+                                                <button class="del">删除图片</button>
+                                            </div>
+                                        </div>
+                                        <div class="imgbox">
+                                            <div class="dimg">
+                                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                <input type="hidden" class="picCode baseInfo-picCode">
+                                            </div>
+                                            <div class="upimgbtn">
+                                                <a class="upl">上传图片<input type="file" name="picfile" class="picfile"></a>
+                                                <button class="del">删除图片</button>
+                                            </div>
+                                        </div>
+                                        <div class="upl-tips">
+                                            <p>图片大小不超过500K，格式为JPG,JPEG,PNG；建议图片尺寸为：750*420</p>
+                                            <p>至少上传1张图片，第一张图片将被展示在搜索结果列表页面和订单页面</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 出发地 start -->
+                    <div class="startlistbox">
+                        
+                    </div>
+                    <!-- 出发地 end -->
+                </div>
+                
+            </div>
+            <!-- 基本信息 start -->
+            <!-- 图文介绍 start -->
+            <div class="panel">
+                <div id="editers">
+                    <div class="editer-tip">
+                        <p><b>编辑小助手：</b></p>
+                        <p>1、点击页面下方的“添加文本”/“上传图片”按钮，可新添加文本段或图片</p>
+                        <p>2、点击“上移”和“下移”，可调整文本段和图片之间的顺序</p>
+                        <p>3、最多添加20段图片或文字</p>
+                        <p>4、图片大小不能超过3M，格式为JPG,JPEG,PNG,建议尺寸：690*330</p>
+                    </div>
+                    <div class="bd">
+                    </div>
+                    <div class="hd clearfix">
+                        <ul class="clearfix">
+                            <li><a href="javascript:void(0)" class="addtext">+添加文本</a></li>
+                            <li><a href="javascript:void(0)" class="addpic">+添加图片</a></li>
+                        </ul>
+                    </div>
+                    <textarea name="content" id="contentText" style="display:none;"></textarea>
+                    <input type="hidden" id="uploadAction" value="http://selleradmin.secondtest.jiuxiulvxing.com/sellerAdmin/upload/file">
+                    <input type="hidden" id="imgUrl" value="http://192.168.1.209:7500/v1/tfs/">
+                </div>
+            </div>
+            <!-- 图文介绍 start -->
+            <!-- 行程信息 start -->
+            <div class="panel">
+                行程信息
+            </div>
+            <!-- 行程信息 start -->
+            <!-- 价格信息 start -->
+            <div class="panel priceInfo on">
+                <div class="price-info">
+                    <form action="">
+                        <div class="ml40 mt20">
+                            <label class="label">目前报名天数：</label>
+                            <input type="text" class="inputxt" maxlength="4" placeholder="0">
+                        </div>
+                        <div class="ml40 mt20 add-tc">
+                            <label class="label"><a href="javascript:;" class="btn btn-orange add-package">添加新套餐</a></label>
+                        </div>
+                        <div class="mt20 tc-tab-content">
+                            <label class="label">套餐名称：</label>
+                            <input type="text" class="inputxt tc-name" placeholder="0">
+                            <div class="clearfix datepicker mt20">
+                               <input type="hidden" class="rds" value="120">
+                               <table class="fl">
+                                   <tr>
+                                       <td class="tdyears clearfix" colspan="7">
+                                           <i class="fl prev"></i>
+                                           <i class="fr next"></i>
+                                           <label id="SY"></label>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td class="tdmonth" colspan="7">
+                                           <ul>
+                                               <li>1月</li>
+                                               <li>2月</li>
+                                               <li>3月</li>
+                                               <li class="on">4月</li>
+                                               <li>5月</li>
+                                               <li>6月</li>
+                                               <li>7月</li>
+                                               <li>8月</li>
+                                               <li>9月</li>
+                                               <li>10月</li>
+                                               <li>11月</li>
+                                               <li>12月</li>
+                                           </ul>
+                                       </td>
+                                   </tr>
+                                   <tr class="tdweek">
+                                       <td>
+                                           <input type="checkbox" week="0">周日
+                                       </td>
+                                       <td>
+                                           <input type="checkbox" week="1">周一</td>
+                                       <td>
+                                           <input type="checkbox" week="2">周二</td>
+                                       <td>
+                                           <input type="checkbox" week="3">周三</td>
+                                       <td>
+                                           <input type="checkbox" week="4">周四</td>
+                                       <td>
+                                           <input type="checkbox" week="5">周五</td>
+                                       <td>
+                                           <input type="checkbox" week="6">周六</td>
+                                   </tr>
+                               </table>
+                               <div class="setvalue fr">
+                                   <h2>价格设置</h2>
+                                   <dl>
+                                       <dt data-pTxt="成">成人：</dt>
+                                       <dd class="mt10">
+                                           <span class="bred">*</span>
+                                           <label>价格：</label>
+                                           <input type="text" class="price" maxlength="9">
+                                       </dd>
+                                       <dd class="mt10">
+                                           <span class="bred">*</span>
+                                           <label>库存：</label>
+                                           <input type="text" class="stock" maxlength="9">
+                                       </dd>
+                                       <dt data-pTxt="儿" class="mt10">儿童：</dt>
+                                       <dd class="mt10">
+                                           <span class="bred">*</span>
+                                           <label>价格：</label>
+                                           <input type="text" class="price" maxlength="9">
+                                       </dd>
+                                       <dd class="mt10">
+                                           <span class="bred">*</span>
+                                           <label>库存：</label>
+                                           <input type="text" class="stock" maxlength="9">
+                                       </dd>
+                                       <dt data-pTxt="单房差" class="mt10">单房差：</dt>
+                                       <dd class="mt10">
+                                           <span class="bred">*</span>
+                                           <label>价格：</label>
+                                           <input type="text" class="price" maxlength="9">
+                                       </dd>
+                                       <dd class="btn mt10">
+                                           <a class="setvl">确定</a>
+                                           <a class="clearvl">清除</a>
+                                       </dd>
+                                   </dl>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="tc mb40">
+                            <a href="javascript:;" class="btn btn-orange">返回上一页</a>
+                            <a href="javascript:;" class="btn btn-orange ml20">全部提交</a>
+                        </div>
+                    </form>
+                    <!-- 弹框套餐内容 start --> 
+                    <div class="package-name mt20">
+                        <span class="bred">*</span> 套餐名称：
+                        <input type="text" class="tc-name" placeholder="请输入套餐名称" maxlength="20">
+                    </div>
+                    <!-- 弹框套餐内容 end --> 
+                </div>
+            </div>
+            <!-- 价格信息 end -->
+            <!-- 预定须知 start -->
+            <div class="panel">
+                预定须知
+            </div>
+            <!-- 预定须知 start -->
+            <div class="btngroup">
+            <a class="backprev">返回上一页</a>
+            <a class="save-to-picker">保存并下一步</a>
+        </div>
+        </div>
+    </div>
+    <div id="footID">
+        <div class="jiux-footer jiuw2">
+            <div class="footer-top ">
+                <div class="footID clearfix jiuw2">
+                    <ul class="fl">
+                        <li><a href="http://www.test.jiuxiulvxing.com/about/aboutus.html">关于九休</a></li>
+                        <li><a href="http://www.test.jiuxiulvxing.com/about/contactus.html">联系我们</a></li>
+                        <li><a href="http://www.test.jiuxiulvxing.com/feedback/">意见反馈</a></li>
+                        <li>招商咨询&nbsp;&nbsp;4000-696-888/9:00~22:00，周一到周日</li>
+                    </ul>
+                    <div class="fr">
+                        <a class="wb"></a>
+                        <a class="wx"><i></i></a>
+                        <a class="qq"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bom">
+                <div class="footID jiuw2">
+                    <img src="http://s0.test.jiuxiulvxing.com/PC_JX/img/b_logo.png">
+                    <p>COPYRIGHT© 2016 JIUXIULVXING.COM 九休旅行版权所有</p>
+                    <p><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备16022217号-1</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../res/src/js/sea.js"></script>
+    <script type="text/javascript" src="../../res/src/js/seajs-preload.js"></script>
+    <script type="text/javascript" src="../../res/src/js/config.js"></script>
+    <script>
+    seajs.use("addtrip");
+    </script>
+</body>
+
+</html>
