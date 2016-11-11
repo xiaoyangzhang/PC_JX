@@ -123,5 +123,6 @@ table tr td div.t-name{font-size: 14px;color:#333;padding-bottom: 10px;}
 
 .market-price{display:inline-block; width:100%; text-decoration: line-through; color: #999; }
 .searchbox{display: none; }
+.scenic-name,.hotel-name{width:214px !important;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .dialog .content-box .close-tip h2,.dialog .prompt-box .close-tip h2 {margin-top:0;}
 .dialog .content-box .btn-group{left:0; margin-left:0;}
