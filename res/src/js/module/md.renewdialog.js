@@ -7,7 +7,7 @@ define(function (require, exports, module) {
         return '<div class="dialog" style="display: block;">' +
             '<div class="dialog-agreement">' +
             '<div class="clearfix">' +
-            '<h2>' + year + '年九休旅行续签申请须知</h2>' +
+            '<h2>' + (year+1) + '年九休旅行续签申请须知</h2>' +
             '<i></i>' +
             '</div>' +
             '<p>尊敬的商家您好：</p>' +
