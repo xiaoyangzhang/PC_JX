@@ -33,12 +33,15 @@ define(function (require, exports, module) {
 			//删除选中的景区或者酒店
 			$(_self.config.infoBar).find('.icon-close').on('click',function(){
 				$(this).prev().html('');
-				$('input[name="hotelName"],input[name="scenicName"],input[name="outId"],input[name="outType"]').val('');
+				$('input[name="hotelName"],input[name="scenicName"]').val('');
+				$('input[name="outId"],input[name="outType"]').val('0');
+
 			});
 
 			$('.form-clear').on('click',function(){
 				$('.scenic-name,.hotel-name').html('');
-				$('input[name="hotelName"],input[name="scenicName"],input[name="outId"],input[name="outType"]').val('');
+				$('input[name="hotelName"],input[name="scenicName"]').val('');
+				$('input[name="outId"],input[name="outType"]').val('0');
 			});
 			//查询酒店
 			$(document).on('click','.searchHotelBtn',function(){
