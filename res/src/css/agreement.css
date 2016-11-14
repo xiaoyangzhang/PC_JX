@@ -42,7 +42,7 @@ table tr td{border: 1px solid #ddd;padding:0 10px;}*/
 .eredar-right .agremt-name{width:970px;background: #fff;}
 .eredar-right .agremt-btn{width:160px;height:36px;line-height: 36px;text-align: center;margin:auto; background: #ed6c44;display: block; color:#fff;margin-top:20px;margin-bottom:10px;}
 .eredar-right .agremt-view{color:#ed6c44;}
-.eredar-right .step-container{background:url(../../img/agreement.png) no-repeat left center;height: 145px;border-bottom: 1px solid #e1e1e1;}
+.eredar-right .step-container{background:url(../../img/agreement.png) no-repeat center center;height: 145px;border-bottom: 1px solid #e1e1e1;}
 
 
 
