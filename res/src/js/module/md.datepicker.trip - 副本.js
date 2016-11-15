@@ -145,8 +145,22 @@ define(function(require, exports, module) {
                         if(price.val()){
                             number++;
                             $dtbx.filter(function() {
+                                //console.log($(this))
                                 if($(this).closest('td').attr('data-opt') == 'update'){
-                                    _self.updateSkuId($(this),price.val(),stock.val(),pTxt);
+                                    //console.log(pTxt);
+                                    var skuStatus = 0;
+                                    console.log($(this).find('.price_').length)
+                                    $(this).find('.price_').each(function(){
+                                         console.log($(this).attr('data-pTxt'),pTxt);
+                                        if(pTxt == $(this).attr('data-pTxt')){
+                                            skuId = $(this).attr('data-sku-id');
+                                            skuId && window.updatedSKU.push(skuId);
+                                            console.log(window.updatedSKU);
+                                        }
+                                        
+                                    });
+
+
 
                                 }else{
 
@@ -183,38 +197,44 @@ define(function(require, exports, module) {
 
                             
 
-                            var stockValue = '';
-                            if(stock.val()){
-                                stockValue = stock.val();
-                            }else if(price.val()){
-                                stockValue = 999;
-                            }
-
-                            if(price.val()){
-                                if(skuId){
-                                    blocks.push({
-                                        skuId: skuId,
-                                        id: id,
-                                        type: type,
-                                        name: name,
-                                        PId: 21,
-                                        PType: 4,
-                                        pTxt:pTxt,
-                                        price:price.val() && price.val()*100 || '',
-                                        stock:stockValue
-                                    });
-                                }else{
-                                    blocks.push({
-                                        id: id,
-                                        type: type,
-                                        name: name,
-                                        PId: 21,
-                                        PType: 4,
-                                        pTxt:pTxt,
-                                        price:price.val() && price.val()*100 || '',
-                                        stock:stockValue
-                                    });
+                            if($.inArray($(this).find('font').text(),_self.months) > -1){
+                                _self.update_value(price, stock, name, pTxt, skuId, $(this).find('font').text());
+                                isSetData = false;
+                                return false;
+                            }else{
+                                var stockValue = '';
+                                if(stock.val()){
+                                    stockValue = stock.val();
+                                }else if(price.val()){
+                                    stockValue = 999;
                                 }
+                                if(price.val()){
+                                    if(skuId){
+                                        blocks.push({
+                                            skuId: skuId,
+                                            id: id,
+                                            type: type,
+                                            name: name,
+                                            PId: 21,
+                                            PType: 4,
+                                            pTxt:pTxt,
+                                            price:price.val() && price.val()*100 || '',
+                                            stock:stockValue
+                                        });
+                                    }else{
+                                        blocks.push({
+                                            id: id,
+                                            type: type,
+                                            name: name,
+                                            PId: 21,
+                                            PType: 4,
+                                            pTxt:pTxt,
+                                            price:price.val() && price.val()*100 || '',
+                                            stock:stockValue
+                                        });
+                                    }
+                                }
+                                
                             }
 
                         }
@@ -283,6 +303,53 @@ define(function(require, exports, module) {
                         });
                     }
 
+
+                    /*$.each(pType,function(index,type){
+                        if(type == 1){ //del
+
+                        }
+
+                        if(type == 11){ //update
+
+                        }
+                    });*/
+
+                   /* $('.day .choiced .dtbx').each(function(){
+                        $(this).find('.price_').each(function(){
+                            var target = $(this),
+                                pTxt = target.attr('data-ptxt'),
+                                oldPtxt = '';
+                            $.each(pType,function(index,type){
+                                switch(index){
+                                    case 'type1':
+                                        oldPtxt = '儿';
+                                        break;
+                                    case 'type2':
+                                        oldPtxt = '成';
+                                        break;
+                                    case 'type3':
+                                        oldPtxt = '单房差';
+                                        break;
+                                }
+
+                                if(type === '1'){ //del
+                                    if(oldPtxt == pTxt){
+                                        skuId = target.attr('data-sku-id');
+                                        skuId && deletedSKU.push(skuId);
+                                    }
+                                }
+
+                                if(type == '11'){ //update
+                                    if(oldPtxt == pTxt){
+                                        skuId = target.attr('data-sku-id');
+                                        skuId && updatedSKU.push(skuId);
+                                    }
+                                }
+                            });
+                        });
+                    });  
+
+                    console.log(updatedSKU);*/
                     
                 } else {
                     $public.dialog.msg('请选择要设置的日期', 'error');
@@ -766,12 +833,26 @@ define(function(require, exports, module) {
 
             this.drawCld(this.tY, this.tM);
         },
-        updateSkuId: function(obj,price,stock,pTxt){
+        /*findUpdateSkuId: function($(this)){
             var _self = this;
-            $.each(_self.data,function(index,type){
-                console.log(type);
+            $.each(_self.data,function(index){
+                var type = _self.data[index];
+                $('.setvalue .price').each(function(){
+                    var price = $(this),
+                        stock = $(this).parent().next().find('.stock'),
+                        pTxt = $(this).parent().prev().attr('data-pTxt') || '',
+                        tcName = $('.tc-tab .inputxt').val(),
+                        skuId = $(this).attr('data-sku-id'),
+                        mType = $(this).parent().prev().attr('data-mType');
+
+                    if(type == mType){
+
+                    }
+
+                });
+
             })
-        }
+        }*/
     }
 
     module.exports = new $datepicker();
