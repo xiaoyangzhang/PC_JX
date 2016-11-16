@@ -183,7 +183,7 @@
 		});
 		//文本例
 		$(document).on('click','.ic-example',function(){
-			var $txt = $(this).closest('div').find('.text-example').html();
+			var $txt = $(this).closest('td').find('.text-example').html();
 			layer.open({
 				type:1,
 				title:'文本样例',
