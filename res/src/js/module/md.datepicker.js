@@ -77,8 +77,9 @@ define(function(require, exports, module) {
                         _self.set_chahevalue(stock, price, $(this).parent().find('font').html());
                     });
                     $('input[name="supplierCalendar"]').val(JSON.stringify(_self.supplierCalendar));
-                } else
+                } else {
                     $public.dialog.msg('请选择要设置的日期', 'error');
+                }
             });
 
             //清除价格和库存
@@ -139,7 +140,6 @@ define(function(require, exports, module) {
                 }
             });
             */
-           
             $(".tdweek").on("click", "td:has(input[type='checkbox'])", function() {
                 var tagName = event.target.tagName.toLowerCase();
                 if (tagName == 'td') {
@@ -402,6 +402,13 @@ define(function(require, exports, module) {
                 });
 
             }
+
+            $(".tdweek input[type='checkbox']").each(function() {
+                var week = $(this).attr("week");
+                var inRangeDays = $(".day td.in-range[week='" + week + "']").length;
+                var choicedDays = $(".day td.choiced[week='" + week + "']").length;
+                this.checked = inRangeDays == choicedDays;
+            });
         },
         //价格和库存写入缓存
         set_chahevalue: function(stock, price, day) {
