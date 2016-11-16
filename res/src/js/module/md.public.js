@@ -43,13 +43,16 @@ define(function (require, exports, module) {
 	
 	$public.prototype = {
 		init:function(){
-			var _self=this;
+			var _self=this,obj_group='textarea,input:not(input[type="radio"],input[type="checkbox"])';
 			/* 统一主域名 */
 			if(document.domain.indexOf('jiuxiulvxing.com')!=-1)
 				document.domain = 'jiuxiulvxing.com';
-			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
+
+			$(document).on('focus',obj_group,function(){
 				$(this).css('border','1px solid #ed6c44');
-			}).on('blur',function(){
+			});
+			
+			$(document).on('blur',obj_group,function(){
 				$(this).css('border','1px solid #ddd');
 			});
 
