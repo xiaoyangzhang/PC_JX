@@ -110,7 +110,9 @@ define(function (require, exports, module) {
 			},
 			closebox:function(){
 				var _self=this;
-				$('.container').children('div').hide().appendTo('body');
+				if(_self.box.attr('id')!='msg-box'){
+					$('.container').children('div').hide().appendTo('body');
+				}
 				_self.box.remove();
 				_self.box = null;
 				$('.bgmeng').off().on('click',function(ev){
@@ -136,7 +138,7 @@ define(function (require, exports, module) {
 					$('.msg').text(value);
 					_self.box.fadeIn();
 				}else{
-					_self.box.children(':not(".bgmeng")').hide().appendTo('body');
+					_self.box.children(':not(".bgmeng")').remove();
 					_self.box.attr('id','msg-box').append('<div class="msg">'+value+'</div>').fadeIn();
 				}
 				var msg=$('#msg-box .msg');

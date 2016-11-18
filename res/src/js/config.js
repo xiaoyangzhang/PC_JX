@@ -36,6 +36,7 @@ seajs.config({
 		"uploadfiles" : "module/md.uploadfiles",
 		"addhotel" : "module/md.addhotel",
 		"addtrip" : "module/md.addtrip",
+		"hotelandscenic" : "module/md.hotelandscenic",
 		"addscenic" : "module/md.addscenic",
 		"urlpath" : "module/md.urlpath.test",
 		"test" : "module/md.test",

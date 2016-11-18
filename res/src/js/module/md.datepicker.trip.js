@@ -47,7 +47,8 @@ define(function(require, exports, module) {
     $datepicker.prototype = {
         init: function() {
             var _self = this;
-
+                months = [],
+                tcs = [];
             if ($('.rds').val()) _self.rangedays = $('.rds').val();
 
             //设置价和库存
@@ -56,39 +57,39 @@ define(function(require, exports, module) {
                     $dtbx = $('.day .choiced .dtbx'),
                     $tipvl = $('.day .choiced .dtbx .tipvl'),
                     isSetData = true,
-                    isCheckedInput = false,
-                    months = [],
+                    number = 0,
                     days = [],
                     blocks = [],
-                    times = [],
-                    tcs = [];
-                    
-                    
-
+                    times = [];
+                   
                 $tipvl.remove();
                 if ($dtbx.length > 0) {
                     $('.datepicker .price').each(function(index){
-                        var price = $(this),
+                        var isCheckedInput = true,
+                            price = $(this),
                             stock = $(this).parent().next().find('.stock'),
                             pTxt = $(this).parent().prev().attr('data-pTxt') || '',
                             tcName = $('.tc-tab .inputxt').val();
 
 
-                        if (!isCheckedInput && !/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test(price.val())) {
+                        if ((isCheckedInput && price.val() && !/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test(price.val())) || stock.val() && !price.val()){
                             $public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数', 'error');
                             price.focus();
                             isSetData = false;
+                            
                             return false;
                         }
-                        if (price.val() && (stock.length && !/^\d{1,6}$/.test(stock.val()))) {
+                        if (price.val() && (stock.length && !/^[1-9]\d{0,5}$/.test(stock.val()))) {
                             $public.dialog.msg('“库存”为数字,最大6位整数', 'error');
                             stock.focus();
                             isSetData = false;
+                            
                             return false;
                         }
-                        isCheckedInput = true;
+                        isCheckedInput = false;
 
                         if(price.val()){
+                            number++;
                             $dtbx.filter(function() {
                                 _self.set_tdvalue($(this), price.val(), stock.val(),pTxt);
                             });
@@ -123,7 +124,7 @@ define(function(require, exports, module) {
                                 PId: 21,
                                 PType: 4,
                                 pTxt:pTxt,
-                                price:price.val(),
+                                price:price.val()*100,
                                 stock:(stock && stock.val()) || 999
                             });
                         }
@@ -132,9 +133,12 @@ define(function(require, exports, module) {
                     // 验证信息有误
                     if(!isSetData){ 
                         return false;
+                    }else if(isSetData && number == 0){
+                        $public.dialog.msg('请输入成人或者儿童的价格和库存', 'error');
+                        return;
                     }
 
-                    $('.datepicker .setvalue input[type=text]').val('');
+                    //$('.datepicker .setvalue input[type=text]').val('');
                     
                     //自由行/跟团游 价格日历存储数据
                     if(isSetData){
@@ -230,6 +234,12 @@ define(function(require, exports, module) {
             $('.tdmonth li').on('click', function(ev) {
                 $('.tdmonth li').removeClass('on');
                 $(this).addClass('on');
+                $('.add-tc .btn-outline').each(function(){
+                    if($(this).hasClass('active')){
+                        var supplierCalendar = $(this).attr('data-tc');
+                        _self.supplierCalendar = typeof supplierCalendar == 'string' ? JSON.parse(supplierCalendar) : _self.supplierCalendar;
+                    }
+                });
                 _self.changeCld();
                 $public.stopBubble(ev);
             });
@@ -536,7 +546,7 @@ define(function(require, exports, module) {
         },
         //渲染已设置的日期
         dateRender: function(supplierCalendar) {
-            this.supplierCalendar = supplierCalendar && JSON.parse(supplierCalendar);
+            this.supplierCalendar = typeof supplierCalendar == 'string' ? JSON.parse(supplierCalendar) : this.supplierCalendar;
             var _self = this,
                 months = this.supplierCalendar && this.supplierCalendar.months,
                 days = $('.dtbx font');
@@ -551,7 +561,7 @@ define(function(require, exports, module) {
                             if (cur_smp == day.time) {
                                 var cur_td = $(this).closest('td')[0];
                                 $.each(day.blocks, function(index, block) {
-                                    _self.set_tdvalue($(cur_td).find('.dtbx'), block.price, block.stock, block.pTxt, block.skuId);
+                                    _self.set_tdvalue($(cur_td).find('.dtbx'), block.price/100, block.stock, block.pTxt, block.skuId);
                                 });
 
                                 if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), (parseInt(this.innerHTML) + 1)), _self.rangedays)) {
@@ -584,14 +594,34 @@ define(function(require, exports, module) {
                         html += '<br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'">' + stock + '</label>';
                     }
                 }else{
-                    html += '<br><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'">' + price + '</label>';
+                    html += '<br><label>'+pTxt+'￥</label><label class="price_">' + price + '</label>';
                     if(stock){
-                        html += '<br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'">' + stock + '</label>';
+                        html += '<br><label>库</label><label class="stock_">' + stock + '</label>';
                     }
                 }
                 
                 obj.find('.tipvl').append(html);
             }
+        },
+        update_value: function(price, stock, name, pTxt, skuId, day) {
+            var cur_time = new Date($('#SY').text(), $('.tdmonth li.on').index(), day).getTime() + '',
+                months = this.supplierCalendar.months;
+
+            $.each(months, function(index, month) {
+                $.each(month.days, function(index, day) {
+                    if (cur_time == day.time) {
+                        $.each(day.blocks, function(index, block) {
+                            block.price = price;
+                            block.stock = stock;
+                            block.skuId = skuId;
+                            block.pTxt = pTxt;
+                            block.name = name;
+                            return true;
+                        });
+                    }
+                });
+            });
+            return false;
         },
         //监测日期是否在规定范围内
         //"v" 要检测的日期

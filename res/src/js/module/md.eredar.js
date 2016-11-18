@@ -1,15 +1,16 @@
 define(function (require, exports, module) {
-	require("core"),
-	require("widget"),
-	require("datepicker"),
-	require("validform"),
-	//require("jqueryui"),
-	require("dropdownlist"),
-	require("uploadfiles"),//上传文件组件
-	$public=require("public"),
-	$editer = require("editer"),
-	require("md5"),//加密
-	$test = function () {
+	require("core");
+	require("widget");
+	require("datepicker");
+	require("validform");
+	//require("jqueryui");
+	require("dropdownlist");
+	require("uploadfiles");//上传文件组件
+	var $public=require("public");
+	var $editer = require("editer");
+    require('module/md.renewdialog');
+	require("md5");//加密
+	var $test = function () {
 		this.init.apply(this, arguments);
 	};
 	$test.prototype = {
