@@ -93,7 +93,8 @@ define(function (require, exports, module) {
 			pageilB:site_path+'/apply/seller/pageDetailB',
 			agreement:site_path+'/apply/talent/agreement',
 			saveSPOTDraft:site_path+'/draft/saveSPOTDraft',
-			toDetailPage:site_path+'/apply/seller/toDetailPage'
+			toDetailPage:site_path+'/apply/seller/toDetailPage',
+			upReplyMsg:site_path+'/order/setUpReplyMsg'
 		},
 		timer:null,
 		isVdSelect:false,

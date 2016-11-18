@@ -1,7 +1,0 @@
-body .layer-ext-mySkin{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;min-height: 28px;border: 1px solid rgba(0,0,0,.2);-webkit-background-clip: padding-box; font-size: 13px;color: #353535;background-color: #fff;border-radius: 6px;}
-body .layer-ext-mySkin .layui-layer-title{background:#fff;color: inherit; border-bottom: 1px solid #e5e5e5;border-top-left-radius: 6px;border-top-right-radius: 6px;}
-body .layer-ext-mySkin .layui-layer-content{color: inherit;}
-body .layer-ext-mySkin .layui-layer-btn{border-top:1px solid #E9E7E7;padding: 15px;}
-body .layer-ext-mySkin .layui-layer-btn .layui-layer-btn0{color: #fff;text-shadow: 0 -1px 0 rgba(0,0,0,.2);background-color: #3280fc;border-color: #035eed;}
-body .layer-ext-mySkin .layui-layer-btn .layui-layer-btn1{color: #353535;text-shadow: 0 1px 0 #fff;background-color: #f2f2f2;border-color: #ccc;}
-body .layer-ext-mySkin .layui-layer-btn .layui-layer-btn1:hover{background-color: #e4e4e4;}
