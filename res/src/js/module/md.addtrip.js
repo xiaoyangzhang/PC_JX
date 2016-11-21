@@ -69,7 +69,7 @@ define(function(require, exports, module) {
                 var name = tc.name,
                     months = tc.months;
 
-                $html = $('<a href="javascript:;"  data-tc=\'' + JSON.stringify(tc) + '\' class="btn btn-outline posr ml10">' + name + '<i class="icon-close"></i></a>');
+                $html = $('<a href="javascript:;" data-id="'+(-tc.id)+'" data-tc=\'' + JSON.stringify(tc) + '\' class="btn btn-outline posr ml10">' + name + '<i class="icon-close"></i></a>');
                 $('.add-tc').append($html);
 
             });
@@ -117,7 +117,7 @@ define(function(require, exports, module) {
                         return;
                     }
                     //创建套餐标签
-                    $html = $('<a href="javascript:;" class="btn btn-outline posr ml10">' + $name.val() + '<i class="icon-close"></i></a>');
+                    $html = $('<a href="javascript:;" data-id="'+new Date().getTime()+'"  class="btn btn-outline posr ml10">' + $name.val() + '<i class="icon-close"></i></a>');
                     $parentLi.append($html);
 
                     $priceInfo.find('.btn-outline').removeClass('active');
@@ -184,6 +184,8 @@ define(function(require, exports, module) {
                     if(!len){
                         $('.tc-tab-content').hide();
                     }
+                    //清空months数据
+                    $cus_datepicker_trip.months = [];
 
                 }, function() {
 
@@ -207,7 +209,11 @@ define(function(require, exports, module) {
 
             $(".datepicker td").each(function(){
                 $(this).removeAttr('data-sku-id');
-            })
+            });
+
+            $(".tdweek input[type=checkbox]").each(function(){
+                this.checked = false;
+            });
             
         },
         setHaveMonth: function(name){

@@ -113,7 +113,11 @@ define(function(require, exports, module) {
 
                         if(price.val()){
                             number++;
-                           /* if(pTxt == '单房差') return;*/
+                            if((pTxt == '单房差' && !$('.datepicker .price').eq(0).val()) && (pTxt == '单房差' && !$('.datepicker .price').eq(1).val())) {
+                                $public.dialog.msg('请输入成人或者儿童的价格和库存', 'error');
+                                return;
+                            };
+                            
                             $dtbx.filter(function() {
                                 _self.set_tdvalue($(this), price.val(), stock.val(),pTxt);
                             });
@@ -148,9 +152,10 @@ define(function(require, exports, module) {
                 if ($dtbx.length > 0) {
                     $dtbx.filter(function() {
                         $(this).find('.tipvl').remove();
+                        $(this).closest('td').removeAttr('data-sku-id');
                         $('.add-tc .btn-outline').each(function(){
                             if($(this).hasClass('active')){
-                                $(this).attr('data-tc','');
+                                _self.setTcData();
                             }
                         })
                     });
@@ -319,30 +324,20 @@ define(function(require, exports, module) {
             var _self = this;
             $(".day .choiced").removeClass("choiced");
             $td.addClass('choiced');
+            $('.price,.stock').val('');
             
-            /*$('.price').each(function(index){
-                var $price_ = $td.find('.price_').eq(index),
-                    pTxt = $(this).closest('dd').prev().attr('data-ptxt');
-                if(pTxt == '单房差'){
-                    $('.price').eq(2).val($price_.text()).attr('data-sku-id',$price_.attr('data-sku-id'));
-                }else{
-                    $(this).val($price_.text()).attr('data-sku-id',$price_.attr('data-sku-id'));
-                }
-                
-            });*/
 
-            $td.find('.price_').each(function(){
+            $td.find('.price_').each(function(index){
                 var $price = $('.price').eq(index),
                     pTxt = $(this).attr('data-ptxt');
                 if(pTxt == '单房差'){
                     $('.price').eq(2).val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
                 }else{
-                    $('.price').val('');
                     $price.val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
                 }
             });
 
-            $td.find('.stock_').each(function(){
+            $td.find('.stock_').each(function(index){
                 var $stock = $('.stock').eq(index),
                     pTxt = $(this).attr('data-ptxt');
                 if(pTxt == '单房差'){
@@ -351,16 +346,6 @@ define(function(require, exports, module) {
                     $stock.val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
                 }
             });
-
-            /*$('.stock').each(function(index){
-                var $stock_ = $td.find('.stock_').eq(index),
-                    pTxt = $(this).closest('dd').prev().attr('data-ptxt');
-
-                if(pTxt != '单房差'){
-                    $(this).val($stock_.text()).attr('data-sku-id',$stock_.attr('data-sku-id'));
-                }
-                
-            });*/
 
             this.lastCtrlSelectDay = 0;
 
@@ -488,6 +473,10 @@ define(function(require, exports, module) {
             else
                 $('.datepicker tr.last').show();
 
+            $(".datepicker td").each(function(){
+                $(this).removeAttr('data-sku-id');
+            });
+
             //渲染已设置的日期
             this.dateRender(this.supplierCalendar);
 
@@ -519,10 +508,10 @@ define(function(require, exports, module) {
                             if (cur_smp == day.time) {
                                 var cur_td = $(this).closest('td')[0];
                                 $.each(day.blocks, function(index, block) {
-                                    _self.set_tdvalue($(cur_td).find('.dtbx'), block.price/100, block.stock, block.pTxt, block.skuId);
+                                    _self.set_tdvalue($(cur_td).find('.dtbx'), block.price/100, block.stock, block.name, block.skuId);
                                 });
 
-                                if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), (parseInt(this.innerHTML) + 1)), _self.rangedays)) {
+                                if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), this.innerHTML), _self.rangedays)) {
                                     $(cur_td).addClass("choiced");
                                 } else {
                                     console.log(this.innerHTML);
@@ -554,10 +543,7 @@ define(function(require, exports, module) {
                 
             }else{
                 if(skuId){
-                    html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label>';
-                    if(stock){
-                        html += '<br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div>';
-                    }
+                    html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div>';
                 }else{
                     html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-pTxt="'+pTxt+'">' + price + '</label>';
                     if(stock){
@@ -575,24 +561,25 @@ define(function(require, exports, module) {
                 });
                 obj.closest('td').attr('data-sku-id',JSON.stringify(skuIdArr));
             }
+            if(obj.find('.price_').length >= 3){
+                obj.find('.price_').each(function(){
+                    if($(this).attr('data-ptxt') == '单房差'){
+                        obj.find('.tipvl').append($(this).closest('.item'));
+                    }
+                })
+            }
         },
         update_value: function(days) {
             var months = this.supplierCalendar.months;
             $('.day .choiced .dtbx').each(function(index,dtbx){
                 var cur_time = new Date($('#SY').text(), $('.tdmonth li.on').index(), $(dtbx).find('font').text()).getTime() + '';
                 $.each(months, function(index, month) {
-                    month.days = days;
+                    if ($('.tdmonth li.on').index()+1 == new Date(month.date).getMonth()+1) {
+                        month.days = days;
+                    }
                     /*$.each(month.days, function(index, day) {
-                        if (cur_time == day.time) {
-                            
-                            $.each(day.blocks, function(index, block) {
-                                block.price = price;
-                                block.stock = stock;
-                                block.skuId = skuId;
-                                block.pTxt = pTxt;
-                                block.name = name;
-                                return true;
-                            });
+                        if ($('.tdmonth li.on').index()+1 == new Date(day.time).getMonth()+1) {
+                            month.days = days;
                         }
                     });*/
                 });
@@ -676,25 +663,28 @@ define(function(require, exports, module) {
                         type = '',
                         name = '';
 
-                    stock = (price && !stock) ? 999 : stock;
+                    stock = (price == 0 && !stock) ? 999 : stock;
 
                     if(skuObj){
                         $.each(skuObj,function(index,obj){
-                            if(pTxt == obj.pTxt){
+                            if(obj.pTxt.indexOf(pTxt) > -1 ){
                                 skuId = Number(obj.skuId);
                             }
                         });
+                    }
+                    if(pTxt.length == 2){
+                        pTxt = pTxt.substring(0,1);
                     }
                     switch(pTxt){
                         case '成' :
                             id = 1;
                             type = 2;
-                            name = '成人';
+                            name = '成';
                             break;
                         case '儿' :
                             id = 145;
                             type = 1;
-                            name = '儿童';
+                            name = '儿';
                             break;
                         case '单房差' :
                             id = 4;
@@ -710,7 +700,7 @@ define(function(require, exports, module) {
                         name: name,
                         PId: 21,
                         PType: 4,
-                        pTxt:pTxt,
+                        pTxt:'人员类型',
                         price:price,
                         stock:stock
                     });
@@ -733,12 +723,13 @@ define(function(require, exports, module) {
             // add 
             if($.inArray($('.tdmonth li.on').index()+1,_self.months) == -1){
                 month = {
-                    date: time,
+                    date: new Date($('#SY').text(),$('.tdmonth li.on').index()).getTime(),
                     days: days
                 };
                 _self.supplierCalendar.months.push(month);
                 _self.months.push($('.tdmonth li.on').index()+1);
             } else { //update
+                console.log(days)
                 _self.update_value(days);
             }
 
@@ -751,7 +742,7 @@ define(function(require, exports, module) {
                 var $target = $(this);
                 if($target.hasClass('active')){
                     //套餐
-                    _self.supplierCalendar.id = 0;
+                    _self.supplierCalendar.id = -$(this).attr('data-id');
                     _self.supplierCalendar.name = $target.text();
                     _self.supplierCalendar.PId = 22;
                     _self.supplierCalendar.PType = 5;
@@ -765,7 +756,7 @@ define(function(require, exports, module) {
                         months: months
                     };*/
                    /* _self.supplierCalendar = tc;*/
-                    console.log(_self.supplierCalendar)
+                    console.log(JSON.stringify(_self.supplierCalendar))
                     $target.attr('data-tc',JSON.stringify(_self.supplierCalendar));
                     $target.html($('.tc-name').val()+'<i class="icon-close"></i>');
                 }

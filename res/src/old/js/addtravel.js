@@ -73,7 +73,7 @@
 		//提前天数----------------
 		if ($('.day-limit').length>0) {
 
-			if(!/^[1-9]\d{0,4}/.test(Number($('.day-limit').val())) || $('.day-limit').val() > 10000){
+			if(!/^[1-9]\d{0,4}$/.test(Number($('.day-limit').val())) || $('.day-limit').val() > 10000){
 				$('.day-limit').focus();
 				return '提前报名天数为1-10000的整数';
 			}
