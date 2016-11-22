@@ -71,7 +71,7 @@
 
 		//--------------线路 自由行跟团游 验证-------------------
 			//--------------行程天数------
-		if ($('.days.int-only').length>0) {
+		if ($('.eredar-info .on').text() == '价格信息' && $('.days.int-only').length>0) {
 			if ($.trim($('.days.int-only').val()).length < 1) {
 				return '请填写行程天数';
 			}else if ($('.days.int-only').val()<1 || $('.days.int-only').val()>100) {
@@ -183,7 +183,7 @@
 		});
 		//文本例
 		$(document).on('click','.ic-example',function(){
-			var $txt = $(this).closest('div').find('.text-example').html();
+			var $txt = $(this).closest('td').find('.text-example').html();
 			layer.open({
 				type:1,
 				title:'文本样例',

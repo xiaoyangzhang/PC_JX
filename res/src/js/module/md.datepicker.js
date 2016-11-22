@@ -388,7 +388,7 @@ define(function(require, exports, module) {
                         if (cur_smp == ls[i].vTxt && ls[i].state != 'del') {
                             var cur_td = $(this).closest('td')[0];
                             _self.set_tdvalue($(cur_td).find('.dtbx'), ls[i].price, ls[i].stock_num);
-                            if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), (parseInt(this.innerHTML) + 1)), _self.rangedays)) {
+                            if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), this.innerHTML), _self.rangedays)) {
                                 //if (!cur_td.color_temp) cur_td.color_temp = $(cur_td).find('font')[0].style.color;
                                 //$(cur_td).css('background', '#ed6c44').attr('class', 'choiced').find('font,label').css('color', '#fff');
                                 $(cur_td).addClass("choiced");
@@ -402,6 +402,13 @@ define(function(require, exports, module) {
                 });
 
             }
+
+            $(".tdweek input[type='checkbox']").each(function() {       
+                var week = $(this).attr("week");        
+                var inRangeDays = $(".day td.in-range[week='" + week + "']").length;        
+                var choicedDays = $(".day td.choiced[week='" + week + "']").length;     
+                this.checked = inRangeDays == choicedDays;      
+            });
         },
         //价格和库存写入缓存
         set_chahevalue: function(stock, price, day) {

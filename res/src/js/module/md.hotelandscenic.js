@@ -33,8 +33,16 @@ define(function (require, exports, module) {
 			//删除选中的景区或者酒店
 			$(_self.config.infoBar).find('.icon-close').on('click',function(){
 				$(this).prev().html('');
+				$('input[name="hotelName"],input[name="scenicName"]').val('');
+				$('input[name="outId"],input[name="outType"]').val('0');
+
 			});
 
+			$('.form-clear').on('click',function(){
+				$('.scenic-name,.hotel-name').html('');
+				$('input[name="hotelName"],input[name="scenicName"]').val('');
+				$('input[name="outId"],input[name="outType"]').val('0');
+			});
 			//查询酒店
 			$(document).on('click','.searchHotelBtn',function(){
 				$(_self.config.loadlist).show();
@@ -63,7 +71,9 @@ define(function (require, exports, module) {
 		},
 		/*选择酒店*/
 		hotel : {
+			pagesize: 10,
 			init_pagination:function(callback){
+				var _self = this;
 				//上一页
 				$(document).on('click','.hotel-dialog .jiuniu_pagination li.previous:not(".disabled") a',function(){
 					var cur_page=parseInt($('.jiuniu_pagination li.active a').text()),page=cur_page>0?(cur_page-1):cur_page;
@@ -87,8 +97,9 @@ define(function (require, exports, module) {
 
 				//选择页大小
 				$(document).on('change','.jiuniu_pagination li #pageSize',function(){
+					_self.pagesize = $(this).val();
 					$('input[name="pageSize"]').val($(this).val());
-					callback(1,$(this).val());
+					callback(1,_self.pagesize);
 				});
 			},
 			//弹出框查询酒店
@@ -96,8 +107,10 @@ define(function (require, exports, module) {
 				var _self=ScenicAndHotel.prototype,
 					_this = this;
 				$(_self.config.searchotel).on('click',function(ev){
-					if($.trim($('.info-bar .scenic-name,.info-bar .hotel-name').text())){
+					if($.trim($('.info-bar .scenic-name').text())){
 						$public.dialog.msg("景区和酒店只能选择一个",'error');
+						$('input[name="hotelName"]').val('');
+						$('input[name="scenicName"]').val('');
 						return;
 					}
 					var $searchbox=$('.searchbox'),
@@ -136,7 +149,7 @@ define(function (require, exports, module) {
 			gethotelist: function(page,pagesize){
 				var _self=ScenicAndHotel.prototype,
 					_this = this,
-					page=page?page:1,pagesize=pagesize?pagesize:$('#pageSize').val(),
+					page=page?page:1,pagesize=pagesize?pagesize:_self.hotel.pagesize,
 				$htlst=$(_self.config.searchbox).find(_self.config.hotelist);
 				$htlst.empty();
 				$(_self.config.loadlist).show();
@@ -157,7 +170,9 @@ define(function (require, exports, module) {
 			}
 		},
 		scenic : {
+			pagesize: 10,
 			init_pagination:function(callback){
+				var _self = this;
 				//上一页
 				$(document).on('click','.scenic-dialog .jiuniu_pagination li.previous:not(".disabled") a',function(){
 					var cur_page=parseInt($('.jiuniu_pagination li.active a').text()),page=cur_page>0?(cur_page-1):cur_page;
@@ -181,8 +196,9 @@ define(function (require, exports, module) {
 
 				//选择页大小
 				$(document).on('change','.scenic-dialog .jiuniu_pagination li #pageSize',function(){
+					_self.pagesize = $(this).val();
 					$('input[name="pageSize"]').val($(this).val());
-					callback(1,$(this).val());
+					callback(1,_self.pagesize);
 				});
 			},
 			scenicDialog : function(){
@@ -190,8 +206,10 @@ define(function (require, exports, module) {
 					_this = this;
 
 				$(_self.config.searchScenic).on('click',function(ev){
-					if($.trim($('.info-bar .scenic-name,.info-bar .hotel-name').text())){
+					if($.trim($('.info-bar .hotel-name').text())){
 						$public.dialog.msg("景区和酒店只能选择一个",'error');
+						$('input[name="hotelName"]').val('');
+						$('input[name="scenicName"]').val('');
 						return;
 					}
 					var $searchbox=$('.searchbox'),
@@ -231,7 +249,7 @@ define(function (require, exports, module) {
 			getScenicList : function(page,pagesize){
 				var _self=ScenicAndHotel.prototype,
 					_this = this,
-					page=page?page:1,pagesize=pagesize?pagesize:$('#pageSize').val(),
+					page=page?page:1,pagesize=pagesize?pagesize:_self.scenic.pagesize,
 				$sceniclist=$(_self.config.searchbox).find(_self.config.hotelist);
 				$sceniclist.empty();
 				$.get($public.urlpath.getScenicList,{
