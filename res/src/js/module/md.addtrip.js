@@ -56,8 +56,10 @@ define(function(require, exports, module) {
                     if($(this).hasClass('active')){
                         var tc = $(this).attr('data-tc') && JSON.parse($(this).attr('data-tc'));
                         tc.name = name;
+                        
                         $(this).text(name);
                         $(this).attr('data-tc',JSON.stringify(tc));
+
                     }
                 });
             });
@@ -70,6 +72,7 @@ define(function(require, exports, module) {
                     months = tc.months;
 
                 $html = $('<a href="javascript:;" data-id="'+(-tc.id)+'" data-tc=\'' + JSON.stringify(tc) + '\' class="btn btn-outline posr ml10">' + name + '<i class="icon-close"></i></a>');
+
                 $('.add-tc').append($html);
 
             });
@@ -118,6 +121,7 @@ define(function(require, exports, module) {
                     }
                     //创建套餐标签
                     $html = $('<a href="javascript:;" data-id="'+new Date().getTime()+'"  class="btn btn-outline posr ml10">' + $name.val() + '<i class="icon-close"></i></a>');
+
                     $parentLi.append($html);
 
                     $priceInfo.find('.btn-outline').removeClass('active');
@@ -129,6 +133,7 @@ define(function(require, exports, module) {
 
                     //清空日历数据
                     _self.clearDatepicker();
+
                     $('.setvalue input[type=text]').val('');
 
                     $public.dialog.closebox();
@@ -148,12 +153,14 @@ define(function(require, exports, module) {
             $('.price-info').on('click', '.btn-outline', function(ev) {
                 var $target = $(this),
                     name = $target.text();
+
                     index = $target.index() - 1,
                     $tcTabs = $('.price-info .btn-outline');
                 if ($target.hasClass('active')) return;
 
                 $('.tc-tab-content').show();
                 $tcTabs.removeClass('active').eq(index).addClass('active');
+
                 $('.tc-tab-content .inputxt').val($target.text());
 
                 //清空日期控件
@@ -166,6 +173,7 @@ define(function(require, exports, module) {
                 var m = new Date().getMonth();
                 $('.tdmonth li').removeClass('on');
                 $('.tdmonth li').eq(m).addClass('on').click();
+
             });
         },
         delTc: function() {
@@ -177,6 +185,7 @@ define(function(require, exports, module) {
             $('.price-info').on('click', '.icon-close', function(ev) {
                 var _this = this;
                 $public.dialog.content(500, 200, '添加套餐', $('<div class="mt30">是否确认删除该套餐</div>'), function() {
+
                     $(_this).parent().remove();
                     $public.dialog.closebox();
                     $('.add-tc .btn-outline').eq(0).click();
@@ -186,6 +195,7 @@ define(function(require, exports, module) {
                     }
                     //清空months数据
                     $cus_datepicker_trip.months = [];
+
 
                 }, function() {
 
@@ -245,7 +255,7 @@ define(function(require, exports, module) {
             }
           }
           return ret;
-        },
+        }
     }
     module.exports = new Addtrip();
 });

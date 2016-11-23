@@ -23,7 +23,6 @@ define(function(require, exports, module) {
 
         //存储月份
         this.months = [];
-
         this.lunarInfo = new Array(
             0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
             0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,
@@ -40,7 +39,6 @@ define(function(require, exports, module) {
             0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530,
             0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,
             0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0);
-
 
         this.supplierCalendar = {
             "id":"1",
@@ -77,7 +75,6 @@ define(function(require, exports, module) {
                 _self.months = _self.unique(_self.months);
             }
 
-
             //设置价和库存
              $('.setvl').on('click', function() {
                 var temp = '',
@@ -97,6 +94,7 @@ define(function(require, exports, module) {
                             pTxt = $(this).parent().prev().attr('data-pTxt') || '';
 
 
+
                         if ((isCheckedInput && price.val() && !/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test(price.val())) || stock.val() && !price.val()){
                             $public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数', 'error');
                             price.focus();
@@ -107,6 +105,7 @@ define(function(require, exports, module) {
                             $public.dialog.msg('“库存”为数字,最大6位整数', 'error');
                             stock.focus();
                             isSetData = false;
+
                             return false;
                         }
                         isCheckedInput = false;
@@ -133,18 +132,14 @@ define(function(require, exports, module) {
                         $public.dialog.msg('请输入成人或者儿童的价格和库存', 'error');
                         return;
                     }
-
                     //设置套餐数据
                     _self.setTcData();
-
 
                 } else {
                     $public.dialog.msg('请选择要设置的日期', 'error');
                 }
             });
 
-
-            
             //清除价格和库存
             $('.clearvl').on('click', function() {
                 var temp = '',
@@ -377,7 +372,6 @@ define(function(require, exports, module) {
                 this.lastCtrlSelectDay = parseInt($td.attr("day"));
                 console.log("lastCtrlSelectDay:" + this.lastCtrlSelectDay);
             }
-
         },
         shiftSelect: function($td) {
             var _self = this;
@@ -476,7 +470,6 @@ define(function(require, exports, module) {
             $(".datepicker td").each(function(){
                 $(this).removeAttr('data-sku-id');
             });
-
             //渲染已设置的日期
             this.dateRender(this.supplierCalendar);
 
@@ -512,6 +505,7 @@ define(function(require, exports, module) {
                                 });
 
                                 if (_self.checkRangeDay(new Date($('#SY').text(), $('.tdmonth li.on').index(), this.innerHTML), _self.rangedays)) {
+
                                     $(cur_td).addClass("choiced");
                                 } else {
                                     console.log(this.innerHTML);
@@ -522,13 +516,13 @@ define(function(require, exports, module) {
                     });
                 });
             });
-
             $(".tdweek input[type='checkbox']").each(function() {
                 var week = $(this).attr("week");
                 var inRangeDays = $(".day td.in-range[week='" + week + "']").length;
                 var choicedDays = $(".day td.choiced[week='" + week + "']").length;
                 this.checked = inRangeDays == choicedDays;
             });
+            
         },
         //设置日期的价格和库存
         set_tdvalue: function(obj, price, stock, pTxt, skuId) {
@@ -539,6 +533,7 @@ define(function(require, exports, module) {
                     obj.append('<div class="tipvl"><div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div></div>');
                 }else{
                     obj.append('<div class="tipvl"><div class="item"><label>'+pTxt+'￥</label><label class="price_" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_">' + stock + '</label></div></div>');
+
                 }
                 
             }else{
@@ -548,6 +543,7 @@ define(function(require, exports, module) {
                     html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-pTxt="'+pTxt+'">' + price + '</label>';
                     if(stock){
                         html += '<br><label>库</label><label class="stock_" data-pTxt="'+pTxt+'">' + stock + '</label></div>';
+
                     }
                 }
                 
@@ -763,7 +759,6 @@ define(function(require, exports, module) {
             });
         }
     }
-    
 
     module.exports = new $datepicker();
 
