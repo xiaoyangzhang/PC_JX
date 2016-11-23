@@ -23,17 +23,39 @@
 .settled{margin:30px 0 30px;text-align: center;}
 .settled a{width:200px;height:36px;background:#ed6c44;text-align: center;line-height: 36px;margin:0 auto;display: inline-block;font-size:16px;color:#fff;margin-left: 20px;}
 
-table{border: 1px solid #ddd;width:1050px;height:500px;text-align: center;margin:20px 0;}
+/*table{border: 1px solid #ddd;width:1050px;height:500px;text-align: center;margin:20px 0;}
 table tbody{text-align: left;}
 table tr{border: 1px solid #ddd;}
-table tr td{border: 1px solid #ddd;padding:0 10px;}
+table tr td{border: 1px solid #ddd;padding:0 10px;}*/
 .big-title{font-size: 20px;text-align: center;padding-top: 28px;}
 .rule-content{padding:25px 70px 38px;}
 .pt_zz span a{color:#ed6c44;}
 .pt_zz span a:hover{text-decoration:underline;}
 
 
+/***************************续签协议***************************/
+.eredar-right{width:970px;background: #fff;float:right;}
+.eredar-right h3{padding: 0 30px;background: #f7f7f7;height:42px;line-height: 42px;font-size:18px;margin-bottom:15px;}
+.eredar-right .agreement-p{padding: 0 30px;line-height: 22px;}
+.eredar-right .adress{padding: 20px 30px;line-height: 30px;}
+.eredar-right .agremt{text-align: center;margin-bottom:100px;margin-top:30px;}
+.eredar-right .agremt-name{width:970px;background: #fff;}
+.eredar-right .agremt-btn{width:160px;height:36px;line-height: 36px;text-align: center;margin:auto; background: #ed6c44;display: block; color:#fff;margin-top:20px;margin-bottom:10px;}
+.eredar-right .agremt-view{color:#ed6c44;}
+.eredar-right .step-container{background:url(../../img/agreement.png) no-repeat center center;height: 145px;border-bottom: 1px solid #e1e1e1;}
 
 
 
+#eredar .eredar-right .eredar-info ul li.expire{
+    float: right;
+}
 
+#eredar .eredar-right .eredar-info ul li.expire.over span{
+    color:#ff0000;
+}
+
+#eredar .eredar-right .eredar-info ul li.expire .btn-renew{
+    border:1px solid #ccc;
+    padding:5px;
+    border-radius: 5px;
+}

@@ -86,9 +86,12 @@ define(function (require, exports, module){
 			
 		},
 		//校验”关于我“的图片数量
-		picNumCheck:function(){
+		picNumCheck:function(imgMaxNum){
+			if( !imgMaxNum ){
+				imgMaxNum = 10 ;
+			}
 			var picEleNum = $(".bd p.pic");
-			if(picEleNum.length > 10) {
+			if(picEleNum.length > imgMaxNum) {
 				return false;
 			}
 			return true;
@@ -104,8 +107,13 @@ define(function (require, exports, module){
 				return false;
 			});
 			$(_self.id).on("click",_self.config.addPicBtn,function(){
-				if ($(".bd p.pic").length >= 10) {
-					$public.dialog.msg('最多上传10张图片！','error');
+				var maxNum = 10; 
+				var num = $(this).attr("data-imgnum") ;
+				if( !num ){
+					num = maxNum ;
+				}
+				if ($(".bd p.pic").length >= num) {
+					$public.dialog.msg('最多上传'+num+'张图片！','error');
 				}else{
 					_self.addImageEvent(_self,$(this));
 					_self.distanceFun();
@@ -270,7 +278,7 @@ define(function (require, exports, module){
 		getImgUploadHtml : function(){
 			var _html = [];
 			_html.push('<p class="imgwrap">');
-			_html.push('<span class="tbd"><img src="'+(static_source?static_source+'img/no-img.jpg':'http://s0.test.jiuxiulvxing.com/busines/img/no-img.jpg')+'" width="72" height="72" class="nopic defaultImg"/></span>');
+			_html.push('<span class="tbd"><img src="'+(static_source?static_source+'img/no-img.jpg':'http://s0.test.jiuxiulvxing.com/busines/img/no-img.jpg')+'" class="nopic defaultImg"/></span>');
 			_html.push('<span class="tft clearfix">');
 			_html.push('<label class="selectimg">请选择图片：<input type="file" id="uploadimg" name="uploadimg" class="uploadimg"/><em clsss="errormsg"></em></label>');
 			_html.push('<label class="groupbtn clearfix">');
