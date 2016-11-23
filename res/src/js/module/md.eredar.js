@@ -1,15 +1,16 @@
 define(function (require, exports, module) {
-	require("core"),
-	require("widget"),
-	require("datepicker"),
-	require("validform"),
-	//require("jqueryui"),
-	require("dropdownlist"),
-	require("uploadfiles"),//上传文件组件
-	$public=require("public"),
-	$editer = require("editer"),
-	require("md5"),//加密
-	$test = function () {
+	require("core");
+	require("widget");
+	require("datepicker");
+	require("validform");
+	//require("jqueryui");
+	require("dropdownlist");
+	require("uploadfiles");//上传文件组件
+	var $public=require("public");
+	var $editer = require("editer");
+    require('module/md.renewdialog');
+	require("md5");//加密
+	var $test = function () {
 		this.init.apply(this, arguments);
 	};
 	$test.prototype = {
@@ -70,12 +71,18 @@ define(function (require, exports, module) {
 				}
 			});
 			$("#saveBtnEredar").on("click",function(){
+				var defaultImgMaxNum = 10; 
+				var imgMaxNum = $(this).attr("data-imgnum") ;
+				if( !imgMaxNum ){
+					imgMaxNum = defaultImgMaxNum ;
+				}
+				
 				/* a代表提交按钮的所有表单中是否通过验证为true,b代表下拉框是否通过表单验证，c代表图片是否通过验证成功 */
 				var a=validfm.check(),b=$public.selectvalid(),params=null,arr=[],temparr=[],imgarr=[],obj={},ctval=$('#contentText').val(),
 					c=$public.allimgvalid($('.imgbox:not(".cnat")')),d=$public.groupimgvalid($('.groupimg'),'请选择图片！');
-					e= $editer.tuwencheck(),h = $self.timeFun(),g = $editer.picNumCheck();
+					e= $editer.tuwencheck(),h = $self.timeFun(),g = $editer.picNumCheck(imgMaxNum);
 				if(!e){$public.dialog.msg("关于我的图文介绍至少需要输入一段文字或一张图片","error");return false;}
-				if(!g){$public.dialog.msg("关于我的图片最多只能上传10张","error");return false;};
+				if(!g){$public.dialog.msg("关于我的图片最多只能上传"+imgMaxNum+"张","error");return false;};
 				if(a&&b&&c&&d&&e&&h){
 					params=$public.paramcompare($('.registerform').serializeArray());
 					params.pictureTextDOs=ctval;
