@@ -43,8 +43,7 @@ define(function (require, exports, module) {
 	
 	$public.prototype = {
 		init:function(){
-			var _self=this;
-            var _linkUrl = window.location.href;
+			var _self=this,_linkUrl = window.location.href;
 			/* 统一主域名 */
 			if(document.domain.indexOf('jiuxiulvxing.com')!=-1)
 				document.domain = 'jiuxiulvxing.com';

@@ -6,8 +6,7 @@ define(function (require, exports, module) {
 	//require("jqueryui");
 	require("dropdownlist");
 	require("uploadfiles");//上传文件组件
-	var $public=require("public");
-	var $editer = require("editer");
+	var $public=require("public"),$editer = require("editer");
     require('module/md.renewdialog');
 	require("md5");//加密
 	var $test = function () {
