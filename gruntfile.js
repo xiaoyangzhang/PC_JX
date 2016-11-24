@@ -23,14 +23,9 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand:true,
-					cwd:'<%= config.res %>/<%= config.src %>/js/',
+					cwd:'<%= config.res %>/<%= config.src %>/',
 					src:'**/*.js',
-					dest: '<%= config.src %>/js/'
-				},{
-					expand:true,
-					cwd:'<%= config.res %>/<%= config.src %>/old/',
-					src:'**/*.js',
-					dest: '<%= config.src %>/old/'
+					dest: '<%= config.src %>/'
 				}]
 			},
 			release: {
@@ -46,9 +41,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.res %>/<%= config.src %>/css/',
+					cwd: '<%= config.res %>/<%= config.src %>/',
 					src: ['**/*.css'],
-					dest: '<%= config.src %>/css/'
+					dest: '<%= config.src %>/'
 				}]
 			}
 		},
@@ -64,9 +59,14 @@ module.exports = function (grunt) {
 					dest: 'img/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
 				},{
 					expand: true,
-					cwd: '<%= config.res %>/images/',   // 图片在imagemin目录下
-					src: ['**/*.{png,jpg,gif,jpeg,ico}'], // 优化 imagemin 目录下所有 png/jpg/gif/jpeg/ico 图片
-					dest: 'images/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
+					cwd: '<%= config.res %>/images/',
+					src: ['**/*.{png,jpg,gif,jpeg,ico}'],
+					dest: 'images/'
+				},{
+					expand: true,
+					cwd: '<%= config.res %>/<%= config.src %>/',
+					src: ['**/*.{png,jpg,gif,jpeg,ico}'],
+					dest: '<%= config.src %>/'
 				}]
 			}
 		},
