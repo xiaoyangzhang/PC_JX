@@ -26,6 +26,11 @@ module.exports = function (grunt) {
 					cwd:'<%= config.res %>/<%= config.src %>/js/',
 					src:'**/*.js',
 					dest: '<%= config.src %>/js/'
+				},{
+					expand:true,
+					cwd:'<%= config.res %>/<%= config.src %>/old/',
+					src:'**/*.js',
+					dest: '<%= config.src %>/old/'
 				}]
 			},
 			release: {
