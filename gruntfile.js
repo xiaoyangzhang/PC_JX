@@ -23,9 +23,9 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand:true,
-					cwd:'<%= config.res %>/<%= config.src %>/js/',
+					cwd:'<%= config.res %>/<%= config.src %>/',
 					src:'**/*.js',
-					dest: '<%= config.src %>/js/'
+					dest: '<%= config.src %>/'
 				}]
 			},
 			release: {
