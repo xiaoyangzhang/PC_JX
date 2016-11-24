@@ -23,9 +23,9 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand:true,
-					cwd:'<%= config.res %>/<%= config.src %>/js/',
+					cwd:'<%= config.res %>/<%= config.src %>/',
 					src:'**/*.js',
-					dest: '<%= config.src %>/js/'
+					dest: '<%= config.src %>/'
 				}]
 			},
 			release: {
@@ -41,9 +41,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.res %>/<%= config.src %>/css/',
+					cwd: '<%= config.res %>/<%= config.src %>/',
 					src: ['**/*.css'],
-					dest: '<%= config.src %>/css/'
+					dest: '<%= config.src %>/'
 				}]
 			}
 		},
@@ -59,9 +59,14 @@ module.exports = function (grunt) {
 					dest: 'img/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
 				},{
 					expand: true,
-					cwd: '<%= config.res %>/images/',   // 图片在imagemin目录下
-					src: ['**/*.{png,jpg,gif,jpeg,ico}'], // 优化 imagemin 目录下所有 png/jpg/gif/jpeg/ico 图片
-					dest: 'images/' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
+					cwd: '<%= config.res %>/images/',
+					src: ['**/*.{png,jpg,gif,jpeg,ico}'],
+					dest: 'images/'
+				},{
+					expand: true,
+					cwd: '<%= config.res %>/<%= config.src %>/',
+					src: ['**/*.{png,jpg,gif,jpeg,ico}'],
+					dest: '<%= config.src %>/'
 				}]
 			}
 		},
@@ -77,10 +82,10 @@ module.exports = function (grunt) {
     });
 
     // 加载提供"uglify"任务的插件
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
+	// grunt.loadNpmTasks('grunt-contrib-jshint');
+    // grunt.loadNpmTasks('grunt-contrib-uglify');
+    // grunt.loadNpmTasks('grunt-contrib-cssmin');
+    // grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // 默认任务
     grunt.registerTask('default', ['uglify:dist','cssmin:dist','imagemin:dist']);
