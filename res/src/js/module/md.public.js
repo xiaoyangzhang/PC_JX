@@ -43,10 +43,11 @@ define(function (require, exports, module) {
 	
 	$public.prototype = {
 		init:function(){
-			var _self=this;
+			var _self=this,_linkUrl = window.location.href;
 			/* 统一主域名 */
 			if(document.domain.indexOf('jiuxiulvxing.com')!=-1)
 				document.domain = 'jiuxiulvxing.com';
+
 			$('textarea,input:not(input[type="radio"],input[type="checkbox"])').on('focus',function(){
 				$(this).css('border','1px solid #ed6c44');
 			}).on('blur',function(){
@@ -109,7 +110,9 @@ define(function (require, exports, module) {
 			},
 			closebox:function(){
 				var _self=this;
-				$('.container').children('div').hide().appendTo('body');
+				if(_self.box.attr('id')!='msg-box'){
+					$('.container').children('div').hide().appendTo('body');
+				}
 				_self.box.remove();
 				_self.box = null;
 				$('.bgmeng').off().on('click',function(ev){

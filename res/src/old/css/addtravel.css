@@ -23,7 +23,7 @@ table tr td button{margin: 0;}
 .layui-layer-content{line-height: 1.5;}
 /*------添加商品表格-------*/
 .tab-productdetail td{border-bottom: none;}
-.tab-productdetail>tbody>tr>td:first-child{width: 130px; padding: 8px 0 !important;}
+.tab-productdetail>tbody>tr>td:first-child{width: 130px; padding: 8px 0 !important; text-align: right;}
 
 /*------同城活动价格设置--------*/
 .tab-setlist td{padding: 8px !important;}

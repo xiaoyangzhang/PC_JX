@@ -70,7 +70,42 @@
 		if(msg){return msg;};
 
 		//--------------线路 自由行跟团游 验证-------------------
-		//提前天数----------------
+			//--------------行程天数------
+		if ($('.eredar-info .on').text() == '价格信息' && $('.days.int-only').length>0) {
+			if ($.trim($('.days.int-only').val()).length < 1) {
+				return '请填写行程天数';
+			}else if ($('.days.int-only').val()<1 || $('.days.int-only').val()>100) {
+				return '行程天数为1-100的整数';
+			}
+			
+		}
+			//--------------价格库存信息----------
+		$('.priceInfo').find('.tc-stock').each(function () {
+			if ($.trim($(this).val()).length<1) {
+				msg = '请填写库存';
+				$(this).focus();
+				return false;
+			};
+			if (!/^([1-9]\d{0,5}|\d{0,6})$/.test($(this).val())) {
+				msg = '库存为数字，最大六位整数';
+				$(this).focus();
+				return false;
+			}
+		});
+		$('.priceInfo').find('.tc-price').each(function () {
+			if ($.trim($(this).val()).length<1) {
+				msg = '请填写价格';
+				$(this).focus();
+				return false;
+			};
+			if (!/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test($(this).val())) {
+				msg = '价格为数字，最大六位整数，可带两位小数';
+				$(this).focus();
+				return false;
+			}
+		});
+		if(msg){return msg;};
+			//提前天数----------------
 		if ($('.day-limit').length>0) {
 
 			if(!/^[1-9]\d{0,4}$/.test(Number($('.day-limit').val())) || $('.day-limit').val() > 10000){
