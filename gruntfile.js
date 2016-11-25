@@ -9,6 +9,16 @@ module.exports = function (grunt) {
   grunt.initConfig({
 	config:config,
     pkg: grunt.file.readJSON('package.json'),
+        copy:{
+            dist:{
+               files: [{
+					expand:true,
+					cwd:'<%= config.res %>/<%= config.src %>/',
+					src:['js/sea.js','js/seajs-preload.js','js/config.js'],
+					dest: '<%= config.src %>/'
+				}] 
+            }
+        },
 		uglify: {	
 			options: {
 				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n'//添加banner
@@ -24,7 +34,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand:true,
 					cwd:'<%= config.res %>/<%= config.src %>/',
-					src:'**/*.js',
+					src:['**/*.js','!js/sea.js','!js/seajs-preload.js','!js/config.js'],
 					dest: '<%= config.src %>/'
 				}]
 			},
@@ -88,5 +98,5 @@ module.exports = function (grunt) {
     // grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // 默认任务
-    grunt.registerTask('default', ['uglify:dist','cssmin:dist','imagemin:dist']);
+    grunt.registerTask('default', ['copy:dist','uglify:dist','cssmin:dist','imagemin:dist']);
 }

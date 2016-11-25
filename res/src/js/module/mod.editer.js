@@ -35,7 +35,7 @@ define(function (require, exports, module){
 			contentText : "#contentText",
 			submitBtn : ".submitbtn",
 			maxNum : 500,
-			picHeight:750,
+			picHeight:750
 		},
 		tuwencheck : function(){
 			/* var count = 0;
