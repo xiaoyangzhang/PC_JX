@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                files: [{
 					expand:true,
 					cwd:'<%= config.res %>/<%= config.src %>/',
-					src:['js/sea.js','js/seajs-preload.js','js/config.js'],
+					src:['js/sea.js','js/seajs-preload.js'],
 					dest: '<%= config.src %>/'
 				}] 
             }
@@ -34,7 +34,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand:true,
 					cwd:'<%= config.res %>/<%= config.src %>/',
-					src:['**/*.js','!js/sea.js','!js/seajs-preload.js','!js/config.js'],
+					src:['**/*.js','!js/sea.js','!js/seajs-preload.js'],
 					dest: '<%= config.src %>/'
 				}]
 			},
