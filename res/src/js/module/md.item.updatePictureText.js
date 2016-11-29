@@ -123,9 +123,10 @@
 
     $(function () {
         var itemStatus = $('#itemStatus').val(),
+            isReadonly = $('#isReadonly').val(),
             type = $('#itemType').val();
 
-        if (itemStatus == ITEM_PUBLISH_STATUS) {
+        if (isReadonly == 'false' && itemStatus == ITEM_PUBLISH_STATUS) {
             init(type);
         }
     });
