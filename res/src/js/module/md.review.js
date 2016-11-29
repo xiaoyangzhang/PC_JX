@@ -11,14 +11,22 @@ define(function (require, exports, module) {
 		this.init.apply(this, arguments);
 	};
 	$test.prototype = {
+		config:{
+			placehd:'.infotime',
+			textarea:'.reply-edit textarea',
+			replyedtbtn:'.reply-content i',
+			replybtnon:'.reply-edit .replay.on',
+			replybtncel:'.reply-edit .cancel',
+			temp_tip:'买家很喜欢，快来回复一下！'
+		},
 		init:function(){
-			var $self = this;
+			var _self = this;
 			//渲染时间控件
 			$( "#tm,#td" ).datepicker({
 		      changeMonth: true,
 		      changeYear: true
 		    });
-			/* $self.distanceFun(); */
+			/* _self.distanceFun(); */
 			/* $(this).closest(".inforight").find(".showImg").hide(); */
 		 	
 			var validoptions={
@@ -32,7 +40,7 @@ define(function (require, exports, module) {
 				],validfm=$(".reviewform").Validform(validoptions).addRule(rule);
 			/* 查询 */
 			$(".searchBtn").on("click",function(){
-				$self.distanceFun();
+				_self.distanceFun();
 				$.ajax({
 					type:'POST',
 					url:""+$("#subpath").val(),
@@ -51,7 +59,125 @@ define(function (require, exports, module) {
 			   $("input[name='endDate']").val("");
 			});
 			/* 图片点击查看大图 */
-			$self.showImgFun();
+			_self.showImgFun();
+			
+			$(document).on('keyup',_self.config.textarea,function(){
+				_self.computed(this);
+			});
+			
+			$(document).on('paste',_self.config.textarea,function(){
+				_current=this;
+				setTimeout(function(){
+					_self.computed(_current);
+				},200);
+			});
+			
+			$(document).on('focus',_self.config.textarea,function(){
+				$(this).val()==_self.config.temp_tip&&$(this).val('');
+			});
+			
+			$(document).on('blur',_self.config.textarea,function(){
+				!$(this).val()&&$(this).val(_self.config.temp_tip);
+			});
+			
+			$(document).on('click',_self.config.replyedtbtn,function(){
+
+				var $parent_block=$(this).closest('div'),
+				p_txt=$parent_block.find('p').text(),
+				t_txt=$parent_block.find('label').text(),
+				id=$parent_block.attr('id');
+
+				$parent_block.after(_self.getTextarea(p_txt,t_txt,id)).remove();
+
+			});
+			
+			$(document).on('click',_self.config.replybtncel,function(){
+
+				var $parent_block=$(this).closest('div'),
+				temp_content=$parent_block.find('.temp_content').val(),
+				temp_time=$parent_block.find('.temp_time').val(),
+				id=$parent_block.attr('id');
+
+				$parent_block.after(_self.getRecord(temp_content,temp_time,id)).remove();
+
+			});
+			
+			$(document).on('click',_self.config.replybtnon,function(){
+
+				var $parent_block=$(this).closest('div'),
+				content=$parent_block.find('textarea').val().replace(/^\s+/,'').replace(/\s+$/,''),
+				dt=new Date(),
+				fmtTime=$public.dateFormat(dt,'yyyy-MM-dd hh:mm:ss'),
+				id=$parent_block.attr('id');
+				
+				if(content==''){
+					$public.dialog.msg('回复内容不能为空！','error');
+					return;
+				}else if(content.length>200){
+					$public.dialog.msg('回复内容长度不能大于200字符！','error');
+					return;
+				}
+
+				$.post($public.urlpath.upReplyMsg,{
+					id:$parent_block.attr('id'), 
+					backTime:dt.getTime(),
+					backContent:content
+				},function(data){
+					if(data.success){
+						$public.dialog.msg('保存成功！','success');
+						$parent_block.after(_self.getRecord(content,fmtTime,id)).remove();
+					}else{
+						$public.dialog.msg(data.msg,'error');
+					}
+				});
+
+			});
+
+		},
+		computed:function(obj){
+
+			var _self=this,
+			$parent_block=$(obj).closest('.reply-edit'),
+			value=$(obj).val().replace(/^\s+/,'').replace(/\s+$/,''),
+			$replybtn=$parent_block.find('.replay'),
+			$replyspan=$parent_block.find('span');
+			
+			$replyspan.text(value.length+'/200');
+			if(value.length>200){
+				$replyspan.css('color','red');
+			}else{
+				$replyspan.css('color','#999');
+			}
+			if(value.length>0){
+				$replybtn.addClass('on');
+			}else{
+				$replybtn.removeClass('on');
+			}
+
+		},
+		getRecord : function(s,t,id){
+			var str_arr=[];
+				str_arr.push('<div class="reply-content" id="'+id+'">');	
+				str_arr.push('<div>');	
+				str_arr.push('<p>'+s+'</p><label>'+t+'</label>');	
+				str_arr.push('</div>');
+				str_arr.push('<i>编辑</i>');
+				str_arr.push('</div>');
+			return str_arr.join('');
+		},
+		getTextarea : function(s,t,id){
+			var str_arr=[];
+				str_arr.push('<div class="reply-edit" id="'+id+'">');	
+				str_arr.push('<div>');	
+				str_arr.push('<textarea>'+(s?s:'买家很喜欢，快来回复一下！')+'</textarea>');
+				str_arr.push('<span>'+s.length+'/200</span>');	
+				str_arr.push('</div>');
+				str_arr.push('<i class="replay '+(s?'on':'')+'">回复</i>');
+				str_arr.push('<i class="cancel">取消</i>');
+				str_arr.push('<input type="hidden" class="temp_content" value="'+s+'">');
+				str_arr.push('<input type="hidden" class="temp_time" value="'+t+'">');
+				str_arr.push('</div>');
+			return str_arr.join('');
 		},
 		showImgFun : function(){
 			 var listli = $(".upload ul").find("li");
