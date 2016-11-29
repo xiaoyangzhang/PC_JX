@@ -344,7 +344,9 @@ define(function(require, exports, module) {
                                 var week = $(this).attr("week");
                                 var inRangeDays = $(".day td.in-range[week='" + week + "']").length;
                                 var choicedDays = $(".day td.choiced[week='" + week + "']").length;
-                                this.checked = inRangeDays == choicedDays;
+                                if(inRangeDays != 0){
+                                    this.checked = inRangeDays == choicedDays;
+                                }
                             });
                             $public.stopBubble(ev);
                         });
@@ -408,7 +410,9 @@ define(function(require, exports, module) {
                 var week = $(this).attr("week");        
                 var inRangeDays = $(".day td.in-range[week='" + week + "']").length;        
                 var choicedDays = $(".day td.choiced[week='" + week + "']").length;     
-                this.checked = inRangeDays == choicedDays;      
+                if(inRangeDays != 0){
+                    this.checked = inRangeDays == choicedDays;
+                }
             });
         },
         //价格和库存写入缓存

@@ -450,7 +450,9 @@ define(function(require, exports, module) {
                                 var week = $(this).attr("week");
                                 var inRangeDays = $(".day td.in-range[week='" + week + "']").length;
                                 var choicedDays = $(".day td.choiced[week='" + week + "']").length;
-                                this.checked = inRangeDays == choicedDays;
+                                if(inRangeDays != 0){
+                                    this.checked = inRangeDays == choicedDays;
+                                }
                             });
                             $public.stopBubble(ev);
                         });
@@ -516,11 +518,16 @@ define(function(require, exports, module) {
                     });
                 });
             });
+
+
             $(".tdweek input[type='checkbox']").each(function() {
                 var week = $(this).attr("week");
                 var inRangeDays = $(".day td.in-range[week='" + week + "']").length;
                 var choicedDays = $(".day td.choiced[week='" + week + "']").length;
-                this.checked = inRangeDays == choicedDays;
+                if(inRangeDays != 0){
+                    this.checked = inRangeDays == choicedDays;
+                }
+                
             });
             
         },
@@ -659,7 +666,7 @@ define(function(require, exports, module) {
                         type = '',
                         name = '';
 
-                    stock = (price == 0 && !stock) ? 999 : stock;
+                    stock = ((price || price == 0) && !stock) ? 999 : stock;
 
                     if(skuObj){
                         $.each(skuObj,function(index,obj){
@@ -753,7 +760,10 @@ define(function(require, exports, module) {
                     };*/
                    /* _self.supplierCalendar = tc;*/
                     console.log(JSON.stringify(_self.supplierCalendar))
-                    $target.attr('data-tc',JSON.stringify(_self.supplierCalendar));
+                    if(_self.supplierCalendar){
+                        $target.attr('data-tc',JSON.stringify(_self.supplierCalendar));
+                    }
+                    
                     $target.html($('.tc-name').val()+'<i class="icon-close"></i>');
                 }
             });

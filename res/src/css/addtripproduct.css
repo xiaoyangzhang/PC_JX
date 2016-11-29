@@ -78,6 +78,8 @@ select.form-control{display:inline-block; width:70%;}
 .tripInfo .tripInfoNav .day_tab a:hover{background: #EBE8E8;}
 .tripInfo .tripInfoNav .day_btn{margin-top: 15px;}
 .tripInfo .tab-content{float:left; width: 724px; margin-left: 20px;overflow:hidden;}
+.tripInfo .tab-content .tab-pane.active{display:block}
+.tripInfo .tab-content .tab-pane{display:none;}
 .tripInfo .travelPanel i{margin-top: 5px;font-size: 20px;margin-right: 5px;}
 .tripInfo .travelPanelDe{line-height: 30px;}
 .tripInfo .panel-heading{background: #f0f0f0; font-weight: normal; line-height: 32px; padding-left: 10px; font-size: 16px;}

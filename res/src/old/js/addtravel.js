@@ -181,7 +181,7 @@
 		});
 		//文本例
 		$(document).on('click','.ic-example',function(){
-			var $closest = $(this).closest('td').length  ? $(this).closest('td') : $(this).closest('div');
+			var $closest = $(this).closest('td').length  ? $(this).closest('td') : $(this).closest('dd');
 			var $txt = $closest.find('.text-example').html();
 			layer.open({
 				type:1,
