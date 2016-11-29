@@ -21,6 +21,8 @@
             }, {
                 el: 'maxPoint'
             }, {
+                el: 'originalPriceStr'
+            }, {
                 el: 'stockNum'
             }, {
                 el: 'imgvalue',
@@ -36,6 +38,8 @@
                 el: 'title'
             }, {
                 el: 'code'
+            }, {
+                el: 'originalPriceStr'
             }, {
                 el: 'priceY'
             }, {
@@ -70,10 +74,6 @@
         }).removeAttr("data-toggle");
     }
 
-    function disableControl(el) {
-        $(el).prop('readonly', true);
-    }
-
     function tabInit(opt) {
         showTab(opt.editTabList[0]);
 
@@ -98,7 +98,7 @@
                 case 'container':
                     $(el).find('input,select,teatarea').prop('disabled', true);
                 default:
-                    $('[name="' + el + '"]').prop('disabled', true);
+                    $('[name="' + el + '"]').prop('readonly', true);
                     break;
             }
         });
