@@ -98,18 +98,19 @@ define(function(require, exports, module) {
                 //添加套餐弹框
                 $public.dialog.content(500, 200, '添加套餐', $packageName.show(), function() {
                     var $name = $packageName.find('.tc-name'),
+                        tcname = $.trim($name.val()),
                         $html = '',
                         $parentLi = $('.add-tc');
-                    if (!$.trim($name.val())) {
+                    if (!tcname) {
                         $public.dialog.msg('请输入套餐名称','error');
                         return;
-                    }else if($name.val().length > 20){
+                    }else if(tcname.length > 20){
                         $public.dialog.msg('最多可输入20个字符','error');
                         return;
                     }
 
                     $priceInfo.find('.btn-outline').each(function(){
-                        if($(this).text() == $name.val()){
+                        if($(this).text() == tcname){
                             $public.dialog.msg("添加的套餐名称重复", 'error');
                             isAddPackage = false;
                         }
@@ -120,7 +121,7 @@ define(function(require, exports, module) {
                         return;
                     }
                     //创建套餐标签
-                    $html = $('<a href="javascript:;" data-id="'+new Date().getTime()+'"  class="btn btn-outline posr ml10">' + $name.val() + '<i class="icon-close"></i></a>');
+                    $html = $('<a href="javascript:;" data-id="'+new Date().getTime()+'"  class="btn btn-outline posr ml10">' + tcname + '<i class="icon-close"></i></a>');
 
                     $parentLi.append($html);
 
@@ -128,7 +129,7 @@ define(function(require, exports, module) {
                     $html.addClass('active');
                     _self.tcTabSwitch();
                     $('.tc-tab-content').show();
-                    $('.tc-tab-content .inputxt').val($name.val());
+                    $('.tc-tab-content .inputxt').val(tcname);
                     $name.val('');
 
                     //清空日历数据

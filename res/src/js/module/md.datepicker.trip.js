@@ -322,24 +322,44 @@ define(function(require, exports, module) {
             $('.price,.stock').val('');
             
 
-            $td.find('.price_').each(function(index){
-                var $price = $('.price').eq(index),
-                    pTxt = $(this).attr('data-ptxt');
-                if(pTxt == '单房差'){
-                    $('.price').eq(2).val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
-                }else{
-                    $price.val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
+            $td.find('.price_').each(function(){
+                var $price = $('.price'),
+                    pTxt = $(this).attr('data-ptxt').substring(0,1),
+                    index = 0;
+
+                switch(pTxt){
+                    case '成' : 
+                        index = 0;
+                        break;
+                    case '儿':
+                        index = 1;
+                        break;
+                    case '单' :
+                        index = 2;
+                        break;
                 }
+
+                $('.price').eq(index).val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
             });
 
-            $td.find('.stock_').each(function(index){
-                var $stock = $('.stock').eq(index),
-                    pTxt = $(this).attr('data-ptxt');
-                if(pTxt == '单房差'){
-                    $('.stock_').eq(2).val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
-                }else{
-                    $stock.val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
+            $td.find('.stock_').each(function(){
+                var $stock = $('.stock'),
+                    pTxt = $(this).attr('data-ptxt').substring(0,1),
+                    index = 0;
+
+                switch(pTxt){
+                    case '成' : 
+                        index = 0;
+                        break;
+                    case '儿':
+                        index = 1;
+                        break;
+                    case '单' :
+                        index = 2;
+                        break;   
                 }
+
+                $('.stock').eq(index).val($(this).text()).attr('data-sku-id',$(this).attr('data-sku-id'));
             });
 
             this.lastCtrlSelectDay = 0;
@@ -539,7 +559,7 @@ define(function(require, exports, module) {
                 if(skuId){
                     obj.append('<div class="tipvl"><div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div></div>');
                 }else{
-                    obj.append('<div class="tipvl"><div class="item"><label>'+pTxt+'￥</label><label class="price_" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_">' + stock + '</label></div></div>');
+                    obj.append('<div class="tipvl"><div class="item"><label>'+pTxt+'￥</label><label class="price_" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-pTxt="'+pTxt+'">' + stock + '</label></div></div>');
 
                 }
                 
