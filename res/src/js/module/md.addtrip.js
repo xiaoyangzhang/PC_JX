@@ -29,6 +29,10 @@ define(function(require, exports, module) {
         tabSwitch: function() {
             var _self = this;
             $(_self.config.eredarli).on('click', function(ev) {
+                if($(this).hasClass('disabled')){
+                    return false;
+                }
+                
                 $(_self.config.eredarli).removeClass('on');
                 $(this).addClass('on');
                 $(_self.config.eredarpanel).hide();
