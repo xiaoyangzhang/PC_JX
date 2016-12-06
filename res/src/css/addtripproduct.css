@@ -53,10 +53,11 @@ select.form-control{display:inline-block; width:70%;}
 #editers .hd li{display: inline-block;}
 #editers .addtext,#editers .addpic{border:1px solid #ed6c44; color:#ed6c44; padding:5px 20px; margin-right:15px;}
 /* #editers .bd p.txtinput{border:1px solid #ddd;} */
+#editers .bd p{line-height:2;margin-bottom:30px;position:relative;}
 #editers .bd p.text{padding:10px;border:1px solid #fff;cursor:pointer;word-wrap: break-word;word-break: break-all;}
 
 #editers .bd p.text:hover,
-#editers .bd p.pic:hover{border:1px dashed #FFC926;}
+#editers .bd p.pic:hover{outline:1px dashed #FFC926;}
 #editers .bd p ul.menu{position:absolute;height:35px;line-height:35px;right:0;top:-35px;width:240px;}
 #editers .bd p ul.menu li{float:left;margin-left:19px;cursor:pointer;}
 #editers .bd p ul.menu em{display:inline-block;width:16px;height:16px;margin-right:5px;background:url(../../../img/icon.png) no-repeat;overflow:hidden;position:relative;top:3px;}
