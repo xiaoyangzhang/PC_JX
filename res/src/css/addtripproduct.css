@@ -130,10 +130,10 @@ select.form-control{display:inline-block; width:70%;}
 /**********************************************价格日历**********************************************/
 .datepicker{padding-left: 30px; padding-right: 20px; padding-bottom: 5px;}
 .datepicker table{width: 658px;}
-.datepicker table td{border: 1px solid #ddd; width: 92px; height: 88px;overflow: hidden;}
-.datepicker table td div.dtbx{width: 92px; height: 88px; text-align: center; position: relative;}
+.datepicker table td{border: 1px solid #ddd; width: 92px; height: 86px;overflow: hidden;}
+.datepicker table td div.dtbx{width: 92px; height: 86px; text-align: center; position: relative;}
 .datepicker table td div.dtbx font{font-weight: bold; display: inline-block; right: 10px; top: 20px; position: absolute;}
-.datepicker table td div.dtbx .tipvl{position: absolute; left: 8px;  text-align: left; padding-top: 0; padding-right: 4px;}
+.datepicker table td div.dtbx .tipvl{position: absolute; left: 6px;  text-align: left; padding-top: 0;}
 .datepicker table td div.dtbx .tipvl label{font-size: 12px !important; line-height: 12px !important;}
 .datepicker .tdyears{text-align: center; padding: 0; height: 40px; border-top: 3px solid #ffaf00; padding: 0 20px; width: 648px;}
 .datepicker .tdyears .prev{background: url('../../img/date-left.jpg') no-repeat;}

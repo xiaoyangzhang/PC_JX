@@ -565,7 +565,12 @@ define(function(require, exports, module) {
                 
             }else{
                 if(skuId){
-                    html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div>';
+                    if(pTxt != '单房差'){
+                        html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div>';
+                    }else{
+                        html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label></div>';
+                    }
+                    
                 }else{
                     html += '<div class="item"><label>'+pTxt+'￥</label><label class="price_" data-pTxt="'+pTxt+'">' + price + '</label>';
                     if(stock){
@@ -677,7 +682,7 @@ define(function(require, exports, module) {
                 $(this).find('.item').each(function(index,item) {
                     var $price_ = $(item).find('.price_'),
                         $stock_ = $(item).find('.stock_'),
-                        price = $price_.text()*100,
+                        price = parseInt(Math.round($price_.text()*100)),
                         stock = $stock_.text(),
                         pTxt = $price_.attr('data-ptxt'),
                         skuObj = $(item).closest('td').attr('data-sku-id') && JSON.parse($(item).closest('td').attr('data-sku-id')),
