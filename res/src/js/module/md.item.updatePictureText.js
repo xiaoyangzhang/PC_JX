@@ -4,10 +4,10 @@
     var opts = {
         line: {
             type: 'tab',
-            editTabList: ['#tab2']
+            editTabList: [1]
         },
         cityActivity: {
-            type: 'tab',
+            type: 'zui_tab',
             editTabList: ['#tab2']
         },
         integralMall: {
@@ -28,7 +28,7 @@
                 el: 'imgvalue',
                 type: 'img'
             }, {
-                el: '.nonKeyProperty',
+                el: '.property',
                 type: 'container'
             }]
         },
@@ -63,25 +63,53 @@
         return false;
     }
 
-    function showTab(href) {
+    function showTab(index) {
+
+        var $tabs = $('.eredar-info li'),
+            $cur_tab = $($tabs[index]);
+
+        var $contents = $('.eredar-right .tab-content>.panel');
+
+        $tabs.removeClass('on');
+        $cur_tab.addClass('on');
+        $contents.hide();
+        $($contents[index]).fadeIn();
+    }
+
+    function disableTab(tab) {
+        $(tab).addClass('disabled');
+    }
+
+    function tabInit(opt) {
+        showTab(opt.editTabList[0]);
+
+        var allTabs = $('.eredar-info li');
+        $.each(allTabs, function (index, tab) {
+            if (!arrayExists(opt.editTabList, index)) {
+                disableTab(tab);
+            }
+        });
+    }
+
+    function showZuiTab(href) {
         $('a[data-toggle="tab"][href="' + href + '"]').tab('show');
     }
 
-    function disableTab(href) {
+    function disableZuiTab(href) {
         var $tab = $('a[data-toggle="tab"][href="' + href + '"]');
         $tab.on('show.zui.tab', function () {
             return false;
         }).removeAttr("data-toggle");
     }
 
-    function tabInit(opt) {
-        showTab(opt.editTabList[0]);
+    function zuiTabInit(opt) {
+        showZuiTab(opt.editTabList[0]);
 
         var allTabs = $('[data-toggle="tab"]');
         $.each(allTabs, function (index, tab) {
             var href = $(tab).attr('href');
             if (!arrayExists(opt.editTabList, href)) {
-                disableTab(href);
+                disableZuiTab(href);
             }
 
         });
@@ -113,6 +141,9 @@
         switch (opt.type) {
             case 'tab':
                 tabInit(opt);
+                break;
+            case 'zui_tab':
+                zuiTabInit(opt);
                 break;
             case 'form':
                 formInit(opt);
