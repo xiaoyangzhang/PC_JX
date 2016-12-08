@@ -101,8 +101,8 @@ define(function(require, exports, module) {
                             isSetData = false;
                             return false;
                         }
-                        if (price.val() && (stock.length && !/^[1-9]\d{0,5}$/.test(stock.val()))) {
-                            $public.dialog.msg('“库存”为数字,最大6位整数', 'error');
+                        if (price.val() && (stock.length && (!/^[1-9]\d{0,4}$/.test(stock.val()) || stock.val() > 10000))) {
+                            $public.dialog.msg('“库存”为数字,最大为10000', 'error');
                             stock.focus();
                             isSetData = false;
 
