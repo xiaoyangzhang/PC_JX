@@ -555,6 +555,9 @@ define(function(require, exports, module) {
         set_tdvalue: function(obj, price, stock, pTxt, skuId) {
             var html = '',
                 skuIdArr = [];
+            if(pTxt.length == 2){
+                pTxt = pTxt.substring(0,1);
+            }
             if (obj.find('.tipvl').length == 0){
                 if(skuId){
                     obj.append('<div class="tipvl"><div class="item"><label>'+pTxt+'￥</label><label class="price_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + price + '</label><br><label>库</label><label class="stock_" data-sku-id="'+ skuId +'" data-pTxt="'+pTxt+'">' + stock + '</label></div></div>');
@@ -707,12 +710,12 @@ define(function(require, exports, module) {
                         case '成' :
                             id = 1;
                             type = 2;
-                            name = '成';
+                            name = '成人';
                             break;
                         case '儿' :
                             id = 145;
                             type = 1;
-                            name = '儿';
+                            name = '儿童';
                             break;
                         case '单房差' :
                             id = 4;

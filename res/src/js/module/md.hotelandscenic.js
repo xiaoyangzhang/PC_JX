@@ -109,8 +109,8 @@ define(function (require, exports, module) {
 				$(_self.config.searchotel).on('click',function(ev){
 					if($.trim($('.info-bar .scenic-name').text())){
 						$public.dialog.msg("景区和酒店只能选择一个",'error');
-						$('input[name="hotelName"]').val('');
-						$('input[name="scenicName"]').val('');
+						/*$('input[name="hotelName"]').val('');
+						$('input[name="scenicName"]').val('');*/
 						return;
 					}
 					var $searchbox=$('.searchbox'),
@@ -208,8 +208,8 @@ define(function (require, exports, module) {
 				$(_self.config.searchScenic).on('click',function(ev){
 					if($.trim($('.info-bar .hotel-name').text())){
 						$public.dialog.msg("景区和酒店只能选择一个",'error');
-						$('input[name="hotelName"]').val('');
-						$('input[name="scenicName"]').val('');
+						/*$('input[name="hotelName"]').val('');
+						$('input[name="scenicName"]').val('');*/
 						return;
 					}
 					var $searchbox=$('.searchbox'),
