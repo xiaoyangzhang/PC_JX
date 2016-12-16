@@ -6,7 +6,7 @@ define(function(require, exports, module) {
         this.solarMonth = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
         this.nStr1 = new Array('日', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十');
 
-        this.rangedays = 90;
+        this.rangedays = Number.MAX_VALUE;
         this.empty_ckbox = {};
         //保存y年m+1月的相关信息
         this.fat = this.mat = 9;
@@ -56,7 +56,7 @@ define(function(require, exports, module) {
         init: function() {
             var _self = this;
                 months = this.supplierCalendar && this.supplierCalendar.months;
-            if ($('.rds').val()) _self.rangedays = $('.rds').val();
+            if ($('.rds').val()) //_self.rangedays = $('.rds').val();
 
             //设置已存月份
             if($('#priceInfoJson').val()){
@@ -81,19 +81,15 @@ define(function(require, exports, module) {
                     $dtbx = $('.day .choiced .dtbx'),
                     $tipvl = $('.day .choiced .dtbx .tipvl'),
                     isSetData = true,
-                    number = 0; 
+                    number = 0,
+                    priceStockArr = [];
                    
-                $tipvl.remove();
                 if ($dtbx.length > 0) {
-
-
                     $('.datepicker .price').each(function(index){
                         var isCheckedInput = true,
                             price = $(this),
                             stock = $(this).parent().next().find('.stock'),
                             pTxt = $(this).parent().prev().attr('data-pTxt') || '';
-
-
 
                         if ((isCheckedInput && price.val() && !/^\d{1,6}(\.\d{1,2})?$|^[1-9]\d{0,5}$/.test(price.val())) || stock.val() && !price.val()){
                             $public.dialog.msg('“价格”为数字,最大6位整数,能带两位小数', 'error');
@@ -116,10 +112,14 @@ define(function(require, exports, module) {
                                 $public.dialog.msg('请输入成人或者儿童的价格和库存', 'error');
                                 return;
                             };
+                            if(isSetData){
+                                //priceStockArr.push({obj:$(this),price:price.val(),stock:stock.val(),pTxt: pTxt});
+                                $tipvl.remove();
+                                $dtbx.filter(function() {
+                                    _self.set_tdvalue($(this), price.val(), stock.val(),pTxt);
+                                });
+                            }
                             
-                            $dtbx.filter(function() {
-                                _self.set_tdvalue($(this), price.val(), stock.val(),pTxt);
-                            });
                         }
                     });
 

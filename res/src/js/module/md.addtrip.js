@@ -54,16 +54,17 @@ define(function(require, exports, module) {
             }
 
             //更改套餐名
-            $('.tc-tab-content .tc-name').change(function(){
+            $('.tc-tab-content').on('change','.tc-name',function(){
                 var name = $(this).val();
                 $('.add-tc .btn-outline').each(function(){
                     if($(this).hasClass('active')){
                         var tc = $(this).attr('data-tc') && JSON.parse($(this).attr('data-tc'));
-                        tc.name = name;
                         
-                        $(this).text(name);
-                        $(this).attr('data-tc',JSON.stringify(tc));
-
+                        $(this).html(name+'<i class="icon-close"></i>');
+                        if(tc){
+                            tc.name = name;
+                            $(this).attr('data-tc',JSON.stringify(tc));
+                        }
                     }
                 });
             });
