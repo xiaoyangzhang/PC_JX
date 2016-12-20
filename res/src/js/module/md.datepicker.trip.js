@@ -113,11 +113,13 @@ define(function(require, exports, module) {
                                 return;
                             };
                             if(isSetData){
-                                //priceStockArr.push({obj:$(this),price:price.val(),stock:stock.val(),pTxt: pTxt});
-                                $tipvl.remove();
+                                $dtbx.filter(function() {
+                                    priceStockArr.push({obj: $(this), price: price.val(),stock: stock.val(),pTxt: pTxt});
+                                });
+                                /*$tipvl.remove();
                                 $dtbx.filter(function() {
                                     _self.set_tdvalue($(this), price.val(), stock.val(),pTxt);
-                                });
+                                });*/
                             }
                             
                         }
@@ -126,6 +128,11 @@ define(function(require, exports, module) {
                     // 验证信息有误
                     if(!isSetData){ 
                         return false;
+                    }else{
+                        $tipvl.remove();
+                        $.each(priceStockArr,function(index,data){
+                            _self.set_tdvalue(data.obj, data.price, data.stock,data.pTxt);
+                        });
                     }
 
                     if(isSetData && number == 0){
