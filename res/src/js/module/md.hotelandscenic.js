@@ -109,8 +109,8 @@ define(function (require, exports, module) {
 				$(_self.config.searchotel).on('click',function(ev){
 					if($.trim($('.info-bar .scenic-name').text())){
 						$public.dialog.msg("景区和酒店只能选择一个",'error');
-						$('input[name="hotelName"]').val('');
-						$('input[name="scenicName"]').val('');
+						/*$('input[name="hotelName"]').val('');
+						$('input[name="scenicName"]').val('');*/
 						return;
 					}
 					var $searchbox=$('.searchbox'),
@@ -120,7 +120,7 @@ define(function (require, exports, module) {
 					$('.hotelname').val('');
 					$('#content-box').removeClass('scenic-dialog');
 					$searchbox.find(_self.config.searchbtn).removeClass('searchScenicBtn').addClass('searchHotelBtn');
-					$public.dialog.content(968,550,'选择酒店',$searchbox.show(),function(){
+					$public.dialog.content(1100,550,'选择酒店',$searchbox.show(),function(){
 						
 						var ckid=$('input[name="hotelGroup"]:checked'),htlid=ckid.val(),
 						hp=ckid.closest('tr').find(':hidden').val(),
@@ -208,8 +208,8 @@ define(function (require, exports, module) {
 				$(_self.config.searchScenic).on('click',function(ev){
 					if($.trim($('.info-bar .hotel-name').text())){
 						$public.dialog.msg("景区和酒店只能选择一个",'error');
-						$('input[name="hotelName"]').val('');
-						$('input[name="scenicName"]').val('');
+						/*$('input[name="hotelName"]').val('');
+						$('input[name="scenicName"]').val('');*/
 						return;
 					}
 					var $searchbox=$('.searchbox'),
@@ -221,7 +221,7 @@ define(function (require, exports, module) {
 					$sceniclist.css({'overflow':'auto','height':280});
 					$('#content-box').removeClass('hotel-dialog');
 					$searchbox.find(_self.config.searchbtn).removeClass('searchHotelBtn').addClass('searchScenicBtn');
-					$public.dialog.content(968,550,'选择景区',$searchbox.show(),function(){
+					$public.dialog.content(1100,550,'选择景区',$searchbox.show(),function(){
 						var ckid=$('input[name="scenicGroup"]:checked'),scenicId=ckid.val(),
 						scenicName=ckid.closest('td').next().text();
 						if(scenicId){

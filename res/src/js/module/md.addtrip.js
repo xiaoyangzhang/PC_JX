@@ -29,6 +29,10 @@ define(function(require, exports, module) {
         tabSwitch: function() {
             var _self = this;
             $(_self.config.eredarli).on('click', function(ev) {
+                if($(this).hasClass('disabled')){
+                    return false;
+                }
+                
                 $(_self.config.eredarli).removeClass('on');
                 $(this).addClass('on');
                 $(_self.config.eredarpanel).hide();
@@ -50,26 +54,16 @@ define(function(require, exports, module) {
             }
 
             //更改套餐名
-            $('.tc-tab-content .tc-name').change(function(){
+            $('.tc-tab-content').on('change','.tc-name',function(){
                 var name = $(this).val();
                 $('.add-tc .btn-outline').each(function(){
                     if($(this).hasClass('active')){
                         var tc = $(this).attr('data-tc') && JSON.parse($(this).attr('data-tc'));
-                        tc.name = name;
-                        $(this).attr('data-tc',JSON.stringify(tc));
-
-                        months = tc && tc.months;
-                        if(months){
-                            $.each(months, function(index, month) {
-                                days = month.days;
-                                $.each(days, function(index, day) {
-                                    blocks = day.blocks;
-                                    $.each(blocks, function(index, block) {
-                                        skuId = block.skuId;
-                                        skuId && window.updatedSKU.push(skuId,skuId);
-                                    });
-                                });
-                            });
+                        
+                        $(this).html(name+'<i class="icon-close"></i>');
+                        if(tc){
+                            tc.name = name;
+                            $(this).attr('data-tc',JSON.stringify(tc));
                         }
                     }
                 });
@@ -82,7 +76,8 @@ define(function(require, exports, module) {
                 var name = tc.name,
                     months = tc.months;
 
-                $html = $('<a href="javascript:;"  data-tc=\'' + JSON.stringify(tc) + '\' class="btn btn-outline posr ml10">' + name + '<i class="icon-close"></i></a>');
+                $html = $('<a href="javascript:;" data-id="'+(-tc.id)+'" data-tc=\'' + JSON.stringify(tc) + '\' class="btn btn-outline posr ml10">' + name + '<i class="icon-close"></i></a>');
+
                 $('.add-tc').append($html);
 
             });
@@ -108,18 +103,19 @@ define(function(require, exports, module) {
                 //添加套餐弹框
                 $public.dialog.content(500, 200, '添加套餐', $packageName.show(), function() {
                     var $name = $packageName.find('.tc-name'),
+                        tcname = $.trim($name.val()),
                         $html = '',
                         $parentLi = $('.add-tc');
-                    if (!$.trim($name.val())) {
+                    if (!tcname) {
                         $public.dialog.msg('请输入套餐名称','error');
                         return;
-                    }else if($name.val().length > 20){
+                    }else if(tcname.length > 20){
                         $public.dialog.msg('最多可输入20个字符','error');
                         return;
                     }
 
                     $priceInfo.find('.btn-outline').each(function(){
-                        if($(this).text() == $name.val()){
+                        if($(this).text() == tcname){
                             $public.dialog.msg("添加的套餐名称重复", 'error');
                             isAddPackage = false;
                         }
@@ -130,18 +126,20 @@ define(function(require, exports, module) {
                         return;
                     }
                     //创建套餐标签
-                    $html = $('<a href="javascript:;" class="btn btn-outline posr ml10">' + $name.val() + '<i class="icon-close"></i></a>');
+                    $html = $('<a href="javascript:;" data-id="'+new Date().getTime()+'"  class="btn btn-outline posr ml10">' + tcname + '<i class="icon-close"></i></a>');
+
                     $parentLi.append($html);
 
                     $priceInfo.find('.btn-outline').removeClass('active');
                     $html.addClass('active');
                     _self.tcTabSwitch();
                     $('.tc-tab-content').show();
-                    $('.tc-tab-content .inputxt').val($name.val());
+                    $('.tc-tab-content .inputxt').val(tcname);
                     $name.val('');
 
                     //清空日历数据
-                    $('.day .choiced').removeClass('choiced').find('.tipvl').remove();
+                    _self.clearDatepicker();
+
                     $('.setvalue input[type=text]').val('');
 
                     $public.dialog.closebox();
@@ -160,16 +158,28 @@ define(function(require, exports, module) {
 
             $('.price-info').on('click', '.btn-outline', function(ev) {
                 var $target = $(this),
+                    name = $target.text();
+
                     index = $target.index() - 1,
                     $tcTabs = $('.price-info .btn-outline');
                 if ($target.hasClass('active')) return;
 
                 $('.tc-tab-content').show();
                 $tcTabs.removeClass('active').eq(index).addClass('active');
-                $('.datepicker td').removeClass('choiced').find('.tipvl').remove(); //清空日期控件
+
                 $('.tc-tab-content .inputxt').val($target.text());
 
+                //清空日期控件
+                _self.clearDatepicker();
+                _self.setHaveMonth(name);
+
                 $cus_datepicker_trip.dateRender($target.attr('data-tc'));
+
+                //切换套餐默认显示当前月
+                var m = new Date().getMonth();
+                $('.tdmonth li').removeClass('on');
+                $('.tdmonth li').eq(m).addClass('on').click();
+
             });
         },
         delTc: function() {
@@ -181,21 +191,7 @@ define(function(require, exports, module) {
             $('.price-info').on('click', '.icon-close', function(ev) {
                 var _this = this;
                 $public.dialog.content(500, 200, '添加套餐', $('<div class="mt30">是否确认删除该套餐</div>'), function() {
-                     dataTc = $(_this).parent().attr('data-tc');
-                    tc = $(_this).parent().attr('data-tc') && JSON.parse($(_this).parent().attr('data-tc'));
-                    months = tc && tc.months;
-                    if(months){
-                        $.each(months, function(index, month) {
-                            days = month.days;
-                            $.each(days, function(index, day) {
-                                blocks = day.blocks;
-                                $.each(blocks, function(index, block) {
-                                    skuId = block.skuId;
-                                    skuId && window.deletedSKU.push(skuId,skuId);
-                                });
-                            });
-                        });
-                    }
+
                     $(_this).parent().remove();
                     $public.dialog.closebox();
                     $('.add-tc .btn-outline').eq(0).click();
@@ -203,15 +199,68 @@ define(function(require, exports, module) {
                     if(!len){
                         $('.tc-tab-content').hide();
                     }
-                    //_self.tcTabSwitch();
+                    //清空months数据
+                    $cus_datepicker_trip.months = [];
+
 
                 }, function() {
 
                 });
                 $public.stopBubble(ev);
             });
-
+        },
+        //清空日期数据
+        clearDatepicker: function(){
+            $('.datepicker td').removeClass('choiced').find('.tipvl').remove(); 
             
+            $cus_datepicker_trip.supplierCalendar = {
+                "id":"1",
+                "name":"套餐",
+                "PId":22,
+                "PType":5,
+                "PTxt":"套餐",
+                "months":[]
+            };
+            $cus_datepicker_trip.months = [];
+
+            $(".datepicker td").each(function(){
+                $(this).removeAttr('data-sku-id');
+            });
+
+            $(".tdweek input[type=checkbox]").each(function(){
+                this.checked = false;
+            });
+            
+        },
+        setHaveMonth: function(name){
+            var _self = this;
+            if($('#priceInfoJson').val()){
+                var priceInfoJson = JSON.parse($('#priceInfoJson').val());
+
+                $.each(priceInfoJson.tcs,function(index,tc){
+                    if(tc.name == name){
+                        $.each(tc.months,function(index,month){
+                            $.each(month.days,function(index,day){
+                                var m = $public.dateFormat(new Date(day.time),'yyyy-MM-dd').split('-')[1]; 
+                                m = m < 10 ? m.substring(1) : m;
+                                $cus_datepicker_trip.months.push(Number(m));
+                            });
+                        });
+                    }
+                });
+
+                $cus_datepicker_trip.months = _self.unique($cus_datepicker_trip.months);
+            }
+        },
+        unique: function(arr) {
+          var ret = [];
+          for (var i = 0; i < arr.length; i++) {
+            var item = arr[i];
+            if (ret.indexOf(item) === -1) {
+              ret.push(item);
+            }
+          }
+          return ret;
         }
     }
     module.exports = new Addtrip();

@@ -107,10 +107,8 @@
 		if(msg){return msg;};
 			//提前天数----------------
 		if ($('.day-limit').length>0) {
-			if ($.trim($('.day-limit').val()).length < 1) {
-				$('.day-limit').focus();
-				return '请填写提前报名天数';
-			}else if ($('.day-limit').val()<1 || $('.day-limit').val()>10000) {
+
+			if(!/^[1-9]\d{0,4}$/.test(Number($('.day-limit').val())) || $('.day-limit').val() > 10000){
 				$('.day-limit').focus();
 				return '提前报名天数为1-10000的整数';
 			}
@@ -183,7 +181,8 @@
 		});
 		//文本例
 		$(document).on('click','.ic-example',function(){
-			var $txt = $(this).closest('td').find('.text-example').html();
+			var $closest = $(this).closest('td').length  ? $(this).closest('td') : $(this).closest('dd');
+			var $txt = $closest.find('.text-example').html();
 			layer.open({
 				type:1,
 				title:'文本样例',
