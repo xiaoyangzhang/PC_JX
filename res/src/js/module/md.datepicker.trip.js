@@ -764,11 +764,24 @@ define(function(require, exports, module) {
                     date: new Date($('#SY').text(),$('.tdmonth li.on').index()).getTime(),
                     days: days
                 };
-                _self.supplierCalendar.months.push(month);
-                _self.months.push($('.tdmonth li.on').index()+1);
+                if(days.length){
+                    _self.supplierCalendar.months.push(month);
+                    _self.months.push($('.tdmonth li.on').index()+1);
+                }
+                
             } else { //update
                 console.log(days)
                 _self.update_value(days);
+                if(!days.length){
+                    var m = $('.tdmonth li.on').index()+1;
+                    /*_self.months.splice(($('.tdmonth li.on').index()+1),1);*/
+                    for(var i=0; i<_self.months.length; i++){
+                        if(_self.months[i] == m){
+                            _self.months.splice(i,1);
+                            _self.supplierCalendar.months.splice(i,1);
+                        }
+                    }
+                }
             }
 
 
@@ -780,10 +793,13 @@ define(function(require, exports, module) {
                 var $target = $(this);
                 if($target.hasClass('active')){
                     //套餐
-                    _self.supplierCalendar.id = -$(this).attr('data-id');
-                    _self.supplierCalendar.name = $target.text();
-                    _self.supplierCalendar.PId = 22;
-                    _self.supplierCalendar.PType = 5;
+                    if(_self.supplierCalendar){
+                        _self.supplierCalendar.id = -$(this).attr('data-id');
+                        _self.supplierCalendar.name = $target.text();
+                        _self.supplierCalendar.PId = 22;
+                        _self.supplierCalendar.PType = 5;
+                    }
+                    
 
                     /*var tc = {
                         id: 0,
@@ -795,8 +811,10 @@ define(function(require, exports, module) {
                     };*/
                    /* _self.supplierCalendar = tc;*/
                     console.log(JSON.stringify(_self.supplierCalendar))
-                    if(_self.supplierCalendar){
+                    if(_self.supplierCalendar.months.length){
                         $target.attr('data-tc',JSON.stringify(_self.supplierCalendar));
+                    }else{
+                        $target.attr('data-tc','');
                     }
                     
                     $target.html($('.tc-name').val()+'<i class="icon-close"></i>');
