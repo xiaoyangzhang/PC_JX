@@ -171,7 +171,7 @@ define(function(require, exports, module) {
 
                 //清空日期控件
                 _self.clearDatepicker();
-                _self.setHaveMonth(name);
+                _self.setHaveMonth(name,this);
 
                 $cus_datepicker_trip.dateRender($target.attr('data-tc'));
 
@@ -232,7 +232,7 @@ define(function(require, exports, module) {
             });
             
         },
-        setHaveMonth: function(name){
+        setHaveMonth: function(name,obj){
             var _self = this;
             if($('#priceInfoJson').val()){
                 var priceInfoJson = JSON.parse($('#priceInfoJson').val());

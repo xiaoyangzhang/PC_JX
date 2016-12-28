@@ -810,7 +810,14 @@ define(function(require, exports, module) {
                         months: months
                     };*/
                    /* _self.supplierCalendar = tc;*/
-                    console.log(JSON.stringify(_self.supplierCalendar))
+                   $.each(_self.supplierCalendar.months,function(index,month){
+                        if(!month.days.length){
+                            _self.supplierCalendar.months.splice(index,1);
+                        }
+                   });
+                   
+                    console.log(JSON.stringify(_self.supplierCalendar));
+
                     if(_self.supplierCalendar.months.length){
                         $target.attr('data-tc',JSON.stringify(_self.supplierCalendar));
                     }else{
